@@ -30,7 +30,7 @@ const Precarga = ({ onFinish }) => {
       await permissionsWithGpsDialog();
     }
     setTimeout(() => {
-      onFinish(true);
+      //onFinish(true);
     }, 10000);
   }
 
