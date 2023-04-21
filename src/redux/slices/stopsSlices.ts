@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { RootState } from '../store';
-import { SearchStopType } from '../../types/ExploreInterfaces';
-import { IMarker } from '../../types/interfaces';
+import { RootState } from '@src/redux/store';
+import { SearchStopType } from '@src/types/ExploreInterfaces';
+import { IMarker } from '@src/types/interfaces';
 
 // Define the initial state using that type
 const initialState: any = {
