@@ -1,7 +1,12 @@
 export const navigationPages = {
   splash: 'Splash',
   mainMap: 'MainMap',
+  language: 'Language',
+  storybook: 'Storybook',
 };
+
+export const languages = ['ca', 'es', 'en', 'ge'];
+
 
 
 export const defaultLocation = {

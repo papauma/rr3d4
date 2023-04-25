@@ -5,7 +5,7 @@ import React, {
   useState,
   useEffect,
 } from 'react';
-//import AsyncStorage from '@react-native-async-storage/async-storage';
+import { MMKV } from 'react-native-mmkv';
 import * as RNLocalize from 'react-native-localize';
 
 /**
@@ -46,14 +46,16 @@ function translate(key, language) {
 }
 
 export function LanguageProvider({children}) {
+  const storage = new MMKV();
   const [language, setLanguage] = useState('ca');
+
 
   const t = useCallback(key => translate(key, language), [language]);
 
   /* Obtiene el idioma guardado en local */
   const getStoredLanguage = async () => {
     try {
-      let idiomaLocal = await AsyncStorage.getItem('userLanguage');
+      let idiomaLocal = storage.getString('userLanguage');
       const lenguaje = idiomaLocal ? idiomaLocal : getLanguage();
       setLanguage(lenguaje);
     } catch (error) {
@@ -63,7 +65,7 @@ export function LanguageProvider({children}) {
   /* Modifica el idioma al que se haya cambiado y lo guarda en memoria */
   const setIdioma = async function (lng) {
     setLanguage(lng);
-    //await AsyncStorage.setItem('userLanguage', lng);
+    storage.set('userLanguage', lng);
   };
 
   /* Inicializar el idioma con el guardado en local */
