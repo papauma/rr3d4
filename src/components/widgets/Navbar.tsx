@@ -1,7 +1,8 @@
 import React from 'react';
-import { Pressable, View, Text } from 'react-native';
+import { Pressable, View } from 'react-native';
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
 import { useTheme } from '@src/context/themeContext';
+import Label from '../commons/text/Label';
 
 const navLinks = [
   {
@@ -34,8 +35,8 @@ const NavbarX = ({ state, descriptors, navigation }) => {
   return (
     <View accessible={true}
           accessibilityLabel="Barra de navegación"
-          role="listitem"
-          style={{flexDirection: 'row', gap: 10}}>
+          role="tablist"
+          style={{flexDirection: 'row', gap: 10, borderTopWidth: 1, borderColor: theme.colors.primary_300}}>
         {state.routes.map((route, index) => {
           const { options } = descriptors[route.key];
 
@@ -71,7 +72,7 @@ const NavbarX = ({ state, descriptors, navigation }) => {
           return (
               <Pressable
                 key={`v${index}`}
-                accessibilityRole="button"
+                accessibilityRole="tab"
                 accessibilityState={isFocused ? { selected: true } : {}}
                 accessibilityLabel={options.tabBarAccessibilityLabel}
                 testID={options.tabBarTestID}
@@ -82,7 +83,7 @@ const NavbarX = ({ state, descriptors, navigation }) => {
                 ]}
               >
                 {options.tabBarIcon ? options.tabBarIcon({focused: isFocused}) : null}
-                {options.tabBarShowLabel ? <Text>{label}</Text> : null}
+                {options.tabBarShowLabel ? <Label>{label}</Label> : null}
               </Pressable>
           );
         })}

@@ -13,7 +13,7 @@ export default function Label(props: LabelProps) {
   return props.children ? (
     <Text
       accessible={props.accessible}
-      style={[{/* fontFamily: 'Open Sans' */}, props?.style]}
+      style={[{fontFamily: 'Work Sans'}, props?.style]}
       numberOfLines={props.numberOfLines}
       ellipsizeMode={props.ellipsizeMode}>
       {props.children}

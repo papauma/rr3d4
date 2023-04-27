@@ -5,6 +5,7 @@ import MainMapScreen from '../mainMap/MainMapScreen';
 import Icon from '@src/components/commons/icon/Icon';
 import { useTheme } from '@src/context/themeContext';
 import { View } from 'react-native';
+import StoryButtonsScreen from '../storyBook/StoryButtonsScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -64,7 +65,7 @@ export default function MainScreen() {
             }}
             name={'Events'}
         >
-            {props => <View />}
+            {props => <StoryButtonsScreen />}
         </Tab.Screen>
       </Tab.Navigator>
   )
