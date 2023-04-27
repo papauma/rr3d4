@@ -1,9 +1,11 @@
+import { IDrawables } from '@src/resources/drawables';
+import { LightColors } from '@src/resources/themes/light';
 import React, {createContext, useContext} from 'react';
 
-interface ThemeProps {
-  colors: any;
+export interface ThemeProps {
+  colors: LightColors;
   fontFamily: any;
-  drawables: any;
+  drawables: IDrawables;
 }
 
 const colors = {
@@ -35,5 +37,5 @@ export function ThemeProvider({children}) {
 }
 
 export function useTheme() {
-  return useContext(ThemeContext);
+  return useContext(ThemeContext) as ThemeProps;
 }
