@@ -1,4 +1,5 @@
 import Button from '@src/components/commons/buttons/Button'
+import ButtonText from '@src/components/commons/buttons/ButtonText'
 import Label from '@src/components/commons/text/Label'
 import { useTheme } from '@src/context/themeContext'
 import React from 'react'
@@ -148,6 +149,7 @@ export default function StoryButtonsScreen() {
             <Button title='Secundario Extra Small'
               buttonSizeStyle='extra-small'
                 buttonCategory='secondary'
+                iconStyle={{tintColor: 'red'}}
                 icon={theme.drawables.general.Ic_storyIcon}
                 style={{marginVertical: 8}}/>
             <Button
@@ -360,6 +362,12 @@ export default function StoryButtonsScreen() {
               icon={theme.drawables.general.Ic_storyIcon}
               style={{marginVertical: 8}}/>
           </View>
+        </View>
+        <Label>Botones con texto</Label>  
+        <View style={{justifyContent: 'space-evenly', flexDirection: 'row'}}>
+          <ButtonText staticIcon={theme.drawables.general.Ic_storyIcon}  title='metro'/>
+          <ButtonText staticIcon={theme.drawables.general.Ic_storyIcon}  title='bus' selected={true}/>
+          <ButtonText disabled={true} staticIcon={theme.drawables.general.Ic_storyIcon}  title='tren'/>
         </View>
       </ScrollView>
     </SafeAreaView>

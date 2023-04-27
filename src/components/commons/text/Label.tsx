@@ -10,7 +10,7 @@ export interface LabelProps {
 }
 
 export default function Label(props: LabelProps) {
-  return (
+  return props.children ? (
     <Text
       accessible={props.accessible}
       style={[{/* fontFamily: 'Open Sans' */}, props?.style]}
@@ -18,5 +18,5 @@ export default function Label(props: LabelProps) {
       ellipsizeMode={props.ellipsizeMode}>
       {props.children}
     </Text>
-  );
+  ) : null;
 }

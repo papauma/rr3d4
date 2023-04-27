@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, StyleProp, ViewStyle, View, TextStyle, StyleSheet } from 'react-native';
+import { Pressable, StyleProp, ViewStyle, View, TextStyle, StyleSheet, ImageStyle } from 'react-native';
 import Label from '../text/Label';
 import { ThemeProps, useTheme } from '@src/context/themeContext';
 import Icon from '../icon/Icon';
@@ -11,10 +11,9 @@ export interface ButtonProps {
     disabled?: boolean;
     styleView?: StyleProp<ViewStyle>;
     icon?: any;
-    iconStyle?: any;
+    iconStyle?: StyleProp<ImageStyle>;
     title?: string;
     textStyle?: StyleProp<TextStyle>;
-    tintColor?: string; //color del icono
     accessibilityLabel?: string;
     accessibilityHint?: string;
     buttonSizeStyle?: ButtonSizeTypes;
@@ -131,7 +130,6 @@ export default function Button(props: ButtonProps) {
                   obtainIconStyleBySize(props.buttonSizeStyle),
                   props.iconStyle,
                   !props.title ? { marginRight: 0 } : null]}
-                tint={props.tintColor}
               />
             )}
             {props.title ? (
