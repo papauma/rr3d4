@@ -2,12 +2,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Navbar from '@src/components/widgets/Navbar';
 import TempComp from '@src/components/widgets/TempComp';
-import MainMapScreen from '@src/screens/mainMap/MainMapScreen';
 import SplashScreen from '@src/screens/splash/SplashScreen';
 import { navigationPages } from '@src/utils/constants';
 import React, { useRef } from 'react';
 import LanguageScreen from '@src/screens/language/LanguageScreen';
 import StoryButtonsScreen from './storyBook/StoryButtonsScreen';
+import MainScreen from './main/MainScreen';
 
 const Stack = createStackNavigator();
 
@@ -19,8 +19,8 @@ const SplashComponent = ({navigation, route, options, back}) => {
   return <SplashScreen navigation={navigation} />;
 };
 
-const MainMapComponent = ({navigation, route, options, back}) => {
-  return <MainMapScreen navigation={navigation} />;
+const MainComponent = ({navigation, route, options, back}) => {
+  return <MainScreen navigation={navigation} />;
 };
 
 const LanguageComponent = ({navigation, route, options, back}) => {
@@ -51,10 +51,10 @@ export default function Routes() {
       //linking={links}
     >
       <Stack.Navigator screenOptions={screenOptions}>
-        <Stack.Screen name={navigationPages.storybook} component={StoryButtonsComponent} />
-        <Stack.Screen name={navigationPages.mainMap} component={MainMapComponent} />
+        <Stack.Screen name={navigationPages.main} component={MainComponent} />
         <Stack.Screen name={navigationPages.splash} component={SplashComponent} />
         <Stack.Screen name={navigationPages.language} component={LanguageComponent} />
+        <Stack.Screen name={navigationPages.storybook} component={StoryButtonsComponent} />
       </Stack.Navigator>
       {/* <Navbar />
       <TempComp /> */}

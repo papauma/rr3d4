@@ -1,5 +1,6 @@
 export const navigationPages = {
   splash: 'Splash',
+  main: 'Main',
   mainMap: 'MainMap',
   language: 'Language',
   storybook: 'Storybook',
