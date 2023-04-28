@@ -6,4 +6,5 @@ export const strings = {
   language_catalan: 'Catalan',
   language_espanol: 'Spanish',
   language_ingles: 'English',
+  topSearchBar_title: 'Stop or destination',
 };

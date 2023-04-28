@@ -7,4 +7,5 @@ export const strings = {
   language_catalan: 'Català',
   language_espanol: 'Espanyol',
   language_ingles: 'Anglès',
+  topSearchBar_title: 'Parada o destinació',
 };

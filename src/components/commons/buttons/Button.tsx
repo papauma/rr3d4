@@ -106,7 +106,7 @@ export default function Button(props: ButtonProps) {
           style={({ pressed }) => [
             styles().button,
             obtainButtonCategoryStyleDefault(props.buttonCategory),
-            obtainButtonSize(props.buttonSizeStyle),
+            props.title ? obtainButtonSize(props.buttonSizeStyle) : {padding: props.buttonCategory === 'tertiary' ? 10 : 8},
             props.style,
             props.disabled ? obtainButtonCategoryStyleDisabled(props.buttonCategory) : null,
             pressed ? obtainButtonCategoryStylePressed(props.buttonCategory) : null,
@@ -121,7 +121,7 @@ export default function Button(props: ButtonProps) {
                 alt={props.alt}
                 source={props.icon}
                 style={[
-                  props.buttonCategory === 'secondary' ||  props.buttonCategory === 'tertiary' 
+                  (props.buttonCategory === 'secondary' ||  props.buttonCategory === 'tertiary' )
                     ? {tintColor: theme.colors.gray_700}
                     : {tintColor: theme.colors.white},
                     props.disabled &&
