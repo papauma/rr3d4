@@ -3,21 +3,27 @@ import Button from '../commons/buttons/Button'
 import { useTheme } from '@src/context/themeContext'
 import LocationUtils from '@src/redux/hooks/LocationUtils';
 import { useDispatch, useSelector } from 'react-redux';
-import { locationInformation } from '@src/redux/slices/locationSlice';
+import { locationInformation, locationSlice } from '@src/redux/slices/locationSlice';
 import ActivateLocationModal from './ActivateLocationModal';
 import { contextualSlice } from '@src/redux/slices/contextualSlice';
+import { IPosition } from '@src/types/interfaces';
 
-export default function LocationButton() {
+interface LocationButtonProps {
+    onPress?: Function;
+}
+
+export default function LocationButton(props: LocationButtonProps) {
   const theme = useTheme();
-  const {checkPermissions} = LocationUtils();
+  const {checkPermissions, getUserLocation} = LocationUtils();
   const locationInfo = useSelector(locationInformation);
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
 
   async function onPressLocation() {
     await checkPermissions().then((result: any) => {
         if (result) {
-
+            dispatch(locationSlice.actions.updatedInitTracking(true))
+            getUserLocation((location: IPosition) => props.onPress?.(location))
         } else {
             dispatch(contextualSlice.actions.updateShowBackground(true))
             setShowModal(true);

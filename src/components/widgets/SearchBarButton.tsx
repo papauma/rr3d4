@@ -12,6 +12,7 @@ interface SearchBarButtonProps {
     iconLeft?: any;
     iconRight?: any;
     iconSearch?: boolean;
+    onPress?: Function;
 }
 
 type SearchBarSizeStyle =
@@ -28,7 +29,7 @@ export default function SearchBarButton(props: SearchBarButtonProps) {
             : styles(theme).smallContentBar,
         props.contentBarStyle]}>
             {/* <Button buttonCategory='secondary' buttonSizeStyle={props.sizeStyle}/> */}
-            <Pressable style={[styles(theme).searchBar, 
+            <Pressable onPress={() => props.onPress?.()} style={[styles(theme).searchBar, 
                 props.sizeStyle === 'medium' 
                 ? styles(theme).searchBarMedium 
                 : styles(theme).searchBarSmall,

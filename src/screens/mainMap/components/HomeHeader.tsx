@@ -6,7 +6,11 @@ import { useTheme } from '@src/context/themeContext'
 import React from 'react'
 import { StyleSheet, View, SafeAreaView } from 'react-native'
 
-export default function HomeHeader() {
+interface HomeHeaderProps {
+    onPressLocation: Function;
+}
+
+export default function HomeHeader(props: HomeHeaderProps) {
   const t = useTranslate();
   const theme = useTheme();
 
@@ -15,7 +19,7 @@ export default function HomeHeader() {
         <SafeAreaView>
             <SearchBarButton iconSearch={true} title={t('topSearchBar_title')}/>
             <View style={styles.containerButtons}>
-                <LocationButton/>
+                <LocationButton onPress={props.onPressLocation}/>
                 <Button style={{marginTop: 10,}}
                         buttonCategory='secondary' 
                         icon={theme.drawables.general.Ic_filters}
