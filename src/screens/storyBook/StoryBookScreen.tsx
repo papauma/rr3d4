@@ -13,12 +13,14 @@ import WarningSnackBar from '@src/components/commons/feedback/WarningSnackBar'
 import BackgroundModal from '@src/components/commons/modal/BackgroundModal'
 import StoryModals from './components/StoryModals'
 import StoryInputs from './components/StoryInputs'
+import StoryLineCodes from './components/StoryLineCodes'
 
 export default function StoryBookScreen() {
   const [showStoryButtons, setShowStoryButtons] = useState(false)
   const [showStoryFeedback, setShowStoryFeedback] = useState(false)
   const [showStoryModals, setShowStoryModals] = useState(false)
   const [showStoryInputs, setShowStoryInputs] = useState(false)
+  const [showStoryLineCodes, setShowStoryLineCodes] = useState(false)
   const contextualInfo = useSelector(contextualInformation);
   const dispatch = useDispatch();
 
@@ -54,6 +56,13 @@ export default function StoryBookScreen() {
                   pressed={showStoryInputs}
                   onPress={() => setShowStoryInputs(!showStoryInputs)}/>
                 {showStoryInputs && <StoryInputs/>}
+                <AccordionOption
+                  styleView={{marginBottom: 16, flexGrow: 1}}
+                  styleText={{fontSize: 16, fontWeight: '700', flexGrow: 1}}
+                  name='Códigos de líneas'
+                  pressed={showStoryLineCodes}
+                  onPress={() => setShowStoryLineCodes(!showStoryLineCodes)}/>
+                {showStoryLineCodes && <StoryLineCodes/>}
             </ScrollView>
         {contextualInfo.showBackground && <BackgroundModal/>}
         {contextualInfo.warningMessage && <WarningSnackBar onPress={() => dispatch(contextualSlice.actions.updateWarningMessage(''))}/>}

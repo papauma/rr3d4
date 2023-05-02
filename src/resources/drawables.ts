@@ -8,6 +8,7 @@ export interface IDrawables {
     Ic_Arrow_Right: any;
     Ic_Arrow_Up: any;
     Ic_Arrows: any;
+    Ic_Bus: any;
     Ic_storyIcon: any;
     Ic_Check: any;
     Ic_Chevron_Down: any;
@@ -48,6 +49,7 @@ export const drawables = {
     Ic_Arrow_Right: require('@images/Ic_Arrow_Right.png'),
     Ic_Arrow_Up: require('@images/Ic_Arrow_Up.png'),
     Ic_Arrows: require('@images/Ic_Arrows.png'),
+    Ic_Bus: require('@images/Ic_Bus.png'),
     Ic_storyIcon: require('@images/Ic_storyIcon.png'),
     Ic_Check: require('@images/Ic_Check.png'),
     Ic_Chevron_Down: require('@images/Ic_Chevron_Down.png'),
