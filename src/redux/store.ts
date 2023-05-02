@@ -4,6 +4,11 @@ import permissionSlice from '@src/redux/slices/permissionSlice';
 import stopsSlices from '@src/redux/slices/stopsSlices';
 import { locationSlice } from './slices/locationSlice';
 import { contextualSlice } from './slices/contextualSlice';
+import agencysSlices from './slices/agencysSlices';
+import transportmodeSlices from './slices/transportmodeSlices';
+import { agencyServiceApi } from './services/agencyService';
+import { transportModeServiceApi } from './services/transportmodeServices';
+import { stopsServiceApi } from './services/stopsService';
 
 export const reducer = {
   user: userSlice,
@@ -11,6 +16,11 @@ export const reducer = {
   stops: stopsSlices,
   [locationSlice.name]: locationSlice.reducer,
   [contextualSlice.name]: contextualSlice.reducer,
+  agencys: agencysSlices,
+  transportmode: transportmodeSlices,
+  [agencyServiceApi.reducerPath]: agencyServiceApi.reducer,
+  [transportModeServiceApi.reducerPath]: transportModeServiceApi.reducer,
+  [stopsServiceApi.reducerPath]: stopsServiceApi.reducer,
 };
 
 export const store = configureStore({
@@ -24,6 +34,9 @@ export const store = configureStore({
         warnAfter: 700,
       },
     }).concat(
+      agencyServiceApi.middleware,
+      transportModeServiceApi.middleware,
+      stopsServiceApi.middleware
     );
   },
 });

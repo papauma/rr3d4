@@ -10,6 +10,7 @@ import { contextualInformation } from '@src/redux/slices/contextualSlice';
 import BackgroundModal from '@src/components/commons/modal/BackgroundModal';
 import MapView from 'react-native-maps';
 import { IPosition } from '@src/types/interfaces';
+import { stopsState } from '@src/redux/slices/stopsSlices';
 
 export default function MainMapScreen() {
     console.log('[MainMapScreen]');
@@ -17,6 +18,9 @@ export default function MainMapScreen() {
     const t = useTranslate();
     const dispatch = useDispatch();
     const contextualInfo = useSelector(contextualInformation);
+    const allStops = useSelector(stopsState);
+    console.log('Stops', allStops.length);
+    
 
     const [refMapView, setRefMapView] = useState<MapView | undefined>()
 
