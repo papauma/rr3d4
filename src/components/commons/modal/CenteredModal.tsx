@@ -43,7 +43,7 @@ interface CenteredModalProps {
       <Modal visible={visible} animationType={animationType ?? 'slide'} transparent={true}>
         <View style={styles.centeredView}>
           <View style={[styles.modalView, {backgroundColor: theme.colors.white}, modalViewStyle]}>
-            <ScrollView style={[{padding: 16,}, style?.scrollView]}>
+            <ScrollView style={[{paddingHorizontal: 24}, style?.scrollView]}>
             {showCloseButton 
                 ? (<TouchableOpacity style={styles.closeButton} onPress={() => setViewModal?.()}>
                     <Icon source={theme.drawables.general.Ic_Close}/>
@@ -126,6 +126,7 @@ interface CenteredModalProps {
     modalView: {
       maxHeight: Dimensions.get('window').height * 0.8,
       width: Dimensions.get('window').width - 32,
+      paddingVertical: 16,
       //justifyContent: 'center',
       //alignItems: 'center',
     },
