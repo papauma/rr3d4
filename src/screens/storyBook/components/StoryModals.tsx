@@ -3,8 +3,7 @@ import CenteredModal from '@src/components/commons/modal/CenteredModal'
 import Label from '@src/components/commons/text/Label'
 import { contextualSlice } from '@src/redux/slices/contextualSlice'
 import React, { useState } from 'react'
-import { Dimensions } from 'react-native'
-import { ScrollView, View } from 'react-native'
+import { View } from 'react-native'
 import { useDispatch } from 'react-redux'
 
 export default function StoryModals() {
@@ -70,7 +69,7 @@ export default function StoryModals() {
                         dispatch(contextualSlice.actions.updateShowBackground(false))
                        }}
         >
-          <View style={{paddingBottom: 16, minHeight: Dimensions.get('window').height * 0.3}}>
+          <View style={{paddingBottom: 16}}>
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21].map((element: any, index: number) => (<Label key={'id ' +  index} style={{fontSize: 16}}>{'Ejemplo ' +  index}</Label>))}           
           </View>  
         </CenteredModal>

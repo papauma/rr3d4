@@ -12,11 +12,13 @@ import ErrorSnackBar from '@src/components/commons/feedback/ErrorSnackBar'
 import WarningSnackBar from '@src/components/commons/feedback/WarningSnackBar'
 import BackgroundModal from '@src/components/commons/modal/BackgroundModal'
 import StoryModals from './components/StoryModals'
+import StoryInputs from './components/StoryInputs'
 
 export default function StoryBookScreen() {
   const [showStoryButtons, setShowStoryButtons] = useState(false)
   const [showStoryFeedback, setShowStoryFeedback] = useState(false)
   const [showStoryModals, setShowStoryModals] = useState(false)
+  const [showStoryInputs, setShowStoryInputs] = useState(false)
   const contextualInfo = useSelector(contextualInformation);
   const dispatch = useDispatch();
 
@@ -45,6 +47,13 @@ export default function StoryBookScreen() {
                   pressed={showStoryModals}
                   onPress={() => setShowStoryModals(!showStoryModals)}/>
                 {showStoryModals && <StoryModals/>}
+                <AccordionOption
+                  styleView={{marginBottom: 16, flexGrow: 1}}
+                  styleText={{fontSize: 16, fontWeight: '700', flexGrow: 1}}
+                  name='Inputs'
+                  pressed={showStoryInputs}
+                  onPress={() => setShowStoryInputs(!showStoryInputs)}/>
+                {showStoryInputs && <StoryInputs/>}
             </ScrollView>
         {contextualInfo.showBackground && <BackgroundModal/>}
         {contextualInfo.warningMessage && <WarningSnackBar onPress={() => dispatch(contextualSlice.actions.updateWarningMessage(''))}/>}
