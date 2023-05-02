@@ -72,10 +72,10 @@ export default function InputBar(props: InputBarProps) {
             <TouchableOpacity 
                               onPress={clear} 
                               accessible={true} 
-                              accessibilityLabel={'Borrar texto'} 
-                              accessibilityHint={'Borra el texto escrito'}>
+                              accessibilityLabel={t('input_button_clear')} 
+                              accessibilityHint={t('input_button_clear_description')}>
             <Icon
-                alt={'Borrar'}
+                alt={t('input_icon_search')}
                 source={theme.drawables.general.Ic_Close}
                 tint={theme.colors.gray_500}
                 style={props.styleIcon}
@@ -84,7 +84,7 @@ export default function InputBar(props: InputBarProps) {
         ) : null}
         {props.showLens && (
             <Icon
-                alt={'Icono lupa'}
+                alt={'Lupa'}
                 style={[{ marginRight: 8 }, props.actionIcon ? { marginLeft: 8 } : null]}
                 source={theme.drawables.general.Ic_Search}
             />

@@ -5,6 +5,9 @@
 export const strings = {
   button_accept: 'Aceptar',
   button_cancel: 'Cancelar',
+  input_button_clear: 'Borrar texto',
+  input_button_clear_description: 'Al pulsarlo borra el texto escrito',
+  input_icon_search: 'Lupa',
   location_activate_title: 'Activa tu geolocalización',
   location_activate_description: 'Activa tu geolocalización para tener una mejor experiencia',
   location_activate_blocked_title: 'Permite el acceso a tu ubicación',
