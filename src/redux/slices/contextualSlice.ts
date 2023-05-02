@@ -5,6 +5,7 @@ export interface ContextualInformation {
   errorMessage: string;
   sucessMessage: string;
   infoMessage: string;
+  warningMessage: string;
   showLoading: boolean;
   showBackground: boolean;
 }
@@ -14,6 +15,7 @@ const initialState = {
     errorMessage: '',
     sucessMessage: '',
     infoMessage: '',
+    warningMessage: '',
     showLoading: false,
     showBackground: false,
   },
@@ -35,6 +37,11 @@ export const contextualSlice = createSlice({
       console.log(' [contectuaSlice] - updateInfoMessage');
 
       state.contextualInformation.infoMessage = action.payload;
+    },
+    updateWarningMessage: (state, action) => {
+      console.log(' [contectuaSlice] - updateWarningMessage');
+
+      state.contextualInformation.warningMessage = action.payload;
     },
     updateShowLoading: (state, action) => {
       console.log(' [contectuaSlice] - updateShowLoading');

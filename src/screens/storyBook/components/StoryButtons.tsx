@@ -5,12 +5,11 @@ import { useTheme } from '@src/context/themeContext'
 import React from 'react'
 import { SafeAreaView, ScrollView, TextInput, View } from 'react-native'
 
-export default function StoryButtonsScreen() {
+export default function StoryButtons() {
   const theme = useTheme();
 
   return (
-    <SafeAreaView style={{flex: 1, paddingVertical: 16}}>
-      <ScrollView style={{ paddingHorizontal: 16}}>
+    <View style={{flex: 1, paddingVertical: 16}}>
         <Label>Botones primarios</Label>  
         <View style={{justifyContent: 'space-evenly'}}>
           <Button title='Primario Extra Small'
@@ -369,7 +368,6 @@ export default function StoryButtonsScreen() {
           <ButtonText staticIcon={theme.drawables.general.Ic_storyIcon}  title='bus' selected={true}/>
           <ButtonText disabled={true} staticIcon={theme.drawables.general.Ic_storyIcon}  title='tren'/>
         </View>
-      </ScrollView>
-    </SafeAreaView>
+    </View>
   )
 }

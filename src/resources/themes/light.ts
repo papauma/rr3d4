@@ -58,6 +58,7 @@ export interface LightColors {
   warning_00: string;
   white: string;
   black: string;
+  successBar: string;
 }
 
 export const colors: LightColors = {
@@ -120,4 +121,5 @@ export const colors: LightColors = {
   warning_00: '#FDFAC4',
   white: '#FFFFFF',
   black: '#000000',
+  successBar: '#CDFBEE',
 };

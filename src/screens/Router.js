@@ -6,8 +6,8 @@ import SplashScreen from '@src/screens/splash/SplashScreen';
 import { navigationPages } from '@src/utils/constants';
 import React, { useRef } from 'react';
 import LanguageScreen from '@src/screens/language/LanguageScreen';
-import StoryButtonsScreen from './storyBook/StoryButtonsScreen';
 import MainScreen from './main/MainScreen';
+import StoryBookScreen from './storyBook/StoryBookScreen';
 
 const Stack = createStackNavigator();
 
@@ -28,7 +28,7 @@ const LanguageComponent = ({navigation, route, options, back}) => {
 };
 
 const StoryButtonsComponent = ({navigation, route, options, back}) => {
-  return <StoryButtonsScreen navigation={navigation} />;
+  return <StoryBookScreen navigation={navigation} />;
 };
 
 

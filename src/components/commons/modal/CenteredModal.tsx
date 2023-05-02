@@ -1,4 +1,4 @@
-import { Dimensions, Modal,StyleProp,StyleSheet,TouchableOpacity,View, ViewStyle } from "react-native";
+import { Dimensions, Modal,ScrollView,StyleProp,StyleSheet,TouchableOpacity,View, ViewStyle } from "react-native";
 import Label from "../text/Label";
 import Button from "../buttons/Button";
 import { useTheme } from "@src/context/themeContext";
@@ -43,6 +43,7 @@ interface CenteredModalProps {
       <Modal visible={visible} animationType={animationType ?? 'slide'} transparent={true}>
         <View style={styles.centeredView}>
           <View style={[styles.modalView, {backgroundColor: theme.colors.white}, modalViewStyle]}>
+            <ScrollView style={[{padding: 16,}, style?.scrollView]}>
             {showCloseButton 
                 ? (<TouchableOpacity style={styles.closeButton} onPress={() => setViewModal?.()}>
                     <Icon source={theme.drawables.general.Ic_Close}/>
@@ -77,6 +78,7 @@ interface CenteredModalProps {
                 )}
               </View>
             )}
+            </ScrollView>
           </View>
         </View>
       </Modal>
@@ -100,7 +102,6 @@ interface CenteredModalProps {
     },
     buttons: {
       alignItems: 'center',
-      paddingHorizontal: 24,
       flexDirection: 'row',
       justifyContent: 'center',
     },
@@ -120,10 +121,11 @@ interface CenteredModalProps {
       elevation: 5,
       //paddingHorizontal: 16,
       flex: 1,
+      zIndex: 300,
     },
     modalView: {
-      padding: 16,
       maxHeight: Dimensions.get('window').height * 0.8,
+      width: Dimensions.get('window').width - 32,
       //justifyContent: 'center',
       //alignItems: 'center',
     },
