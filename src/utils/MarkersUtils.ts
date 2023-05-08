@@ -35,6 +35,7 @@ export function formatStopMarkers(stops: any, dataOriginAg: any, updateStops: Fu
           address: stop.stopDesc,
           agencyOriginId: stop?.agencyOriginId,
           transportMode: stop?.stopTransportMode,
+          code: stop?.stopCode,
           icons: icons,
         };
   

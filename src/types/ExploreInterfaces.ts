@@ -41,6 +41,7 @@ export interface IDataMarker {
   transportMode?: number;
   directionInfo?: INoraResponse;
   poiCategory?: number;
+  code?: string;
 }
 
 export interface ILineTime {

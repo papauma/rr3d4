@@ -1,3 +1,4 @@
+import Icon from '@src/components/commons/icon/Icon';
 import IconDynamic from '@src/components/commons/icon/IconDynamic';
 import Label from '@src/components/commons/text/Label';
 import { ThemeProps, useTheme } from '@src/context/themeContext';
@@ -9,7 +10,7 @@ import MarkerDetailsHeader from '@src/screens/mainMap/components/MarkerDetailsHe
 import { ILineTime, ILine, SearchStopType } from '@src/types/ExploreInterfaces';
 import { IMarker, ITransportMode } from '@src/types/interfaces'
 import React, {useEffect, useState} from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, TouchableOpacity, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function StopDetails({stop} : {stop: IMarker}) {
@@ -83,8 +84,20 @@ export default function StopDetails({stop} : {stop: IMarker}) {
                 : renderIconCodeStop(stop.data?.transportMode)
             }
         />
-        <View style={{flex: 1}}>
-            <Label>{'Próximas salidas'}</Label>
+        <View style={styles(theme).rowSpace}>
+            <Label style={styles(theme).listTitle}>{'Próximas salidas'}</Label>
+            <View style={{flexDirection: 'row', alignItems: 'center',}}>
+                <TouchableOpacity>
+                    <Icon
+                        source={theme.drawables.general.Ic_Real_Time}
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity style={{marginLeft: 8}}>
+                    <Icon
+                        source={theme.drawables.general.Ic_Refresh}
+                    />
+                </TouchableOpacity>
+            </View>
         </View>
     </View>
   )
@@ -105,5 +118,19 @@ const styles = (theme: ThemeProps) => StyleSheet.create({
         lineHeight: 18.2,
         fontSize: 14, 
         marginLeft: 4,
+    },
+    rowSpace: {
+        flexDirection: 'row', 
+        alignItems: 'center', 
+        justifyContent: 'space-between', 
+        marginTop: 24,
+    },
+    listTitle: {
+        color: theme.colors.gray_700,
+        fontSize: 16,
+        lineHeight: 20.8,
+        fontWeight: '700',
+        flex: 1,
+        textTransform: 'uppercase',
     }
 })

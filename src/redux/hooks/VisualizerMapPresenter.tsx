@@ -2,19 +2,27 @@ import { TypeMarker } from '@src/types/ExploreInterfaces';
 import { IBounds, IMarker } from '@src/types/interfaces';
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { mapStateMarkers, updateMarkerSelected, updateMarkers } from '../slices/mapSlice';
+import { mapStateMarkers, mapStateZoom, updateMarkerSelected, updateMarkers } from '../slices/mapSlice';
 import { iconsState, updateIcon } from '../slices/iconsSlices';
 import { filterBounds } from '@src/utils/utilsMaps';
 import { useLazyGetIconsQuery } from '../services/iconsServices';
 import { stopsState } from '../slices/stopsSlices';
 import IconDynamic from '@src/components/commons/icon/IconDynamic';
+import { transportModeState } from '../slices/transportmodeSlices';
+import { useTheme } from '@src/context/themeContext';
+import { View } from 'react-native';
+import Label from '@src/components/commons/text/Label';
+import Icon from '@src/components/commons/icon/Icon';
 
 export default function VisualizerMapPresenter() {
   const dispatch = useDispatch();
   const selectorMapMarkers = useSelector(mapStateMarkers);
   const selectorIcons = useSelector(iconsState);
   const selectorStops = useSelector(stopsState);
+  const selectorZoom = useSelector(mapStateZoom);
+  const transportModes = useSelector(transportModeState);
   const [GetIcons] = useLazyGetIconsQuery();
+  const theme = useTheme()
 
   function renderVisualizerMarkers(markers: IMarker[]) {
     let markersToRender: Array<IMarker> = JSON.parse(JSON.stringify(markers));
@@ -23,10 +31,30 @@ export default function VisualizerMapPresenter() {
       let result = JSON.parse(JSON.stringify(marker))
 
         if (marker.markerType === TypeMarker.Stop) {
-            marker.content = (<IconDynamic
-             iconId={marker.data?.icons?.iconMarkTransportId}
+            marker.content = (
+            <View style={{alignItems: 'center'}}>
+              <View style={{alignItems: 'center', padding: 4, backgroundColor: theme.colors.primary_300, borderRadius: 8, flexDirection: 'row'}}>
+                <Icon
+                  source={{uri: selectorIcons.find((element) => String(element.id) === String(marker.data?.icons?.iconId))?.contentFile}}
+                  tint={theme.colors.white}
+                  size={18}
 
-            />)
+                />
+                {selectorZoom > 16 && marker.data?.code
+                  ? (<Label style={{marginLeft: 6, color: theme.colors.white, fontSize: 18, fontWeight: '700', lineHeight: 23.4}}>{marker.data?.code}</Label>) 
+                  : null
+                }
+              </View>
+              <View style={{
+                width: 0,
+                borderLeftWidth: 6,
+                borderRightWidth: 6,
+                borderTopWidth: 4,
+                borderColor: 'transparent',
+                borderTopColor: theme.colors.primary_300,
+                height: 0,
+              }} />
+            </View>)
         }
         
         marker.onPress = (event) => {
@@ -70,7 +98,10 @@ export default function VisualizerMapPresenter() {
 
     markers = [...markers, ...stops/* , ...pois */];
     console.log('[Home Screen] - GET MARKERS < 16 - ' + markers.length);
-
+    //TO CHANGE
+    if (markers.length > 250) {
+      return [];
+    }
     let idIcons: Array<number> = [];
     markers.forEach((marker: IMarker) => {
       !idIcons.includes(marker.data?.icons?.iconMarkTransportId) &&
