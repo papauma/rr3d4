@@ -13,6 +13,8 @@ import iconsSlices from './slices/iconsSlices';
 import { iconsServiceApi } from './services/iconsServices';
 import { userServiceApi } from './services/userService';
 import mapSlice from './slices/mapSlice';
+import { linesServiceApi } from './services/linesService';
+import linesSlices from './slices/linesSlices';
 
 export const reducer = {
   user: userSlice,
@@ -24,11 +26,13 @@ export const reducer = {
   transportmode: transportmodeSlices,
   icons: iconsSlices,
   map: mapSlice,
+  lines: linesSlices,
   [agencyServiceApi.reducerPath]: agencyServiceApi.reducer,
   [transportModeServiceApi.reducerPath]: transportModeServiceApi.reducer,
   [stopsServiceApi.reducerPath]: stopsServiceApi.reducer,
   [iconsServiceApi.reducerPath]: iconsServiceApi.reducer,
   [userServiceApi.reducerPath]: userServiceApi.reducer,
+  [linesServiceApi.reducerPath]: linesServiceApi.reducer,
 };
 
 export const store = configureStore({
@@ -47,6 +51,7 @@ export const store = configureStore({
       stopsServiceApi.middleware,
       iconsServiceApi.middleware,
       userServiceApi.middleware,
+      linesServiceApi.middleware,
     );
   },
 });

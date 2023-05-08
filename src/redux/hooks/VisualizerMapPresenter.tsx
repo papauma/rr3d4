@@ -2,7 +2,7 @@ import { TypeMarker } from '@src/types/ExploreInterfaces';
 import { IBounds, IMarker } from '@src/types/interfaces';
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { mapStateMarkers, updateMarkers } from '../slices/mapSlice';
+import { mapStateMarkers, updateMarkerSelected, updateMarkers } from '../slices/mapSlice';
 import { iconsState, updateIcon } from '../slices/iconsSlices';
 import { filterBounds } from '@src/utils/utilsMaps';
 import { useLazyGetIconsQuery } from '../services/iconsServices';
@@ -20,13 +20,19 @@ export default function VisualizerMapPresenter() {
     let markersToRender: Array<IMarker> = JSON.parse(JSON.stringify(markers));
 
     return markersToRender.map((marker: IMarker) => {
+      let result = JSON.parse(JSON.stringify(marker))
+
         if (marker.markerType === TypeMarker.Stop) {
             marker.content = (<IconDynamic
              iconId={marker.data?.icons?.iconMarkTransportId}
 
             />)
         }
-      
+        
+        marker.onPress = (event) => {
+          dispatch(updateMarkerSelected(result));
+        };
+
         return marker
     })
   }

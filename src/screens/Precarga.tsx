@@ -18,6 +18,8 @@ import { ITransportMode } from '@src/types/interfaces';
 import IconPresenter from '@src/redux/hooks/iconPresenter';
 import { getIconsStorage } from '@src/utils/utilsIcons';
 import { updateIcons } from '@src/redux/slices/iconsSlices';
+import { useLazyGetLinesQuery } from '@src/redux/services/linesService';
+import { updateLines } from '@src/redux/slices/linesSlices';
 
 const Precarga = ({ onFinish }) => {
   const userAccountInformation = useSelector(userState);
@@ -31,6 +33,8 @@ const Precarga = ({ onFinish }) => {
   const [GetTransportMode] = useLazyGetTransportModeQuery();
   const [GetAgency] = useLazyGetAgencyQuery();
   const [GetStops] = useLazyGetStopsQuery();
+  const [GetLines] = useLazyGetLinesQuery();
+
   const { getIcon } = IconPresenter();
 
 
@@ -40,16 +44,16 @@ const Precarga = ({ onFinish }) => {
     const promiseDataOrigin = GetDataOrigin();
   const promiseTransportMode = GetTransportMode();
   const promiseStops = GetStops();
-  //const promiseLines = GetLines();
+  const promiseLines = GetLines();
   const promiseAgency = GetAgency();
   const promiseIconsStorage = getIconsStorage();
     //inicializa la cache para el caso de la busqueda de recientes TO CHANGE
     console.log('getSearch from storage()');
 
     //CARGA DE AGENCIAS Y ORIGENES DE DATOS
-    Promise.all([promiseDataOrigin, promiseAgency, promiseTransportMode, promiseStops, promiseIconsStorage])
+    Promise.all([promiseDataOrigin, promiseAgency, promiseTransportMode, promiseStops, promiseIconsStorage, promiseLines])
       .then((resultsPromise) => {
-        if (resultsPromise.filter((response) => response.isSuccess).length < 5) {
+        if (resultsPromise.filter((response) => response.isSuccess).length < 6) {
           // TO DO POPUP ERROR
           console.log('errorPrecargaStopsAPP');
           // console.log('errorPrecargaStopsAPP', error);
@@ -60,6 +64,7 @@ const Precarga = ({ onFinish }) => {
         dispatch(updateDataOrigin(resultsPromise[0].data));
         dispatch(updateAgencys(resultsPromise[1].data));
         dispatch(updateTransportMode(resultsPromise[2].data))
+        dispatch(updateLines(resultsPromise[5].data))
         setLoadedIcons(true);
 
         formatStopMarkers(resultsPromise[3].data, resultsPromise[0].data, (stops: any) => dispatch(updateStops(stops)));

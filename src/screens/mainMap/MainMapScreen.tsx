@@ -13,6 +13,7 @@ import { IBounds, IPosition } from '@src/types/interfaces';
 import { stopsState } from '@src/redux/slices/stopsSlices';
 import VisualizerMapPresenter from '@src/redux/hooks/VisualizerMapPresenter';
 import { mapStateBounds, mapStateMarkers, mapStateZoom, updateBounds, updateZoom } from '@src/redux/slices/mapSlice';
+import HomeBottomSheet from './components/HomeBottomSheet';
 
 export default function MainMapScreen() {
     console.log('[MainMapScreen]');
@@ -82,6 +83,7 @@ export default function MainMapScreen() {
             setTrackViewChanges={trackingMap}
             disableTooltip={true}
         />
+        <HomeBottomSheet/>
       </SafeAreaView>
     );
 }

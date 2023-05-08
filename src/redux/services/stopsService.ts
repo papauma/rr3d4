@@ -22,13 +22,13 @@ export const stopsServiceApi = createApi({
         method: 'GET',
       }),
     }),
-    GetStopById: builder.query<any, void>({
+    GetStopById: builder.query<any, any>({
       query: (id) => `agency/stops/${id}`,
     }),
-    GetLinesByStopId: builder.query<any, void>({
+    GetLinesByStopId: builder.query<any, any>({
       query: (id) => `agency/stops/${id}/lines`,
     }),
-    GetLinesTimesByStopId: builder.query<any, void>({
+    GetLinesTimesByStopId: builder.query<any, any>({
       query: (id) => `agency/stops/${id}/linestimes`,
     }),
     GetLinesofChildsByStopParentId: builder.query<any, number>({
