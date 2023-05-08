@@ -21,14 +21,14 @@ export interface IconProps {
   }
   
   export default function Icon({style, size, tint, source, alt}: IconProps) {
-    return (
+    return source ? (
       <Image
         alt={alt}
         style={[styles(size, tint).content, style]}
         source={source}
         resizeMode={'contain'}
       />
-    );
+    ) : <></>;
   }
   
   const styles = (size?: number, tint?: string) =>

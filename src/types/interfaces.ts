@@ -62,6 +62,7 @@ export interface IMap {
   pointerEvents?: any;
   onMapDragComplete?: Function;
   setTrackViewChanges?: boolean; //setear el escuchador de cambios del mapa para android
+  disableTooltip?: boolean; //desactiva visualmente el tooltip
 }
 export interface IMapMarker {
   position: IPosition;
@@ -75,6 +76,7 @@ export interface IMapMarker {
   tracksViewChanges?: boolean;
   draggable?: boolean;
   anchor?: any;
+  disableTooltip?: true;
   onPress?: (event: MarkerPressEvent) => void;
   onDragEnd?: (event: MarkerDragStartEndEvent, initialPosition: IPosition) => void;
 }
@@ -227,6 +229,7 @@ export interface ITransportMode {
   iconDisabledId: number;
   iconFilterSelectedId: number;
   iconFilterDisabledId: number;
+  iconMarkFavTransportId: number;
   iconBnId: number;
 }
 

@@ -1,33 +1,29 @@
+import { IMap } from '@src/types/interfaces';
 import { calcZoomMobile, getRegionDeltasFromZoom } from '@src/utils/utilsMaps';
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Dimensions, View } from 'react-native';
 import MapView, { BoundingBox, UrlTile } from 'react-native-maps';
+import MapMarker from '../commons/map/MapMarker';
 /*import { IMap } from '../../types/interfaces';
 import { random } from '../../utils/StringUtils';
 import { styles } from '../../utils/constants';
 import { calcZoomMobile, getRegionDeltasFromZoom } from '../../utils/utils';
 import MapMarker from '../commons/map/MapMarker';*/
 
-export default function MapRender(props) {
+export default function MapRender(props: IMap) {
   console.log('[MapRender]');
   const [mapInstance, setMapInstance] = useState<MapView | null>();
   const [tracksViewChanges, setTracksViewChanges] = useState(false);
   const widthDevice = Dimensions.get('window').width;
-  /*const [first, setfirst] = useState({
-    ...styles.map,
-    ...styles.map['map-control-buttons'],
-  });*/
 
-  //console.log('[MapRender] - markers ????', props.markers.length);
-
-  /*useEffect(() => {
+  useEffect(() => {
     if (props.setTrackViewChanges) {
       setTracksViewChanges(true);
       setTimeout(() => setTracksViewChanges(false), 100);
     }
   }, [props.setTrackViewChanges]);
-*/
-  /*const markers = useMemo(() => {
+
+  const markers = useMemo(() => {
     //console.log('[MapRender] - useMemo Markers');
     const markers =
       props !== null &&
@@ -42,21 +38,22 @@ export default function MapRender(props) {
           accessibilityLabel={marker?.data?.name}
           accessibilityHint={marker.accessibilityHint}
           position={marker.position}
-          width={marker.width + 10}
-          height={marker.height + 10}
+          //width={marker.width + 10}
+          //height={marker.height + 10}
           content={marker.content}
           onPress={marker.onPress}
           tracksViewChanges={tracksViewChanges}
           draggable={props.draggableMarkers}
           anchor={marker.anchor}
           onDragEnd={props.onDragEnd}
+          disableTooltip={props.disableTooltip}
         />
       ));
 
     return markers;
   }, [props.markers, tracksViewChanges, props.onDragEnd, props.draggableMarkers]);
 
-  const polylines = useMemo(() => {
+  /* const polylines = useMemo(() => {
     console.log('renderPolylines() - renderPolylines');
     const polylines =
       props !== null &&
@@ -87,7 +84,7 @@ export default function MapRender(props) {
         {...properties}
       />
     ));
-  };*/
+  }; */
 
   const renderCirclebyZoom = () => {
     let changedRadius = -17.26205 * props.zoom + 305.94878;
@@ -180,7 +177,7 @@ export default function MapRender(props) {
           flipY={false}
           style={{ zIndex: 1 }}
           />
-        <>{/*markers*/}</>
+        <>{markers}</>
         <>{/*polylines*/}</>
         {/*props.circles && renderCircles()*/}
       </MapView>

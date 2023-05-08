@@ -9,6 +9,10 @@ import transportmodeSlices from './slices/transportmodeSlices';
 import { agencyServiceApi } from './services/agencyService';
 import { transportModeServiceApi } from './services/transportmodeServices';
 import { stopsServiceApi } from './services/stopsService';
+import iconsSlices from './slices/iconsSlices';
+import { iconsServiceApi } from './services/iconsServices';
+import { userServiceApi } from './services/userService';
+import mapSlice from './slices/mapSlice';
 
 export const reducer = {
   user: userSlice,
@@ -18,9 +22,13 @@ export const reducer = {
   [contextualSlice.name]: contextualSlice.reducer,
   agencys: agencysSlices,
   transportmode: transportmodeSlices,
+  icons: iconsSlices,
+  map: mapSlice,
   [agencyServiceApi.reducerPath]: agencyServiceApi.reducer,
   [transportModeServiceApi.reducerPath]: transportModeServiceApi.reducer,
   [stopsServiceApi.reducerPath]: stopsServiceApi.reducer,
+  [iconsServiceApi.reducerPath]: iconsServiceApi.reducer,
+  [userServiceApi.reducerPath]: userServiceApi.reducer,
 };
 
 export const store = configureStore({
@@ -36,7 +44,9 @@ export const store = configureStore({
     }).concat(
       agencyServiceApi.middleware,
       transportModeServiceApi.middleware,
-      stopsServiceApi.middleware
+      stopsServiceApi.middleware,
+      iconsServiceApi.middleware,
+      userServiceApi.middleware,
     );
   },
 });
