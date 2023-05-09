@@ -18,6 +18,7 @@ export interface IDrawables {
     Ic_Close: any;
     Ic_Data_Protection: any;
     Ic_Data_Protection_Warn: any;
+    Ic_Earth: any;
     Ic_Error: any;
     Ic_Events: any;
     Ic_filters: any;
@@ -26,6 +27,7 @@ export interface IDrawables {
     Ic_Less: any;
     Ic_location: any;
     Ic_location_desactivated: any;
+    Ic_Ocupacion: any;
     Ic_Plan: any;
     Ic_Real_Time: any;
     Ic_Refresh: any;
@@ -61,6 +63,7 @@ export const drawables = {
     Ic_Close: require('@images/Ic_Close.png'),
     Ic_Data_Protection: require('@images/Ic_Data_Protection.png'),
     Ic_Data_Protection_Warn: require('@images/Ic_Data_Protection_Warn.png'),
+    Ic_Earth: require('@images/Ic_Earth.png'),
     Ic_Error: require('@images/Ic_Error.png'),
     Ic_Events: require('@images/Ic_Events.png'),
     Ic_filters: require('@images/Ic_filters.png'),
@@ -69,6 +72,7 @@ export const drawables = {
     Ic_Less: require('@images/Ic_Less.png'),
     Ic_location: require('@images/Ic_location.png'),
     Ic_location_desactivated: require('@images/Ic_location_desactivated.png'),
+    Ic_Ocupacion: require('@images/Ic_Ocupacion.png'),
     Ic_Plan: require('@images/Ic_Plan.png'),
     Ic_Real_Time: require('@images/Ic_Real_Time.png'),
     Ic_Refresh: require('@images/Ic_Refresh.png'),

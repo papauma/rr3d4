@@ -6,6 +6,7 @@ import Icon from '@src/components/commons/icon/Icon';
 import { useTheme } from '@src/context/themeContext';
 import { View } from 'react-native';
 import StoryBookScreen from '../storyBook/StoryBookScreen';
+import SettingsScreen from '../settings/SettingsScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -29,7 +30,7 @@ export default function MainScreen() {
             }}
             name={'Settings'}
         >
-            {props => <View />}
+            {props => <SettingsScreen />}
         </Tab.Screen>
         <Tab.Screen
             options={{

@@ -12,6 +12,7 @@ import { IMarker, ITransportMode } from '@src/types/interfaces'
 import React, {useEffect, useState} from 'react'
 import { StyleSheet, TouchableOpacity, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux';
+import NextLineDepartures from '../molecules/NextLineDepartures';
 
 export default function StopDetails({stop} : {stop: IMarker}) {
     const [stopInfo, setStopInfo] = useState<SearchStopType | undefined>();
@@ -99,6 +100,11 @@ export default function StopDetails({stop} : {stop: IMarker}) {
                 </TouchableOpacity>
             </View>
         </View>
+        <NextLineDepartures 
+            lines={lines}
+            allLineTimes={linesTimes}
+            onPressReset={() => {}}
+        />
     </View>
   )
 }

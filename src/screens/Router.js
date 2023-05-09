@@ -5,9 +5,9 @@ import TempComp from '@src/components/widgets/TempComp';
 import SplashScreen from '@src/screens/splash/SplashScreen';
 import { navigationPages } from '@src/utils/constants';
 import React, { useRef } from 'react';
-import LanguageScreen from '@src/screens/language/LanguageScreen';
 import MainScreen from './main/MainScreen';
 import StoryBookScreen from './storyBook/StoryBookScreen';
+import LanguageScreen from './settings/language/LanguageScreen';
 
 const Stack = createStackNavigator();
 
