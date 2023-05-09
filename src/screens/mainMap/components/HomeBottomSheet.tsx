@@ -1,16 +1,17 @@
 import BottomSheetContent from '@src/components/commons/bottomSheet/BottomSheetContent';
 import { mapStateMarkerSelected, updateMarkerSelected } from '@src/redux/slices/mapSlice';
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import MarkerDetails from './MarkerDetails';
+import InfoMapUtils from '@src/utils/InfoMapUtils';
 
 export default function HomeBottomSheet() {
   const dispatch = useDispatch();
   const markerSelected = useSelector(mapStateMarkerSelected);  
 
   const snapPoints = useMemo(() => {
-    return [100, 400];
-  }, []);  
+    return InfoMapUtils.getSnapPoint(markerSelected?.markerType)
+  }, [markerSelected]);  
 
   return (
     <BottomSheetContent
@@ -24,9 +25,9 @@ export default function HomeBottomSheet() {
             dispatch(updateMarkerSelected(null));
           }
         }}
-        enablePanDownToClose={false}
+        enablePanDownToClose={true}
       >
-        {markerSelected && (<MarkerDetails markerSelected={markerSelected} />)}
+        <MarkerDetails markerSelected={markerSelected} />
       </BottomSheetContent>
   )
 }

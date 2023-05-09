@@ -13,6 +13,8 @@ interface SearchBarButtonProps {
     iconRight?: any;
     iconSearch?: boolean;
     onPress?: Function;
+    showBackButton?: boolean;
+    backButtonPress?: Function;
 }
 
 type SearchBarSizeStyle =
@@ -28,14 +30,20 @@ export default function SearchBarButton(props: SearchBarButtonProps) {
             ? styles(theme).mediumContentBar 
             : styles(theme).smallContentBar,
         props.contentBarStyle]}>
-            {/* <Button buttonCategory='secondary' buttonSizeStyle={props.sizeStyle}/> */}
+            {props.showBackButton && (<Button 
+                                        buttonCategory='secondary' 
+                                        buttonSizeStyle={props.sizeStyle}
+                                        icon={theme.drawables.general.Ic_Arrow_Left}
+                                        onPress={() => props.backButtonPress?.()}
+                                        />)
+            }
             <Pressable onPress={() => props.onPress?.()} style={[styles(theme).searchBar, 
                 props.sizeStyle === 'medium' 
                 ? styles(theme).searchBarMedium 
                 : styles(theme).searchBarSmall,
             ]}>
                 {props.title 
-                    ? <Label style={[styles(theme).title]}>{props.title}</Label> 
+                    ? <Label style={[styles(theme).title]} numberOfLines={1} ellipsizeMode={'tail'}>{props.title}</Label> 
                     : null}
                 {props.iconSearch
                     ? <Icon source={theme.drawables.general.Ic_Search}/>
@@ -82,5 +90,6 @@ const styles = (theme: ThemeProps) => StyleSheet.create({
         fontSize: 14,
         lineHeight: 21,
         fontWeight: '400',
+        flex: 1,
     }
 })
