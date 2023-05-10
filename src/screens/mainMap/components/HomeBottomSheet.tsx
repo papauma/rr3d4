@@ -19,9 +19,6 @@ export default function HomeBottomSheet() {
         snapPoints={snapPoints}
         onChange={(index) => {
           if (index < 0) {
-            /* dispatch(
-              bottomsheetHomeSlice.actions.updateShowInTheBottom(TypeShowInBottomsheetHome.Empty),
-            ); */
             dispatch(updateMarkerSelected(null));
           }
         }}

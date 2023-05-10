@@ -36,6 +36,7 @@ export interface IDrawables {
     Ic_Settings: any;
     Ic_Star: any;
     Ic_Success: any;
+    Ic_Up_bottomsheet: any;
     Ic_Warning: any;
     Ic_Warning_White: any;
   }
@@ -81,6 +82,7 @@ export const drawables = {
     Ic_Settings: require('@images/Ic_Settings.png'),
     Ic_Star: require('@images/Ic_Star.png'),
     Ic_Success: require('@images/Ic_Success.png'),
+    Ic_Up_bottomsheet: require('@images/Ic_Up_bottomsheet.png'),
     Ic_Warning: require('@images/Ic_Warning.png'),
     Ic_Warning_White: require('@images/Ic_Warning_White.png'),
   }

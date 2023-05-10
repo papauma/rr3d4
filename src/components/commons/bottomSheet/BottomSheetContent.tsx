@@ -2,14 +2,18 @@ import { IBottomSheet } from '../../../types/interfaces';
 import { useCallback } from 'react';
 import BottomSheet, { BottomSheetBackdrop } from '@gorhom/bottom-sheet';
 import { View } from 'react-native';
+import Icon from '../icon/Icon';
+import { useTheme } from '@src/context/themeContext';
 
 /* Todo lo contenido dentro del bottomsheet puede utilizar el hook useBottomSheet(); */
 export default function BottomSheetContent(props: IBottomSheet) {
+  const theme = useTheme();
+
   const handleComponent = () => {
     return (
-      <View style={/* styles.bottomSheet.bottomSheetHandle */ {}} accessible={true} accessibilityLabel={'Control deslizante de información'} accessibilityHint='Desliza con los dos dedos hacia arriba o hacia abajo para mostrar mas información'>
-        <View style={/* styles.bottomSheet.bottomSheetHandle */ {}}>
-          {/* <PngIcon alt='Icono control deslizante' style={styles.bottomSheet.bottomSheetHandleIcon} source={images.Up} /> */}
+      <View style={{}} accessible={true} accessibilityLabel={'Control deslizante de información'} accessibilityHint='Desliza con los dos dedos hacia arriba o hacia abajo para mostrar mas información'>
+        <View style={{justifyContent: 'center', alignItems: 'center'}}>
+          <Icon source={theme.drawables.general.Ic_Up_bottomsheet}/>
         </View>
       </View>
     )

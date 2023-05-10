@@ -20,11 +20,13 @@ import { getIconsStorage } from '@src/utils/utilsIcons';
 import { updateIcons } from '@src/redux/slices/iconsSlices';
 import { useLazyGetLinesQuery } from '@src/redux/services/linesService';
 import { updateLines } from '@src/redux/slices/linesSlices';
+import { useLanguage } from '@src/context/languageContext';
 
-const Precarga = ({ onFinish }) => {
+const Precarga = ({ onFinish, children }) => {
   const userAccountInformation = useSelector(userState);
   const dispatch = useDispatch();
   const storage = new MMKV();
+  const locale = useLanguage()
   const [loadedIcons, setLoadedIcons] = useState(false);
   
   const transportModesState = useSelector(transportModeState);
@@ -86,9 +88,6 @@ const Precarga = ({ onFinish }) => {
     if (result === 'granted') {
       await permissionsWithGpsDialog();
     }
-    /* setTimeout(() => {
-      onFinish(true);
-    }, 10000); */
   }
 
   async function checkIfExistUserAnon() {
@@ -150,7 +149,7 @@ const Precarga = ({ onFinish }) => {
     }
     //obtiene la configuración de idioma local del calendario
   }, [userAccountInformation.bearerToken, 
-      userAccountInformation.tokenDevice, userAccountInformation.languageId]);
+      userAccountInformation.tokenDevice, locale]);
 
   
       useEffect(() => {
@@ -195,7 +194,7 @@ const Precarga = ({ onFinish }) => {
         }
       }, [loadedIcons, transportModesState,]);
 
-  return <Splash />;
+  return <>{children}</>;
 };
 
 export default Precarga;

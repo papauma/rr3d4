@@ -91,7 +91,7 @@ export default function NextLineDepartures(props: NextLineDeparturesProps) {
                   direccion[lineTime.headSign] = {};
                   direccion[lineTime.headSign].nameHead = lineTime.headSign;
                   direccion[lineTime.headSign].tiempos = [timeToNow];
-                  const infoDefinLinea = allLinesInfo.find((elementLine: ILine) => elementLine.id === lineTime.lineId)
+                  const infoDefinLinea: ILine | undefined = allLinesInfo.find((elementLine: ILine) => elementLine.id === lineTime.lineId)
                   const lineasTiempo = {
                     id: lineTime.lineId,
                     name: infoDefinLinea?.name,
@@ -99,7 +99,7 @@ export default function NextLineDepartures(props: NextLineDeparturesProps) {
                     routeColor: infoDefinLinea?.routeColor,
                     routeTextColor: infoDefinLinea?.routeTextColor,
                     direcciones: direccion,
-                    transportMode: infoDefinLinea?.transportMode,
+                    transportMode: infoDefinLinea?.transportmode,
                   };
                   tiemposPorLinea[lineTime.lineId] = lineasTiempo;
                 } else {
@@ -136,7 +136,7 @@ export default function NextLineDepartures(props: NextLineDeparturesProps) {
       <View accessible={true} role={'listitem'} accessibilityLabel={'Lista de líneas que pasan por esa parada y sus tiempos de pasada'}>
         {infoLineas !== null && infoLineas !== undefined
           ? Object.keys(infoLineas).map((linea, index) => {
-              //console.log('Info-Linea:', infoLineas[linea]);
+              console.log('Info-Linea:', infoLineas[linea]);
               return (
                 <DepartureLineInfo
                   id={infoLineas[linea].id}

@@ -21,17 +21,15 @@ interface DepartureLineInfoProps {
 export default function DepartureLineInfo(props: DepartureLineInfoProps) {
   const theme = useTheme();
   const [collapsed, setCollapsed] = useState(false);
-
-  console.log('Time', props.lineTimes);
   
   return (
     <View style={[styles(theme).content, props.style]}>
         <View style={styles(theme).container}>
             <View style={styles(theme).rowTitle}>
                 <LineCodeSemiCircle
-                    backgroundColor={props.routeColor}
+                    backgroundColor={props.routeColor ? `#${props.routeColor}` : undefined}
                     transportMode={props.transportMode}
-                    textColor={props.routeTextColor}
+                    textColor={props.routeTextColor ? `#${props.routeTextColor}` : undefined}
                     code={props.lineCode}
                 />
                 <Label style={styles(theme).title} numberOfLines={1} ellipsizeMode={'tail'}>{props.lineName}</Label>
@@ -74,7 +72,9 @@ const styles = (theme: ThemeProps) => StyleSheet.create({
     title: {
       fontSize: 14,
       fontWeight: '700',
-      lineHeight: 18.2,  
+      lineHeight: 18.2, 
+      marginLeft: 8, 
+      //flexGrow: 1,
       //flex: 0.5,
     },
 })
