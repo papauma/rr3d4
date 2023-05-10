@@ -15,6 +15,7 @@ import { userServiceApi } from './services/userService';
 import mapSlice from './slices/mapSlice';
 import { linesServiceApi } from './services/linesService';
 import linesSlices from './slices/linesSlices';
+import filtersSlice from './slices/filtersSlice';
 
 export const reducer = {
   user: userSlice,
@@ -27,6 +28,7 @@ export const reducer = {
   icons: iconsSlices,
   map: mapSlice,
   lines: linesSlices,
+  filters: filtersSlice,
   [agencyServiceApi.reducerPath]: agencyServiceApi.reducer,
   [transportModeServiceApi.reducerPath]: transportModeServiceApi.reducer,
   [stopsServiceApi.reducerPath]: stopsServiceApi.reducer,

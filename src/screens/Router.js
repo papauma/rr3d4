@@ -8,6 +8,7 @@ import React, { useRef } from 'react';
 import MainScreen from './main/MainScreen';
 import StoryBookScreen from './storyBook/StoryBookScreen';
 import LanguageScreen from './settings/language/LanguageScreen';
+import FiltersScreen from './filters/FiltersScreen';
 
 const Stack = createStackNavigator();
 
@@ -21,6 +22,10 @@ const SplashComponent = ({navigation, route, options, back}) => {
 
 const MainComponent = ({navigation, route, options, back}) => {
   return <MainScreen navigation={navigation} />;
+};
+
+const FiltersComponent = ({navigation, route, options, back}) => {
+  return <FiltersScreen />;
 };
 
 const LanguageComponent = ({navigation, route, options, back}) => {
@@ -53,6 +58,7 @@ export default function Routes() {
       <Stack.Navigator screenOptions={screenOptions}>
         <Stack.Screen name={navigationPages.main} component={MainComponent} />
         <Stack.Screen name={navigationPages.splash} component={SplashComponent} />
+        <Stack.Screen name={navigationPages.filters} component={FiltersComponent} />
         <Stack.Screen name={navigationPages.language} component={LanguageComponent} />
         <Stack.Screen name={navigationPages.storybook} component={StoryButtonsComponent} />
       </Stack.Navigator>

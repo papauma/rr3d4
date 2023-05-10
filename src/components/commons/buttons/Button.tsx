@@ -19,6 +19,7 @@ export interface ButtonProps {
     buttonSizeStyle?: ButtonSizeTypes;
     buttonCategory?: ButtonCategoryTypes;
     alt?: string;
+    children?: any;
 }
 
 type ButtonSizeTypes =
@@ -143,6 +144,7 @@ export default function Button(props: ButtonProps) {
               </Label>
             ) : null}
           </View>
+          {props.children}
         </Pressable>);
 }
 const styles = (theme?: ThemeProps) => StyleSheet.create({

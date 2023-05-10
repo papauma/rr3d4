@@ -13,6 +13,7 @@ import { useTheme } from '@src/context/themeContext';
 import { View } from 'react-native';
 import Label from '@src/components/commons/text/Label';
 import Icon from '@src/components/commons/icon/Icon';
+import { filtersState } from '../slices/filtersSlice';
 
 export default function VisualizerMapPresenter() {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ export default function VisualizerMapPresenter() {
   const selectorIcons = useSelector(iconsState);
   const selectorStops = useSelector(stopsState);
   const selectorZoom = useSelector(mapStateZoom);
+  const selectorFilters = useSelector(filtersState);
   const transportModes = useSelector(transportModeState);
   const [GetIcons] = useLazyGetIconsQuery();
   const theme = useTheme()
@@ -85,10 +87,10 @@ export default function VisualizerMapPresenter() {
     //let pois = bounds ? filterBounds(selectorPois, bounds) : selectorPois;
 
     // fILTRADO POR TIPO TRANSPORTES (filtros)
-    /* stops =
-      selectorSearchFilters.transportModes?.length > 0 || selectorSearchFilters.sellingCategories?.length > 0
-        ? stops.filter((stop) => selectorSearchFilters.transportModes.includes(parseInt(stop.data.transportMode)))
-        : stops; */
+    stops =
+      selectorFilters.transportModes?.length > 0
+        ? stops.filter((stop: any) => selectorFilters.transportModes.includes(parseInt(stop.data.transportMode)))
+        : stops;
 
     //Filtrado por categoría de poi
     /* let poiFilterCat = selectorSearchFilters.sellingCategories.concat(selectorSearchFilters.otherCategories)

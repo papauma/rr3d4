@@ -14,6 +14,7 @@ import { stopsState } from '@src/redux/slices/stopsSlices';
 import VisualizerMapPresenter from '@src/redux/hooks/VisualizerMapPresenter';
 import { mapStateBounds, mapStateMarkers, mapStateZoom, updateBounds, updateZoom } from '@src/redux/slices/mapSlice';
 import HomeBottomSheet from './components/HomeBottomSheet';
+import { filtersState } from '@src/redux/slices/filtersSlice';
 
 export default function MainMapScreen() {
     console.log('[MainMapScreen]');
@@ -27,6 +28,8 @@ export default function MainMapScreen() {
     const selectorMapBounds = useSelector(mapStateBounds);
     const selectorMapZoom = useSelector(mapStateZoom);
     const markersVisualizer = useSelector(mapStateMarkers);
+    const selectorFilters = useSelector(filtersState);
+    
     const {getMarkers, renderVisualizerMarkers} = VisualizerMapPresenter();
     console.log('Stops', allStops.length);
     
@@ -41,9 +44,16 @@ export default function MainMapScreen() {
       getMarkers(selectorMapBounds, selectorMapZoom);
     }
     loadMarkers();
-  }, [selectorMapBounds, selectorMapZoom]);
+  }, [selectorMapBounds, selectorMapZoom, selectorFilters]);
 
 
+  /**
+   *  Gestión de trackear los cambios de los iconos de los marcadores
+   * */
+  useEffect(() => {
+    setTrackingMap(true);
+    setTimeout(() => setTrackingMap(false), 100);
+  }, [selectorFilters]);
 
     function focusOnTheMap(coords: any) {
       console.log('Coords', coords);

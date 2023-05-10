@@ -5,6 +5,9 @@
 export const strings = {
   button_accept: 'Aceptar',
   button_cancel: 'Cancelar',
+  button_undo: 'Deshacer',
+  filters_title: 'Filtros',
+  filters_section_transport: 'Transporte',
   input_button_clear: 'Borrar texto',
   input_button_clear_description: 'Al pulsarlo borra el texto escrito',
   input_icon_search: 'Lupa',

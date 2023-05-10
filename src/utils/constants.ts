@@ -2,6 +2,7 @@ export const navigationPages = {
   splash: 'Splash',
   main: 'Main',
   mainMap: 'MainMap',
+  filters: 'Filters',
   language: 'Language',
   storybook: 'Storybook',
 };
