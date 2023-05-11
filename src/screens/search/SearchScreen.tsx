@@ -46,7 +46,8 @@ export default function SearchScreen() {
                 onChangeText={setText}
                 styleBar={{marginHorizontal: 16}}
                 placeholder={t('search_bar_placeholder')}
-                actionIcon={true} showLens={true}
+                actionIcon={text !== ''} 
+                showLens={text === ''}
             /> 
             <ScrollView contentContainerStyle={{paddingHorizontal: 16}}>
                 {text || text !== '' 

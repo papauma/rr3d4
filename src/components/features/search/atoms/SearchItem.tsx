@@ -35,15 +35,18 @@ const styles = (theme: ThemeProps) => StyleSheet.create({
         fontWeight: '700',
         lineHeight: 18.2,
         textTransform: 'capitalize',
+        flex: 1,
     },
     address: {
         fontSize: 14,
         fontWeight: '400',
         color: theme.colors.gray_700,
         lineHeight: 21,
+        flex: 1,
     },
     textContainer: {
         marginLeft: 8,
+        flex: 1,
     },
     container: {
         flexDirection: 'row',

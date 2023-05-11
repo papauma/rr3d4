@@ -1,12 +1,15 @@
 import { useLazySearchStopsQuery } from '@src/redux/services/stopsService';
 import { searchSlice } from '@src/redux/slices/searchSlice';
 import React from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import IconPresenter from '../iconPresenter';
+import { lineState } from '@src/redux/slices/linesSlices';
+import { ILine } from '@src/types/ExploreInterfaces';
 
 export default function useSearch() {
     const dispatch = useDispatch();
     const [SearchStops] = useLazySearchStopsQuery();
+    const allLines = useSelector(lineState);
     const {getAgencyIcon} = IconPresenter()
 
 
@@ -24,11 +27,21 @@ export default function useSearch() {
                 res[element].icon = await getAgencyIcon(response.data[element].agencyOriginId);
               } catch (e) {}
             }
+
             res = res.slice(0, 5);
             dispatch(searchSlice.actions.updateStops(res));
           })
           .catch((e) => {})
           .finally(() => {
+            let foundLines = allLines.find((line: ILine) => 
+              line.name.toLowerCase().includes(txt.toLowerCase()) || line.code.includes(txt.toLowerCase()));
+
+            if (foundLines?.length > 2) {
+              foundLines = foundLines.slice(0, 3)
+            }
+            if (foundLines) {
+              dispatch(searchSlice.actions.updateLines(foundLines));
+            } 
             dispatch(searchSlice.actions.updateLoadingStops(false));
           });
     

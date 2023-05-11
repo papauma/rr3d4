@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../store';
+import { ILine } from '@src/types/ExploreInterfaces';
 
 export interface SearchInformation {
   searchInformation: {
     stops: Array<any>;
+    lines: Array<ILine>;
     pois: Array<any>;
     directions: Array<any>;
     others: Array<any>;
@@ -26,6 +28,7 @@ export interface SearchInformation {
 const initialState: SearchInformation = {
   searchInformation: {
     stops: [],
+    lines: [],
     pois: [],
     directions: [],
     others: [],
@@ -56,6 +59,10 @@ export const searchSlice = createSlice({
     updateStops: (state, action) => {
       console.log(' [searchSlice] - updateStops');
       state.searchInformation.stops = action.payload;
+    },
+    updateLines: (state, action) => {
+      console.log(' [searchSlice] - updateLines');
+      state.searchInformation.lines = action.payload;
     },
     updatePois: (state, action) => {
       console.log(' [searchSlice] - updatePois');
@@ -98,6 +105,7 @@ export const searchSlice = createSlice({
       console.log(' [searchSlice] - resetAll');
       state.searchInformation = {
         stops: [],
+        lines: [],
         pois: [],
         directions: [],
         others: [],
