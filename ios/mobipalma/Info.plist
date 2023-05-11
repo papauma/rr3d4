@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>moveuskadi</string>
+	<string>mobipalma</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -25,7 +25,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>moveuskadi</string>
+				<string>mobipalma</string>
 			</array>
 		</dict>
 		<dict>
@@ -60,7 +60,7 @@
 		<key>CFBundleDevelopmentRegion</key>
 		<string>en</string>
 		<key>CFBundleDisplayName</key>
-		<string>moveuskadi</string>
+		<string>mobipalma</string>
 		<key>CFBundleExecutable</key>
 		<string>$(EXECUTABLE_NAME)</string>
 		<key>CFBundleIdentifier</key>
@@ -93,11 +93,11 @@
 		</dict>
 	</dict>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Moveuskadi recoge datos de ubicación en segundo plano, para habilitar las funciones de guiado sobre una ruta planificada, para poder comprobar en que lugar se encuentra el dispositivo sobre la ruta y notificar a la persona usuaria cuando deba realizar una acción sobre su itinerario, aunque la aplicación esté cerrada o no se esté usando.</string>
+	<string>Mobipalma recoge datos de ubicación en segundo plano, para habilitar las funciones de guiado sobre una ruta planificada, para poder comprobar en que lugar se encuentra el dispositivo sobre la ruta y notificar a la persona usuaria cuando deba realizar una acción sobre su itinerario, aunque la aplicación esté cerrada o no se esté usando.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Moveuskadi recoge datos de ubicación en segundo plano, para habilitar las funciones de guiado sobre una ruta planificada, para poder comprobar en que lugar se encuentra el dispositivo sobre la ruta y notificar a la persona usuaria cuando deba realizar una acción sobre su itinerario, aunque la aplicación esté cerrada o no se esté usando.</string>
+	<string>Mobipalma recoge datos de ubicación en segundo plano, para habilitar las funciones de guiado sobre una ruta planificada, para poder comprobar en que lugar se encuentra el dispositivo sobre la ruta y notificar a la persona usuaria cuando deba realizar una acción sobre su itinerario, aunque la aplicación esté cerrada o no se esté usando.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Moveuskadi accede a tu ubicación para poder mostrar opciones de transporte cercanas, puntos de interés y planificar rutas para ir hasta un punto de la ciudad. </string>
+	<string>Mobipalma accede a tu ubicación para poder mostrar opciones de transporte cercanas, puntos de interés y planificar rutas para ir hasta un punto de la ciudad. </string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>OpenSans-Bold.ttf</string>

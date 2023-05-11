@@ -34,6 +34,7 @@ export default function FiltersScreen() {
                 <View style={styles(theme).sectionList}>
                     {transports && transports?.map((element: any, index: number) => {
                         return (<FilterItem
+                            key={`Transport-${element.id}`}
                             id={element.id}
                             text={element.title}
                             source={element.source} 

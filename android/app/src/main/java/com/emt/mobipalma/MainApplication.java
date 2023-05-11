@@ -1,4 +1,4 @@
-package com.ejie.moveuskadi;
+package com.emt.mobipalma;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

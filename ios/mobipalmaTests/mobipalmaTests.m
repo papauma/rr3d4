@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface moveuskadiTests : XCTestCase
+@interface mobipalmaTests : XCTestCase
 
 @end
 
-@implementation moveuskadiTests
+@implementation mobipalmaTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL (^)(UIView *view))test
 {

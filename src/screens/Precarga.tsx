@@ -1,4 +1,3 @@
-import Splash from '@src/screens/splash/components/splash/Splash';
 import { getRequestPermissionsLocation, permissionsWithGpsDialog } from '@src/utils/Permissions';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -52,21 +51,33 @@ const Precarga = ({ onFinish, children }) => {
     //inicializa la cache para el caso de la busqueda de recientes TO CHANGE
     console.log('getSearch from storage()');
 
+    //CARGA de iconos
+
+    Promise.all([promiseIconsStorage]).then((resultsPromise) => {
+      if (resultsPromise.filter((response) => response.isSuccess).length < 1) {
+        console.log('errorPrecargaIconosAPP');
+      } else {
+        dispatch(updateIcons(resultsPromise[0].data));
+      }
+    }).catch((e) => {
+
+    }).finally(() => {
+    })
+
     //CARGA DE AGENCIAS Y ORIGENES DE DATOS
-    Promise.all([promiseDataOrigin, promiseAgency, promiseTransportMode, promiseStops, promiseIconsStorage, promiseLines])
+    Promise.all([promiseDataOrigin, promiseAgency, promiseTransportMode, promiseStops, promiseLines])
       .then((resultsPromise) => {
-        if (resultsPromise.filter((response) => response.isSuccess).length < 6) {
+        if (resultsPromise.filter((response) => response.isSuccess).length < 5) {
           // TO DO POPUP ERROR
           console.log('errorPrecargaStopsAPP');
           // console.log('errorPrecargaStopsAPP', error);
           return false;
         }
 
-        dispatch(updateIcons(resultsPromise[4].data));
         dispatch(updateDataOrigin(resultsPromise[0].data));
         dispatch(updateAgencys(resultsPromise[1].data));
         dispatch(updateTransportMode(resultsPromise[2].data))
-        dispatch(updateLines(resultsPromise[5].data))
+        dispatch(updateLines(resultsPromise[4].data))
         setLoadedIcons(true);
 
         formatStopMarkers(resultsPromise[3].data, resultsPromise[0].data, (stops: any) => dispatch(updateStops(stops)));

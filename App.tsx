@@ -7,6 +7,7 @@ import { store } from '@src/redux/store';
 import { LanguageProvider } from '@src/context/languageContext';
 import Precarga from '@src/screens/Precarga';
 import { ThemeProvider } from '@src/context/themeContext';
+import Splash from '@src/screens/splash/components/splash/Splash';
 
 export default function App() {
   const [precargaLoaded, setPrecargaLoaded] = useState(false);
@@ -21,14 +22,18 @@ export default function App() {
       <ThemeProvider>
         <LanguageProvider>
             <Provider store={store}>
-              <StatusBar barStyle={'dark-content'} />
-              {!precargaLoaded ? (
-                <Precarga onFinish={finishPrecarga} />
-              ) : (
+              <Precarga onFinish={finishPrecarga}>
                 <>
-                  <Routes />
+                  <StatusBar barStyle={'dark-content'} />
+                  {!precargaLoaded ? (
+                    <Splash/>
+                  ) : (
+                    <>
+                      <Routes />
+                    </>
+                  )}
                 </>
-              )}
+              </Precarga>
             </Provider>
           </LanguageProvider>
         </ThemeProvider>

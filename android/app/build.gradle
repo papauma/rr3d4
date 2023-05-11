@@ -1,6 +1,6 @@
 apply plugin: "com.android.application"
 apply plugin: "com.facebook.react"
-apply plugin: "com.google.gms.google-services"
+//apply plugin: "com.google.gms.google-services"
 
 import com.android.build.OutputFile
 
@@ -95,13 +95,13 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.ejie.moveuskadi"
+    namespace "com.emt.mobipalma"
     defaultConfig {
-        applicationId "com.ejie.moveuskadi"
+        applicationId "com.emt.mobipalma"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 11
-        versionName "1.0.10"
+        versionCode 1
+        versionName "1.0.0"
     }
 
     splits {
