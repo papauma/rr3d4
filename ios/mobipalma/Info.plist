@@ -17,73 +17,16 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.10</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>mobipalma</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>www.euskadi.eus</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>https</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>apps.euskadi.eus</string>
-			</array>
-		</dict>
-	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>itms-apps</string>
-	</array>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
-		<key>CFBundleDevelopmentRegion</key>
-		<string>en</string>
-		<key>CFBundleDisplayName</key>
-		<string>mobipalma</string>
-		<key>CFBundleExecutable</key>
-		<string>$(EXECUTABLE_NAME)</string>
-		<key>CFBundleIdentifier</key>
-		<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
-		<key>CFBundleInfoDictionaryVersion</key>
-		<string>6.0</string>
-		<key>CFBundleName</key>
-		<string>$(PRODUCT_NAME)</string>
-		<key>CFBundlePackageType</key>
-		<string>APPL</string>
-		<key>CFBundleShortVersionString</key>
-		<string>$(MARKETING_VERSION)</string>
-		<key>CFBundleSignature</key>
-		<string>$(MARKETING_VERSION)</string>
-		<key>CFBundleVersion</key>
-		<string>1</string>
-		<key>LSApplicationQueriesSchemes</key>
-		<array>
-			<string>itms-apps</string>
-		</array>
-		<key>LSRequiresIPhoneOS</key>
-		<true/>
-		<key>NSAppTransportSecurity</key>
+		<key>NSExceptionDomains</key>
 		<dict>
 			<key>localhost</key>
 			<dict>
@@ -92,37 +35,8 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Mobipalma recoge datos de ubicación en segundo plano, para habilitar las funciones de guiado sobre una ruta planificada, para poder comprobar en que lugar se encuentra el dispositivo sobre la ruta y notificar a la persona usuaria cuando deba realizar una acción sobre su itinerario, aunque la aplicación esté cerrada o no se esté usando.</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Mobipalma recoge datos de ubicación en segundo plano, para habilitar las funciones de guiado sobre una ruta planificada, para poder comprobar en que lugar se encuentra el dispositivo sobre la ruta y notificar a la persona usuaria cuando deba realizar una acción sobre su itinerario, aunque la aplicación esté cerrada o no se esté usando.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Mobipalma accede a tu ubicación para poder mostrar opciones de transporte cercanas, puntos de interés y planificar rutas para ir hasta un punto de la ciudad. </string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>OpenSans-Bold.ttf</string>
-		<string>OpenSans-BoldItalic.ttf</string>
-		<string>OpenSans-ExtraBold.ttf</string>
-		<string>OpenSans-ExtraBoldItalic.ttf</string>
-		<string>OpenSans-Italic.ttf</string>
-		<string>OpenSans-Light.ttf</string>
-		<string>OpenSans-LightItalic.ttf</string>
-		<string>OpenSans-Medium.ttf</string>
-		<string>OpenSans-MediumItalic.ttf</string>
-		<string>OpenSans-Regular.ttf</string>
-		<string>OpenSans-SemiBold.ttf</string>
-		<string>OpenSans-SemiBoldItalic.ttf</string>
-	</array>
-	<key>UIApplicationSceneManifest</key>
-	<dict>
-		<key>UISceneConfigurations</key>
-		<dict/>
-	</dict>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>fetch</string>
-		<string>remote-notification</string>
-	</array>
+	<string>Mobipalma accede a tu ubicación para poder mostrar opciones de transporte cercanas, puntos de interés y planificar rutas para moverte por la ciudad.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -131,12 +45,6 @@
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-	</array>
-	<key>UISupportedInterfaceOrientations~ipad</key>
-	<array>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
