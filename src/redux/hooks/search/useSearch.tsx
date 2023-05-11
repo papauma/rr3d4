@@ -5,12 +5,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import IconPresenter from '../iconPresenter';
 import { lineState } from '@src/redux/slices/linesSlices';
 import { ILine } from '@src/types/ExploreInterfaces';
+import { updateMarkerSelected } from '@src/redux/slices/mapSlice';
+import { useNavigation } from '@react-navigation/native';
+import { IMarker } from '@src/types/interfaces';
 
 export default function useSearch() {
     const dispatch = useDispatch();
     const [SearchStops] = useLazySearchStopsQuery();
     const allLines = useSelector(lineState);
     const {getAgencyIcon} = IconPresenter()
+    const navigation = useNavigation();
 
 
     async function search(txt: string) {
@@ -68,8 +72,25 @@ export default function useSearch() {
             dispatch(searchSlice.actions.updateLoadingPois(false));
           }); */
       }
+  
+  /**
+   * @function onSearchPressInScreen sustituye la logica que se podría pasar por props a la
+   * pantalla de búsqueda al presionar sobre un resultado de búsqueda
+   */
+  function onSearchPressInScreen(screen: string, result: IMarker, params?: any) {
+    if (screen === 'Planner') {
+      /* dispatch(
+        plannerSegmentsSlice.actions.set({ index: params.index, stop: result, overwrite: false }),
+      ); */
+      navigation.goBack();
+    } else {
+      dispatch(updateMarkerSelected(result));
+      navigation.goBack();
+    }
+  }
 
   return {
-    search
+    search,
+    onSearchPressInScreen,
   }
 }

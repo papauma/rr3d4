@@ -9,19 +9,23 @@ import { IMarker, ITransportMode } from "@src/types/interfaces";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
+import SearchItem from "../atoms/SearchItem";
+import IconBox from "@src/components/widgets/IconBox";
 
 
 export default function RecentSearches(props: any) {
     const searchRecent: Array<IMarker> = useSelector(recentSearchInformation);
     const t = useTranslate();
     const theme = useTheme();
+    console.log('Rcents', searchRecent);
+    
   
     const dispatch = useDispatch();
     const stopsModifyState = useSelector(stopsState);
   
     const selectorTransportModes = useSelector(transportModeState);
   
-    const onpress = (recent: IMarker) => {
+    const onPress = (recent: IMarker) => {
       props?.onPressResult?.(recent);
     };
   
@@ -55,6 +59,19 @@ export default function RecentSearches(props: any) {
             }),
           );
         }
+        return (<SearchItem
+          key={`stop-${item.id}`}
+          style={{marginTop: 12}}
+          onPress={() => {onPress(item)}}
+          name={item?.data?.name}
+          address={item?.data?.address}
+          iconComponent={(<IconBox
+            code={item?.data?.code}
+            iconId={transportMode?.iconId}
+          />)}
+        />)
+        
+
       } else {
 
       }

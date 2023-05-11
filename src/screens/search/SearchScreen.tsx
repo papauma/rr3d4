@@ -11,13 +11,13 @@ import React, { useEffect, useState } from 'react'
 import { SafeAreaView, ScrollView, View } from 'react-native'
 import { useDispatch } from 'react-redux';
 
-export default function SearchScreen() {
+export default function SearchScreen(props: any) {
   const t = useTranslate();
   const theme = useTheme();
   const [text, setText] = useState('');
   const debouncedSearch = useDebounce(text, 500);
   const dispatch = useDispatch();
-  const {search} = useSearch();
+  const {search, onSearchPressInScreen} = useSearch();
   
   //al iniciar reiniciar las busquedas
   useEffect(() => {
@@ -33,6 +33,10 @@ export default function SearchScreen() {
       searchInApi();
     }
   }, [debouncedSearch]);  
+
+  function onPressResult(result: IMarker) {
+    onSearchPressInScreen(props.previousScreenParams?.screen ?? '', result, props.previousScreenParams);
+  }
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -52,9 +56,9 @@ export default function SearchScreen() {
             <ScrollView contentContainerStyle={{paddingHorizontal: 16}}>
                 {text || text !== '' 
                     ? (<>
-                        <SearchStopsAndLines/>
+                        <SearchStopsAndLines onPressResult={onPressResult} />
                       </>)
-                    : (<SearchContent/>)
+                    : (<SearchContent onPressResult={onPressResult}/>)
                 }
             </ScrollView>
         </View>

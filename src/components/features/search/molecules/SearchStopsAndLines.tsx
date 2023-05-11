@@ -1,18 +1,21 @@
 import Label from '@src/components/commons/text/Label';
 import { ThemeProps, useTheme } from '@src/context/themeContext';
-import { searchInformation, searchLoading } from '@src/redux/slices/searchSlice';
+import { searchInformation, searchLoading, searchSlice } from '@src/redux/slices/searchSlice';
 import { transportModeState } from '@src/redux/slices/transportmodeSlices';
 import React from 'react'
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import SearchCard from '../atoms/SearchCard';
 import SearchItem from '../atoms/SearchItem';
 import { ILine, TypeMarker } from '@src/types/ExploreInterfaces';
 import IconBox from '@src/components/widgets/IconBox';
 import { useTranslate } from '@src/context/languageContext';
 import LineCodeSemiCircle from '@src/components/commons/routeCode/LineCodeSemiCircle';
+import InfoMapUtils from '@src/utils/InfoMapUtils';
+import { searchRecentsSlice } from '@src/redux/slices/searchRecentsSlice';
+import { ITransportMode } from '@src/types/interfaces';
 
-export default function SearchStopsAndLines() {
+export default function SearchStopsAndLines(props: any) {
   const searchInfo = useSelector(searchInformation);
   const contextualSearchLoading = useSelector(searchLoading);
   const selectorTransportModes = useSelector(transportModeState);
@@ -21,13 +24,21 @@ export default function SearchStopsAndLines() {
   let searchedStopAndLines = searchedStops.concat(searchedLines);
   const theme = useTheme();
   const t = useTranslate();
+  const dispatch = useDispatch();
 
+  const onPress = (properties: any) => {
+    let transformedMarker = InfoMapUtils.parseSearchStopToMarker(properties);
 
-  const renderItem = (item, index) => {
+    dispatch(searchRecentsSlice.actions.updateRecentSearch(transformedMarker));
+    props?.onPressResult?.(transformedMarker);
+    dispatch(searchSlice.actions.resetAll());
+  };
+
+  const renderItem = (item: any, index: number) => {
     //TO CHANGE
     //es una parada
     if (item?.stopName) {
-      const transportMode = selectorTransportModes?.find((itemTransportMode) => {
+      const transportMode = selectorTransportModes?.find((itemTransportMode: ITransportMode) => {
         return item.stopGtfsId?.includes('est_90')
           ? itemTransportMode.id === 90
           : String(itemTransportMode.id) === String(item.stopTransportMode);
@@ -37,7 +48,7 @@ export default function SearchStopsAndLines() {
         <SearchItem
           key={item.id}
           style={index !== 0 ? {marginTop: 12} : undefined}
-          onPress={() => {}}
+          onPress={() => {onPress(item)}}
           name={item?.stopName}
           address={item.stopDesc}
           iconComponent={(<IconBox
