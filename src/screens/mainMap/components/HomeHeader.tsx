@@ -9,6 +9,7 @@ import { filtersState } from '@src/redux/slices/filtersSlice'
 import { mapStateMarkerSelected, updateMarkerSelected } from '@src/redux/slices/mapSlice'
 import { navigationPages } from '@src/utils/constants'
 import React from 'react'
+import { Platform } from 'react-native'
 import { StyleSheet, View, SafeAreaView } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -66,7 +67,7 @@ const styles = (theme: ThemeProps) => StyleSheet.create({
     searchBarTop: {
       position: 'absolute',
       top: 0,
-      marginTop: 12,
+      marginTop: Platform.OS === 'ios' ? 24 : 12,
       left: 0,
       zIndex: 100,
       width: '100%',
