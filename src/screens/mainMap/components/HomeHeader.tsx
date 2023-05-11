@@ -25,7 +25,7 @@ export default function HomeHeader(props: HomeHeaderProps) {
   const navigation = useNavigation();
   const filtersSelector = useSelector(filtersState);
 
-  let numberFilters: number | undefined = filtersSelector.transportModes.length ? filtersSelector.transportModes.length : undefined
+  let numberFilters: number | undefined = filtersSelector.transportModes.length ? filtersSelector.transportModes.length : undefined   
 
   return (
     <View style={[styles(theme).searchBarTop]}>
@@ -34,6 +34,9 @@ export default function HomeHeader(props: HomeHeaderProps) {
                 title={ markerSelected ? markerSelected?.data?.name : t('topSearchBar_title')}
                 showBackButton={markerSelected ? true : false}
                 backButtonPress={() => dispatch(updateMarkerSelected(undefined))}
+                onPress={() => {
+                    navigation.navigate(navigationPages.search)
+                }}
                 />
             {!markerSelected && (<View style={styles(theme).containerButtons}>
                 <LocationButton onPress={props.onPressLocation}/>

@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from '../buttons/Button';
 import { useNavigation } from '@react-navigation/native';
-import { StyleProp, StyleSheet, TextStyle, TouchableOpacity, View } from 'react-native';
+import { StyleProp, StyleSheet, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native';
 import { ThemeProps, useTheme } from '@src/context/themeContext';
 import Label from './Label';
 
@@ -15,6 +15,7 @@ export default function ScreenTitle({
     buttonText,
     childrenThirdButton,
     buttonTextStyle,
+    styleContainer,
   }: {
     title: string;
     onPressBack?: Function;
@@ -25,12 +26,13 @@ export default function ScreenTitle({
     buttonText?: string;
     childrenThirdButton?: any;
     buttonTextStyle?: StyleProp<TextStyle>;
+    styleContainer?: StyleProp<ViewStyle>;
   }) {
   const navigation = useNavigation();
   const theme = useTheme();
 
   return (
-    <View style={styles(theme).row} accessible={true}>
+    <View style={[styles(theme).row, styleContainer]} accessible={true}>
       {!notShowBackButton 
         ? (<Button
           //style={{flexShrink: 1}}
@@ -47,7 +49,7 @@ export default function ScreenTitle({
         ? (<Label
             numberOfLines={1}
             ellipsizeMode={'tail'}
-            style={styles(theme).title}>
+            style={[styles(theme).title, showThirdButton ? {textAlign: 'center',} : {} ]}>
             {title}
           </Label>) 
         : (<View/>)
@@ -62,7 +64,7 @@ export default function ScreenTitle({
           {childrenThirdButton}
         </TouchableOpacity>
       ) : (
-        <View style={{flexShrink: 1}} />
+        <View  />
       )}
     </View>
   )
@@ -81,10 +83,10 @@ const styles = (theme: ThemeProps) =>
       fontSize: 18,
       fontWeight: '700',
       lineHeight: 23.4,
-      flex: 1,
       marginLeft: 16,
-      textAlign: 'center',
+      //textAlign: 'center',
       overflow: 'hidden',
       marginHorizontal: 8,
+      flex: 1,
     },
   });

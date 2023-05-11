@@ -103,7 +103,7 @@ const styles = (theme: ThemeProps) => StyleSheet.create({
         paddingHorizontal: 16,
         backgroundColor: theme.colors.white,
         borderRadius: 16,
-        flex: 1,
+        //flex: 1,
         flexGrow: 0,
     },
     mediumBar: {
