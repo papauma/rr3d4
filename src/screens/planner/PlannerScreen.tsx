@@ -1,4 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
+import Button from '@src/components/commons/buttons/Button';
 import ScreenTitle from '@src/components/commons/text/ScreenTitle';
 import RouteSegments from '@src/components/features/planner/definition/molecules/RouteSegments';
 import MapRender from '@src/components/widgets/MapRender';
@@ -59,7 +60,7 @@ export default function PlannerScreen() {
         <SafeAreaView style={{display: 'flex'}}>
             <ScreenTitle
                 title={t('planner_screen_title')}
-                
+
             />
            <RouteSegments
               onSegmentPress={(index: number) => {
@@ -79,7 +80,20 @@ export default function PlannerScreen() {
               }}
             /> 
         </SafeAreaView>
-        
+      </View>
+
+      <View
+        style={[
+          { padding: 16, bottom: 0, position: 'absolute', justifyContent: 'center', alignItems: 'center', width: '100%', },
+          Platform.OS === 'ios' ? { paddingBottom: 24 } : null,
+        ]}
+      >
+        <Button
+            title={t('button_confirm')}
+            icon={theme.drawables.general.Ic_Plan}
+            buttonSizeStyle='medium'
+            style={{alignSelf: 'center'}}
+        />
       </View>
     </SafeAreaView>
   )

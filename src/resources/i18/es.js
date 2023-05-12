@@ -12,6 +12,7 @@ export const strings = {
   accessibility_filters_transports_desc: 'Al pulsar sobre un elemento filtra los marcadores de paradas de transporte en el mapa',
   button_accept: 'Aceptar',
   button_cancel: 'Cancelar',
+  button_confirm: 'Confirmar',
   button_undo: 'Deshacer',
   filters_title: 'Filtros',
   filters_section_transport: 'Transporte',

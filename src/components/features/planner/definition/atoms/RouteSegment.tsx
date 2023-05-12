@@ -60,9 +60,4 @@ const styles = StyleSheet.create({
     padding: 12,
     flexShrink: 1,
   },
-  action: {
-    width: 36,
-    height: 36,
-    marginStart: 8,
-  },
 });

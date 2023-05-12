@@ -8,6 +8,7 @@ import { ILine } from '@src/types/ExploreInterfaces';
 import { updateMarkerSelected } from '@src/redux/slices/mapSlice';
 import { useNavigation } from '@react-navigation/native';
 import { IMarker } from '@src/types/interfaces';
+import { plannerSegmentsSlice } from '@src/redux/slices/plannerSegmentsSlice';
 
 export default function useSearch() {
     const dispatch = useDispatch();
@@ -79,9 +80,9 @@ export default function useSearch() {
    */
   function onSearchPressInScreen(screen: string, result: IMarker, params?: any) {
     if (screen === 'Planner') {
-      /* dispatch(
+      dispatch(
         plannerSegmentsSlice.actions.set({ index: params.index, stop: result, overwrite: false }),
-      ); */
+      );
       navigation.goBack();
     } else {
       dispatch(updateMarkerSelected(result));
