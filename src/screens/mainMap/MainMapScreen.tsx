@@ -12,7 +12,7 @@ import MapView from 'react-native-maps';
 import { IBounds, IPosition } from '@src/types/interfaces';
 import { stopsState } from '@src/redux/slices/stopsSlices';
 import VisualizerMapPresenter from '@src/redux/hooks/VisualizerMapPresenter';
-import { mapStateBounds, mapStateMarkerSelected, mapStateMarkers, mapStateZoom, updateBounds, updateZoom } from '@src/redux/slices/mapSlice';
+import { mapStateBounds, mapStateMarkerSelected, mapStateMarkers, mapStateZoom, updateBounds, updateRegion, updateZoom } from '@src/redux/slices/mapSlice';
 import HomeBottomSheet from './components/HomeBottomSheet';
 import { filtersState } from '@src/redux/slices/filtersSlice';
 
@@ -87,6 +87,7 @@ export default function MainMapScreen() {
             zoom={11}
             initialRegion={defaultLocation}
             setRefMapView={setRefMapView}
+            onMapDragComplete={(region: any) => dispatch(updateRegion(region))}
             markers={renderVisualizerMarkers(markersVisualizer)}
             updateBounds={(bounds: IBounds, zoom?: number) => {
               dispatch(updateBounds(bounds));

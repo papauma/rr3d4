@@ -3,6 +3,7 @@ import Label from "../text/Label";
 import Button from "../buttons/Button";
 import { useTheme } from "@src/context/themeContext";
 import Icon from "../icon/Icon";
+import React from 'react';
 
 interface CenteredModalProps {
     visible: boolean;

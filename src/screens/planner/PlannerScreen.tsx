@@ -2,6 +2,8 @@ import { useNavigation } from '@react-navigation/native';
 import Button from '@src/components/commons/buttons/Button';
 import ScreenTitle from '@src/components/commons/text/ScreenTitle';
 import RouteSegments from '@src/components/features/planner/definition/molecules/RouteSegments';
+import PlannerHeader from '@src/components/features/planner/definition/organisms/PlannerHeader';
+import LocationButton from '@src/components/widgets/LocationButton';
 import MapRender from '@src/components/widgets/MapRender';
 import { useTranslate } from '@src/context/languageContext';
 import { useTheme } from '@src/context/themeContext';
@@ -26,7 +28,7 @@ export default function PlannerScreen() {
     <SafeAreaView style={{flex: 1}}>
        <MapRender
         zoom={13}
-        initialRegion={selectorMap.location ?? defaultLocation}
+        initialRegion={selectorMap.region ?? defaultLocation}
         markers={drawPlannerMarkers()}
         focus={() => {}}
         setRefMapView={setRefMapView}
@@ -46,40 +48,23 @@ export default function PlannerScreen() {
 
       <View
         style={{
-          paddingHorizontal: 16,
-          paddingTop: Platform.OS === 'ios' ? 0 : 16,
-          paddingBottom: 16,
           top: 0,
           position: 'absolute',
           width: '100%',
           //alignItems: 'center',
           //justifyContent: 'center',
-          backgroundColor: theme.colors.gray_200,
         }}
       >
-        <SafeAreaView style={{display: 'flex'}}>
-            <ScreenTitle
-                title={t('planner_screen_title')}
-
-            />
-           <RouteSegments
-              onSegmentPress={(index: number) => {
-                navigation.navigate(navigationPages.search, {
-                  previousScreenParams: { screen: 'Planner', index: index },
-                  showSelectLocation: true,
-                  showSelectMyLocation: true,
-                });
-              }}
-              style={{
-                segment: {
-                  input: { flexBasis: 80, flexGrow: 0 },
-                  paddingHorizontal: 7.5,
-                  margin: 0,
-                },
-                flexGrow: 0,
-              }}
-            /> 
+        <View style={{backgroundColor: theme.colors.gray_200,
+          paddingTop: Platform.OS === 'ios' ? 0 : 16,
+          paddingBottom: 16,}}>
+            <SafeAreaView style={{display: 'flex'}}>
+                <PlannerHeader/>
         </SafeAreaView>
+        </View>
+        <View style={{alignSelf: 'flex-end', marginTop: 35, marginRight: 16}}>
+                <LocationButton/>
+        </View>
       </View>
 
       <View

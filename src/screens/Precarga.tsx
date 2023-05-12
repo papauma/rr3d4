@@ -20,6 +20,7 @@ import { updateIcons } from '@src/redux/slices/iconsSlices';
 import { useLazyGetLinesQuery } from '@src/redux/services/linesService';
 import { updateLines } from '@src/redux/slices/linesSlices';
 import { useLanguage } from '@src/context/languageContext';
+import { searchRecentsSlice } from '@src/redux/slices/searchRecentsSlice';
 
 const Precarga = ({ onFinish, children }) => {
   const userAccountInformation = useSelector(userState);
@@ -43,13 +44,16 @@ const Precarga = ({ onFinish, children }) => {
 
   const precarga = () => {
     const promiseDataOrigin = GetDataOrigin();
-  const promiseTransportMode = GetTransportMode();
-  const promiseStops = GetStops();
-  const promiseLines = GetLines();
-  const promiseAgency = GetAgency();
-  const promiseIconsStorage = getIconsStorage();
+    const promiseTransportMode = GetTransportMode();
+    const promiseStops = GetStops();
+    const promiseLines = GetLines();
+    const promiseAgency = GetAgency();
+    const promiseIconsStorage = getIconsStorage();
     //inicializa la cache para el caso de la busqueda de recientes TO CHANGE
-    console.log('getSearch from storage()');
+    let resultsRecents = storage.getString('searchRecents');
+    if (resultsRecents) {
+      dispatch(searchRecentsSlice.actions.inititalizeFromCache(JSON.parse(resultsRecents)));
+    }
 
     //CARGA de iconos
 
