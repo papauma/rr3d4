@@ -12,6 +12,7 @@ interface SearchItemProps {
     name?: string;
     address?: string;
     style?: StyleProp<ViewStyle>;
+    accessibilityHint?: string;
     onPress?: any;
 }
 
@@ -19,7 +20,10 @@ export default function SearchItem(props: SearchItemProps) {
   const theme = useTheme();
 
   return (
-    <TouchableOpacity style={[styles(theme).container, props.style]} onPress={() => props.onPress?.()}>
+    <TouchableOpacity 
+        accessibilityHint={props.accessibilityHint}
+        style={[styles(theme).container, props.style]} 
+        onPress={() => props.onPress?.()}>
         {props.iconComponent}
         <View style={styles(theme).textContainer}>
             {props.name ? (<Label style={[styles(theme).name]}>{props.name}</Label>) : null}

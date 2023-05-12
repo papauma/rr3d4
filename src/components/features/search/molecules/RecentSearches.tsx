@@ -96,7 +96,7 @@ export default function RecentSearches(props: any) {
 
     //TO CHANGE
     return (
-      <View style={styles(theme).container}>
+      <View style={styles(theme).container} accessible={true} accessibilityRole="list">
         <Label style={styles(theme).title}>{t('search_recents_title')}</Label>
         {searchRecent?.length > 0 ? (
             <>{searchRecent.map((element: IMarker, index: number) => renderItem(element, index))}</>

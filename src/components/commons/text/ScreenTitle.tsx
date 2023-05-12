@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StyleProp, StyleSheet, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native';
 import { ThemeProps, useTheme } from '@src/context/themeContext';
 import Label from './Label';
+import { useTranslate } from '@src/context/languageContext';
 
 export default function ScreenTitle({
     title,
@@ -16,6 +17,7 @@ export default function ScreenTitle({
     childrenThirdButton,
     buttonTextStyle,
     styleContainer,
+    accessibilityHintOptionalButton,
   }: {
     title: string;
     onPressBack?: Function;
@@ -27,15 +29,19 @@ export default function ScreenTitle({
     childrenThirdButton?: any;
     buttonTextStyle?: StyleProp<TextStyle>;
     styleContainer?: StyleProp<ViewStyle>;
+    accessibilityHintOptionalButton?: string;
   }) {
   const navigation = useNavigation();
   const theme = useTheme();
+  const t = useTranslate()
 
   return (
     <View style={[styles(theme).row, styleContainer]} accessible={true}>
       {!notShowBackButton 
         ? (<Button
           //style={{flexShrink: 1}}
+          accessibilityLabel={t('accessibility_button_back_label')}
+          accessibilityHint={t('accessibility_button_back_desc')}
           buttonCategory='secondary'
           onPress={() => {
             navigation.goBack();
@@ -55,7 +61,10 @@ export default function ScreenTitle({
         : (<View/>)
       }
       {showThirdButton ? (
-        <TouchableOpacity style={{flexShrink: 1}} disabled={disabledButton} onPress={() => onPressOptionalButton?.()}>
+        <TouchableOpacity accessibilityHint={accessibilityHintOptionalButton} 
+              style={{flexShrink: 1}}
+              disabled={disabledButton} 
+              onPress={() => onPressOptionalButton?.()}>
           {buttonText ? (
             <Label style={buttonTextStyle}>{buttonText}</Label>
           ) : (

@@ -30,7 +30,7 @@ const FiltersComponent = ({navigation, route, options, back}) => {
 };
 
 const SearchComponent = ({navigation, route, options, back}) => {
-  return <SearchScreen />;
+  return <SearchScreen {...route.params} />;
 };
 
 const LanguageComponent = ({navigation, route, options, back}) => {

@@ -6,12 +6,22 @@ import { useTranslate } from '@src/context/languageContext'
 import { useTheme } from '@src/context/themeContext';
 import useSearch from '@src/redux/hooks/search/useSearch';
 import { searchSlice } from '@src/redux/slices/searchSlice';
+import { IMarker } from '@src/types/interfaces';
 import { useDebounce } from '@src/utils/PromiseUtils';
 import React, { useEffect, useState } from 'react'
 import { SafeAreaView, ScrollView, View } from 'react-native'
 import { useDispatch } from 'react-redux';
 
-export default function SearchScreen(props: any) {
+interface SearchScreenProps {
+  showSelectLocation?: boolean;
+  showSelectMyLocation?: boolean;
+  disableShowStops?: boolean;
+  disabledShowDirections?: boolean;
+  disableShowPois?: boolean;
+  previousScreenParams?: any;
+}
+
+export default function SearchScreen(props: SearchScreenProps) {
   const t = useTranslate();
   const theme = useTheme();
   const [text, setText] = useState('');
@@ -56,7 +66,7 @@ export default function SearchScreen(props: any) {
             <ScrollView contentContainerStyle={{paddingHorizontal: 16}}>
                 {text || text !== '' 
                     ? (<>
-                        <SearchStopsAndLines onPressResult={onPressResult} />
+                        {props.disableShowStops ? null : <SearchStopsAndLines previousScreen={props.previousScreenParams?.screen} onPressResult={onPressResult} />}
                       </>)
                     : (<SearchContent onPressResult={onPressResult}/>)
                 }

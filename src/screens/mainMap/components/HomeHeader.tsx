@@ -35,7 +35,9 @@ export default function HomeHeader(props: HomeHeaderProps) {
                 showBackButton={markerSelected ? true : false}
                 backButtonPress={() => dispatch(updateMarkerSelected(undefined))}
                 onPress={() => {
-                    navigation.navigate(navigationPages.search)
+                    navigation.navigate(navigationPages.search, {
+                        previousScreenParams: { screen: 'Main' },
+                      })
                 }}
                 />
             {!markerSelected && (<View style={styles(theme).containerButtons}>

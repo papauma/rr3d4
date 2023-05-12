@@ -6,10 +6,13 @@ import IconDynamic from '../commons/icon/IconDynamic';
 const Item = ({ id, text, iconId, source, onPress, selected, style } : { id: number; text: string; iconId?: any; source?: any; onPress?: Function; selected?: boolean, style?: StyleProp<ViewStyle> }) => {
 
   return (
-    <TouchableOpacity style={[styles.container, style]} key={id} onPress={() => onPress?.()}>
+    <TouchableOpacity style={[styles.container, style]} 
+      key={id} 
+      onPress={() => onPress?.()}
+      accessibilityState={{selected: selected}}>
       <View style={styles.content}>
         <IconDynamic
-              alt='Icono filtro'
+              //alt='Icono filtro'
               accessible={false}
               iconId={iconId}
               source={source}

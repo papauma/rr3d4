@@ -16,6 +16,7 @@ import { mapStateBounds, mapStateMarkerSelected, mapStateMarkers, mapStateZoom, 
 import HomeBottomSheet from './components/HomeBottomSheet';
 import { filtersState } from '@src/redux/slices/filtersSlice';
 
+
 export default function MainMapScreen() {
     console.log('[MainMapScreen]');
     const theme = useTheme();

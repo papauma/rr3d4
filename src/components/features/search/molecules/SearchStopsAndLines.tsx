@@ -38,7 +38,7 @@ export default function SearchStopsAndLines(props: any) {
     //TO CHANGE
     //es una parada
     if (item?.stopName) {
-      const transportMode = selectorTransportModes?.find((itemTransportMode: ITransportMode) => {
+      const transportMode: ITransportMode | undefined = selectorTransportModes?.find((itemTransportMode: ITransportMode) => {
         return item.stopGtfsId?.includes('est_90')
           ? itemTransportMode.id === 90
           : String(itemTransportMode.id) === String(item.stopTransportMode);
@@ -47,12 +47,14 @@ export default function SearchStopsAndLines(props: any) {
       return (
         <SearchItem
           key={item.id}
+          accessibilityHint={props.previousScreen === 'Planner' ? '' : t('accessibility_search_item_main_desc') }
           style={index !== 0 ? {marginTop: 12} : undefined}
           onPress={() => {onPress(item)}}
           name={item?.stopName}
           address={item.stopDesc}
           iconComponent={(<IconBox
             code={item?.stopCode}
+            alt={transportMode?.label}
             iconId={transportMode?.iconId}
           />)}
         />
@@ -80,11 +82,12 @@ export default function SearchStopsAndLines(props: any) {
 
   return (
     <View style={{ paddingHorizontal: 16, marginTop: 12 }} accessible={true} 
-        //accessibilityLabel='Listado de paradas y estaciones obtenidas en el buscador.' 
-        //accessibilityHint={`Al pulsar dos veces sobre un elemento ${props.prevScreen}`} 
-        role='listitem'>
+        >
       <Label style={styles(theme).title}>{t('search_stops_lines')}</Label>
-      <View style={{flex: 1}}>
+      <View style={{flex: 1}} 
+            accessibilityRole='list' 
+            accessible={true} 
+            accessibilityLabel={t('accessibility_search_stops_lines')}>
         {contextualSearchLoading.stops ? (
           <ActivityIndicator size='large' />
         ) : (
