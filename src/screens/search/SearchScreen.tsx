@@ -60,6 +60,7 @@ export default function SearchScreen(props: SearchScreenProps) {
                 onChangeText={setText}
                 styleBar={{marginHorizontal: 16}}
                 placeholder={t('search_bar_placeholder')}
+                clearSearch={() => dispatch(searchSlice.actions.resetAll())}
                 actionIcon={text !== ''} 
                 showLens={text === ''}
             /> 
