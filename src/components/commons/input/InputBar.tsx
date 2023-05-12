@@ -14,6 +14,7 @@ interface InputBarProps extends InputViewProps {
     onFocus?: Function;
     styleIcon?: any;
     sizeType?: InputSizeTypes;
+    clearSearch?: Function;
 }
 
 type InputSizeTypes =
@@ -30,6 +31,7 @@ export default function InputBar(props: InputBarProps) {
   const clear = () => {
     input?.current?.clear();
     props.onChangeText?.('');
+    props.clearSearch?.();
   };
 
   const focus = () => {
@@ -103,7 +105,7 @@ const styles = (theme: ThemeProps) => StyleSheet.create({
         paddingHorizontal: 16,
         backgroundColor: theme.colors.white,
         borderRadius: 16,
-        flex: 1,
+        //flex: 1,
         flexGrow: 0,
     },
     mediumBar: {

@@ -29,9 +29,16 @@ export default function FiltersScreen() {
             }}
         />
         <ScrollView contentContainerStyle={styles(theme).content}>
-            <View style={styles(theme).section}>
+            <View style={styles(theme).section} 
+                accessible={true} 
+                accessibilityRole='list' 
+                accessibilityLabel={t('accessibility_filters_section_list')}>
                 <Label style={styles(theme).sectionTitle}>{t('filters_section_transport')}</Label>
-                <View style={styles(theme).sectionList}>
+                <View style={styles(theme).sectionList} 
+                    accessible={true} 
+                    accessibilityRole='list' 
+                    accessibilityLabel={t('accessibility_filters_transports')}
+                    accessibilityHint={t('accessibility_filters_transports_desc')}>
                     {transports && transports?.map((element: any, index: number) => {
                         return (<FilterItem
                             key={`Transport-${element.id}`}

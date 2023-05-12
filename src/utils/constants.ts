@@ -3,6 +3,7 @@ export const navigationPages = {
   main: 'Main',
   mainMap: 'MainMap',
   filters: 'Filters',
+  search: 'Search',
   language: 'Language',
   storybook: 'Storybook',
 };

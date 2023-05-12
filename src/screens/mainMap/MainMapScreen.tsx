@@ -12,9 +12,10 @@ import MapView from 'react-native-maps';
 import { IBounds, IPosition } from '@src/types/interfaces';
 import { stopsState } from '@src/redux/slices/stopsSlices';
 import VisualizerMapPresenter from '@src/redux/hooks/VisualizerMapPresenter';
-import { mapStateBounds, mapStateMarkers, mapStateZoom, updateBounds, updateZoom } from '@src/redux/slices/mapSlice';
+import { mapStateBounds, mapStateMarkerSelected, mapStateMarkers, mapStateZoom, updateBounds, updateZoom } from '@src/redux/slices/mapSlice';
 import HomeBottomSheet from './components/HomeBottomSheet';
 import { filtersState } from '@src/redux/slices/filtersSlice';
+
 
 export default function MainMapScreen() {
     console.log('[MainMapScreen]');
@@ -26,6 +27,7 @@ export default function MainMapScreen() {
     const contextualInfo = useSelector(contextualInformation);
     const allStops = useSelector(stopsState);
     const selectorMapBounds = useSelector(mapStateBounds);
+    const selectedMarker = useSelector(mapStateMarkerSelected)
     const selectorMapZoom = useSelector(mapStateZoom);
     const markersVisualizer = useSelector(mapStateMarkers);
     const selectorFilters = useSelector(filtersState);
@@ -51,9 +53,12 @@ export default function MainMapScreen() {
    *  Gestión de trackear los cambios de los iconos de los marcadores
    * */
   useEffect(() => {
+    if (selectedMarker) {
+      selectedMarker.position && focusOnTheMap(selectedMarker.position)
+    }
     setTrackingMap(true);
     setTimeout(() => setTrackingMap(false), 100);
-  }, [selectorFilters]);
+  }, [selectorFilters, selectedMarker]);
 
     function focusOnTheMap(coords: any) {
       console.log('Coords', coords);

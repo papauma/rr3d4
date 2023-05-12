@@ -3,6 +3,13 @@
  */
 
 export const strings = {
+  accessibility_button_back_label: 'Flecha Atrás',
+  accessibility_button_back_desc: 'Al pulsarlo vuelves a la pantalla anterior',
+  accessibility_search_item_main_desc: 'Al pulsar sobre el elemento se presenta en el mapa y su información detallada',
+  accessibility_search_stops_lines: 'Listado de paradas y líneas',
+  accessibility_filters_section_list: 'Listado de filtros',
+  accessibility_filters_transports: 'Listado de filtros de modos de transporte',
+  accessibility_filters_transports_desc: 'Al pulsar sobre un elemento filtra los marcadores de paradas de transporte en el mapa',
   button_accept: 'Aceptar',
   button_cancel: 'Cancelar',
   button_undo: 'Deshacer',
@@ -15,6 +22,12 @@ export const strings = {
   location_activate_description: 'Activa tu geolocalización para tener una mejor experiencia',
   location_activate_blocked_title: 'Permite el acceso a tu ubicación',
   location_activate_blocked_description: 'El permiso de acceso a la ubicación se encuentra bloqueado por favor acéptelo para poder acceder a su ubicación.',
+  search_screen_title: '¿Qué estas buscando?',
+  search_bar_placeholder: 'Parada o destino',
+  search_recents_title: 'Búsquedas recientes',
+  search_recents_empty: 'Busca una dirección o selecciona un...',
+  search_empty: 'No se han encontrado resultados',
+  search_stops_lines: 'Paradas y líneas',
   splash_title:  'Bienvenidos a la nueva app de EMT Palma',
   settings_screen_title: 'Configuración',
   settings_section_general: 'General',

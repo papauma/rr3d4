@@ -16,6 +16,8 @@ import mapSlice from './slices/mapSlice';
 import { linesServiceApi } from './services/linesService';
 import linesSlices from './slices/linesSlices';
 import filtersSlice from './slices/filtersSlice';
+import { searchRecentsSlice } from './slices/searchRecentsSlice';
+import { searchSlice } from './slices/searchSlice';
 
 export const reducer = {
   user: userSlice,
@@ -23,6 +25,8 @@ export const reducer = {
   stops: stopsSlices,
   [locationSlice.name]: locationSlice.reducer,
   [contextualSlice.name]: contextualSlice.reducer,
+  [searchRecentsSlice.name]: searchRecentsSlice.reducer,
+  [searchSlice.name]: searchSlice.reducer,
   agencys: agencysSlices,
   transportmode: transportmodeSlices,
   icons: iconsSlices,
