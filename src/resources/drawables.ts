@@ -29,6 +29,8 @@ export interface IDrawables {
     Ic_location_desactivated: any;
     Ic_Ocupacion: any;
     Ic_Plan: any;
+    Ic_Point_Dest: any;
+    Ic_Point_MyLocation: any;
     Ic_Real_Time: any;
     Ic_Refresh: any;
     Ic_Return: any;
@@ -75,6 +77,8 @@ export const drawables = {
     Ic_location_desactivated: require('@images/Ic_location_desactivated.png'),
     Ic_Ocupacion: require('@images/Ic_Ocupacion.png'),
     Ic_Plan: require('@images/Ic_Plan.png'),
+    Ic_Point_Dest: require('@images/Ic_Point_Dest.png'),
+    Ic_Point_MyLocation: require('@images/Ic_Point_MyLocation.png'),
     Ic_Real_Time: require('@images/Ic_Real_Time.png'),
     Ic_Refresh: require('@images/Ic_Refresh.png'),
     Ic_Return: require('@images/Ic_Return.png'),

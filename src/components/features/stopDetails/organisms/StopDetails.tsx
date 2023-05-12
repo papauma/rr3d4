@@ -14,7 +14,7 @@ import { StyleSheet, TouchableOpacity, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux';
 import NextLineDepartures from '../molecules/NextLineDepartures';
 
-export default function StopDetails({stop} : {stop: IMarker}) {
+export default function StopDetails({stop, onPlan} : {stop: IMarker, onPlan: Function}) {
     const [stopInfo, setStopInfo] = useState<SearchStopType | undefined>();
     const [lines, setLines] = useState<Array<ILine>>([]);
     const [linesTimes, setLinesTimes] = useState<Array<ILineTime>>([]);
@@ -84,6 +84,7 @@ export default function StopDetails({stop} : {stop: IMarker}) {
                 ? renderIconCodeStop(stopInfo.stopTransportMode, stopInfo.stopCode) 
                 : renderIconCodeStop(stop.data?.transportMode)
             }
+            onPlan={onPlan}
         />
         <View style={styles(theme).rowSpace}>
             <Label style={styles(theme).listTitle}>{'Próximas salidas'}</Label>

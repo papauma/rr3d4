@@ -44,7 +44,7 @@ export interface IBottomSheet {
 
 export interface IMap {
   initialRegion: ILocation;
-  drawListenerMarkers: Array<any>;
+  drawListenerMarkers?: Array<any>;
   markers?: Array<IMarker>;
   updateZoom?: (zoom: number) => void;
   updateBounds?: (bounds: IBounds, zoom?: number) => void;

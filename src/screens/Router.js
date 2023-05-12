@@ -10,6 +10,7 @@ import StoryBookScreen from './storyBook/StoryBookScreen';
 import LanguageScreen from './settings/language/LanguageScreen';
 import FiltersScreen from './filters/FiltersScreen';
 import SearchScreen from './search/SearchScreen';
+import PlannerScreen from './planner/PlannerScreen';
 
 const Stack = createStackNavigator();
 
@@ -31,6 +32,10 @@ const FiltersComponent = ({navigation, route, options, back}) => {
 
 const SearchComponent = ({navigation, route, options, back}) => {
   return <SearchScreen {...route.params} />;
+};
+
+const PlannerComponent = ({navigation, route, options, back}) => {
+  return <PlannerScreen {...route.params} />;
 };
 
 const LanguageComponent = ({navigation, route, options, back}) => {
@@ -65,6 +70,7 @@ export default function Routes() {
         <Stack.Screen name={navigationPages.splash} component={SplashComponent} />
         <Stack.Screen name={navigationPages.filters} component={FiltersComponent} />
         <Stack.Screen name={navigationPages.search} component={SearchComponent} />
+        <Stack.Screen name={navigationPages.planner} component={PlannerComponent} />
         <Stack.Screen name={navigationPages.language} component={LanguageComponent} />
         <Stack.Screen name={navigationPages.storybook} component={StoryButtonsComponent} />
       </Stack.Navigator>

@@ -11,6 +11,7 @@ interface MarkerDetailsHeaderProps {
     name?: string;
     lines?: Array<ILine>;
     icon?: any;
+    onPlan?: any;
 }
 
 export default function MarkerDetailsHeader(props: MarkerDetailsHeaderProps) {
@@ -35,7 +36,7 @@ export default function MarkerDetailsHeader(props: MarkerDetailsHeaderProps) {
                     />)}
                 /></View>)} 
         </View>
-        <ButtonsMarker/>
+        <ButtonsMarker onPlan={props.onPlan}/>
     </View>
   )
 }

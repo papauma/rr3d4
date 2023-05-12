@@ -18,6 +18,9 @@ import linesSlices from './slices/linesSlices';
 import filtersSlice from './slices/filtersSlice';
 import { searchRecentsSlice } from './slices/searchRecentsSlice';
 import { searchSlice } from './slices/searchSlice';
+import { plannerSegmentsSlice } from './slices/plannerSegmentsSlice';
+import { plannerSlice } from './slices/plannerSlice';
+import { plannerTimerSlice } from './slices/plannerTimerSlice';
 
 export const reducer = {
   user: userSlice,
@@ -27,6 +30,9 @@ export const reducer = {
   [contextualSlice.name]: contextualSlice.reducer,
   [searchRecentsSlice.name]: searchRecentsSlice.reducer,
   [searchSlice.name]: searchSlice.reducer,
+  [plannerSegmentsSlice.name]: plannerSegmentsSlice.reducer,
+  [plannerSlice.name]: plannerSlice.reducer,
+  [plannerTimerSlice.name]: plannerTimerSlice.reducer,
   agencys: agencysSlices,
   transportmode: transportmodeSlices,
   icons: iconsSlices,

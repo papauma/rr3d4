@@ -4,6 +4,8 @@ export const navigationPages = {
   mainMap: 'MainMap',
   filters: 'Filters',
   search: 'Search',
+  planner: 'Planner',
+  plannerResult: 'PlannerResult',
   language: 'Language',
   storybook: 'Storybook',
 };

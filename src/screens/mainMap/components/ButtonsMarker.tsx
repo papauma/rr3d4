@@ -4,7 +4,7 @@ import React from 'react'
 import { View } from 'react-native'
 
 interface ButtonsMarkerProps { 
-
+  onPlan?: Function;
 }
 
 export default function ButtonsMarker(props: ButtonsMarkerProps) {
@@ -16,6 +16,7 @@ export default function ButtonsMarker(props: ButtonsMarkerProps) {
             icon={theme.drawables.general.Ic_Plan}
             iconStyle={{tintColor: theme.colors.white}}
             style={{paddingVertical: 10,paddingHorizontal: 8}}
+            onPress={() => props.onPlan?.()}
         />
         <Button
             buttonCategory='tertiary'
