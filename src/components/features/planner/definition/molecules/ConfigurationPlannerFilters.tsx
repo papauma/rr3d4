@@ -15,7 +15,9 @@ import Label from '@src/components/commons/text/Label';
 import { MenuItem } from '@src/components/commons/menu/MenuItem';
 import Icon from '@src/components/commons/icon/Icon';
 import AccordionButton from '@src/components/commons/buttons/AccordionButton';
-import HourAndCalendarSelectionButtons from '../timer/HourAndCalendarSelectionButtons';
+import HourAndCalendarSelectionButtons from '../../timer/HourAndCalendarSelectionButtons';
+import { useNavigation } from '@react-navigation/native';
+import { navigationPages } from '@src/utils/constants';
 
 export default function ConfigurationPlannerFilters() {
   const [showTimeMenu, setShowTimeMenu] = useState(false);
@@ -25,6 +27,7 @@ export default function ConfigurationPlannerFilters() {
   const dispatch = useDispatch();
   const theme = useTheme();
   const t = useTranslate();
+  const navigation = useNavigation()
 
   /* const { checkPlannerPreferences } = PlannerPresenter();
   let numberFiltersChanged = checkPlannerPreferences(
@@ -106,8 +109,7 @@ export default function ConfigurationPlannerFilters() {
         /> */}
         <Pressable
               accessibilityHint={t('accessibility_planner_preferences_button_desc')}
-              onPress={() => setShowPreferencesModal(!showPreferencesModal)}
-              accessibilityState={{expanded: showPreferencesModal}}
+              onPress={() => navigation.navigate(navigationPages.plannerPreferences)}
               style={[styles(theme).button, {marginLeft: 8}]}
             >
               <Label >
@@ -116,17 +118,10 @@ export default function ConfigurationPlannerFilters() {
               <Icon
                 source={theme.drawables.general.Ic_Chevron_Right}
                 size={16}
-                //onPress={() => setShowTimeMenu(!showTimeMenu)}
               />
             </Pressable>
       </View>
       {!plannerTimerInfo.now ? <HourAndCalendarSelectionButtons /> : null}
-      {/* {showPreferencesModal ? (
-        <PlannerPreferencesModal
-          visible={showPreferencesModal}
-          setVisible={() => setShowPreferencesModal(false)}
-        />
-      ) : null} */}
     </View>
   );
 }

@@ -4,7 +4,6 @@ import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
 
 interface SearchCardProps {
     style?: StyleProp<ViewStyle>;
-    title?: string;
     children?: any;
 }
 
@@ -24,13 +23,5 @@ const styles = (theme: ThemeProps) => StyleSheet.create({
         borderRadius: 16, 
         paddingVertical: 12, 
         paddingHorizontal: 8,
-    },
-    title: {
-      textTransform: 'uppercase',
-      color: theme.colors.gray_700,
-      fontSize: 16,
-      fontWeight: '700',
-      lineHeight: 20.8,
-      marginBottom: 8,
     },
 })

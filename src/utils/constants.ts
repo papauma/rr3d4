@@ -6,6 +6,7 @@ export const navigationPages = {
   search: 'Search',
   planner: 'Planner',
   plannerResult: 'PlannerResult',
+  plannerPreferences: 'PlannerPreferences',
   language: 'Language',
   storybook: 'Storybook',
 };

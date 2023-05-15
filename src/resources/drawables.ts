@@ -8,6 +8,7 @@ export interface IDrawables {
     Ic_Arrow_Right: any;
     Ic_Arrow_Up: any;
     Ic_Arrows: any;
+    Ic_Bike: any;
     Ic_Bus: any;
     Ic_storyIcon: any;
     Ic_Check: any;
@@ -15,6 +16,7 @@ export interface IDrawables {
     Ic_Chevron_Left: any;
     Ic_Chevron_Right: any;
     Ic_Chevron_Up: any;
+    Ic_Circle: any;
     Ic_Close: any;
     Ic_Data_Protection: any;
     Ic_Data_Protection_Warn: any;
@@ -56,6 +58,7 @@ export const drawables = {
     Ic_Arrow_Right: require('@images/Ic_Arrow_Right.png'),
     Ic_Arrow_Up: require('@images/Ic_Arrow_Up.png'),
     Ic_Arrows: require('@images/Ic_Arrows.png'),
+    Ic_Bike: require('@images/Ic_Bike.png'),
     Ic_Bus: require('@images/Ic_Bus.png'),
     Ic_storyIcon: require('@images/Ic_storyIcon.png'),
     Ic_Check: require('@images/Ic_Check.png'),
@@ -63,6 +66,7 @@ export const drawables = {
     Ic_Chevron_Left: require('@images/Ic_Chevron_Left.png'),
     Ic_Chevron_Right: require('@images/Ic_Chevron_Right.png'),
     Ic_Chevron_Up: require('@images/Ic_Chevron_Up.png'),
+    Ic_Circle: require('@images/Ic_Circle.png'),
     Ic_Close: require('@images/Ic_Close.png'),
     Ic_Data_Protection: require('@images/Ic_Data_Protection.png'),
     Ic_Data_Protection_Warn: require('@images/Ic_Data_Protection_Warn.png'),
