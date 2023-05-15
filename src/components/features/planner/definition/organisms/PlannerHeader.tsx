@@ -9,7 +9,7 @@ import { View } from 'react-native';
 import ConfigurationPlannerFilters from '../molecules/ConfigurationPlannerFilters';
 
 interface PlannerHeaderProps {
-
+    showFavoriteButton?: boolean;
 }
 
 export default function PlannerHeader(props: PlannerHeaderProps) {
@@ -24,6 +24,7 @@ export default function PlannerHeader(props: PlannerHeaderProps) {
 
                 />
             <RouteSegments
+               showFavoriteButton={props.showFavoriteButton}
                 onSegmentPress={(index: number) => {
                     navigation.navigate(navigationPages.search, {
                     previousScreenParams: { screen: 'Planner', index: index },

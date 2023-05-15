@@ -2,7 +2,7 @@ import { IMap } from '@src/types/interfaces';
 import { calcZoomMobile, getRegionDeltasFromZoom } from '@src/utils/utilsMaps';
 import { useEffect, useMemo, useState } from 'react';
 import { Dimensions, View } from 'react-native';
-import MapView, { BoundingBox, UrlTile } from 'react-native-maps';
+import MapView, { BoundingBox, Polyline, UrlTile } from 'react-native-maps';
 import MapMarker from '../commons/map/MapMarker';
 /*import { IMap } from '../../types/interfaces';
 import { random } from '../../utils/StringUtils';
@@ -53,25 +53,25 @@ export default function MapRender(props: IMap) {
     return markers;
   }, [props.markers, tracksViewChanges, props.onDragEnd, props.draggableMarkers]);
 
-  /* const polylines = useMemo(() => {
+  const polylines = useMemo(() => {
     console.log('renderPolylines() - renderPolylines');
-    const polylines =
+    const polylinesRes =
       props !== null &&
       props !== undefined &&
       props.polylines !== null &&
       props.polylines !== undefined &&
       props.polylines.length > 0 &&
-      props.polylines.map((polylines, index) => (
+      props.polylines.map((polylineInfo, index) => (
         <Polyline
           key={`${index} polyline`}
-          coordinates={polylines.path}
-          {...polylines.properties}
+          coordinates={polylineInfo.path}
+          {...polylineInfo.properties}
         />
       ));
-    return polylines;
+    return polylinesRes;
   }, [props.polylines]);
 
-  const renderCircles = () => {
+  /* const renderCircles = () => {
     if (props.circles?.length === 0) {
       return;
     }
@@ -178,7 +178,7 @@ export default function MapRender(props: IMap) {
           style={{ zIndex: 1 }}
           />
         <>{markers}</>
-        <>{/*polylines*/}</>
+        <>{polylines}</>
         {/*props.circles && renderCircles()*/}
       </MapView>
     </View>

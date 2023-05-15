@@ -39,7 +39,7 @@ export default function HourAndCalendarSelectionButtons() {
         justifyContent: 'space-between',
         //width: '100%',
         alignItems: 'center',
-        flex: 1,
+        //flex: 1,
         marginTop: 8,
       }}
     >

@@ -3,15 +3,16 @@ import IconDynamic from '@src/components/commons/icon/IconDynamic';
 import { useTranslate } from '@src/context/languageContext';
 import { useTheme } from '@src/context/themeContext';
 import { agencyInformation } from '@src/redux/slices/agencysSlices';
-import { plannerSegmentsInformation } from '@src/redux/slices/plannerSegmentsSlice';
+import { plannerSegmentsInformation, plannerSegmentsSlice } from '@src/redux/slices/plannerSegmentsSlice';
 import { plannerInformation } from '@src/redux/slices/plannerSlice';
 import { TypeMarker } from '@src/types/ExploreInterfaces';
-import { IMarker } from '@src/types/interfaces';
+import { IMarker, IPosition } from '@src/types/interfaces';
 import React from 'react';
 import { Platform } from 'react-native';
-import { MarkerDragStartEndEvent } from 'react-native-maps';
+import { LongPressEvent, MarkerDragStartEndEvent } from 'react-native-maps';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import useSearch from '../search/useSearch';
 
 export default function PlannerMapPresenter() {
   const agencyInfo = useSelector(agencyInformation);
@@ -21,8 +22,8 @@ export default function PlannerMapPresenter() {
   const planResult = plannerInfo.plannerResult;
   const selectedIti = plannerInfo.selectedPlan;
   const dispatch = useDispatch();
+  const {onLocation} = useSearch()
   //const coords = RouteUtils.getItiCoords(planResult, selectedIti, segments.length > 2);
-  //const { onLocation } = SearchPresenter();
   //To CHANGE
   const userLocation = null;
   const t = useTranslate();
@@ -103,9 +104,9 @@ export default function PlannerMapPresenter() {
     return initialMarkers.concat(markersOfPublicTransport);
   } */
 
-  /* function obtainPolylineBySegments() {
+  function obtainPolylineBySegments() {
     return segments.filter((m) => m?.position).map((segment) => segment?.position);
-  } */
+  }
 
   function polylineProps() {
     if (Platform.OS === 'ios') {
@@ -127,11 +128,11 @@ export default function PlannerMapPresenter() {
     }
   }
 
-  /* function drawPolyline() {
+  function drawPolyline() {
     return [{ path: obtainPolylineBySegments(), properties: polylineProps() }];
-  } */
+  }
 
-  /* async function onLongPressOnThePlannerMap(event: LongPressEvent) {
+  async function onLongPressOnThePlannerMap(event: LongPressEvent) {
     let index = segments?.findIndex((segment) => segment === null || segment === undefined);
     if (index !== -1) {
       const markerDirection = await onLocation(
@@ -140,9 +141,9 @@ export default function PlannerMapPresenter() {
       );
       dispatch(plannerSegmentsSlice.actions.set({ index: index, stop: markerDirection }));
     }
-  } */
+  }
 
-  /* async function onDragMarker(event: MarkerDragStartEndEvent, initialPosition: IPosition) {
+  async function onDragMarker(event: MarkerDragStartEndEvent, initialPosition: IPosition) {
     let index = segments?.findIndex(
       (segment) => JSON.stringify(segment?.position) === JSON.stringify(initialPosition),
     );
@@ -154,7 +155,7 @@ export default function PlannerMapPresenter() {
 
       dispatch(plannerSegmentsSlice.actions.set({ index: index, stop: markerDirection }));
     }
-  } */
+  }
 
   function polylinePropsOfRouteItinerary(color) {
     if (Platform.OS === 'ios') {
@@ -228,9 +229,9 @@ export default function PlannerMapPresenter() {
   return {
     drawPlannerMarkers,
     //drawRoutePlannerMarkers,
-    //drawPolyline,
-    //onLongPressOnThePlannerMap,
-    //onDragMarker,
+    drawPolyline,
+    onLongPressOnThePlannerMap,
+    onDragMarker,
     //drawPolylineRoutes,
     //drawCirclesItinerary,
   };

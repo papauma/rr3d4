@@ -1,14 +1,13 @@
 import { useNavigation } from '@react-navigation/native';
 import Button from '@src/components/commons/buttons/Button';
 import BackgroundModal from '@src/components/commons/modal/BackgroundModal';
-import ScreenTitle from '@src/components/commons/text/ScreenTitle';
-import RouteSegments from '@src/components/features/planner/definition/molecules/RouteSegments';
 import PlannerHeader from '@src/components/features/planner/definition/organisms/PlannerHeader';
 import LocationButton from '@src/components/widgets/LocationButton';
 import MapRender from '@src/components/widgets/MapRender';
 import { useTranslate } from '@src/context/languageContext';
 import { useTheme } from '@src/context/themeContext';
 import PlannerMapPresenter from '@src/redux/hooks/map/PlannerMapPresenter';
+import useSearch from '@src/redux/hooks/search/useSearch';
 import { contextualInformation } from '@src/redux/slices/contextualSlice';
 import { mapState, updateZoom } from '@src/redux/slices/mapSlice';
 import { IBounds } from '@src/types/interfaces';
@@ -25,7 +24,7 @@ export default function PlannerScreen() {
   const contextual = useSelector(contextualInformation);
   const theme = useTheme();
   const t = useTranslate();
-  const {drawPlannerMarkers} = PlannerMapPresenter();
+  const {drawPlannerMarkers, onDragMarker, onLongPressOnThePlannerMap, drawPolyline} = PlannerMapPresenter();
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -41,10 +40,10 @@ export default function PlannerScreen() {
         updateZoom={(zoom: number) => {
           dispatch(updateZoom(zoom));
         }}
-        //onLongPress={onLongPressOnThePlannerMap}
+        onLongPress={onLongPressOnThePlannerMap}
         updateBounds={(bounds: IBounds, zoom?: number) => {}}
-        //polylines={drawPolyline()}
-        //onDragEnd={onDragMarker}
+        polylines={drawPolyline()}
+        onDragEnd={onDragMarker}
         draggableMarkers={true}
         //layerSelected={selectedLayer}
       /> 
@@ -81,6 +80,7 @@ export default function PlannerScreen() {
             icon={theme.drawables.general.Ic_Plan}
             buttonSizeStyle='medium'
             style={{alignSelf: 'center'}}
+            onPress={navigation.navigate(navigationPages.plannerResult)}
         />
       </View>
     </SafeAreaView>

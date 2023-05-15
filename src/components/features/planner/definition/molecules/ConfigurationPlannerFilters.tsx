@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import PlannerPresenter from '../../../../../redux/hooks/PlannerPresenter';
 import { plannerInformation } from '../../../../../redux/slices/plannerSlice';
 import {
   plannerTimerInformation,
@@ -18,10 +17,10 @@ import AccordionButton from '@src/components/commons/buttons/AccordionButton';
 import HourAndCalendarSelectionButtons from '../../timer/HourAndCalendarSelectionButtons';
 import { useNavigation } from '@react-navigation/native';
 import { navigationPages } from '@src/utils/constants';
+import usePlannerInfo from '@src/redux/hooks/planner/usePlannerInfo';
 
 export default function ConfigurationPlannerFilters() {
   const [showTimeMenu, setShowTimeMenu] = useState(false);
-  const [showPreferencesModal, setShowPreferencesModal] = useState(false);
   const plannerTimerInfo = useSelector(plannerTimerInformation);
   const plannerInfo = useSelector(plannerInformation);
   const dispatch = useDispatch();
@@ -29,12 +28,12 @@ export default function ConfigurationPlannerFilters() {
   const t = useTranslate();
   const navigation = useNavigation()
 
-  /* const { checkPlannerPreferences } = PlannerPresenter();
+  const { checkPlannerPreferences } = usePlannerInfo();
   let numberFiltersChanged = checkPlannerPreferences(
     plannerInfo.accessibilityFilter,
+    plannerInfo.routeTypeFilter,
     plannerInfo.operatorFilters,
-    plannerInfo.walkDistance,
-  ); */
+  );
 
   return (
     <View style={{ paddingHorizontal: 16 }}>
@@ -100,20 +99,15 @@ export default function ConfigurationPlannerFilters() {
             {t('planner_timer_arrive')}
           </MenuItem>
         </Menu>
-        {/* <AccordionOption
-          name={`Preferencias ${numberFiltersChanged === 0 ? '' : `(${numberFiltersChanged})`}`}
-          onPress={() => setShowPreferencesModal(true)}
-          styleText={
-            numberFiltersChanged === 0 ? {} : { color: R.resources.colors.primary.primary_500 }
-          }
-        /> */}
         <Pressable
               accessibilityHint={t('accessibility_planner_preferences_button_desc')}
               onPress={() => navigation.navigate(navigationPages.plannerPreferences)}
               style={[styles(theme).button, {marginLeft: 8}]}
             >
               <Label >
-                {t('planner_preferences')}
+                {numberFiltersChanged !== 0 
+                  ? `${t('planner_preferences')} (${numberFiltersChanged})` 
+                  : t('planner_preferences')}
               </Label>
               <Icon
                 source={theme.drawables.general.Ic_Chevron_Right}
@@ -140,7 +134,7 @@ const styles = (theme: ThemeProps) => StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    flex: 1,
+    //flex: 1,
     alignItems: 'center',
   },
   menuItem: {

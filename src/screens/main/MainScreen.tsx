@@ -26,11 +26,12 @@ export default function MainScreen() {
         <Tab.Screen
             options={{
                 tabBarShowLabel: false,
-                tabBarIcon: ({ focused}) => <Icon source={theme.drawables.general.Ic_Settings} tint={focused ? theme.colors.white : undefined}/>
+                tabBarIcon: ({ focused}) => <Icon source={ theme.drawables.general.Ic_route} 
+                tint={focused ? theme.colors.white : undefined}/>
             }}
-            name={'Settings'}
+            name={'Warning'}
         >
-            {props => <SettingsScreen />}
+            {props => <View />}
         </Tab.Screen>
         <Tab.Screen
             options={{
@@ -53,20 +54,21 @@ export default function MainScreen() {
         <Tab.Screen
             options={{
                 tabBarShowLabel: false,
-                tabBarIcon: ({ focused}) => <Icon source={ focused ? theme.drawables.general.Ic_Warning_White : theme.drawables.general.Ic_Warning}/>
-            }}
-            name={'Warning'}
-        >
-            {props => <View />}
-        </Tab.Screen>
-        <Tab.Screen
-            options={{
-                tabBarShowLabel: false,
                 tabBarIcon: ({ focused}) => <Icon source={theme.drawables.general.Ic_Events} tint={focused ? theme.colors.white : undefined}/>
             }}
             name={'Events'}
         >
             {props => <StoryBookScreen />}
+        </Tab.Screen>
+        <Tab.Screen
+            options={{
+                tabBarShowLabel: false,
+                tabBarIcon: ({ focused}) => <Icon source={theme.drawables.general.Ic_Meatballs} 
+                tint={focused ? theme.colors.white : undefined}/>
+            }}
+            name={'Settings'}
+        >
+            {props => <SettingsScreen />}
         </Tab.Screen>
       </Tab.Navigator>
   )

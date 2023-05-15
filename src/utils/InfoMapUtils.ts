@@ -1,4 +1,5 @@
 import { TypeMarker } from "@src/types/ExploreInterfaces";
+import { IPosition } from "@src/types/interfaces";
 import { Dimensions } from "react-native";
 
 export default class InfoMapUtils {
@@ -27,4 +28,23 @@ export default class InfoMapUtils {
           markerType: TypeMarker.Stop,
         };
       }
+
+   static getInfoLocation(coordinate: any) {
+    return {
+      id: 'dir' + (coordinate.latitude + coordinate.longitude),
+      data: {
+        name: `${parseFloat(
+          parseFloat(coordinate.latitude).toFixed(6),
+        )}, ${parseFloat(parseFloat(coordinate.longitude).toFixed(6))}`,
+        address: `${parseFloat(
+          parseFloat(coordinate.latitude).toFixed(6),
+        )}, ${parseFloat(parseFloat(coordinate.longitude).toFixed(6))}`,
+      },
+      position: {
+        latitude: parseFloat(parseFloat(coordinate.latitude).toFixed(6)),
+        longitude: parseFloat(parseFloat(coordinate.longitude).toFixed(6)),
+      },
+      markerType: TypeMarker.Direction,
+    };
+  }   
 }

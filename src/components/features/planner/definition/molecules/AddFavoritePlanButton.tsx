@@ -10,6 +10,7 @@ export default function AddFavoritePlanButton(props: any) {
         <Button
             buttonCategory='tertiary'
             icon={theme.drawables.general.Ic_Star}
+            style={{marginTop: 8}}
         />
     </>
   )

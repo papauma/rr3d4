@@ -1,4 +1,5 @@
 import LabelBar from '@src/components/widgets/LabelBar';
+import { useTranslate } from '@src/context/languageContext';
 import { useTheme } from '@src/context/themeContext';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
@@ -14,6 +15,7 @@ interface RouteSegmentProps {
   icon?: any;
   onIconDeletePress?: Function;
   placeholder?: string;
+  altIcon?: string;
 }
 
 export default function RouteSegment({
@@ -25,15 +27,18 @@ export default function RouteSegment({
   icon,
   onIconDeletePress,
   placeholder,
+  altIcon,
 }: RouteSegmentProps) {
   const theme = useTheme();
+  const t = useTranslate()
 
   const onActionPressed = () => {
     onActionPress?.();
   };
 
   return (
-    <View style={[styles.content, style]} accessible={true} /* accessibilityHint='Abre el buscador' */>
+    <View style={[styles.content, style]} accessible={true} 
+      accessibilityHint={t('accessibility_planner_segments_desc')}>
       <LabelBar
         backgroundColor={theme.colors.white}
         onDrawableClick={onIconDeletePress}
@@ -45,6 +50,7 @@ export default function RouteSegment({
         actionIcon={theme.drawables.general.Ic_Close}
         actionTint={theme.colors.gray_700}
         placeholder={placeholder ?? ''}
+        altAction={altIcon}
       />
     </View>
   );

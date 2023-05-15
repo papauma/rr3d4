@@ -3,6 +3,7 @@ import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from '../commons/icon/Icon';
 import Label from '../commons/text/Label';
 import { ThemeProps, useTheme } from '@src/context/themeContext';
+import { useTranslate } from '@src/context/languageContext';
 
 interface LabelBarProps {
   onPressIn?: Function;
@@ -15,19 +16,21 @@ interface LabelBarProps {
   value?: string;
   placeholder: string;
   icon?: any;
+  altAction?: string;
   style?: any;
 }
 
 export default function LabelBar(props: LabelBarProps) {
   let placeholder = props.placeholder ?? '';
   const theme = useTheme();
+  const t = useTranslate()
 
   return (
     <TouchableOpacity onPress={() => props.onPressIn?.()} activeOpacity={1} style={{ flex: 1 }}>
       <View
         style={[styles(theme, props.backgroundColor).content, props.style]}
       >
-        {props.icon && <Icon /* alt={'Icono'} */ source={props.icon} />}
+        {props.icon && <Icon alt={props.altAction} source={props.icon} />}
         <View
           //{...props}
           style={[
@@ -50,7 +53,9 @@ export default function LabelBar(props: LabelBarProps) {
           )}
         </View>
         {props.actionIcon && props.value && (
-          <TouchableOpacity onPress={() => props.onDrawableClick?.()}>
+          <TouchableOpacity accessibilityLabel={t('accessibility_button_delete')}
+            accessibilityHint={t('accessibility_button_delete_desc')} 
+            onPress={() => props.onDrawableClick?.()}>
             <Icon /* alt={'Icono cerrar'} */ tint={props.actionTint} source={props.actionIcon} />
           </TouchableOpacity>
         )}

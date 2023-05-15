@@ -9,6 +9,8 @@ import { updateMarkerSelected } from '@src/redux/slices/mapSlice';
 import { useNavigation } from '@react-navigation/native';
 import { IMarker } from '@src/types/interfaces';
 import { plannerSegmentsSlice } from '@src/redux/slices/plannerSegmentsSlice';
+import { contextualSlice } from '@src/redux/slices/contextualSlice';
+import InfoMapUtils from '@src/utils/InfoMapUtils';
 
 export default function useSearch() {
     const dispatch = useDispatch();
@@ -90,8 +92,43 @@ export default function useSearch() {
     }
   }
 
+  const searchLocationFromApi = async (latitude: any, longitude: any) => {
+    //To Change
+    dispatch(contextualSlice.actions.updateShowLoading(true));
+    try {
+      //const result: any = await SearchByCoords(`${latitude},${longitude}`);
+
+      dispatch(contextualSlice.actions.updateShowLoading(false));
+
+      /* if (result.data) {
+        console.log('[Direction]', result.data);
+
+        return InfoMapUtils.parseNoraDirectionToMarker(result.data[0]);
+      } */
+    } catch (e) {}
+
+    return InfoMapUtils.getInfoLocation({
+      latitude: latitude,
+      longitude: longitude,
+    });
+  };
+
+  /**
+   * @function onLocation recibe una latitud y longitud y busca
+   * la dirección asociada a ese punto
+   *  */
+  const onLocation = async (latitude: any, longitude: any) => {
+    const result: any = await searchLocationFromApi(latitude, longitude);
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(result);
+      }, 1500);
+    });
+  };
+
   return {
     search,
     onSearchPressInScreen,
+    onLocation,
   }
 }

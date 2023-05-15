@@ -101,6 +101,9 @@ export default function RouteSegments({
         style={[style?.segment]}
         backgroundColor={backgroundColor}
         icon={actionIcon}
+        altIcon={index === 0 
+            ? t('planner_segments_origin') 
+            : t('planner_segments_destination')}
         onPress={() => {
           if (!disableActions) {
             onSegmentPress?.(index);
@@ -136,9 +139,8 @@ export default function RouteSegments({
         {!notShowButton ? (
           <Button
             buttonCategory='secondary'
-            /* accessibilityLabel='Cambio de sentido'
-            accessibilityHint='Cambia el sentido de origen y destino'
-            alt={'Icono cambio de sentido'} */
+            accessibilityLabel={t('accessibility_planner_segments_change')}
+            accessibilityHint={t('accessibility_planner_segments_change_desc')}
             icon={theme.drawables.general.Ic_Arrows}
             style={[style?.button]}
             onPress={() => {
