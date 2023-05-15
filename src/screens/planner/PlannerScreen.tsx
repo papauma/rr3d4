@@ -1,5 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import Button from '@src/components/commons/buttons/Button';
+import BackgroundModal from '@src/components/commons/modal/BackgroundModal';
 import ScreenTitle from '@src/components/commons/text/ScreenTitle';
 import RouteSegments from '@src/components/features/planner/definition/molecules/RouteSegments';
 import PlannerHeader from '@src/components/features/planner/definition/organisms/PlannerHeader';
@@ -8,6 +9,7 @@ import MapRender from '@src/components/widgets/MapRender';
 import { useTranslate } from '@src/context/languageContext';
 import { useTheme } from '@src/context/themeContext';
 import PlannerMapPresenter from '@src/redux/hooks/map/PlannerMapPresenter';
+import { contextualInformation } from '@src/redux/slices/contextualSlice';
 import { mapState, updateZoom } from '@src/redux/slices/mapSlice';
 import { IBounds } from '@src/types/interfaces';
 import { defaultLocation, navigationPages } from '@src/utils/constants';
@@ -19,7 +21,8 @@ export default function PlannerScreen() {
   const [refMapView, setRefMapView] = useState()
   const selectorMap = useSelector(mapState);
   const dispatch = useDispatch();
-  const navigation = useNavigation()
+  const navigation = useNavigation();
+  const contextual = useSelector(contextualInformation);
   const theme = useTheme();
   const t = useTranslate();
   const {drawPlannerMarkers} = PlannerMapPresenter();
@@ -45,7 +48,7 @@ export default function PlannerScreen() {
         draggableMarkers={true}
         //layerSelected={selectedLayer}
       /> 
-
+      {contextual.showBackground && <BackgroundModal/>}
       <View
         style={{
           top: 0,

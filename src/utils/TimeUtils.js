@@ -1,5 +1,3 @@
-import { dayNamesAbreviation, monthNamesAbreviation } from './constants';
-
 export default class TimeUtils {
   static getTime(duration) {
     let date = new Date(duration);
@@ -92,15 +90,5 @@ export default class TimeUtils {
     let startMinute = dateStart.getMinutes() ?? 0;
 
     return `${startHour}:${startMinute > 9 ? startMinute : '0' + startMinute}`;
-  }
-
-  static getSelectedDayPlannerMessage(date) {
-    let splitDate = date.split('-');
-    let formattedDate = new Date(`${splitDate[2]}-${splitDate[0]}-${splitDate[1]}`);
-    let dayOfWeek = formattedDate.getDay();
-    let dayName = dayNamesAbreviation[dayOfWeek];
-    let monthIndex = parseInt(splitDate[0]) - 1;
-    let monthName = monthNamesAbreviation[monthIndex].toLowerCase();
-    return `${dayName}, ${splitDate[1]} ${monthName}`;
   }
 }

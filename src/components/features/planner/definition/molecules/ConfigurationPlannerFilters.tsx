@@ -14,6 +14,8 @@ import { Menu } from '@src/components/commons/menu/Menu';
 import Label from '@src/components/commons/text/Label';
 import { MenuItem } from '@src/components/commons/menu/MenuItem';
 import Icon from '@src/components/commons/icon/Icon';
+import AccordionButton from '@src/components/commons/buttons/AccordionButton';
+import HourAndCalendarSelectionButtons from '../timer/HourAndCalendarSelectionButtons';
 
 export default function ConfigurationPlannerFilters() {
   const [showTimeMenu, setShowTimeMenu] = useState(false);
@@ -39,32 +41,23 @@ export default function ConfigurationPlannerFilters() {
         <Menu
           visible={showTimeMenu}
           anchor={
-            <Pressable
-              /* accessibilityHint='Muestra una lista de tipos de momentos en el tiempo para planificar' */
-              onPress={() => setShowTimeMenu(!showTimeMenu)}
-              accessibilityState={{expanded: showTimeMenu}}
-              style={styles(theme).button}
-            >
-              <Label>
-                {plannerTimerInfo.now
-                  ? t('planner_timer_now')
-                  : plannerTimerInfo.arriveBy
-                  ? t('planner_timer_arrive')
-                  : t('planner_timer_departure')}
-              </Label>
-              <Icon
-                source={showTimeMenu ? theme.drawables.general.Ic_Chevron_Up : theme.drawables.general.Ic_Chevron_Down}
-                size={16}
-                //onPress={() => setShowTimeMenu(!showTimeMenu)}
-              />
-            </Pressable>
+            <AccordionButton
+              title={plannerTimerInfo.now
+                ? t('planner_timer_now')
+                : plannerTimerInfo.arriveBy
+                ? t('planner_timer_arrive')
+                : t('planner_timer_departure')}
+                onPress={() => setShowTimeMenu(!showTimeMenu)}
+               accessibilityHint={t('accessibility_planner_timer_button_desc')}   
+            />
           }
           onRequestClose={() => setShowTimeMenu(false)}
           style={{ marginTop: 25, alignItem: 'center' }}
         >
           <MenuItem
             iconType={''}
-            /* accessibilityHint={'Tras pulsarse la planificación tomará como hora de salida la actual.'} */
+            accessibilityHint={t('accessibility_planner_timer_now_button_desc')}
+            style={[styles(theme).menuItem]}
             disabled={plannerTimerInfo.now}
             onPress={() => {
               dispatch(plannerTimerSlice.actions.updateNow(true));
@@ -75,13 +68,13 @@ export default function ConfigurationPlannerFilters() {
           </MenuItem>
           <MenuItem
             iconType={''}
-            /* accessibilityHint={'Tras pulsarse la planificación tomará como fecha y hora de salida la que se establezca en el selector.'} */
+            accessibilityHint={t('accessibility_planner_timer_departure_button_desc')}
             disabled={!plannerTimerInfo.now && !plannerTimerInfo.arriveBy}
-            style={{
+            style={[{
               borderTopWidth: 1,
               borderBottomWidth: 1,
               borderColor: theme.colors.gray_200,
-            }}
+            }, styles(theme).menuItem]}
             onPress={() => {
               dispatch(plannerTimerSlice.actions.updateNow(false));
               dispatch(plannerTimerSlice.actions.updateArriveBy(false));
@@ -92,8 +85,9 @@ export default function ConfigurationPlannerFilters() {
           </MenuItem>
           <MenuItem
             iconType={''}
-            /* accessibilityHint={'Tras pulsarse la planificación tomará como fecha y hora de llegada la que se establezca en el selector.'} */
+            accessibilityHint={t('accessibility_planner_timer_arrival_button_desc')}
             disabled={!plannerTimerInfo.now && plannerTimerInfo.arriveBy}
+            style={[styles(theme).menuItem]}
             onPress={() => {
               dispatch(plannerTimerSlice.actions.updateNow(false));
               dispatch(plannerTimerSlice.actions.updateArriveBy(true));
@@ -111,12 +105,12 @@ export default function ConfigurationPlannerFilters() {
           }
         /> */}
         <Pressable
-              /* accessibilityHint='Muestra una lista de tipos de momentos en el tiempo para planificar' */
+              accessibilityHint={t('accessibility_planner_preferences_button_desc')}
               onPress={() => setShowPreferencesModal(!showPreferencesModal)}
               accessibilityState={{expanded: showPreferencesModal}}
               style={[styles(theme).button, {marginLeft: 8}]}
             >
-              <Label>
+              <Label >
                 {t('planner_preferences')}
               </Label>
               <Icon
@@ -126,7 +120,7 @@ export default function ConfigurationPlannerFilters() {
               />
             </Pressable>
       </View>
-      {/* {!plannerTimerInfo.now ? <HourAndCalendarSelectionButtons /> : null} */}
+      {!plannerTimerInfo.now ? <HourAndCalendarSelectionButtons /> : null}
       {/* {showPreferencesModal ? (
         <PlannerPreferencesModal
           visible={showPreferencesModal}
@@ -153,5 +147,9 @@ const styles = (theme: ThemeProps) => StyleSheet.create({
     justifyContent: 'space-between',
     flex: 1,
     alignItems: 'center',
+  },
+  menuItem: {
+    paddingVertical: 9.5,
+    width: '100%',
   }
 })

@@ -69,10 +69,10 @@ export function MenuItem({
 
 const styles = StyleSheet.create({
   container: {
-    height: 48,
+    //height: 48,
     justifyContent: 'center',
-    maxWidth: 248,
-    minWidth: 124,
+    //maxWidth: 248,
+    //minWidth: 124,
   },
   label: {
     flexDirection: 'row',
@@ -83,6 +83,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '400',
     textAlign: 'left',
-    paddingLeft: 10,
+    lineHeight: 21,
+    //paddingLeft: 10,
   },
 });
