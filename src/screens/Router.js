@@ -13,6 +13,7 @@ import SearchScreen from './search/SearchScreen';
 import PlannerScreen from './planner/PlannerScreen';
 import PlannerPreferencesScreen from './planner/preferences/PlannerPreferencesScreen';
 import PlannerResultScreen from './planner/result/PlannerResultScreen';
+import RouteDetailsScreen from './planner/routeDetails/RouteDetailsScreen';
 
 const Stack = createStackNavigator();
 
@@ -42,6 +43,10 @@ const PlannerComponent = ({navigation, route, options, back}) => {
 
 const PlannerResultComponent = ({navigation, route, options, back}) => {
   return <PlannerResultScreen {...route.params} />;
+};
+
+const RouteDetailsComponent = ({navigation, route, options, back}) => {
+  return <RouteDetailsScreen {...route.params} />;
 };
 
 const PlannerPreferencesComponent = ({navigation, route, options, back}) => {
@@ -82,6 +87,7 @@ export default function Routes() {
         <Stack.Screen name={navigationPages.search} component={SearchComponent} />
         <Stack.Screen name={navigationPages.planner} component={PlannerComponent} />
         <Stack.Screen name={navigationPages.plannerResult} component={PlannerResultComponent} />
+        <Stack.Screen name={navigationPages.routeDetails} component={RouteDetailsComponent} />
         <Stack.Screen name={navigationPages.plannerPreferences} component={PlannerPreferencesComponent} />
         <Stack.Screen name={navigationPages.language} component={LanguageComponent} />
         <Stack.Screen name={navigationPages.storybook} component={StoryButtonsComponent} />

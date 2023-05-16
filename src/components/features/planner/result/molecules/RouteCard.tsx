@@ -4,7 +4,7 @@ import { useTranslate } from '@src/context/languageContext';
 import { ThemeProps, useTheme } from '@src/context/themeContext'
 import { TypeRouteFilter } from '@src/types/PlannerInterfaces';
 import React, { useMemo } from 'react'
-import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
+import { StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native'
 import RouteTimeInfo from '../atoms/RouteTimeInfo';
 import RouteLegs from './RouteLegs';
 
@@ -13,6 +13,7 @@ interface RouteCardProps {
     first?: boolean;
     routeType?: TypeRouteFilter;
     route?: any;
+    onPressCard?: Function;
 }
 
 export default function RouteCard(props: RouteCardProps) {
@@ -42,7 +43,10 @@ export default function RouteCard(props: RouteCardProps) {
   }, [props.routeType])
 
   return (
-    <View style={[styles(theme).card, props.first ? styles(theme).cardSelected : null, props.style]}>
+    <TouchableOpacity 
+        style={[styles(theme).card, props.first ? styles(theme).cardSelected : null, props.style]}
+        onPress={() => props.onPressCard?.()}
+        >
         {props.first && (<View style={styles(theme).positionFirst}>
             <View style={styles(theme).boxFirst} accessible={true}>
                 <Icon
@@ -61,7 +65,7 @@ export default function RouteCard(props: RouteCardProps) {
             warning={props.route?.alert}
         />
         <RouteLegs legs={props.route?.legs} duration={props.route?.duration} />
-    </View>
+    </TouchableOpacity>
   )
 }
 
