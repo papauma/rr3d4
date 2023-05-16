@@ -21,6 +21,7 @@ import { searchSlice } from './slices/searchSlice';
 import { plannerSegmentsSlice } from './slices/plannerSegmentsSlice';
 import { plannerSlice } from './slices/plannerSlice';
 import { plannerTimerSlice } from './slices/plannerTimerSlice';
+import { plannerServiceApi } from './services/plannerService';
 
 export const reducer = {
   user: userSlice,
@@ -45,6 +46,7 @@ export const reducer = {
   [iconsServiceApi.reducerPath]: iconsServiceApi.reducer,
   [userServiceApi.reducerPath]: userServiceApi.reducer,
   [linesServiceApi.reducerPath]: linesServiceApi.reducer,
+  [plannerServiceApi.reducerPath]: plannerServiceApi.reducer,
 };
 
 export const store = configureStore({
@@ -64,6 +66,7 @@ export const store = configureStore({
       iconsServiceApi.middleware,
       userServiceApi.middleware,
       linesServiceApi.middleware,
+      plannerServiceApi.middleware,
     );
   },
 });

@@ -13,7 +13,8 @@ export default function DurationText(props: DurationTextProps) {
   let minutesDuration = hoursDuration ? props.duration % 60 : props.duration;
 
   return (
-    <View style={{ flexDirection: 'row', alignItems: 'flex-end' }} accessible={true} accessibilityLabel={hoursDuration ? `${hoursDuration} h ${minutesDuration} min` : `${minutesDuration} min`}>
+    <View style={{ flexDirection: 'row', alignItems: 'flex-end' }} accessible={true} 
+        accessibilityLabel={hoursDuration ? `${hoursDuration} h ${minutesDuration} min` : `${minutesDuration} min`}>
       <Label style={[styles.numberBig, props.styleNumber]}>
         {hoursDuration ? `${hoursDuration} ` : ''}
       </Label>

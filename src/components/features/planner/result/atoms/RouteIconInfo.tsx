@@ -2,7 +2,7 @@ import Icon from '@src/components/commons/icon/Icon';
 import IconDynamic from '@src/components/commons/icon/IconDynamic';
 import RouteCodeBox from '@src/components/commons/routeCode/RouteCodeBox';
 import Label from '@src/components/commons/text/Label';
-import { useTranslate } from '@src/context/languageContext';
+import { useLanguage, useTranslate } from '@src/context/languageContext';
 import { useTheme } from '@src/context/themeContext';
 import { agencyInformation } from '@src/redux/slices/agencysSlices';
 import PlanUtils from '@src/utils/PlanUtils';
@@ -28,6 +28,7 @@ export default function RouteIconInfo(props: RouteIconInfoProps) {
   const agencies: Array<any> = agencyInfo.dataOrigin;
   const theme = useTheme();
   const t = useTranslate();
+  const locale = useLanguage()
 
   const calculatedAgencyId = props.agencyId ? props.agencyId.split(':')[1] : null;
   const agency = calculatedAgencyId
@@ -48,12 +49,31 @@ export default function RouteIconInfo(props: RouteIconInfoProps) {
             {backgroundColor: theme.colors.gray_200},
             props.opacity ? styles().opacity : null]}
           accessible={true}
-          //accessibilityLabel={`Tramo ruta andando, duración ${props.duration} min`}
+          accessibilityLabel={`${t('accessibility_planner_card_leg_walk')} ${props.duration} min`}
         >
           <Icon 
             //alt={'Icono andando'} 
             size={18}
             source={theme.drawables.general.Ic_Walk} />
+          <View style={styles().numberView}>
+            <Label style={styles().numberSmall}>{`${props.duration} min`}</Label>
+          </View>
+        </View>,
+      );
+    } else if (props.mode === 'TRANSFER') {
+      result.push(
+        <View
+          key={random()}
+          style={[styles().boxWalking, 
+            {backgroundColor: theme.colors.gray_200},
+            props.opacity ? styles().opacity : null]}
+          accessible={true}
+          accessibilityLabel={`${t('accessibility_planner_card_leg_transfer')} ${props.duration} min`}
+        >
+          <Icon 
+            //alt={'Icono andando'} 
+            size={18}
+            source={theme.drawables.general.Ic_Transbordo} />
           <View style={styles().numberView}>
             <Label style={styles().numberSmall}>{`${props.duration} min`}</Label>
           </View>
@@ -70,7 +90,9 @@ export default function RouteIconInfo(props: RouteIconInfoProps) {
             props.publicGrow ? props.publicGrow : null,
             props.opacity ? styles().opacity : null]}
           accessible={true}
-          //accessibilityLabel={`Tramo ruta transporte, duración ${props.duration} min`}
+          accessibilityLabel={locale === 'es' ? `${props.mode?.toLowerCase()} ${t('accessibility_planner_card_leg_trip')}, ${props.duration} min`
+            : `${t('accessibility_planner_card_leg_trip')}, ${t('accessibility_duration')} ${props.duration} min`
+          }
         >
           {props.duration !== undefined ? <Label style={[{fontSize: 14, lineHeight: 21, fontWeight: '400', color: theme.colors.white},
             props.textColor ? {color: `#${props.textColor}`} : undefined
@@ -86,10 +108,11 @@ export default function RouteIconInfo(props: RouteIconInfoProps) {
         </View>,
       );
     } else {
+      //TO DO (posible caso de bicis)
       result.push(
         <View
           key={random()}
-          style={[styles().rowDirection, props.opacity ? styles().opacity : null]}
+          style={[styles().boxWalking, props.opacity ? styles().opacity : null]}
           accessible={true}
           //accessibilityLabel={`Tramo ruta transporte, duración ${props.duration} min`}
         >

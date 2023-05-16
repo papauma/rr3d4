@@ -7,6 +7,7 @@ import Icon from '@src/components/commons/icon/Icon';
 import RouteIconInfo from '../atoms/RouteIconInfo';
 import { log } from 'react-native-reanimated';
 import PlanUtils from '@src/utils/PlanUtils';
+import { useTranslate } from '@src/context/languageContext';
 
 /* Línea iconográfica que muestra la leg de la ruta */
 export default function RouteLegs({
@@ -21,6 +22,7 @@ export default function RouteLegs({
   duration?: number;
 }) {
   const theme = useTheme();
+  const t = useTranslate()
 
   const renderIcons = () => {
     let results: Array<any> = [];
@@ -28,17 +30,9 @@ export default function RouteLegs({
       return [];
     }
 
-    let minWidth = 69; 
-    let totalLength = Dimensions.get('window').width - 64 ;
     let totalPublic = legs.filter((infoLeg: ILeg) => PlanUtils.isPublicMode(infoLeg.mode))
-    let totalUsed = ((legs.length * 69) + ((legs.length % 2 + 1) * 12)) / totalLength 
-    console.log('Total', totalUsed);
-    console.log('Public', totalPublic.length);
-    
-    console.log('Length',totalLength);
+
     let newLegs = PlanUtils.organizeLengthOfLegsPublic(totalPublic, legs)
-    console.log('New', newLegs);
-    
 
     for (let i = 0; i < legs.length - 1; i++) {
       results.push(
@@ -69,6 +63,32 @@ export default function RouteLegs({
           ]}
         />,
       );
+
+      if (legs[i]?.transhipment) {
+        results.push(
+          <RouteIconInfo
+            key={`${legs[i].id} icon`}
+            mode={'TRANSFER'}
+            duration={legs[i]?.duration}
+            textColor={legs[i]?.routeTextColor}
+            opacity={indexSelected !== undefined ? i !== indexSelected : false}
+          />,
+        );
+        /* Separador  */
+        results.push(
+          <Icon
+            //alt={'Icono separador'}
+            key={random()}
+            source={theme.drawables.general.Ic_Play}
+            tint={theme.colors.gray_500}
+            style={[
+              styles().icon,
+              styles().separator,
+              indexSelected !== undefined ? (i === indexSelected ? null : styles().opacity) : null,
+            ]}
+          />,
+        );
+      }
     }
     results.push(
       <RouteIconInfo
@@ -88,8 +108,8 @@ export default function RouteLegs({
   };
 
   return (
-      <View style={styles().row} accessible={true}
-       //accessibilityLabel='Listado de tramos de ruta'
+      <View style={[styles().row, style]} accessible={true}
+       accessibilityLabel={t('accessibility_planner_card_legs')}
        >
         {renderIcons()}
       </View>

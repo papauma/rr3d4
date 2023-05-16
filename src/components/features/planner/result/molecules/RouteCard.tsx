@@ -3,7 +3,7 @@ import Label from '@src/components/commons/text/Label';
 import { useTranslate } from '@src/context/languageContext';
 import { ThemeProps, useTheme } from '@src/context/themeContext'
 import { TypeRouteFilter } from '@src/types/PlannerInterfaces';
-import React from 'react'
+import React, { useMemo } from 'react'
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
 import RouteTimeInfo from '../atoms/RouteTimeInfo';
 import RouteLegs from './RouteLegs';
@@ -19,15 +19,37 @@ export default function RouteCard(props: RouteCardProps) {
   const theme = useTheme();
   const t = useTranslate();
 
+  //TO CHANGE (cambiar de sitio)
+  const infoOrderCard = useMemo(() => {
+    let infoOrder = {
+        title: t('planner_result_card_order_transfer'),
+        icon: theme.drawables.general.Ic_Transbordo,
+    }
+
+    if (props.routeType === TypeRouteFilter.FAST) {
+        infoOrder = {
+            title: t('planner_result_card_order_fast'),
+            icon: theme.drawables.general.Ic_Transbordo,
+        }
+    } else if (props.routeType === TypeRouteFilter.WALK) {
+        infoOrder = {
+            title: t('planner_result_card_order_walk'),
+            icon: theme.drawables.general.Ic_Walk,
+        }
+    }
+
+    return infoOrder
+  }, [props.routeType])
+
   return (
     <View style={[styles(theme).card, props.first ? styles(theme).cardSelected : null, props.style]}>
         {props.first && (<View style={styles(theme).positionFirst}>
-            <View style={styles(theme).boxFirst}>
+            <View style={styles(theme).boxFirst} accessible={true}>
                 <Icon
-                    source={theme.drawables.general.Ic_Bus}
+                    source={infoOrderCard.icon}
                     size={18}
                 />
-                <Label style={styles(theme).titleRoute}>{'Ruta más rápida'}</Label>
+                <Label style={styles(theme).titleRoute}>{infoOrderCard.title}</Label>
             </View>
         </View>)}
         <RouteTimeInfo
@@ -54,6 +76,7 @@ const styles = (theme: ThemeProps) => StyleSheet.create({
     cardSelected: {
         borderWidth: 2,
         borderColor: theme.colors.primary_300,
+        marginTop: 16,
     },
     boxFirst: {
         backgroundColor: theme.colors.primary_100,
@@ -67,6 +90,7 @@ const styles = (theme: ThemeProps) => StyleSheet.create({
         position: 'absolute',
         marginTop: -16,
         marginLeft: 12,
+        zIndex: 40,
     },
     titleRoute: {
        fontSize: 12,

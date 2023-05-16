@@ -15,12 +15,11 @@ export default function StoryCards() {
     {
         id: 124,
         mode: 'BUS',
-        routeShortName: 'Palma de la mano',
+        routeShortName: '25',
         duration: 10,
         agencyId: '10:6',
         headsign: 'Palma',
         routeColor: '7A77C7',
-
     },
     {
         id: 125,
@@ -31,7 +30,7 @@ export default function StoryCards() {
     {
         id: 135,
         mode: 'BUS',
-        routeShortName: 'Palma de la mano 2',
+        routeShortName: '2',
         duration: 20,
         agencyId: '10:6',
         headsign: 'Palma',
@@ -55,7 +54,7 @@ export default function StoryCards() {
     {
         id: 144,
         mode: 'BUS',
-        routeShortName: 'Palma de la mano',
+        routeShortName: '8',
         duration: 10,
         agencyId: '10:6',
         headsign: 'Palma',
@@ -74,7 +73,7 @@ export default function StoryCards() {
     {
         id: 154,
         mode: 'BUS',
-        routeShortName: 'Palma de la mano',
+        routeShortName: '12',
         duration: 10,
         agencyId: '10:6',
         headsign: 'Palma',
@@ -99,7 +98,7 @@ export default function StoryCards() {
     {
         id: 164,
         mode: 'BUS',
-        routeShortName: 'Palma de la mano',
+        routeShortName: '21',
         duration: 10,
         agencyId: '10:6',
         headsign: 'Palma',
@@ -115,8 +114,8 @@ export default function StoryCards() {
     {
         id: 166,
         mode: 'BUS',
-        routeShortName: 'Palma de la mano 2',
-        duration: 30,
+        routeShortName: '12',
+        duration: 18,
         agencyId: '10:6',
         headsign: 'Palma',
         routeColor: 'D8C05B',
@@ -136,6 +135,40 @@ export default function StoryCards() {
         routeShortName: 'Andar',
         duration: 20,
     },
+  ]
+
+  const legsExample6 : Array<ILeg> = [
+    {
+        id: 183,
+        mode: 'WALK',
+        routeShortName: 'Andar',
+        duration: 5,
+    },
+    {
+        id: 184,
+        mode: 'BUS',
+        routeShortName: '11',
+        duration: 10,
+        agencyId: '10:6',
+        headsign: 'Palma',
+        routeColor: 'F6AA00',
+        transhipment: true,
+    },
+    {
+        id: 186,
+        mode: 'BUS',
+        routeShortName: '6',
+        duration: 30,
+        agencyId: '10:6',
+        headsign: 'Palma',
+        routeColor: '993636',
+    },
+    {
+        id: 187,
+        mode: 'WALK',
+        routeShortName: 'Andar',
+        duration: 4,
+    }
   ]
 
   return (
@@ -180,6 +213,14 @@ export default function StoryCards() {
                 startTime: '10:31',
                 endTime: '10:51',
                 legs: legsExample5,
+            }}
+        />
+        <RouteCard style={{marginTop: 16}}
+            route={{
+                duration: 90,
+                startTime: '10:31',
+                endTime: '12:01',
+                legs: legsExample6,
             }}
         />
          <RouteCard style={{marginTop: 16}}

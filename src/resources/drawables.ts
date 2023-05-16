@@ -24,6 +24,7 @@ export interface IDrawables {
     Ic_Error: any;
     Ic_Events: any;
     Ic_filters: any;
+    Ic_gotita: any;
     Ic_Home: any;
     Ic_Info: any;
     Ic_Less: any;
@@ -43,6 +44,7 @@ export interface IDrawables {
     Ic_Settings: any;
     Ic_Star: any;
     Ic_Success: any;
+    Ic_Transbordo: any;
     Ic_Up_bottomsheet: any;
     Ic_Walk: any;
     Ic_Warning: any;
@@ -78,6 +80,7 @@ export const drawables = {
     Ic_Error: require('@images/Ic_Error.png'),
     Ic_Events: require('@images/Ic_Events.png'),
     Ic_filters: require('@images/Ic_filters.png'),
+    Ic_gotita: require('@images/Ic_gotita.png'),
     Ic_Home: require('@images/Ic_Home.png'),
     Ic_Info: require('@images/Ic_Info.png'),
     Ic_Less: require('@images/Ic_Less.png'),
@@ -97,6 +100,7 @@ export const drawables = {
     Ic_Settings: require('@images/Ic_Settings.png'),
     Ic_Star: require('@images/Ic_Star.png'),
     Ic_Success: require('@images/Ic_Success.png'),
+    Ic_Transbordo: require('@images/Ic_Transbordo.png'),
     Ic_Up_bottomsheet: require('@images/Ic_Up_bottomsheet.png'),
     Ic_Walk: require('@images/Ic_Walk.png'),
     Ic_Warning: require('@images/Ic_Warning.png'),

@@ -7,6 +7,7 @@ export const navigationPages = {
   planner: 'Planner',
   plannerPreferences: 'PlannerPreferences',
   plannerResult: 'PlannerResult',
+  routeDetails: 'RouteDetails',
   language: 'Language',
   storybook: 'Storybook',
 };

@@ -27,11 +27,11 @@ export default function RouteCardsGroup(props: RouteCardsGroupProps) {
         {props.isFavorite && favorites?.agencyId?.length === 0 ? null : (
           <View style={styles().empty}>
             <Label style={{ marginBottom: 12, fontWeight: '700' }}>
-              {'No se han encontrado resultados'}
+              {t('planner_result_empty_title')}
             </Label>
             <Label>
               {
-                'Si desea obtener una planificación modifique las preferencias o los puntos de salida o llegada'
+                t('planner_result_empty_desc')
               }
             </Label>
           </View>
@@ -45,11 +45,12 @@ export default function RouteCardsGroup(props: RouteCardsGroupProps) {
     navigation.navigate(navigationPages.routeDetails);
   }
 
-  const renderRoute = ({ item }) => {
+  const renderRoute = ({ item, index }) => {
     return (
       <RouteCard
         key={item.id}
         index={item.id}
+        first={index === 0}
         route={item}
         plan={props.plan}
         onPressCard={(selectedIndex: number) => onPressCard(selectedIndex)}
@@ -59,7 +60,7 @@ export default function RouteCardsGroup(props: RouteCardsGroupProps) {
 
   return (
     <FlatList
-      //accessibilityLabel='Listado de itinerarios planificados'
+      accessibilityLabel={t('accessibility_planner_result_cards')}
       data={props.plan}
       renderItem={renderRoute}
       ItemSeparatorComponent={() => <View style={{ marginBottom: 8 }} />}

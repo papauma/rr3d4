@@ -22,7 +22,7 @@ export default function RouteTimeInfo(props: RouteTimeProps) {
   return (
     <View style={[styles.row, {justifyContent: 'space-between'}]}>
         <View accessible={true} 
-            //accessibilityLabel={`Hora itinerario: ${`${props.startTime} - ${props.endTime}`}`}
+            accessibilityLabel={`${t('accessibility_planner_timer_itinerary_hour')}: ${`${props.startTime} - ${props.endTime}`}`}
             >
             <Label  style={styles.number}>{`${props.startTime}-${props.endTime}`}</Label>
         </View>
@@ -33,6 +33,7 @@ export default function RouteTimeInfo(props: RouteTimeProps) {
                 duration={props.duration}
             />
             {props.warning && <Icon
+                alt={t('accessibility_planner_card_warning')}
                 source={theme.drawables.general.Ic_Warning}
                 tint={theme.colors.tertiary_yellow}
                 style={{marginLeft: 16}}

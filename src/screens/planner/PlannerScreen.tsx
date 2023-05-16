@@ -1,5 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import Button from '@src/components/commons/buttons/Button';
+import Loading from '@src/components/commons/loading/Loading';
 import BackgroundModal from '@src/components/commons/modal/BackgroundModal';
 import PlannerHeader from '@src/components/features/planner/definition/organisms/PlannerHeader';
 import LocationButton from '@src/components/widgets/LocationButton';
@@ -7,6 +8,7 @@ import MapRender from '@src/components/widgets/MapRender';
 import { useTranslate } from '@src/context/languageContext';
 import { useTheme } from '@src/context/themeContext';
 import PlannerMapPresenter from '@src/redux/hooks/map/PlannerMapPresenter';
+import usePlannerInfo from '@src/redux/hooks/planner/usePlannerInfo';
 import useSearch from '@src/redux/hooks/search/useSearch';
 import { contextualInformation } from '@src/redux/slices/contextualSlice';
 import { mapState, updateZoom } from '@src/redux/slices/mapSlice';
@@ -25,6 +27,9 @@ export default function PlannerScreen() {
   const theme = useTheme();
   const t = useTranslate();
   const {drawPlannerMarkers, onDragMarker, onLongPressOnThePlannerMap, drawPolyline} = PlannerMapPresenter();
+  const {onPlannerSegmentChange, allSegmentsHaveValue} = usePlannerInfo();
+
+
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -48,6 +53,7 @@ export default function PlannerScreen() {
         //layerSelected={selectedLayer}
       /> 
       {contextual.showBackground && <BackgroundModal/>}
+      {contextual.showLoading && <Loading/>}
       <View
         style={{
           top: 0,
@@ -80,7 +86,12 @@ export default function PlannerScreen() {
             icon={theme.drawables.general.Ic_Plan}
             buttonSizeStyle='medium'
             style={{alignSelf: 'center'}}
-            onPress={() => navigation.navigate(navigationPages.plannerResult)}
+            disabled={!allSegmentsHaveValue()}
+            onPress={() => {
+            onPlannerSegmentChange((res) => {
+              navigation.navigate(navigationPages.plannerResult, { plan: res });
+            });
+          }}
         />
       </View>
     </SafeAreaView>
