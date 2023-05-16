@@ -32,6 +32,7 @@ export interface IDrawables {
     Ic_Meatballs: any;
     Ic_Ocupacion: any;
     Ic_Plan: any;
+    Ic_Play: any;
     Ic_Point_Dest: any;
     Ic_Point_MyLocation: any;
     Ic_route: any;
@@ -43,6 +44,7 @@ export interface IDrawables {
     Ic_Star: any;
     Ic_Success: any;
     Ic_Up_bottomsheet: any;
+    Ic_Walk: any;
     Ic_Warning: any;
     Ic_Warning_White: any;
   }
@@ -84,6 +86,7 @@ export const drawables = {
     Ic_Meatballs: require('@images/Ic_Meatballs.png'),
     Ic_Ocupacion: require('@images/Ic_Ocupacion.png'),
     Ic_Plan: require('@images/Ic_Plan.png'),
+    Ic_Play: require('@images/Ic_Play.png'),
     Ic_Point_Dest: require('@images/Ic_Point_Dest.png'),
     Ic_Point_MyLocation: require('@images/Ic_Point_MyLocation.png'),
     Ic_route: require('@images/Ic_route.png'),
@@ -95,6 +98,7 @@ export const drawables = {
     Ic_Star: require('@images/Ic_Star.png'),
     Ic_Success: require('@images/Ic_Success.png'),
     Ic_Up_bottomsheet: require('@images/Ic_Up_bottomsheet.png'),
+    Ic_Walk: require('@images/Ic_Walk.png'),
     Ic_Warning: require('@images/Ic_Warning.png'),
     Ic_Warning_White: require('@images/Ic_Warning_White.png'),
   }

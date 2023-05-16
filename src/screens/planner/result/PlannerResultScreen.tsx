@@ -1,5 +1,6 @@
 import ErrorSnackBar from '@src/components/commons/feedback/ErrorSnackBar'
 import PlannerHeader from '@src/components/features/planner/definition/organisms/PlannerHeader'
+import RouteCardsGroup from '@src/components/features/planner/result/organisms/RouteCardsGroup'
 import { contextualInformation, contextualSlice } from '@src/redux/slices/contextualSlice'
 import React from 'react'
 import { SafeAreaView } from 'react-native'
@@ -15,6 +16,7 @@ export default function PlannerResultScreen(props: any) {
         {contextual.errorMessage && 
         (<ErrorSnackBar message={contextual.errorMessage} 
               onPress={() => dispatch(contextualSlice.actions.updateErrorMessage(''))}/>)}
+        <RouteCardsGroup/>
     </SafeAreaView>
   )
 }

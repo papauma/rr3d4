@@ -80,7 +80,7 @@ export default function PlannerScreen() {
             icon={theme.drawables.general.Ic_Plan}
             buttonSizeStyle='medium'
             style={{alignSelf: 'center'}}
-            onPress={navigation.navigate(navigationPages.plannerResult)}
+            onPress={() => navigation.navigate(navigationPages.plannerResult)}
         />
       </View>
     </SafeAreaView>

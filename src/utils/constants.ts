@@ -5,8 +5,8 @@ export const navigationPages = {
   filters: 'Filters',
   search: 'Search',
   planner: 'Planner',
-  plannerResult: 'PlannerResult',
   plannerPreferences: 'PlannerPreferences',
+  plannerResult: 'PlannerResult',
   language: 'Language',
   storybook: 'Storybook',
 };
