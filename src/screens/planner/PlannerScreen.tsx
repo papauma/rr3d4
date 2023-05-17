@@ -12,24 +12,79 @@ import usePlannerInfo from '@src/redux/hooks/planner/usePlannerInfo';
 import useSearch from '@src/redux/hooks/search/useSearch';
 import { contextualInformation } from '@src/redux/slices/contextualSlice';
 import { mapState, updateZoom } from '@src/redux/slices/mapSlice';
-import { IBounds } from '@src/types/interfaces';
+import { plannerSegmentsInformation } from '@src/redux/slices/plannerSegmentsSlice';
+import { IBounds, IMarker } from '@src/types/interfaces';
+import GeoUtils from '@src/utils/GeoUtils';
 import { defaultLocation, navigationPages } from '@src/utils/constants';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Platform, SafeAreaView, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function PlannerScreen() {
-  const [refMapView, setRefMapView] = useState()
   const selectorMap = useSelector(mapState);
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const contextual = useSelector(contextualInformation);
+  const segmentsChanged = useSelector(plannerSegmentsInformation)
   const theme = useTheme();
   const t = useTranslate();
   const {drawPlannerMarkers, onDragMarker, onLongPressOnThePlannerMap, drawPolyline} = PlannerMapPresenter();
   const {onPlannerSegmentChange, allSegmentsHaveValue} = usePlannerInfo();
+  const [refMapView, setRefMapView] = useState<MapView | undefined>()
 
+  useEffect(() => {
+    let mounted = true;
+    if (
+      mounted &&
+      segmentsChanged.length === 2 &&
+      segmentsChanged[0] &&
+      !segmentsChanged[segmentsChanged.length - 1]
+    ) {
+      console.log('Centrado en origen', segmentsChanged[0].location);
+      focus(segmentsChanged[0]);
+    } else if (
+      mounted &&
+      segmentsChanged.length === 2 &&
+      !segmentsChanged[0] &&
+      segmentsChanged[segmentsChanged.length - 1]
+    ) {
+      focus(segmentsChanged[segmentsChanged.length - 1]);
+    } else if (
+      mounted &&
+      segmentsChanged.length > 1 &&
+      segmentsChanged[0] &&
+      segmentsChanged[segmentsChanged.length - 1]
+    ) {
+      focus(
+        GeoUtils.calculateMeanPoint(
+          segmentsChanged[segmentsChanged.length - 1],
+          segmentsChanged[0],
+        ),
+        GeoUtils.getMidZoom(
+          segmentsChanged[segmentsChanged.length - 1]?.position,
+          segmentsChanged[0]?.position,
+        ),
+        GeoUtils.getMidZoom(
+          segmentsChanged[segmentsChanged.length - 1]?.position,
+          segmentsChanged[0]?.position,
+        ) - 1,
+      );
+    }
+    return () => (mounted = false);
+  }, [segmentsChanged]);
 
+  function focus(point: IMarker, altitude?: any, zoomlevel?: any) {
+    if (refMapView) {
+      //dispatch(updateLocation(coords));
+      refMapView?.animateCamera({
+        center: point.position,
+        zoom: zoomlevel ?? 17,
+        altitude: altitude ?? 2500,
+      });
+    } else {
+
+    }
+  }
 
   return (
     <SafeAreaView style={{flex: 1}}>

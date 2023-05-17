@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import Button from '@src/components/commons/buttons/Button';
 import ScreenTitle from '@src/components/commons/text/ScreenTitle'
-import AccessibilityFilter from '@src/components/features/planner/definition/atoms/AccessibilityFilter';
+import ParametersFilter from '@src/components/features/planner/definition/atoms/ParametersFilter';
 import RouteTypeFilter from '@src/components/features/planner/definition/atoms/RouteTypeFilter';
 import PlannerOperatorsFilter from '@src/components/features/planner/definition/molecules/PlannerOperatorsFilter';
 import { useTranslate } from '@src/context/languageContext'
@@ -18,6 +18,8 @@ export default function PlannerPreferencesScreen() {
   const dispatch = useDispatch();
   //const { checkPlannerPreferences } = PlannerPresenter();
   const [accesibilityFilter, setAccesibilityFilter] = useState(plannerInfo.accessibilityFilter);
+  const [parkingDisFilter, setParkingDisFilter] = useState(plannerInfo.accessibilityFilter);
+  const [parkingInterFilter, setParkingInterFilter] = useState(plannerInfo.accessibilityFilter);
   const [routeFilter, setRouteFilter] = useState<TypeRouteFilter>(plannerInfo.routeTypeFilter);
   const [operatorsFilter, setOperatorsFilter] = useState<Array<number>>(
     plannerInfo.operatorFilters,
@@ -34,6 +36,8 @@ export default function PlannerPreferencesScreen() {
     setAccesibilityFilter(false);
     setRouteFilter(TypeRouteFilter.FAST);
     setOperatorsFilter([]);
+    setParkingInterFilter(false);
+    setParkingDisFilter(false);
   }
 
   return (
@@ -46,9 +50,13 @@ export default function PlannerPreferencesScreen() {
             accessibilityHintOptionalButton={t('accessibility_planner_preferences_button_undo')}
         />
         <ScrollView contentContainerStyle={{paddingHorizontal: 16}}>
-          <AccessibilityFilter
-            selected={accesibilityFilter}
-            onPress={() => setAccesibilityFilter(!accesibilityFilter)}
+          <ParametersFilter
+            selectedAccessibility={accesibilityFilter}
+            onPressAccessibility={() => setAccesibilityFilter(!accesibilityFilter)}
+            selectedDisuasorio={parkingDisFilter}
+            onPressDisuasorio={() => setParkingDisFilter(!parkingDisFilter)}
+            selectedInterchange={parkingInterFilter}
+            onPressInterchange={() => setParkingInterFilter(!parkingInterFilter)}
           />
           <RouteTypeFilter
             selected={routeFilter} 

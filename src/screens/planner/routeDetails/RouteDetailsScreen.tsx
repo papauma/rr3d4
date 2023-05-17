@@ -12,21 +12,26 @@ import { plannerSegmentsInformation } from '@src/redux/slices/plannerSegmentsSli
 import { plannerInformation } from '@src/redux/slices/plannerSlice';
 import { TypeRouteFilter } from '@src/types/PlannerInterfaces';
 import { IBounds } from '@src/types/interfaces';
+import GeoUtils from '@src/utils/GeoUtils';
 import RouteUtils from '@src/utils/RouteUtils';
-import React, { useState } from 'react'
+import { defaultLocation } from '@src/utils/constants';
+import React, { useEffect, useState } from 'react'
 import { Platform, SafeAreaView, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function RouteDetailsScreen() {
     const dispatch = useDispatch();
     const navigation = useNavigation();
-    const [zoomMap, setZoomMap] = useState(13);
     const t = useTranslate();
     const theme = useTheme()
     const selectorMap = useSelector(mapState);
     const plannerSegments = useSelector(plannerSegmentsInformation);
     const contextual = useSelector(contextualInformation);
-    const firstPosition = { ...plannerSegments[0].position };
+
+    const firstPosition = plannerSegments[0] 
+      && plannerSegments[plannerSegments.length - 1] 
+      ? GeoUtils.calculateMeanPoint(plannerSegments[0], plannerSegments[plannerSegments.length - 1])?.position
+      : defaultLocation;
     const plannerInfo = useSelector(plannerInformation);
     const planSelected = plannerInfo.selectedPlan;
     const routeTypeFilter = plannerInfo.routeTypeFilter;
@@ -45,6 +50,23 @@ export default function RouteDetailsScreen() {
 
     const {drawPolylineRoutes, drawRoutePlannerMarkers} = PlannerMapPresenter();
 
+    const [zoomMap, setZoomMap] = useState(plannerSegments.length > 1 
+      && plannerSegments[0] 
+      && plannerSegments[plannerSegments.length - 1] 
+        ? GeoUtils.getMidZoomAllPlatforms(plannerSegments[0].position, 
+          plannerSegments[plannerSegments.length - 1].position) - 1
+        : 13
+        );
+
+  useEffect(() => {
+    if (plannerSegments.length > 1 && plannerSegments[0] && plannerSegments[plannerSegments.length - 1]) {
+      setZoomMap(GeoUtils.getMidZoomAllPlatforms(plannerSegments[0].position, 
+        plannerSegments[plannerSegments.length - 1].position))
+    }
+  }, [plannerSegments])
+
+  console.log('Zoom', zoomMap);
+  
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -60,7 +82,7 @@ export default function RouteDetailsScreen() {
         </View>
         <MapRender
             zoom={zoomMap}
-            initialRegion={{ ...firstPosition, ...{ latitudeDelta: 0.01, longitudeDelta: 0.01 } }}
+            initialRegion={{ ...firstPosition }}
             markers={drawRoutePlannerMarkers(selectedItinerary?.legs)}
             focus={() => {}}
             // refMapView={setInstanceMapView}
