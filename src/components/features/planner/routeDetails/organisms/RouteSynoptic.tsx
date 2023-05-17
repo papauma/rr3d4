@@ -33,7 +33,7 @@ export default function RouteSynoptic(props: RouteSynopticProps) {
           <LineLeg
             key={`${index} ${item?.id} ${random()}`}
             index={`${index}-t`}
-            leg={{ ...item, ...{ mode: 'transhipment', routeColor: 'C6C8C8' } }}
+            leg={{ ...item, ...{ mode: 'transhipment' } }}
             showTime={index === 0 || index === props.legs.length - 1}
           />,
         );

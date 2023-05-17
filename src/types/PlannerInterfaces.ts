@@ -38,6 +38,7 @@ export interface ILocationPlan {
 }
 
 export interface ILeg {
+  id?: any;
   startTime: number;
   endTime: number;
   departureDelay?: number | null;

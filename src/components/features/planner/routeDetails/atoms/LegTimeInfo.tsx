@@ -35,6 +35,7 @@ export default function LegTimeInfo(props: LegTimeInfoProps) {
             : (<View style={styles.container} accessible={true}>
                 {PlanUtils.isPublicMode(props.leg.mode) && (
                     <LineCodeSemiCircle
+                        styleBox={{flexBasis: 54,}}
                         code={props.leg?.routeShortName }
                         backgroundColor={props.leg.routeColor ? `#${props.leg.routeColor}` : 'black'}
                         textColor={

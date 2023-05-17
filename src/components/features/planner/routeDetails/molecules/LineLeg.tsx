@@ -91,7 +91,7 @@ export default function LineLeg(props: LineLegProps) {
                 accessible={false}
                 //alt={'Icono modo de transporte ' + props.leg.mode}
                 source={theme.drawables.general.Ic_gotita}
-                style={{ marginLeft: -15, marginTop: 0, zIndex: 20 }} //TO CHANGE color blanco de fondo
+                style={{ marginLeft: -16, marginTop: 0, zIndex: 20 }} //TO CHANGE color blanco de fondo
               />
             )}
           </LineStyled>
