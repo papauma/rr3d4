@@ -123,7 +123,7 @@ const styles = () =>
       //overflow: 'hidden',
       flexWrap: 'wrap',
       alignItems: 'center',
-      flex: 1,
+      //flex: 1,
     },
     icon: {
       marginLeft: 4,

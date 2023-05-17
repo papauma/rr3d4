@@ -118,8 +118,7 @@ export default class PlanUtils {
 
   static organizeLengthOfLegsPublic(legs?: Array<ILeg>, originalLegs?: Array<ILeg>) {
     let styleMin = {
-      flexGrow: 1,
-      minWidth: 69,
+      flexBasis: 69,
     }
 
     if (!legs || !originalLegs || legs.length === 0) {
@@ -130,12 +129,6 @@ export default class PlanUtils {
       return itemA.duration - itemB.duration
     });
 
-    let initialValue = 0.0
-    let totalDuration = legs.reduce(
-      (accumulator, currentValue) => accumulator + currentValue.duration,
-      initialValue
-    )
-
     orderByDuration[0].styleNew = styleMin;
     let originalFirstLeg = originalLegs.find((legOri: ILeg) => String(legOri?.id) === String(orderByDuration[0]?.id))
     if (originalFirstLeg) {
@@ -144,12 +137,11 @@ export default class PlanUtils {
 
     for (let i = 1; i < orderByDuration?.length && orderByDuration?.length > 1; i++) {
       let originalLeg = originalLegs.find((legOri: ILeg) => String(legOri?.id) === String(orderByDuration[i]?.id))
-      console.log('Original', originalLeg);
       
        if (orderByDuration[i].duration - orderByDuration[i - 1].duration > 9) {
          orderByDuration[i].styleNew = {
-            flexGrow: orderByDuration[i - 1].styleNew.flexGrow + 1,
-            minWidth: orderByDuration[i - 1].styleNew.minWidth + 24,
+            //flexGrow: orderByDuration[i - 1].styleNew.flexGrow + 1,
+            flexBasis: orderByDuration[i - 1].styleNew.minWidth + 24,
          }
        } else {
           orderByDuration[i].styleNew = JSON.parse(JSON.stringify(orderByDuration[i - 1].styleNew));
