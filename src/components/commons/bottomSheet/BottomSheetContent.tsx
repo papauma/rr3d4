@@ -13,7 +13,7 @@ export default function BottomSheetContent(props: IBottomSheet) {
     return (
       <View style={{}} accessible={true} accessibilityLabel={'Control deslizante de información'} accessibilityHint='Desliza con los dos dedos hacia arriba o hacia abajo para mostrar mas información'>
         <View style={{justifyContent: 'center', alignItems: 'center'}}>
-          <Icon source={theme.drawables.general.Ic_Up_bottomsheet}/>
+          <Icon source={theme.drawables.general.Ic_Chevron_Down} tint={theme.colors.gray_400}/>
         </View>
       </View>
     )

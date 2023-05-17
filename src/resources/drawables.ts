@@ -27,6 +27,7 @@ export interface IDrawables {
     Ic_gotita: any;
     Ic_Home: any;
     Ic_Info: any;
+    Ic_Map: any;
     Ic_Less: any;
     Ic_location: any;
     Ic_location_desactivated: any;
@@ -83,6 +84,7 @@ export const drawables = {
     Ic_gotita: require('@images/Ic_gotita.png'),
     Ic_Home: require('@images/Ic_Home.png'),
     Ic_Info: require('@images/Ic_Info.png'),
+    Ic_Map: require('@images/Ic_Map.png'),
     Ic_Less: require('@images/Ic_Less.png'),
     Ic_location: require('@images/Ic_location.png'),
     Ic_location_desactivated: require('@images/Ic_location_desactivated.png'),

@@ -138,7 +138,6 @@ const styles = () =>
       flexDirection: 'row',
       marginLeft: 10,
       marginBottom: 8,
-      flex: 1,
     },
     numberSmall: {
       fontSize: 12,
@@ -161,7 +160,7 @@ const styles = () =>
       borderRadius: 8,
       padding: 8,
       alignItems: 'center',
-      flexGrow: 1,
+      //flexGrow: 1,
       justifyContent: 'center',
       minWidth: 69,
       flexShrink: 1,

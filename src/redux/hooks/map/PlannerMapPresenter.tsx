@@ -13,6 +13,9 @@ import { LongPressEvent, MarkerDragStartEndEvent } from 'react-native-maps';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import useSearch from '../search/useSearch';
+import { ILeg } from '@src/types/PlannerInterfaces';
+import PlanUtils from '@src/utils/PlanUtils';
+import RouteUtils from '@src/utils/RouteUtils';
 
 export default function PlannerMapPresenter() {
   const agencyInfo = useSelector(agencyInformation);
@@ -23,7 +26,7 @@ export default function PlannerMapPresenter() {
   const selectedIti = plannerInfo.selectedPlan;
   const dispatch = useDispatch();
   const {onLocation} = useSearch()
-  //const coords = RouteUtils.getItiCoords(planResult, selectedIti, segments.length > 2);
+  const coords = RouteUtils.getItiCoords(planResult, selectedIti, segments.length > 2);
   //To CHANGE
   const userLocation = null;
   const t = useTranslate();
@@ -60,18 +63,18 @@ export default function PlannerMapPresenter() {
     return segmentsFiltered;
   }
 
-  /* function drawRoutePlannerMarkers(parsedRoute: Array<Leg>) {
+  function drawRoutePlannerMarkers(parsedRoute: Array<ILeg>) {
     let initialMarkers = drawPlannerMarkers();
 
-    let markersOfPublicTransport = parsedRoute.map((element: Leg, index: number) => {
+    if (!parsedRoute) {
+      return initialMarkers;
+    }
+
+    let markersOfPublicTransport = parsedRoute?.map((element: ILeg, index: number) => {
       if (
-        element.mode === 'BUS' ||
-        element.mode === 'TRANSIT' ||
-        element.mode === 'SUBWAY' ||
-        element.mode === 'RAIL' ||
-        element.mode === 'TRAM' ||
-        element.mode === 'FUNICULAR'
+        PlanUtils.isPublicMode(element.mode)
       ) {
+        //TO CHANGE (tema de los :)
         const calculatedAgencyId = element.agencyId !== null ? element.agencyId.split(':')[1] : null; // '21:4'
         let dataOriginElem = dataOrigin.find(
           (dataOri: any) => String(dataOri.gtfsAgency[0]?.id) === calculatedAgencyId,
@@ -102,7 +105,7 @@ export default function PlannerMapPresenter() {
     markersOfPublicTransport = markersOfPublicTransport.filter((element: any) => element);
 
     return initialMarkers.concat(markersOfPublicTransport);
-  } */
+  }
 
   function obtainPolylineBySegments() {
     return segments.filter((m) => m?.position).map((segment) => segment?.position);
@@ -177,7 +180,7 @@ export default function PlannerMapPresenter() {
     }
   }
 
-  /* function drawPolylineRoutes() {
+  function drawPolylineRoutes() {
     if (coords?.length > 0) {
       const polylineCoords = coords?.map((feature, index) => {
         return {
@@ -188,7 +191,7 @@ export default function PlannerMapPresenter() {
       });
       return polylineCoords;
     }
-  } */
+  }
 
   /* const drawCirclesItinerary = () => {
     let stops = [];
@@ -228,11 +231,11 @@ export default function PlannerMapPresenter() {
 
   return {
     drawPlannerMarkers,
-    //drawRoutePlannerMarkers,
+    drawRoutePlannerMarkers,
     drawPolyline,
     onLongPressOnThePlannerMap,
     onDragMarker,
-    //drawPolylineRoutes,
+    drawPolylineRoutes,
     //drawCirclesItinerary,
   };
 }

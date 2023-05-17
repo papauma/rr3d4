@@ -12,6 +12,7 @@ interface RouteTimeProps {
     duration: any;
     styleBigNumber?: StyleProp<TextStyle>;
     styleLetter?: StyleProp<TextStyle>;
+    styleHours?: StyleProp<TextStyle>;
     warning?: boolean;
 }
 
@@ -24,7 +25,7 @@ export default function RouteTimeInfo(props: RouteTimeProps) {
         <View accessible={true} 
             accessibilityLabel={`${t('accessibility_planner_timer_itinerary_hour')}: ${`${props.startTime} - ${props.endTime}`}`}
             >
-            <Label  style={styles.number}>{`${props.startTime}-${props.endTime}`}</Label>
+            <Label  style={[styles.number, props.styleHours]}>{`${props.startTime}-${props.endTime}`}</Label>
         </View>
         <View style={styles.row}>
             <DurationText

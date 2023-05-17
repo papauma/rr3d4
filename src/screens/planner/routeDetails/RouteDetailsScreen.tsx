@@ -1,9 +1,11 @@
 import { useNavigation } from '@react-navigation/native';
 import ScreenTitle from '@src/components/commons/text/ScreenTitle';
 import RouteDetailsBottomSheetContent from '@src/components/features/planner/routeDetails/organisms/RouteDetailsBottomSheetContent';
+import LocationButton from '@src/components/widgets/LocationButton';
 import MapRender from '@src/components/widgets/MapRender';
 import { useTranslate } from '@src/context/languageContext';
 import { useTheme } from '@src/context/themeContext';
+import PlannerMapPresenter from '@src/redux/hooks/map/PlannerMapPresenter';
 import { contextualInformation } from '@src/redux/slices/contextualSlice';
 import { mapState } from '@src/redux/slices/mapSlice';
 import { plannerSegmentsInformation } from '@src/redux/slices/plannerSegmentsSlice';
@@ -41,21 +43,25 @@ export default function RouteDetailsScreen() {
 
     const selectedItinerary = parsedPlan.find((element: any) => element.index === planSelected);
 
+    const {drawPolylineRoutes, drawRoutePlannerMarkers} = PlannerMapPresenter();
 
 
   return (
     <SafeAreaView style={{flex: 1}}>
         <View style={{ position: 'absolute', top: 0, zIndex: 10, width: '100%' }}>
           <SafeAreaView style={{backgroundColor: theme.colors.gray_200,
-          paddingTop: Platform.OS === 'ios' ? 0 : 16,
-          paddingBottom: 16,}}>
+            paddingTop: Platform.OS === 'ios' ? 0 : 16,
+            paddingBottom: 16,}}>
             <ScreenTitle title={t('planner_screen_title')}/>  
           </SafeAreaView>  
+          <View style={{alignSelf: 'flex-end', marginTop: 10, marginRight: 10}}>
+                <LocationButton/>
+          </View>
         </View>
         <MapRender
             zoom={zoomMap}
             initialRegion={{ ...firstPosition, ...{ latitudeDelta: 0.01, longitudeDelta: 0.01 } }}
-            markers={/* drawRoutePlannerMarkers(selectedItinerary?.legs) */ []}
+            markers={drawRoutePlannerMarkers(selectedItinerary?.legs)}
             focus={() => {}}
             // refMapView={setInstanceMapView}
             location={selectorMap.location}
@@ -64,12 +70,12 @@ export default function RouteDetailsScreen() {
             setZoomMap(zoom);
             }}
             updateBounds={(bounds: IBounds, zoom?: number) => {}}
-            //polylines={drawPolylineRoutes()}
+            polylines={drawPolylineRoutes()}
             //circles={drawCirclesItinerary()}
             //layerSelected={selectedLayer}
         />
         <RouteDetailsBottomSheetContent
-        
+          route={selectedItinerary}
         />
     </SafeAreaView>
   )

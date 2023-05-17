@@ -80,6 +80,7 @@ export interface ILeg {
   nextDepartureTimes?: Array<any>; //control de próximos tiempos de salida en una parada de transporte público
   transhipment?: boolean; //control de si ese tramo termina con tranbordo al siguiente
   styleNew?: any; // control del estilo
+  last?: boolean; //control último tramo
 }
 export interface IItinerary {
   duration: number;

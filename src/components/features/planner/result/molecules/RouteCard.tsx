@@ -14,6 +14,7 @@ interface RouteCardProps {
     routeType?: TypeRouteFilter;
     route?: any;
     onPressCard?: Function;
+    index: any;
 }
 
 export default function RouteCard(props: RouteCardProps) {
@@ -23,13 +24,13 @@ export default function RouteCard(props: RouteCardProps) {
   //TO CHANGE (cambiar de sitio)
   const infoOrderCard = useMemo(() => {
     let infoOrder = {
-        title: t('planner_result_card_order_transfer'),
-        icon: theme.drawables.general.Ic_Transbordo,
+        title: t('planner_result_card_order_fast'),
+        icon: theme.drawables.general.Ic_Bus,
     }
 
-    if (props.routeType === TypeRouteFilter.FAST) {
+    if (props.routeType === TypeRouteFilter.TRANSFER) {
         infoOrder = {
-            title: t('planner_result_card_order_fast'),
+            title: t('planner_result_card_order_transfer'),
             icon: theme.drawables.general.Ic_Transbordo,
         }
     } else if (props.routeType === TypeRouteFilter.WALK) {
@@ -45,7 +46,7 @@ export default function RouteCard(props: RouteCardProps) {
   return (
     <TouchableOpacity 
         style={[styles(theme).card, props.first ? styles(theme).cardSelected : null, props.style]}
-        onPress={() => props.onPressCard?.()}
+        onPress={() => props.onPressCard?.(props.index)}
         >
         {props.first && (<View style={styles(theme).positionFirst}>
             <View style={styles(theme).boxFirst} accessible={true}>
@@ -60,8 +61,6 @@ export default function RouteCard(props: RouteCardProps) {
             duration={props.route?.duration}
             startTime={props.route?.startTime }
             endTime={props.route?.endTime}
-            styleBigNumber={{ fontSize: 20, lineHeight: 26 }}
-            styleLetter={{ fontSize: 14, lineHeight: 18.2 }}
             warning={props.route?.alert}
         />
         <RouteLegs legs={props.route?.legs} duration={props.route?.duration} />
