@@ -12,7 +12,7 @@ export default function BottomSheetContent(props: IBottomSheet) {
 
   const handleComponent = () => {
     return (
-      <View style={{}} accessible={true} accessibilityLabel={'Control deslizante de información'} accessibilityHint='Desliza con los dos dedos hacia arriba o hacia abajo para mostrar mas información'>
+      <View style={{}}>
         {/* <View style={{position: 'absolute', marginTop: -15,}}>
           <Icon source={theme.drawables.general.Ic_Bus}/>
         </View> */}
@@ -39,7 +39,7 @@ export default function BottomSheetContent(props: IBottomSheet) {
     <BottomSheet
       // ref={ref}
       accessible={true}
-      accessibilityLabel={'Control deslizante de información'}
+      //accessibilityLabel={'Control deslizante de información'}
       index={props.initial}
       snapPoints={props.snapPoints ?? [10, 200]} // LIMITES DEL BOTTOMSHEET
       enableContentPanningGesture={props.enableContentPanningGesture ?? true} // BLOQUEAR INTERACCION

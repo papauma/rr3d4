@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleProp, TextStyle, View, ViewStyle } from 'react-native';
+import { Pressable, StyleProp, TextStyle, View, ViewStyle } from 'react-native';
 import RadioButton, { RadioButtonProps } from '../buttons/RadioButton';
 import Label from '../text/Label';
 
@@ -12,9 +12,9 @@ interface RadioButtonOptionProps extends RadioButtonProps {
 
 export default function RadioButtonOption(props: RadioButtonOptionProps) {
   return (
-    <View style={[{ flexDirection: 'row', alignItems: 'center' }, props.viewStyle]} accessible={true}>
+    <Pressable style={[{ flexDirection: 'row', alignItems: 'center' }, props.viewStyle]} accessible={true} onPress={props.onPress}>
       <RadioButton {...props} />
       <Label style={[props.textStyle, { marginLeft: 8 }]}>{props.text}</Label>
-    </View>
+    </Pressable>
   );
 }

@@ -1,6 +1,8 @@
 
+import RadioButtonOption from '@src/components/commons/menu/RadioButtonOption';
 import Label from '@src/components/commons/text/Label';
 import ScreenTitle from '@src/components/commons/text/ScreenTitle';
+import SearchCard from '@src/components/features/search/atoms/SearchCard';
 import { useLanguage, useSetLanguage, useTranslate } from '@src/context/languageContext';
 import { useTheme } from '@src/context/themeContext';
 import { random } from '@src/utils/StringUtils';
@@ -21,57 +23,48 @@ export default function LanguageScreen() {
     <SafeAreaView style={styles(theme).content}>
       <ScreenTitle title={t('settings_section_general_language')} />
       {/* {modalControl.showExploreLoading && <Loading />} */}
-      <View
-        style={{flex: 1, paddingHorizontal: 16}}
-        accessible={true}
-        accessibilityLabel={t('accesible_languages_list')}
-        accessibilityRole="list">
-        {languages.map(language => (
-          <Pressable
-            accessibilityState={{selected: languageSelected === language}}
-            accessibilityHint={t('accesible_language_select')}
-            key={random()}
-            style={
-              languageSelected === language
-                ? styles(theme).selected
-                : styles(theme).text
-            }
-            onPress={async () => {
-              /* dispatch(
-                modalControlSlice.actions.updateShowExploreLoading(true),
-              );
-              const result = await updateLanguage({
-                body: {languageId: AuthUtils.getLanguage(language)},
-                token: account.token,
-              });
-              if (result.data) {
-                setTimeout(() => {
-                  dispatch(authSlice.actions.updateLanguageLocale(language));
-                  dispatch(
-                    authSlice.actions.updateLanguageId(
-                      AuthUtils.getLanguage(language),
-                    ),
-                  );
-                }, 500);
-              }
-
-              if (result.error) {
-              } */
-              setLanguage(language);
-              /* setTimeout(() => {
-                dispatch(
-                  modalControlSlice.actions.updateShowExploreLoading(false),
+      <View style={{flex: 1, paddingHorizontal: 16, marginTop: 16}} accessible={true}
+          accessibilityLabel={t('accesible_languages_list')}
+          accessibilityRole="list">
+        <SearchCard
+          style={{paddingHorizontal: 16}}
+          >
+          {languages.map(language => (
+            <RadioButtonOption
+              viewStyle={{marginVertical: 20}}
+              onPress={async () => {
+                /* dispatch(
+                  modalControlSlice.actions.updateShowExploreLoading(true),
                 );
-              }, 500); */
-            }}>
-            <View style={styles(theme).option}>
-              <Label style={[styles(theme).label, languageSelected === language ? {color: theme.colors.primary_500, fontWeight: 'bold', fontSize: 18} : null]}>
-                {t('language_' + language)}
-              </Label>
-              {/* <RadioButton selected={languageSelected === language} /> */}
-            </View>
-          </Pressable>
-        ))}
+                const result = await updateLanguage({
+                  body: {languageId: AuthUtils.getLanguage(language)},
+                  token: account.token,
+                });
+                if (result.data) {
+                  setTimeout(() => {
+                    dispatch(authSlice.actions.updateLanguageLocale(language));
+                    dispatch(
+                      authSlice.actions.updateLanguageId(
+                        AuthUtils.getLanguage(language),
+                      ),
+                    );
+                  }, 500);
+                }
+
+                if (result.error) {
+                } */
+                setLanguage(language);
+                /* setTimeout(() => {
+                  dispatch(
+                    modalControlSlice.actions.updateShowExploreLoading(false),
+                  );
+                }, 500); */
+              }}
+              selected={languageSelected === language}
+              text={t('language_' + language)}
+            />
+          ))}
+        </SearchCard>
       </View>
     </SafeAreaView>
   );
