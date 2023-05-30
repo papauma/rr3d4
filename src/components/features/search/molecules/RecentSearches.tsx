@@ -11,6 +11,7 @@ import { StyleSheet, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import SearchItem from "../atoms/SearchItem";
 import IconBox from "@src/components/widgets/IconBox";
+import SearchCard from "../atoms/SearchCard";
 
 
 export default function RecentSearches(props: any) {
@@ -99,7 +100,7 @@ export default function RecentSearches(props: any) {
       <View style={styles(theme).container} accessible={true} accessibilityRole="list">
         <Label style={styles(theme).title}>{t('search_recents_title')}</Label>
         {searchRecent?.length > 0 ? (
-            <>{searchRecent.map((element: IMarker, index: number) => renderItem(element, index))}</>
+            <SearchCard style={{marginTop: 16}}>{searchRecent.map((element: IMarker, index: number) => renderItem(element, index))}</SearchCard>
         ) : (
             <Label style={styles(theme).emptyDesc}>
               {t('search_recents_empty')}

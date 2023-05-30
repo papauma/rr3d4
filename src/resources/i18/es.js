@@ -92,7 +92,7 @@ export const strings = {
   search_screen_title: '¿Qué estas buscando?',
   search_bar_placeholder: 'Parada o destino',
   search_recents_title: 'Búsquedas recientes',
-  search_recents_empty: 'Busca una dirección o selecciona un...',
+  search_recents_empty: 'Busca una dirección o selecciona un punto en el mapa que te permita realizar una planificación',
   search_empty: 'No se han encontrado resultados',
   search_stops_lines: 'Paradas y líneas',
   splash_title:  'Bienvenidos a la nueva app de EMT Palma',

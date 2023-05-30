@@ -1,4 +1,6 @@
 import Label from '@src/components/commons/text/Label';
+import IconBox from '@src/components/widgets/IconBox';
+import { useTranslate } from '@src/context/languageContext';
 import { ThemeProps, useTheme } from '@src/context/themeContext';
 import React from 'react'
 import { StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native'
@@ -14,21 +16,33 @@ interface SearchItemProps {
     style?: StyleProp<ViewStyle>;
     accessibilityHint?: string;
     onPress?: any;
+    onPressPlan?: any;
 }
 
 export default function SearchItem(props: SearchItemProps) {
   const theme = useTheme();
+  const t = useTranslate()
 
   return (
     <TouchableOpacity 
         accessibilityHint={props.accessibilityHint}
-        style={[styles(theme).container, props.style]} 
+        style={[styles(theme).container, {justifyContent: 'space-between'}, props.style]} 
         onPress={() => props.onPress?.()}>
-        {props.iconComponent}
-        <View style={styles(theme).textContainer}>
-            {props.name ? (<Label style={[styles(theme).name]}>{props.name}</Label>) : null}
-            {props.address ? (<Label style={[styles(theme).address]}>{props.address}</Label>) : null}
+        <View style={[styles(theme).container, {flexShrink: 3,
+        flex: 1,}]}>
+            {props.iconComponent}
+            <View style={styles(theme).textContainer}>
+                {props.name ? (<Label style={[styles(theme).name]}>{props.name}</Label>) : null}
+                {props.address ? (<Label style={[styles(theme).address]}>{props.address}</Label>) : null}
+            </View>
         </View>
+        <TouchableOpacity style={{marginLeft: 8, flexShrink: 1}} onPress={() => props.onPressPlan?.()}>
+            <IconBox
+                styleBox={{paddingHorizontal: 10, flexShrink: 1}}
+                alt={t('')}
+                staticIcon={theme.drawables.general.Ic_Plan}
+            />
+        </TouchableOpacity>
     </TouchableOpacity>
   )
 }
