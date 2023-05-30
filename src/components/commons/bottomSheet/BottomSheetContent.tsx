@@ -1,3 +1,4 @@
+import React from 'react';
 import { IBottomSheet } from '../../../types/interfaces';
 import { useCallback } from 'react';
 import BottomSheet, { BottomSheetBackdrop } from '@gorhom/bottom-sheet';
@@ -12,6 +13,9 @@ export default function BottomSheetContent(props: IBottomSheet) {
   const handleComponent = () => {
     return (
       <View style={{}} accessible={true} accessibilityLabel={'Control deslizante de información'} accessibilityHint='Desliza con los dos dedos hacia arriba o hacia abajo para mostrar mas información'>
+        {/* <View style={{position: 'absolute', marginTop: -15,}}>
+          <Icon source={theme.drawables.general.Ic_Bus}/>
+        </View> */}
         <View style={{justifyContent: 'center', alignItems: 'center'}}>
           <Icon source={theme.drawables.general.Ic_Chevron_Down} tint={theme.colors.gray_400}/>
         </View>

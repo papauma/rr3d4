@@ -8,6 +8,7 @@ import { useTranslate } from '@src/context/languageContext';
 interface HoursWheelProps {
   callback?: Function;
   isActive?: any;
+  styleSeparator?: any;
 }
 
 export default function HoursWheel(props: HoursWheelProps) {
@@ -34,6 +35,7 @@ export default function HoursWheel(props: HoursWheelProps) {
       >
         <WheelPicker
           selectedIndex={hour}
+          itemTextStyle={{fontSize: 16, fontWeight: '700', lineHeight: 20.8}}
           flatListProps={{accessible: true}}
           selectedIndicatorStyle={[{backgroundColor: theme.colors.primary_100, 
             color:theme.colors.gray_700,
@@ -45,7 +47,7 @@ export default function HoursWheel(props: HoursWheelProps) {
           }}
         />
       </View>
-      <View style={{ width: 100, alignItems: 'center', justifyContent: 'center' }}>
+      <View style={[{ width: 100, alignItems: 'center', justifyContent: 'center' }, props.styleSeparator]}>
         <Label style={[styles.colonSign, {color: theme.colors.gray_700}]}>:</Label>
       </View>
       <View accessible={true} role='list'
@@ -55,6 +57,7 @@ export default function HoursWheel(props: HoursWheelProps) {
       >
       <WheelPicker
         flatListProps={{accessible: true}}
+        itemTextStyle={{fontSize: 16, fontWeight: '700', lineHeight: 20.8}}
         selectedIndicatorStyle={[{backgroundColor: theme.colors.primary_100}, styles.selectedIndicatorStyle]}
         options={defineNumbers(59)}
         selectedIndex={minute}

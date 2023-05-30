@@ -15,6 +15,7 @@ import StoryModals from './components/StoryModals'
 import StoryInputs from './components/StoryInputs'
 import StoryLineCodes from './components/StoryLineCodes'
 import StoryCards from './components/StoryCards'
+import StoryDateSelector from './components/StoryDateSelector'
 
 export default function StoryBookScreen() {
   const [showStoryButtons, setShowStoryButtons] = useState(false)
@@ -23,6 +24,7 @@ export default function StoryBookScreen() {
   const [showStoryInputs, setShowStoryInputs] = useState(false)
   const [showStoryLineCodes, setShowStoryLineCodes] = useState(false)
   const [showStoryCards, setShowStoryCards] = useState(false)
+  const [showDateSelector, setShowDateSelector] = useState(false)
   const contextualInfo = useSelector(contextualInformation);
   const dispatch = useDispatch();
 
@@ -72,6 +74,13 @@ export default function StoryBookScreen() {
                   pressed={showStoryCards}
                   onPress={() => setShowStoryCards(!showStoryCards)}/>
                 {showStoryCards && <StoryCards/>}
+                <AccordionOption
+                  styleView={{marginBottom: 16, flexGrow: 1}}
+                  styleText={{fontSize: 16, fontWeight: '700', flexGrow: 1}}
+                  name='Date Selector'
+                  pressed={showDateSelector}
+                  onPress={() => setShowDateSelector(!showDateSelector)}/>
+                {showDateSelector && <StoryDateSelector/>}
             </ScrollView>
         {contextualInfo.showBackground && <BackgroundModal/>}
         {contextualInfo.warningMessage && <WarningSnackBar onPress={() => dispatch(contextualSlice.actions.updateWarningMessage(''))}/>}
