@@ -55,7 +55,7 @@ export default function MainScreen() {
         <Tab.Screen
             options={{
                 tabBarShowLabel: false,
-                tabBarIcon: ({ focused}) => <Icon source={theme.drawables.general.Ic_Events} tint={focused ? theme.colors.white : undefined}/>
+                tabBarIcon: ({ focused}) => <Icon source={theme.drawables.general.Ic_Heart} tint={focused ? theme.colors.white : undefined}/>
             }}
             name={'Events'}
         >
