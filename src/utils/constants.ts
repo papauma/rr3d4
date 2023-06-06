@@ -9,6 +9,7 @@ export const navigationPages = {
   plannerResult: 'PlannerResult',
   routeDetails: 'RouteDetails',
   language: 'Language',
+  lineDetails: 'LineDetails',
   storybook: 'Storybook',
 };
 

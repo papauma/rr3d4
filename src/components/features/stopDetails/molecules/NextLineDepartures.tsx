@@ -36,7 +36,7 @@ export default function NextLineDepartures(props: NextLineDeparturesProps) {
 
               return (
                 <DepartureLineInfo
-                  id={line.id}
+                  id={line.lineId}
                   key={`${line.id}-${index}`}
                   transportMode={line?.transportMode}
                   lineName={line?.nameLine}
@@ -46,6 +46,7 @@ export default function NextLineDepartures(props: NextLineDeparturesProps) {
                   headsign={line?.headSign}
                   time={timeOfStopsFormatted(line.time, line.fecha)}
                   timeNow={differenceTime}
+                  tripId={line.tripId}
                   style={[{marginTop: 8,}, index !== 0 ? {
                     borderTopWidth: 1, borderColor: theme.colors.gray_200,
                   } : null]}

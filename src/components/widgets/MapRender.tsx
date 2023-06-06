@@ -2,7 +2,7 @@ import { IMap } from '@src/types/interfaces';
 import { calcZoomMobile, getRegionDeltasFromZoom } from '@src/utils/utilsMaps';
 import { useEffect, useMemo, useState } from 'react';
 import { Dimensions, View } from 'react-native';
-import MapView, { BoundingBox, Polyline, UrlTile } from 'react-native-maps';
+import MapView, { BoundingBox, Circle, Polyline, UrlTile } from 'react-native-maps';
 import MapMarker from '../commons/map/MapMarker';
 /*import { IMap } from '../../types/interfaces';
 import { random } from '../../utils/StringUtils';
@@ -71,7 +71,7 @@ export default function MapRender(props: IMap) {
     return polylinesRes;
   }, [props.polylines]);
 
-  /* const renderCircles = () => {
+  const renderCircles = () => {
     if (props.circles?.length === 0) {
       return;
     }
@@ -84,7 +84,7 @@ export default function MapRender(props: IMap) {
         {...properties}
       />
     ));
-  }; */
+  };
 
   const renderCirclebyZoom = () => {
     let changedRadius = -17.26205 * props.zoom + 305.94878;
@@ -179,7 +179,7 @@ export default function MapRender(props: IMap) {
           />
         <>{markers}</>
         <>{polylines}</>
-        {/*props.circles && renderCircles()*/}
+        {props.circles && renderCircles()}
       </MapView>
     </View>
   );

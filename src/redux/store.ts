@@ -22,6 +22,7 @@ import { plannerSegmentsSlice } from './slices/plannerSegmentsSlice';
 import { plannerSlice } from './slices/plannerSlice';
 import { plannerTimerSlice } from './slices/plannerTimerSlice';
 import { plannerServiceApi } from './services/plannerService';
+import lineInfoSlice from './slices/lineInfoSlice';
 
 export const reducer = {
   user: userSlice,
@@ -40,6 +41,7 @@ export const reducer = {
   map: mapSlice,
   lines: linesSlices,
   filters: filtersSlice,
+  lineInfo: lineInfoSlice,
   [agencyServiceApi.reducerPath]: agencyServiceApi.reducer,
   [transportModeServiceApi.reducerPath]: transportModeServiceApi.reducer,
   [stopsServiceApi.reducerPath]: stopsServiceApi.reducer,

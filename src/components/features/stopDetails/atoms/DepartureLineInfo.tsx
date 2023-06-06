@@ -1,9 +1,13 @@
+import { useNavigation } from '@react-navigation/native'
 import Icon from '@src/components/commons/icon/Icon'
 import LineCodeSemiCircle from '@src/components/commons/routeCode/LineCodeSemiCircle'
 import Label from '@src/components/commons/text/Label'
 import { ThemeProps, useTheme } from '@src/context/themeContext'
+import { updatelineInfo } from '@src/redux/slices/lineInfoSlice'
+import { navigationPages } from '@src/utils/constants'
 import React from 'react'
 import { StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native'
+import { useDispatch } from 'react-redux'
 
 interface DepartureLineInfoProps {
     id: number;
@@ -18,13 +22,21 @@ interface DepartureLineInfoProps {
     headsign?: string;
     time?: string;
     timeNow?: string;
+    tripId?: any;
 }
 
 export default function DepartureLineInfo(props: DepartureLineInfoProps) {
   const theme = useTheme();
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
   
   return (
-    <TouchableOpacity style={[styles(theme).content, props.style]}>
+    <TouchableOpacity style={[styles(theme).content, props.style]}
+        onPress={() => {
+            dispatch(updatelineInfo({id: props.id, tripId: props.tripId}))
+            navigation.navigate(navigationPages.lineDetails)
+        }}
+        >
         <View style={styles(theme).container}>
             <View style={styles(theme).rowTitle}>
                 <LineCodeSemiCircle
