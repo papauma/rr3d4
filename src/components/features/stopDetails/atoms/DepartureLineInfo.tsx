@@ -3,7 +3,7 @@ import LineCodeSemiCircle from '@src/components/commons/routeCode/LineCodeSemiCi
 import Label from '@src/components/commons/text/Label'
 import { ThemeProps, useTheme } from '@src/context/themeContext'
 import React from 'react'
-import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
+import { StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native'
 
 interface DepartureLineInfoProps {
     id: number;
@@ -24,7 +24,7 @@ export default function DepartureLineInfo(props: DepartureLineInfoProps) {
   const theme = useTheme();
   
   return (
-    <View style={[styles(theme).content, props.style]}>
+    <TouchableOpacity style={[styles(theme).content, props.style]}>
         <View style={styles(theme).container}>
             <View style={styles(theme).rowTitle}>
                 <LineCodeSemiCircle
@@ -60,7 +60,7 @@ export default function DepartureLineInfo(props: DepartureLineInfoProps) {
             {props.headsign ? <Label style={styles(theme).title}>{props.headsign}</Label> : null}
             {props.time ? <Label style={styles(theme).time}>{props.time}</Label> : null}
         </View>
-    </View>
+    </TouchableOpacity>
   )
 }
 

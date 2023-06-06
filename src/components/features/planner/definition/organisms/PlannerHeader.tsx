@@ -10,6 +10,7 @@ import ConfigurationPlannerFilters from '../molecules/ConfigurationPlannerFilter
 
 interface PlannerHeaderProps {
     showFavoriteButton?: boolean;
+    notShowBackButton?: boolean;
 }
 
 export default function PlannerHeader(props: PlannerHeaderProps) {
@@ -21,7 +22,7 @@ export default function PlannerHeader(props: PlannerHeaderProps) {
     <>
         <ScreenTitle
                     title={t('planner_screen_title')}
-
+                    notShowBackButton={props.notShowBackButton}
                 />
             <RouteSegments
                showFavoriteButton={props.showFavoriteButton}

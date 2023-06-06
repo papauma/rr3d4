@@ -7,6 +7,7 @@ import { useTheme } from '@src/context/themeContext';
 import { View } from 'react-native';
 import StoryBookScreen from '../storyBook/StoryBookScreen';
 import SettingsScreen from '../settings/SettingsScreen';
+import PlannerScreen from '../planner/PlannerScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -29,9 +30,9 @@ export default function MainScreen() {
                 tabBarIcon: ({ focused}) => <Icon source={ theme.drawables.general.Ic_route} 
                 tint={focused ? theme.colors.white : undefined}/>
             }}
-            name={'Warning'}
+            name={'Planner'}
         >
-            {props => <View />}
+            {props => <PlannerScreen />}
         </Tab.Screen>
         <Tab.Screen
             options={{

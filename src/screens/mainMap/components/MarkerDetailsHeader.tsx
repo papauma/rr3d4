@@ -70,7 +70,6 @@ const styles = (theme: ThemeProps) => StyleSheet.create({
         //flex: 1,
         padding: 16,
         paddingBottom: 12,
-        borderRadius: 16,
         backgroundColor: theme.colors.white,
     },
     row: {

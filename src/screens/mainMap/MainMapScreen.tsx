@@ -15,6 +15,7 @@ import VisualizerMapPresenter from '@src/redux/hooks/VisualizerMapPresenter';
 import { mapStateBounds, mapStateMarkerSelected, mapStateMarkers, mapStateZoom, updateBounds, updateRegion, updateZoom } from '@src/redux/slices/mapSlice';
 import HomeBottomSheet from './components/HomeBottomSheet';
 import { filtersState } from '@src/redux/slices/filtersSlice';
+import Loading from '@src/components/commons/loading/Loading';
 
 
 export default function MainMapScreen() {
@@ -83,6 +84,7 @@ export default function MainMapScreen() {
     return (
       <SafeAreaView style={{ flex: 1 }}>
         {contextualInfo.showBackground && <BackgroundModal/>}
+        {contextualInfo.showLoading && <Loading/>}
         <HomeHeader onPressLocation={(coords: IPosition) => focusOnTheMap(coords)}/>
         <MapRender
             zoom={11}

@@ -14,8 +14,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import NextLineDepartures from '../molecules/NextLineDepartures';
 import { useTranslate } from '@src/context/languageContext';
 import SelectorStopTimes from '../atoms/SelectorStopTimes';
+import Icon from '@src/components/commons/icon/Icon';
 
-export default function StopDetails({stop, onPlan} : {stop: IMarker, onPlan: Function}) {
+export default function StopDetails({stop, onPlan, setTopContentBottomSheet} : {stop: IMarker, onPlan: Function, setTopContentBottomSheet?: Function}) {
     const [stopInfo, setStopInfo] = useState<SearchStopType | undefined>();
     const [lines, setLines] = useState<Array<ILine>>([]);
     const [linesTimes, setLinesTimes] = useState<Array<ILineTime>>([]);
@@ -71,6 +72,10 @@ export default function StopDetails({stop, onPlan} : {stop: IMarker, onPlan: Fun
             console.log('Error getDataOfStopFromApi lines ', e);
             //setErrorLoading(true);
         });
+        //TO CHANGE (mostrar iconos de accesibilidad)
+        setTopContentBottomSheet?.((<View style={{position: 'absolute', marginTop: -15, marginLeft: 16}}>
+        <Icon source={theme.drawables.general.Ic_Wheelchair}/>
+      </View>))
         dispatch(contextualSlice.actions.updateShowLoading(false));
     }
 

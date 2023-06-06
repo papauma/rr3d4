@@ -24,6 +24,7 @@ export interface IDrawables {
     Ic_Earth: any;
     Ic_Error: any;
     Ic_Events: any;
+    Ic_Eye_closed: any;
     Ic_filters: any;
     Ic_gotita: any;
     Ic_Heart: any;
@@ -43,6 +44,7 @@ export interface IDrawables {
     Ic_Real_Time: any;
     Ic_Refresh: any;
     Ic_Return: any;
+    Ic_silla_compa: any;
     Ic_Search: any;
     Ic_Settings: any;
     Ic_Star: any;
@@ -52,6 +54,7 @@ export interface IDrawables {
     Ic_Walk: any;
     Ic_Warning: any;
     Ic_Warning_White: any;
+    Ic_Wheelchair: any;
   }
 }
 
@@ -83,6 +86,7 @@ export const drawables = {
     Ic_Earth: require('@images/Ic_Earth.png'),
     Ic_Error: require('@images/Ic_Error.png'),
     Ic_Events: require('@images/Ic_Events.png'),
+    Ic_Eye_closed: require('@images/Ic_Eye_closed.png'),
     Ic_filters: require('@images/Ic_filters.png'),
     Ic_gotita: require('@images/Ic_gotita.png'),
     Ic_Heart: require('@images/Ic_Heart.png'),
@@ -102,6 +106,7 @@ export const drawables = {
     Ic_Real_Time: require('@images/Ic_Real_Time.png'),
     Ic_Refresh: require('@images/Ic_Refresh.png'),
     Ic_Return: require('@images/Ic_Return.png'),
+    Ic_silla_compa: require('@images/Ic_silla_compa.png'),
     Ic_Search: require('@images/Ic_Search.png'),
     Ic_Settings: require('@images/Ic_Settings.png'),
     Ic_Star: require('@images/Ic_Star.png'),
@@ -111,5 +116,6 @@ export const drawables = {
     Ic_Walk: require('@images/Ic_Walk.png'),
     Ic_Warning: require('@images/Ic_Warning.png'),
     Ic_Warning_White: require('@images/Ic_Warning_White.png'),
+    Ic_Wheelchair: require('@images/Ic_Wheelchair.png'),
   }
 };

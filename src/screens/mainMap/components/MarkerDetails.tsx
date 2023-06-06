@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux';
 
 interface MarkerDetailsProps {
     markerSelected?: IMarker;
+    setTopContentBottomSheet?: Function;
 }
 export default function MarkerDetails(props: MarkerDetailsProps) {
   const bottomSheet = useBottomSheet();
@@ -36,7 +37,11 @@ export default function MarkerDetails(props: MarkerDetailsProps) {
     <View style={{flex: 1, backgroundColor: theme.colors.gray_200}}>
       <BottomSheetScrollView>
         {props.markerSelected?.markerType === TypeMarker.Stop && (
-            <StopDetails stop={props.markerSelected} onPlan={onPlan} />
+            <StopDetails 
+              stop={props.markerSelected} 
+              onPlan={onPlan} 
+              setTopContentBottomSheet={props.setTopContentBottomSheet}
+              />
         )}
       </BottomSheetScrollView>
     </View>

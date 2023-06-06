@@ -13,9 +13,7 @@ export default function BottomSheetContent(props: IBottomSheet) {
   const handleComponent = () => {
     return (
       <View style={{}}>
-        {/* <View style={{position: 'absolute', marginTop: -15,}}>
-          <Icon source={theme.drawables.general.Ic_Bus}/>
-        </View> */}
+        {props.topContent}
         <View style={{justifyContent: 'center', alignItems: 'center'}}>
           <Icon source={theme.drawables.general.Ic_Chevron_Down} tint={theme.colors.gray_400}/>
         </View>

@@ -38,6 +38,7 @@ export interface IBottomSheet {
   enableContentPanningGesture?: boolean;
   enableHandlePanningGesture?: boolean;
   enablePanDownToClose?: boolean;
+  topContent?: any;
   children?: any;
   // refMapView: (instance: any) => void;
 }

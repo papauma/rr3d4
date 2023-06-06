@@ -122,7 +122,7 @@ export default function PlannerScreen() {
           paddingTop: Platform.OS === 'ios' ? 0 : 16,
           paddingBottom: 16,}}>
             <SafeAreaView style={{display: 'flex'}}>
-                <PlannerHeader/>
+                <PlannerHeader notShowBackButton={true}/>
         </SafeAreaView>
         </View>
         <View style={{alignSelf: 'flex-end', marginTop: 35, marginRight: 16}}>
