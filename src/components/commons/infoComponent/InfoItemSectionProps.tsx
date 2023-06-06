@@ -39,7 +39,6 @@ interface InfoItemSectionProps {
       justifyContent: 'space-between',
       alignItems: 'center',
       padding: 16,
-      borderRadius: 8,
     },
     row: {
       flexDirection: 'row',

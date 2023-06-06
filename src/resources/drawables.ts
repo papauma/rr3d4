@@ -8,6 +8,7 @@ export interface IDrawables {
     Ic_Arrow_Right: any;
     Ic_Arrow_Up: any;
     Ic_Arrows: any;
+    Ic_Bell: any;
     Ic_Bike: any;
     Ic_Bus: any;
     Ic_storyIcon: any;
@@ -25,6 +26,7 @@ export interface IDrawables {
     Ic_Error: any;
     Ic_Events: any;
     Ic_Eye_closed: any;
+    Ic_Fee: any;
     Ic_filters: any;
     Ic_gotita: any;
     Ic_Heart: any;
@@ -40,6 +42,7 @@ export interface IDrawables {
     Ic_Play: any;
     Ic_Point_Dest: any;
     Ic_Point_MyLocation: any;
+    Ic_Points: any;
     Ic_route: any;
     Ic_Real_Time: any;
     Ic_Refresh: any;
@@ -49,6 +52,7 @@ export interface IDrawables {
     Ic_Settings: any;
     Ic_Star: any;
     Ic_Success: any;
+    Ic_Support: any;
     Ic_Transbordo: any;
     Ic_Up_bottomsheet: any;
     Ic_Walk: any;
@@ -70,6 +74,7 @@ export const drawables = {
     Ic_Arrow_Right: require('@images/Ic_Arrow_Right.png'),
     Ic_Arrow_Up: require('@images/Ic_Arrow_Up.png'),
     Ic_Arrows: require('@images/Ic_Arrows.png'),
+    Ic_Bell: require('@images/Ic_Bell.png'),
     Ic_Bike: require('@images/Ic_Bike.png'),
     Ic_Bus: require('@images/Ic_Bus.png'),
     Ic_storyIcon: require('@images/Ic_storyIcon.png'),
@@ -87,6 +92,7 @@ export const drawables = {
     Ic_Error: require('@images/Ic_Error.png'),
     Ic_Events: require('@images/Ic_Events.png'),
     Ic_Eye_closed: require('@images/Ic_Eye_closed.png'),
+    Ic_Fee: require('@images/Ic_Fee.png'),
     Ic_filters: require('@images/Ic_filters.png'),
     Ic_gotita: require('@images/Ic_gotita.png'),
     Ic_Heart: require('@images/Ic_Heart.png'),
@@ -102,6 +108,7 @@ export const drawables = {
     Ic_Play: require('@images/Ic_Play.png'),
     Ic_Point_Dest: require('@images/Ic_Point_Dest.png'),
     Ic_Point_MyLocation: require('@images/Ic_Point_MyLocation.png'),
+    Ic_Points: require('@images/Ic_Points.png'),
     Ic_route: require('@images/Ic_route.png'),
     Ic_Real_Time: require('@images/Ic_Real_Time.png'),
     Ic_Refresh: require('@images/Ic_Refresh.png'),
@@ -111,6 +118,7 @@ export const drawables = {
     Ic_Settings: require('@images/Ic_Settings.png'),
     Ic_Star: require('@images/Ic_Star.png'),
     Ic_Success: require('@images/Ic_Success.png'),
+    Ic_Support: require('@images/Ic_Support.png'),
     Ic_Transbordo: require('@images/Ic_Transbordo.png'),
     Ic_Up_bottomsheet: require('@images/Ic_Up_bottomsheet.png'),
     Ic_Walk: require('@images/Ic_Walk.png'),
