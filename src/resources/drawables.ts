@@ -17,6 +17,7 @@ export interface IDrawables {
     Ic_Chevron_Right: any;
     Ic_Chevron_Up: any;
     Ic_Circle: any;
+    Ic_Clock: any;
     Ic_Close: any;
     Ic_Data_Protection: any;
     Ic_Data_Protection_Warn: any;
@@ -25,6 +26,7 @@ export interface IDrawables {
     Ic_Events: any;
     Ic_filters: any;
     Ic_gotita: any;
+    Ic_Heart: any;
     Ic_Home: any;
     Ic_Info: any;
     Ic_Map: any;
@@ -74,6 +76,7 @@ export const drawables = {
     Ic_Chevron_Right: require('@images/Ic_Chevron_Right.png'),
     Ic_Chevron_Up: require('@images/Ic_Chevron_Up.png'),
     Ic_Circle: require('@images/Ic_Circle.png'),
+    Ic_Clock: require('@images/Ic_clock.png'),
     Ic_Close: require('@images/Ic_Close.png'),
     Ic_Data_Protection: require('@images/Ic_Data_Protection.png'),
     Ic_Data_Protection_Warn: require('@images/Ic_Data_Protection_Warn.png'),
@@ -82,6 +85,7 @@ export const drawables = {
     Ic_Events: require('@images/Ic_Events.png'),
     Ic_filters: require('@images/Ic_filters.png'),
     Ic_gotita: require('@images/Ic_gotita.png'),
+    Ic_Heart: require('@images/Ic_Heart.png'),
     Ic_Home: require('@images/Ic_Home.png'),
     Ic_Info: require('@images/Ic_Info.png'),
     Ic_Map: require('@images/Ic_Map.png'),

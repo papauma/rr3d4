@@ -12,9 +12,16 @@ export default function useTimeMessages() {
     let monthIndex = parseInt(splitDate[0]) - 1;
     let monthName =  t('monthsAbrev')[monthIndex].toLowerCase();
     return `${dayName}, ${splitDate[1]} ${monthName}`;
-  }  
+  }
+  
+  //TO CHANGE
+  function timeOfStopsFormatted(hour: string, date: string) {
+    let hourFormat = hour.substring(0, 5)
+    return `${t('timer_at')} ${hourFormat}`
+  }
 
   return {
-    getSelectedDayPlannerMessage
+    getSelectedDayPlannerMessage,
+    timeOfStopsFormatted
   }
 }

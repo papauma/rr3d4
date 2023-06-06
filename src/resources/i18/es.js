@@ -114,6 +114,7 @@ export const strings = {
   language_ca: 'Catalán',
   language_es: 'Español',
   language_en: 'Inglés',
+  timer_at: 'a las',
   timer_arrival: 'Llegada',
   timer_departure: 'Salida',
   topSearchBar_title: 'Parada o destino',

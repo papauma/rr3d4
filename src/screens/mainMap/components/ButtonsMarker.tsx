@@ -13,15 +13,15 @@ export default function ButtonsMarker(props: ButtonsMarkerProps) {
   return (
     <View style={{flexShrink: 1, alignSelf: 'flex-start', marginLeft: 8, display: 'flex',}}>
         <Button
-            icon={theme.drawables.general.Ic_Plan}
-            iconStyle={{tintColor: theme.colors.white}}
-            style={{paddingVertical: 10,paddingHorizontal: 8}}
-            onPress={() => props.onPlan?.()}
-        />
-        <Button
             buttonCategory='tertiary'
             icon={theme.drawables.general.Ic_Star}
-            style={{marginTop: 8, paddingHorizontal: 8}}
+            style={{ paddingHorizontal: 8}}
+        />
+        <Button
+            icon={theme.drawables.general.Ic_Plan}
+            iconStyle={{tintColor: theme.colors.white}}
+            style={{paddingVertical: 10,paddingHorizontal: 8, marginTop: 8,}}
+            onPress={() => props.onPlan?.()}
         />
     </View>
   )

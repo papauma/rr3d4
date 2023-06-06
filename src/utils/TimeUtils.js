@@ -91,4 +91,34 @@ export default class TimeUtils {
 
     return `${startHour}:${startMinute > 9 ? startMinute : '0' + startMinute}`;
   }
+
+  //TO CHANGE
+  static timeTilNow(date, hour) {
+    let retorno = '';
+    const ahora = new Date();
+    const diaAhora = new Date(
+      ahora.getFullYear() +
+        '-' +
+        parseInt(ahora.getMonth() + 1) +
+        '-' +
+        ahora.getDate() +
+        'T' +
+        ahora.getHours() +
+        ':' +
+        ahora.getMinutes() +
+        ':00',
+    );
+    const [dia, mes, anyo] = date.split('/');
+    const diaHora = new Date(anyo + '-' + mes + '-' + dia + 'T' + hour);
+    const diferencia = (diaHora.getTime() - diaAhora.getTime()) / 1000 / 60;
+    const horasDiff = parseInt(diferencia / 60);
+    const minutos = diferencia - 60 * horasDiff;
+    if (horasDiff > 0) {
+      retorno += horasDiff + ' h';
+    }
+    if (parseInt(minutos) > 0) {
+      retorno += retorno !== '' ? ' ' + parseInt(minutos) + ' min' : parseInt(minutos) + ' min';
+    }
+    return retorno;
+  }
 }

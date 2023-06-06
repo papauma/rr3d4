@@ -43,13 +43,15 @@ export default function MarkerDetailsHeader(props: MarkerDetailsHeaderProps) {
 
 const styles = (theme: ThemeProps) => StyleSheet.create({
     container: {
-        backgroundColor: theme.colors.gray_200,
+        //backgroundColor: theme.colors.gray_200,
         alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'space-between',
         //flex: 1,
         padding: 16,
+        paddingBottom: 12,
         borderRadius: 16,
+        backgroundColor: theme.colors.white,
     },
     row: {
         flexDirection: 'row',

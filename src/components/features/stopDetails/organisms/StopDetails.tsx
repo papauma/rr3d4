@@ -1,18 +1,19 @@
-import Icon from '@src/components/commons/icon/Icon';
 import IconDynamic from '@src/components/commons/icon/IconDynamic';
 import Label from '@src/components/commons/text/Label';
 import { ThemeProps, useTheme } from '@src/context/themeContext';
 import { useLazyGetLinesByStopIdQuery, useLazyGetLinesTimesByStopIdQuery, useLazyGetStopByIdQuery } from '@src/redux/services/stopsService';
-import { contextualSlice } from '@src/redux/slices/contextualSlice';
+import { contextualInformation, contextualSlice } from '@src/redux/slices/contextualSlice';
 import { lineState } from '@src/redux/slices/linesSlices';
 import { transportModeState } from '@src/redux/slices/transportmodeSlices';
 import MarkerDetailsHeader from '@src/screens/mainMap/components/MarkerDetailsHeader';
 import { ILineTime, ILine, SearchStopType } from '@src/types/ExploreInterfaces';
 import { IMarker, ITransportMode } from '@src/types/interfaces'
 import React, {useEffect, useState} from 'react'
-import { StyleSheet, TouchableOpacity, View } from 'react-native'
+import { ActivityIndicator, StyleSheet, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux';
 import NextLineDepartures from '../molecules/NextLineDepartures';
+import { useTranslate } from '@src/context/languageContext';
+import SelectorStopTimes from '../atoms/SelectorStopTimes';
 
 export default function StopDetails({stop, onPlan} : {stop: IMarker, onPlan: Function}) {
     const [stopInfo, setStopInfo] = useState<SearchStopType | undefined>();
@@ -20,12 +21,30 @@ export default function StopDetails({stop, onPlan} : {stop: IMarker, onPlan: Fun
     const [linesTimes, setLinesTimes] = useState<Array<ILineTime>>([]);
     const allLines = useSelector(lineState);
     const transportModes = useSelector(transportModeState)
+    const [daySelector, setDaySelector] = useState();
+    const [hourSelector, setHourSelector] = useState();
+    const contextual = useSelector(contextualInformation);
 
     const [GetStopById] = useLazyGetStopByIdQuery();
     const [GetLinesByStopId] = useLazyGetLinesByStopIdQuery();
     const [GetLinesTimes] = useLazyGetLinesTimesByStopIdQuery();
     const dispatch = useDispatch();
-    const theme = useTheme()
+    const theme = useTheme();
+    const t = useTranslate()
+
+  async function obtainStopTimes() {
+    dispatch(contextualSlice.actions.updateShowLoading(true))
+    await GetLinesTimes(stop.id)
+            .then((linesTimesResult) => {
+                setLinesTimes(linesTimesResult.data);
+            })
+            .catch((e) => {
+                console.log('Error getDataOfStopFromApi times ', e);
+                //setErrorLoading(true);
+            }).finally(() => {
+                dispatch(contextualSlice.actions.updateShowLoading(false))
+            });
+  }
 
   useEffect(() => {
     async function getStopInfoFromAPI() {
@@ -43,14 +62,8 @@ export default function StopDetails({stop, onPlan} : {stop: IMarker, onPlan: Fun
                 return allLines.find((element: ILine) => String(element.id) === String(lineStop.id))
               }));
             }
-            await GetLinesTimes(stop.id)
-            .then((linesTimesResult) => {
-                setLinesTimes(linesTimesResult.data);
-            })
-            .catch((e) => {
-                console.log('Error getDataOfStopFromApi times ', e);
-                //setErrorLoading(true);
-            });
+            dispatch(contextualSlice.actions.updateShowLoading(false))
+            await obtainStopTimes();
         })
         .catch((e) => {
             console.log('Error getDataOfStopFromApi lines ', e);
@@ -86,26 +99,21 @@ export default function StopDetails({stop, onPlan} : {stop: IMarker, onPlan: Fun
             }
             onPlan={onPlan}
         />
-        <View style={styles(theme).rowSpace}>
-            <Label style={styles(theme).listTitle}>{'Próximas salidas'}</Label>
-            <View style={{flexDirection: 'row', alignItems: 'center',}}>
-                <TouchableOpacity>
-                    <Icon
-                        source={theme.drawables.general.Ic_Real_Time}
-                    />
-                </TouchableOpacity>
-                <TouchableOpacity style={{marginLeft: 8}}>
-                    <Icon
-                        source={theme.drawables.general.Ic_Refresh}
-                    />
-                </TouchableOpacity>
-            </View>
-        </View>
-        <NextLineDepartures 
-            lines={lines}
-            allLineTimes={linesTimes}
-            onPressReset={() => {}}
+        <SelectorStopTimes
+            onRefresh={obtainStopTimes}
+            selectedDay={daySelector}
+            setSelectedDay={setDaySelector}
+            selectedHour={hourSelector}
+            setSelectedHour={setHourSelector}
         />
+        {contextual.showLoading 
+            ? <ActivityIndicator style={{alignSelf: 'center', marginTop: 16}} size={'large'}/>
+            : <NextLineDepartures 
+                lines={lines}
+                allLineTimes={linesTimes}
+                onPressReset={() => {}}
+            />
+        }
     </View>
   )
 }

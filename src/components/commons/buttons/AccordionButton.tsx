@@ -1,5 +1,5 @@
 import React from 'react'
-import { Pressable, StyleProp, View, ViewStyle } from 'react-native'
+import { Pressable, StyleProp, TextStyle, View, ViewStyle } from 'react-native'
 import Label from '../text/Label';
 import Icon from '../icon/Icon';
 import { useTheme } from '@src/context/themeContext';
@@ -10,6 +10,9 @@ interface AccordionButtonProps {
     accessibilityHint?: string;
     title?: string;
     style?: StyleProp<ViewStyle>;
+    styleTitle?: StyleProp<TextStyle>;
+    icon?: any;
+    accordionIconSize?: number;
 }
 
 export default function AccordionButton(props: AccordionButtonProps) {
@@ -32,12 +35,24 @@ export default function AccordionButton(props: AccordionButtonProps) {
                 flexGrow: 1,
               }, props.style]}
             >
-              {props.title ? <Label /* style={{flexGrow: 1}} */>
-                {props.title}
-              </Label> : <View/>}
+              <View style={ [{
+                flexDirection: 'row',
+                alignItems: 'center',
+                backgroundColor: theme.colors.white,
+                flexShrink: 1,
+                flexGrow: 1,
+              }]}>
+                {props.icon && <Icon
+                  style={{marginRight: 8}}
+                  source={props.icon}
+                />}
+                {props.title ? <Label style={[props.styleTitle]} /* style={{flexGrow: 1}} */>
+                  {props.title}
+                </Label> : <View/>}  
+              </View>
               <Icon
                 source={props.collapsed ? theme.drawables.general.Ic_Chevron_Up : theme.drawables.general.Ic_Chevron_Down}
-                size={16}
+                size={props.accordionIconSize ?? 16}
                 //onPress={() => setShowTimeMenu(!showTimeMenu)}
               />
             </Pressable>
