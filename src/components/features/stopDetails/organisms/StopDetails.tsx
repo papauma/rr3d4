@@ -24,6 +24,7 @@ export default function StopDetails({stop, onPlan} : {stop: IMarker, onPlan: Fun
     const [daySelector, setDaySelector] = useState();
     const [hourSelector, setHourSelector] = useState();
     const contextual = useSelector(contextualInformation);
+    const [selectedLines, setSelectedLines] = useState([]);
 
     const [GetStopById] = useLazyGetStopByIdQuery();
     const [GetLinesByStopId] = useLazyGetLinesByStopIdQuery();
@@ -61,6 +62,7 @@ export default function StopDetails({stop, onPlan} : {stop: IMarker, onPlan: Fun
               setLines(linesOfStop.map((lineStop: any) => {
                 return allLines.find((element: ILine) => String(element.id) === String(lineStop.id))
               }));
+              setSelectedLines(linesOfStop.map((lineStop: any) => lineStop.id));
             }
             dispatch(contextualSlice.actions.updateShowLoading(false))
             await obtainStopTimes();
@@ -72,12 +74,15 @@ export default function StopDetails({stop, onPlan} : {stop: IMarker, onPlan: Fun
         dispatch(contextualSlice.actions.updateShowLoading(false));
     }
 
+    setSelectedLines([])
+    setLinesTimes([])
+    setStopInfo(undefined)
     if (stop) {
         getStopInfoFromAPI()
     }
   }, [stop, allLines])  
 
-  console.log('Líneas que pasan', lines?.length);
+  console.log('Líneas seleccionadas', selectedLines);
   
   function renderIconCodeStop(transportMode?: number, code?: string) {
     let transportModeInfo: ITransportMode | undefined = transportModes.find((element: ITransportMode) => String(element.id) === String(transportMode));
@@ -98,6 +103,8 @@ export default function StopDetails({stop, onPlan} : {stop: IMarker, onPlan: Fun
                 : renderIconCodeStop(stop.data?.transportMode)
             }
             onPlan={onPlan}
+            selectedLines={selectedLines}
+            setSelectedLines={setSelectedLines}
         />
         <SelectorStopTimes
             onRefresh={obtainStopTimes}
@@ -111,6 +118,7 @@ export default function StopDetails({stop, onPlan} : {stop: IMarker, onPlan: Fun
             : <NextLineDepartures 
                 lines={lines}
                 allLineTimes={linesTimes}
+                selectedLines={selectedLines}
                 onPressReset={() => {}}
             />
         }

@@ -1,5 +1,5 @@
 import Label from '@src/components/commons/text/Label';
-import { ILine } from '@src/types/ExploreInterfaces';
+import { ILine, ILineTime } from '@src/types/ExploreInterfaces';
 import React, { useEffect, useState } from 'react'
 import { View } from 'react-native';
 import DepartureLineInfo from '../atoms/DepartureLineInfo';
@@ -14,6 +14,7 @@ interface NextLineDeparturesProps {
     lines?: Array<ILine>;
     allLineTimes?: Array<ILineTime>;
     onPressReset?: Function;
+    selectedLines?: Array<number>;
 }
 
 export default function NextLineDepartures(props: NextLineDeparturesProps) {
@@ -28,8 +29,7 @@ export default function NextLineDepartures(props: NextLineDeparturesProps) {
           //accessibilityLabel={'Lista de líneas que pasan por esa parada y sus tiempos de pasada'}
           style={{backgroundColor: theme.colors.white, borderRadius: 16}}
           >
-            {props.allLineTimes?.slice(0, 9)?.map((line: any, index: number) => {
-              console.log('Info-Linea:', line);
+            {props.allLineTimes?.filter((element: any) => props.selectedLines?.find((selLine: number) => selLine === element.lineId)).slice(0, 9)?.map((line: any, index: number) => {
               let lineInfo = allLinesInfo.find((element: ILine) => element.id === line.lineId)
 
               let differenceTime = TimeUtils.timeTilNow(line.fecha, line.time)

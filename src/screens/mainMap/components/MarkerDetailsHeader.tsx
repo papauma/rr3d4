@@ -1,6 +1,6 @@
 import { ThemeProps, useTheme } from '@src/context/themeContext'
 import React from 'react'
-import { FlatList, StyleSheet, View } from 'react-native'
+import { FlatList, StyleSheet, TouchableOpacity, View } from 'react-native'
 import ButtonsMarker from './ButtonsMarker';
 import { ILine } from '@src/types/ExploreInterfaces';
 import Label from '@src/components/commons/text/Label';
@@ -12,6 +12,8 @@ interface MarkerDetailsHeaderProps {
     lines?: Array<ILine>;
     icon?: any;
     onPlan?: any;
+    selectedLines?: Array<number>;
+    setSelectedLines?: Function,
 }
 
 export default function MarkerDetailsHeader(props: MarkerDetailsHeaderProps) {
@@ -28,12 +30,30 @@ export default function MarkerDetailsHeader(props: MarkerDetailsHeaderProps) {
                 horizontal={true}
                 data={props.lines}
                 ItemSeparatorComponent={() => (<View style={{marginLeft: 4}}/>)}
-                renderItem={({item: line, index}) => (<LineCodeSemiCircle code={line?.code} 
-                    backgroundColor={line?.routeColor ? `#${line.routeColor}` : undefined} 
-                    textColor={line?.routeTextColor ? `#${line.routeTextColor}` : undefined}
-                    transportMode={line?.transportmode}
-                    //styleBox={[index !== 0 ? styles.codeBox : undefined, {marginBottom: 4}]}
-                    />)}
+                renderItem={({item: line, index}) => (<TouchableOpacity
+                    onPress={() => {
+                        let copyLines: Array<number> = JSON.parse(JSON.stringify(props.selectedLines));
+
+                        let indexSelectedLine = copyLines.findIndex((element: number) => element === line.id);
+
+                        if (indexSelectedLine !== -1) {
+                          //borrar
+                          copyLines.splice(indexSelectedLine, 1)
+                        } else {
+                          //añadir
+                          copyLines.push(line.id)
+                        }
+                        props.setSelectedLines?.(copyLines)
+
+                    }}
+                    >
+                    <LineCodeSemiCircle code={line?.code} 
+                        backgroundColor={line?.routeColor ? `#${line.routeColor}` : undefined} 
+                        textColor={line?.routeTextColor ? `#${line.routeTextColor}` : undefined}
+                        transportMode={line?.transportmode}
+                        styleBox={props.selectedLines?.find((element: number) => element === line.id) ? null : {opacity: 0.4}}
+                        />
+                    </TouchableOpacity>)}
                 /></View>)} 
         </View>
         <ButtonsMarker onPlan={props.onPlan}/>

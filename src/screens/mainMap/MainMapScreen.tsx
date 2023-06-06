@@ -68,6 +68,7 @@ export default function MainMapScreen() {
         refMapView?.animateCamera({
           center: coords,
           zoom: 17,
+          altitude: 2500,
         });
         setTrackingMap(true)
         setTimeout(() => setTrackingMap(false), 500);

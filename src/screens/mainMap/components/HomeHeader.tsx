@@ -30,16 +30,23 @@ export default function HomeHeader(props: HomeHeaderProps) {
   return (
     <View style={[styles(theme).searchBarTop]}>
         <SafeAreaView>
-            <SearchBarButton iconSearch={markerSelected ? false : true} 
-                title={ markerSelected ? markerSelected?.data?.name : t('topSearchBar_title')}
-                showBackButton={markerSelected ? true : false}
-                backButtonPress={() => dispatch(updateMarkerSelected(undefined))}
-                onPress={() => {
-                    navigation.navigate(navigationPages.search, {
-                        previousScreenParams: { screen: 'Main' },
-                      })
-                }}
-                />
+            {!markerSelected ? <SearchBarButton iconSearch={markerSelected ? false : true} 
+                    title={ markerSelected ? markerSelected?.data?.name : t('topSearchBar_title')}
+                    showBackButton={markerSelected ? true : false}
+                    backButtonPress={() => dispatch(updateMarkerSelected(undefined))}
+                    onPress={() => {
+                        navigation.navigate(navigationPages.search, {
+                            previousScreenParams: { screen: 'Main' },
+                        })
+                    }}
+                    /> 
+                    : <Button
+                        icon={theme.drawables.general.Ic_Arrow_Left}
+                        onPress={() => dispatch(updateMarkerSelected(undefined))}
+                        buttonCategory='secondary'
+                        style={{width: 48, height: 48, marginTop: 20}}
+                    />
+            }
             {!markerSelected && (<View style={styles(theme).containerButtons}>
                 <LocationButton onPress={props.onPressLocation}/>
                 <Button style={{marginTop: 10,}}

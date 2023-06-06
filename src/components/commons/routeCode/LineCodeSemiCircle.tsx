@@ -1,6 +1,6 @@
 import { ThemeProps, useTheme } from '@src/context/themeContext'
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
 import Label from '../text/Label';
 import Icon from '../icon/Icon';
 
@@ -12,7 +12,7 @@ export interface LineCodeSemiCircleProps {
     icon?: any; //icono a mostrar (caso bicis)
     borderColor?: string; //color del borde
     onPress?: Function; //funcion de clicar sobre el boton
-    styleBox?: any; //estilo del boton
+    styleBox?: StyleProp<ViewStyle>; //estilo del boton
     transportMode?: number;
   }
 
