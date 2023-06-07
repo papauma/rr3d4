@@ -18,6 +18,7 @@ export const strings = {
   accessibility_calendar_month_previous: 'Al pulsar presenta al mes anterior',
   accessibility_calendar_modal_desc: 'Al pulsarse presenta un seleccionador de la fecha en forma de calendario',
   accessibility_directory_lines: 'Listado de líneas',
+  accessibility_directory_lines_desc: 'Al pulsar presenta un listado con todas las líneas de transporte',
   accessibility_hour_modal: 'Al pulsarse presenta un modal con un seleccionador de la hora',
   accessibility_hour_selector_label: 'Lista de los números de la hora',
   accessibility_hour_selector_desc: 'Desliza los dos dedos hacia arriba o abajo para seleccionar el número de la hora',

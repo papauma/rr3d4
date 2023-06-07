@@ -1,4 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
+import DirectoryButton from '@src/components/commons/buttons/DirectoryButton';
 import Icon from '@src/components/commons/icon/Icon';
 import Label from '@src/components/commons/text/Label';
 import {useTranslate} from '@src/context/languageContext';
@@ -16,6 +17,7 @@ export default function SearchCategories() {
     {
       id: '1-1',
       name: t('search_directories_lines'),
+      accessibilityHint: t('accessibility_directory_lines_desc'),
       icon: theme.drawables.general.Ic_Bus,
       onPress: () => navigation.navigate(navigationPages.linesDirectory),
     },
@@ -27,16 +29,13 @@ export default function SearchCategories() {
       <View style={styles(theme).container}>
         {sections.map((section: any) => {
           return (
-            <TouchableOpacity
-              style={{marginTop: 12, marginRight: 8, width: 80, alignItems: 'center'}}
-              onPress={() => section?.onPress?.()}>
-              <View style={styles(theme).bigCircle}>
-                <View style={styles(theme).smallCircle}>
-                  <Icon source={section.icon} tint={theme.colors.white} />
-                </View>
-              </View>
-              <Label style={styles(theme).name}>{section.name}</Label>
-            </TouchableOpacity>
+            <DirectoryButton
+              key={section.id}
+              accessibilityHint={section.accessibilityHint}
+              icon={section.icon}
+              name={section.name}
+              onPress={section.onPress}
+            />
           );
         })}
       </View>
