@@ -69,6 +69,7 @@ const styles = (theme: ThemeProps) => StyleSheet.create({
     container: {
         flexDirection: 'row',
         alignItems: 'center',
+        paddingVertical: 12,
     },
 })
 

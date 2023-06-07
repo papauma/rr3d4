@@ -42,6 +42,7 @@ export default function SearchDirectoryLinesScreen() {
               fontSize: 14,
               fontWeight: '400',
               lineHeight: 21,
+              flex: 1,
             }}>
             {item.name}
           </Label>

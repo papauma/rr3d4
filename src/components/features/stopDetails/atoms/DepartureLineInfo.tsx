@@ -96,6 +96,7 @@ const styles = (theme: ThemeProps) => StyleSheet.create({
       lineHeight: 24,  
       color: theme.colors.gray_700,
       marginLeft: 16,
+      flex: 1,
       //flexGrow: 1,
       //flex: 0.5,
     },

@@ -48,7 +48,12 @@ export default function SearchStopsAndLines(props: any) {
         <SearchItem
           key={item.id}
           accessibilityHint={props.previousScreen === 'Planner' ? '' : t('accessibility_search_item_main_desc') }
-          style={index !== 0 ? {marginTop: 12} : undefined}
+          style={[
+            {paddingHorizontal: 16},
+            index !== 0
+              ? {borderTopWidth: 1, borderTopColor: theme.colors.gray_300}
+              : {},
+          ]}
           onPress={() => {onPress(item)}}
           name={item?.stopName}
           address={item.stopDesc}
@@ -66,7 +71,12 @@ export default function SearchStopsAndLines(props: any) {
       return (
         <SearchItem
           key={line?.id}
-          style={index !== 0 ? {marginTop: 12} : undefined}
+          style={[
+            {paddingHorizontal: 16},
+            index !== 0
+              ? {borderTopWidth: 1, borderTopColor: theme.colors.gray_300}
+              : {},
+          ]}
           onPress={() => {}}
           name={line?.name}
           iconComponent={(<LineCodeSemiCircle
@@ -93,7 +103,7 @@ export default function SearchStopsAndLines(props: any) {
         ) : (
           <>
           {searchedStopAndLines.length > 0 ? (
-              <SearchCard style={{flex: 1}} >
+              <SearchCard style={{flex: 1, paddingHorizontal: 0}} >
                 {searchedStopAndLines.map((element: any, index: number) => renderItem(element, index))}
               </SearchCard>
             ) : <Label>{t('search_empty')}</Label>}
