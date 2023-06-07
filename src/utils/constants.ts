@@ -10,6 +10,7 @@ export const navigationPages = {
   routeDetails: 'RouteDetails',
   language: 'Language',
   lineDetails: 'LineDetails',
+  linesDirectory: 'LinesDirectory',
   storybook: 'Storybook',
 };
 
