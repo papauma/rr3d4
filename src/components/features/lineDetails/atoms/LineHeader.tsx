@@ -18,7 +18,7 @@ export default function LineHeader(props: LineHeaderProps) {
 
   return (
     <View style={styles(theme).container}>
-        <View style={styles(theme).row}>
+        <View style={[styles(theme).row, {flexShrink: 1}]}>
             <LineCodeSemiCircle
                 code={props.code}
                 textColor={props.routeTextColor ? `#${props.routeTextColor}` : undefined}
@@ -54,5 +54,6 @@ const styles = (theme: ThemeProps) => StyleSheet.create({
         fontWeight: '700',
         lineHeight: 23.4,
         marginLeft: 8,
+        flexShrink: 1,
     }
 })
