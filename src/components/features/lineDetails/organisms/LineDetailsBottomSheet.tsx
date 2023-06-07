@@ -3,8 +3,11 @@ import React from 'react';
 import {View} from 'react-native';
 import LineHeader from '../atoms/LineHeader';
 import LineDetailsSynoptic from '../molecules/LineDetailsSynoptic';
+import SelectorDetailsOfLine from '../molecules/SelectorDetailsOfLine';
+import HeadSignSelector from '../atoms/HeadSignSelector';
 
 export default function LineDetailsBottomSheet() {
+  /* TO CHANGE */
   const {
     infoLine,
     lineData,
@@ -17,7 +20,8 @@ export default function LineDetailsBottomSheet() {
   } = useInfoLinea();
 
   console.log('Infoline', infoLine);
-  console.log('LineData', lineData);
+  console.log('Trip', trip);
+  
 
   return (
     <View style={{flex: 1, padding: 16}}>
@@ -27,7 +31,16 @@ export default function LineDetailsBottomSheet() {
         routeColor={infoLine?.routeColor}
         routeTextColor={infoLine?.routeTextColor}
       />
-      <LineDetailsSynoptic stopTimes={lineData} routeColor={infoLine?.routeColor} />
+      <HeadSignSelector
+        lineId={lineData?.id}
+        directionId={directionId}
+        sentidoOptions={sentidoOptions}
+        headsign={direction}
+      />
+      <SelectorDetailsOfLine
+        lineData={lineData}
+        routeColor={infoLine?.routeColor}
+      />
     </View>
   );
 }

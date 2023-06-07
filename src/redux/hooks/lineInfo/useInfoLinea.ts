@@ -98,67 +98,70 @@ const useInfoLinea = () => {
   };
 
   useEffect(() => {
-    console.log('Use effect', lineSelector);
-    
-    if (lineSelector.id) {
-      dispatch(contextualSlice.actions.updateShowLoadingBackground(true));
-      const informacionLinea = getLineInfo();
-      if (!informacionLinea) {
-        dispatch(contextualSlice.actions.updateShowLoadingBackground(false));
-        return;
-      }
-      setInfoLine(informacionLinea);
-
-      GetLineShapeTrip({ id: lineSelector.id }).then((response) => {
-        if (response.data.length > 0) {
-          const nextTripId = lineSelector.tripId ? lineSelector.tripId : response.data[0].id;
-
-          GetLineDirections(lineSelector.id).then((lineDirections) => {
-            const directions = lineDirections.data;
-            const optionDirection = directions.map((direccion) => ({
-              txt: direccion.headSign.toLowerCase(),
-              value: direccion.tripId,
-              directionId: direccion.directionId,
-              selected: direccion.tripId === nextTripId,
-            }));
-            const direccionActual = directions.find((direccion) => direccion.tripId === nextTripId);
-            setDirection(direccionActual.headSign.toLowerCase());
-            setDirectionId(direccionActual.directionId);
-            setSentidoOptions(optionDirection);
-          });
-
-          if (nextTripId !== null) {
-            GetLineStopwithTrip({ id: lineSelector.id, tripId: nextTripId }).then((lineStops) => {
-              if (lineStops.data) {
-                let foundStopInLine = lineStops.data.find((element: any) => String(element.id) === String(stopOfLineSelected));
-                if (!foundStopInLine) {
-                  dispatch(updateStopSelectedId(lineStops.data[0].id));
-                }
-              }
-              const paradas = JSON.parse(JSON.stringify(lineStops.data));
-              setLineData(paradas);
-              paintInfoLinea(informacionLinea, response.data, lineStops.data);
-            });
-          } else {
-            GetLineStop(lineSelector.id).then((lineStops) => {
-              if (lineStops.data) {
-                let foundStopInLine = lineStops.data.find((element: any) => String(element.id) === String(stopOfLineSelected));
-                if (!foundStopInLine) {
-                  dispatch(updateStopSelectedId(lineStops.data[0].id));
-                }
-              }
-              const paradas = JSON.parse(JSON.stringify(lineStops.data));
-              setLineData(paradas);
-              paintInfoLinea(informacionLinea, response.data, lineStops.data);
-            });
-          }
-        } else {
-          //dispatch(contextualSlice.actions.updateErrorMessage('No se ha encontrado información sobre la línea'));
+    async function getFromAPi() {
+      if (lineSelector.id) {
+        dispatch(contextualSlice.actions.updateShowLoadingBackground(true));
+        const informacionLinea = getLineInfo();
+        if (!informacionLinea) {
           dispatch(contextualSlice.actions.updateShowLoadingBackground(false));
+          return;
         }
-      })
-      .catch((e) => {console.log(e);});
+        setInfoLine(informacionLinea);
+  
+        await GetLineShapeTrip({ id: lineSelector.id }).then(async (response) => {
+          if (response.data.length > 0) {
+            const nextTripId = lineSelector.tripId ? lineSelector.tripId : response.data[0].id;
+  
+            await GetLineDirections(lineSelector.id).then((lineDirections) => {
+              const directions = lineDirections.data;
+              const optionDirection = directions.map((direccion: any) => ({
+                txt: direccion.headSign.toLowerCase(),
+                value: direccion.tripId,
+                directionId: direccion.directionId,
+                selected: direccion.tripId === nextTripId,
+              }));
+              const direccionActual = directions.find((direccion: any) => direccion.tripId === nextTripId);
+              setDirection(direccionActual.headSign.toLowerCase());
+              setDirectionId(direccionActual.directionId);
+              setSentidoOptions(optionDirection);
+            });
+  
+            if (nextTripId !== null) {
+              await GetLineStopwithTrip({ id: lineSelector.id, tripId: nextTripId }).then((lineStops) => {
+                if (lineStops.data) {
+                  let foundStopInLine = lineStops.data.find((element: any) => String(element.id) === String(stopOfLineSelected));
+                  if (!foundStopInLine) {
+                    dispatch(updateStopSelectedId(lineStops.data[0].id));
+                  }
+                }
+                const paradas = JSON.parse(JSON.stringify(lineStops.data));
+                setLineData(paradas);
+                paintInfoLinea(informacionLinea, response.data, lineStops.data);
+              });
+            } else {
+              await GetLineStop(lineSelector.id).then((lineStops) => {
+                if (lineStops.data) {
+                  let foundStopInLine = lineStops.data.find((element: any) => String(element.id) === String(stopOfLineSelected));
+                  if (!foundStopInLine) {
+                    dispatch(updateStopSelectedId(lineStops.data[0].id));
+                  }
+                }
+                const paradas = JSON.parse(JSON.stringify(lineStops.data));
+                setLineData(paradas);
+                paintInfoLinea(informacionLinea, response.data, lineStops.data);
+              });
+            }
+            dispatch(contextualSlice.actions.updateShowLoadingBackground(false));
+          } else {
+            //dispatch(contextualSlice.actions.updateErrorMessage('No se ha encontrado información sobre la línea'));
+            dispatch(contextualSlice.actions.updateShowLoadingBackground(false));
+          }
+        })
+        .catch((e) => {console.log(e); dispatch(contextualSlice.actions.updateShowLoadingBackground(false));});
+      }
     }
+
+    getFromAPi()
   }, [lineSelector.id, lineSelector.tripId, dispatch, selectorLines]);
 
   return { infoLine , lineData, trip, direction, sentidoOptions, changeTrip, setLineData, directionId };

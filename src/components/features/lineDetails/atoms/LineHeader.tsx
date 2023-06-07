@@ -44,6 +44,9 @@ const styles = (theme: ThemeProps) => StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
+        borderBottomWidth: 1,
+        borderBottomColor: theme.colors.gray_300,
+        paddingBottom: 16,
     },
     row: {
         flexDirection: 'row',
