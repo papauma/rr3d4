@@ -12,11 +12,8 @@ export interface UserInterface {
     deviceTypeId: number | undefined;
     tokenDevice: any;
     bearerToken: string;
-    id: number | undefined;
-    username: string | undefined;
-    enabled: boolean | undefined;
-    roles: Array<any> | undefined;
-    tutorial: boolean | undefined;
+    alias: string | undefined;
+    email: string | undefined;
   };
 }
 
@@ -27,11 +24,8 @@ const initialState: UserInterface = {
     deviceTypeId: enviroments.deviceTypeId,
     tokenDevice: '',
     bearerToken: '',
-    id: undefined,
-    username: undefined,
-    enabled: undefined,
-    roles: undefined,
-    tutorial: false,
+    alias: '',
+    email: '',
   },
 };
 
@@ -61,11 +55,6 @@ export const userSlice = createSlice({
       console.log('userSlice -> tokenDeviceUpdate');
       state.user.tokenDevice = action.payload;
     },
-    updateTutorial: (state, action: any) => {
-      console.log('userSlice -> updateTutorial');
-      state.user.tutorial = action.payload;
-      storage.set('userAccountInformation', JSON.stringify(state.user));
-    },
     updateUserData: (state, action: any) => {
       console.log('userSlice -> updateUserData');
       state.user = { ...state.user, ...action.payload };
@@ -83,7 +72,6 @@ export const {
   languageIdUpdate,
   deviceTypeIdUpdate,
   tokenDeviceUpdate,
-  updateTutorial,
   updateUserData,
 } = userSlice.actions;
 export default userSlice.reducer;

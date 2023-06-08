@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import InputBar, {InputBarProps} from './InputBar';
 import {useTheme} from '@src/context/themeContext';
 import {useTranslate} from '@src/context/languageContext';
+import InputForm, { InputFormProps } from './InputForm';
 
-interface PasswordInputProps extends InputBarProps {}
+interface PasswordInputProps extends InputFormProps {}
 
 export default function PasswordInput(props: PasswordInputProps) {
   const theme = useTheme();
@@ -11,10 +11,11 @@ export default function PasswordInput(props: PasswordInputProps) {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <InputBar
-      showLens={true}
+    <InputForm
+      showLens={props.value ? true : false}
       leftIcon={theme.drawables.general.Ic_Lock}
       secureTextEntry={!showPassword}
+      actionIcon={props.value ? true : false}
       onPressLens={() => setShowPassword(!showPassword)}
       lensIcon={
         showPassword

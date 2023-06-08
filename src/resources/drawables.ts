@@ -23,6 +23,7 @@ export interface IDrawables {
     Ic_Data_Protection: any;
     Ic_Data_Protection_Warn: any;
     Ic_Earth: any;
+    Ic_Email: any;
     Ic_Error: any;
     Ic_Events: any;
     Ic_Eye: any;
@@ -95,6 +96,7 @@ export const drawables = {
     Ic_Data_Protection: require('@images/Ic_Data_Protection.png'),
     Ic_Data_Protection_Warn: require('@images/Ic_Data_Protection_Warn.png'),
     Ic_Earth: require('@images/Ic_Earth.png'),
+    Ic_Email: require('@images/Ic_Email.png'),
     Ic_Error: require('@images/Ic_Error.png'),
     Ic_Events: require('@images/Ic_Events.png'),
     Ic_Eye: require('@images/Ic_Eye.png'),
