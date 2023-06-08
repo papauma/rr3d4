@@ -15,15 +15,11 @@ export default function SettingsScreen() {
   const sections: any =  [
         {
           id: '1-1',
-          //icon: R.resources.drawables.general.Ic_Policy,
+          icon: theme.drawables.general.Ic_User_Circle,
           name: t('settings_section_general_account'),
-          /* onPress: async () => {
-            
-              await analytics().logEvent('onClickAvisoLegal');
-            await Linking.canOpenURL(linkLegal).then(() =>
-              Linking.openURL(linkLegal),
-            );
-          }, */
+          onPress: () => {
+            navigation.navigate(navigationPages.accountManagement)
+          },
         },
         {
           id: '1-2',
@@ -68,7 +64,7 @@ export default function SettingsScreen() {
         </View>
         <View style={{flex: 1, padding: 16, paddingTop: 0, borderRadius: 16,}}>
           <FlatList
-            accessibilityLabel='Lista de ajustes'
+            //accessibilityLabel='Lista de ajustes'
             data={sections}
             keyExtractor={item => item.id}
             renderItem={({item, index}) => (

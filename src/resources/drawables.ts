@@ -36,6 +36,8 @@ export interface IDrawables {
     Ic_Less: any;
     Ic_location: any;
     Ic_location_desactivated: any;
+    Ic_Lock: any;
+    Ic_LogOut: any;
     Ic_Meatballs: any;
     Ic_Ocupacion: any;
     Ic_Plan: any;
@@ -55,6 +57,8 @@ export interface IDrawables {
     Ic_Support: any;
     Ic_Transbordo: any;
     Ic_Up_bottomsheet: any;
+    Ic_User: any;
+    Ic_User_Circle: any;
     Ic_Walk: any;
     Ic_Warning: any;
     Ic_Warning_White: any;
@@ -102,6 +106,8 @@ export const drawables = {
     Ic_Less: require('@images/Ic_Less.png'),
     Ic_location: require('@images/Ic_location.png'),
     Ic_location_desactivated: require('@images/Ic_location_desactivated.png'),
+    Ic_Lock: require('@images/Ic_Lock.png'),
+    Ic_LogOut: require('@images/Ic_LogOut.png'),
     Ic_Meatballs: require('@images/Ic_Meatballs.png'),
     Ic_Ocupacion: require('@images/Ic_Ocupacion.png'),
     Ic_Plan: require('@images/Ic_Plan.png'),
@@ -121,6 +127,8 @@ export const drawables = {
     Ic_Support: require('@images/Ic_Support.png'),
     Ic_Transbordo: require('@images/Ic_Transbordo.png'),
     Ic_Up_bottomsheet: require('@images/Ic_Up_bottomsheet.png'),
+    Ic_User: require('@images/Ic_User.png'),
+    Ic_User_Circle: require('@images/Ic_User_Circle.png'),
     Ic_Walk: require('@images/Ic_Walk.png'),
     Ic_Warning: require('@images/Ic_Warning.png'),
     Ic_Warning_White: require('@images/Ic_Warning_White.png'),

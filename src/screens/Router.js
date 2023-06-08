@@ -16,6 +16,7 @@ import PlannerResultScreen from './planner/result/PlannerResultScreen';
 import RouteDetailsScreen from './planner/routeDetails/RouteDetailsScreen';
 import LineDetailsScreen from './line/LineDetailsScreen';
 import SearchDirectoryLinesScreen from './search/SearchDirectoryLinesScreen';
+import AccountManagementScreen from './settings/accountManagement/AccountManagementScreen';
 
 const Stack = createStackNavigator();
 
@@ -29,6 +30,10 @@ const SplashComponent = ({navigation, route, options, back}) => {
 
 const MainComponent = ({navigation, route, options, back}) => {
   return <MainScreen navigation={navigation} />;
+};
+
+const AccountManagementComponent = ({navigation, route, options, back}) => {
+  return <AccountManagementScreen />;
 };
 
 const FiltersComponent = ({navigation, route, options, back}) => {
@@ -94,6 +99,7 @@ export default function Routes() {
         <Stack.Screen name={navigationPages.main} component={MainComponent} />
         <Stack.Screen name={navigationPages.splash} component={SplashComponent} />
         <Stack.Screen name={navigationPages.filters} component={FiltersComponent} />
+        <Stack.Screen name={navigationPages.accountManagement} component={AccountManagementComponent} />
         <Stack.Screen name={navigationPages.lineDetails} component={LineDetailsComponent} />
         <Stack.Screen name={navigationPages.linesDirectory} component={LinesDirectoryComponent} />
         <Stack.Screen name={navigationPages.search} component={SearchComponent} />
