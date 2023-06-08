@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import InfoItemSection from '@src/components/commons/infoComponent/InfoItemSectionProps';
 import Label from '@src/components/commons/text/Label'
+import InfoSignUp from '@src/components/widgets/InfoSignUp';
 import { useTranslate } from '@src/context/languageContext';
 import { ThemeProps, useTheme } from '@src/context/themeContext'
 import { navigationPages } from '@src/utils/constants';
@@ -62,6 +63,9 @@ export default function SettingsScreen() {
         <View style={[styles(theme).viewTitle]}>
             <Label style={[styles(theme).title]}>{t('settings_screen_title')}</Label>
         </View>
+        <InfoSignUp
+          style={{margin: 16, marginTop: 0}}
+        />
         <View style={{flex: 1, padding: 16, paddingTop: 0, borderRadius: 16,}}>
           <FlatList
             //accessibilityLabel='Lista de ajustes'

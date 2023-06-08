@@ -25,6 +25,7 @@ export interface IDrawables {
     Ic_Earth: any;
     Ic_Error: any;
     Ic_Events: any;
+    Ic_Eye: any;
     Ic_Eye_closed: any;
     Ic_Fee: any;
     Ic_filters: any;
@@ -40,6 +41,7 @@ export interface IDrawables {
     Ic_LogOut: any;
     Ic_Meatballs: any;
     Ic_Ocupacion: any;
+    Ic_open_eye: any;
     Ic_Plan: any;
     Ic_Play: any;
     Ic_Point_Dest: any;
@@ -95,6 +97,7 @@ export const drawables = {
     Ic_Earth: require('@images/Ic_Earth.png'),
     Ic_Error: require('@images/Ic_Error.png'),
     Ic_Events: require('@images/Ic_Events.png'),
+    Ic_Eye: require('@images/Ic_Eye.png'),
     Ic_Eye_closed: require('@images/Ic_Eye_closed.png'),
     Ic_Fee: require('@images/Ic_Fee.png'),
     Ic_filters: require('@images/Ic_filters.png'),
@@ -110,6 +113,7 @@ export const drawables = {
     Ic_LogOut: require('@images/Ic_LogOut.png'),
     Ic_Meatballs: require('@images/Ic_Meatballs.png'),
     Ic_Ocupacion: require('@images/Ic_Ocupacion.png'),
+    Ic_open_eye: require('@images/Ic_open_eye.png'),
     Ic_Plan: require('@images/Ic_Plan.png'),
     Ic_Play: require('@images/Ic_Play.png'),
     Ic_Point_Dest: require('@images/Ic_Point_Dest.png'),

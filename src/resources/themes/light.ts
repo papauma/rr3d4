@@ -1,4 +1,5 @@
 export interface LightColors {
+  neutral_400: string;
   mainGreen: string;
   primary_050: string;
   primary_100: string;
@@ -62,6 +63,7 @@ export interface LightColors {
 }
 
 export const colors: LightColors = {
+  neutral_400: '#CED4DA',
   mainGreen: '#99CC33',
   primary_050: '#ECF6D1',
   primary_100: '#D9EEA8',
