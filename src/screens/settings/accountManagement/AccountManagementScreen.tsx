@@ -3,6 +3,7 @@ import InfoItemSection from '@src/components/commons/infoComponent/InfoItemSecti
 import ScreenTitle from '@src/components/commons/text/ScreenTitle';
 import { useTranslate } from '@src/context/languageContext';
 import { useTheme } from '@src/context/themeContext';
+import { navigationPages } from '@src/utils/constants';
 import React from 'react'
 import { FlatList, SafeAreaView, View } from 'react-native'
 
@@ -26,6 +27,7 @@ export default function AccountManagementScreen() {
             name: t('account_management_change_password'),
             onPress: () => {
               //navigation.navigate(navigationPages.language)
+              navigation.navigate(navigationPages.changePassword)
             },
           },
           {

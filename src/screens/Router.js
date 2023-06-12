@@ -19,6 +19,7 @@ import SearchDirectoryLinesScreen from './search/SearchDirectoryLinesScreen';
 import AccountManagementScreen from './settings/accountManagement/AccountManagementScreen';
 import SignUpScreen from './signup/SignUpScreen';
 import LoginScreen from './login/LoginScreen';
+import ChangePasswordScreen from './settings/accountManagement/ChangePasswordScreen';
 
 const Stack = createStackNavigator();
 
@@ -44,6 +45,10 @@ const SignUpComponent = ({navigation, route, options, back}) => {
 
 const LoginComponent = ({navigation, route, options, back}) => {
   return <LoginScreen/>;
+};
+
+const ChangePasswordComponent = ({navigation, route, options, back}) => {
+  return <ChangePasswordScreen/>;
 };
 
 const FiltersComponent = ({navigation, route, options, back}) => {
@@ -112,6 +117,7 @@ export default function Routes() {
         <Stack.Screen name={navigationPages.accountManagement} component={AccountManagementComponent} />
         <Stack.Screen name={navigationPages.signup} component={SignUpComponent} />
         <Stack.Screen name={navigationPages.login} component={LoginComponent} />
+        <Stack.Screen name={navigationPages.changePassword} component={ChangePasswordComponent} />
         <Stack.Screen name={navigationPages.lineDetails} component={LineDetailsComponent} />
         <Stack.Screen name={navigationPages.linesDirectory} component={LinesDirectoryComponent} />
         <Stack.Screen name={navigationPages.search} component={SearchComponent} />

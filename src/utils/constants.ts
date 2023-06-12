@@ -3,6 +3,7 @@ export const navigationPages = {
   main: 'Main',
   mainMap: 'MainMap',
   accountManagement: 'AccountManagement',
+  changePassword: 'ChangePassword',
   login: 'Login',
   signup: 'SignUp',
   filters: 'Filters',
