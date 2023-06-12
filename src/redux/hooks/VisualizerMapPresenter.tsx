@@ -74,7 +74,7 @@ export default function VisualizerMapPresenter() {
     // COMPROBAR CONDICION PARA MOSTRAR MARKERS
     //TO CHANGE
 
-    if (zoom !== undefined && zoom < 17 /* || !props.precarga */) {
+    if (zoom !== undefined && zoom < 16 /* || !props.precarga */) {
       if (selectorMapMarkers.length > 0) {
         dispatch(updateMarkers(markers));
       }
