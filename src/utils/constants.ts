@@ -23,8 +23,10 @@ export const languages = ['ca', 'es', 'en', 'ge'];
 
 
 export const defaultLocation = {
-  latitude: 39.5722384,
-  longitude: 2.6513239,
+  //latitude: 39.5722384,
+  //longitude: 2.6513239,
+  latitude: 40.415902,
+  longitude: -3.707948,
   latitudeDelta: 0.09,
   longitudeDelta: 0.04,
 };

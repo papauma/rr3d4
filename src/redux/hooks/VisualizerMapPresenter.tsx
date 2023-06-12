@@ -74,7 +74,7 @@ export default function VisualizerMapPresenter() {
     // COMPROBAR CONDICION PARA MOSTRAR MARKERS
     //TO CHANGE
 
-    if (zoom !== undefined && zoom < 16 /* || !props.precarga */) {
+    if (zoom !== undefined && zoom < 17 /* || !props.precarga */) {
       if (selectorMapMarkers.length > 0) {
         dispatch(updateMarkers(markers));
       }
@@ -101,9 +101,6 @@ export default function VisualizerMapPresenter() {
     markers = [...markers, ...stops/* , ...pois */];
     console.log('[Home Screen] - GET MARKERS < 16 - ' + markers.length);
     //TO CHANGE
-    if (markers.length > 250) {
-      return [];
-    }
     let idIcons: Array<number> = [];
     markers.forEach((marker: IMarker) => {
       !idIcons.includes(marker.data?.icons?.iconMarkTransportId) &&
