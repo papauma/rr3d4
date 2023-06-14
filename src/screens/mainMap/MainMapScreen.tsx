@@ -16,6 +16,7 @@ import { mapStateBounds, mapStateMarkerSelected, mapStateMarkers, mapStateZoom, 
 import HomeBottomSheet from './components/HomeBottomSheet';
 import { filtersState } from '@src/redux/slices/filtersSlice';
 import Loading from '@src/components/commons/loading/Loading';
+import { useIsFocused } from '@react-navigation/native';
 
 
 export default function MainMapScreen() {
@@ -24,6 +25,7 @@ export default function MainMapScreen() {
     const t = useTranslate();
     const dispatch = useDispatch();
     const [trackingMap, setTrackingMap] = useState(false);
+    let isFocused = useIsFocused();
 
     const contextualInfo = useSelector(contextualInformation);
     const allStops = useSelector(stopsState);
@@ -91,7 +93,7 @@ export default function MainMapScreen() {
             initialRegion={defaultLocation}
             setRefMapView={setRefMapView}
             onMapDragComplete={(region: any) => dispatch(updateRegion(region))}
-            markers={renderVisualizerMarkers(markersVisualizer)}
+            markers={isFocused ? renderVisualizerMarkers(markersVisualizer) : []}
             updateBounds={(bounds: IBounds, zoom?: number) => {
               dispatch(updateBounds(bounds));
             }}

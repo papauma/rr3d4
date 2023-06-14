@@ -60,6 +60,7 @@ export const strings = {
   button_accept: 'Aceptar',
   button_cancel: 'Cancelar',
   button_confirm: 'Confirmar',
+  button_delete: 'Eliminar',
   button_done: 'Hecho',
   button_next: 'Siguiente',
   button_save: 'Guardar',

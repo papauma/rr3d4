@@ -23,7 +23,7 @@ export default function MainScreen() {
         headerShown: false,
         tabBarShowLabel: false,
         tabBarItemStyle: {paddingBottom: 8, paddingTop: 8},
-        //lazy: true,
+        lazy: true,
       }}>
         <Tab.Screen
             options={{

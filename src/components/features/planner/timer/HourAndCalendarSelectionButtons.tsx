@@ -51,16 +51,19 @@ export default function HourAndCalendarSelectionButtons() {
           dispatch(contextualSlice.actions.updateShowBackground(true))
         }}
         collapsed={showHoursSelection}
+        style={{flexGrow: 0}}
+        styleRow={{flexGrow: 0}}
       />
       <AccordionButton
         accessibilityHint={t('accessibility_calendar_modal_desc')}
-        style={{marginLeft: 5}}
         title={getSelectedDayPlannerMessage(plannerTimerInfo.date)}
         onPress={() => {
           setShowCalendarSelection(true)
           dispatch(contextualSlice.actions.updateShowBackground(true))
         }}
         collapsed={showCalendarSelection}
+        style={{flexGrow: 0, marginLeft: 5}}
+        styleRow={{flexGrow: 0}}
       />
 
       {showCalendarSelection && (
