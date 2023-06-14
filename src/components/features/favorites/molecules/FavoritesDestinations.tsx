@@ -4,6 +4,7 @@ import React from 'react'
 import { View, FlatList } from 'react-native'
 import DestinationCardFavorite from '../atoms/DestinationCardFavorite';
 import { TypeMarker } from '@src/types/ExploreInterfaces';
+import FavoritesListEmpty from '../atoms/FavoritesListEmpty';
 
 interface FavoritesDestinationsProps {
     destinations: Array<any>;
@@ -32,8 +33,13 @@ export default function FavoritesDestinations(props: FavoritesDestinationsProps)
   return (
     <View style={{flex: 1, paddingHorizontal: 16}}>
         <FlatList
-            data={[1, 2, 3, 4, 5]}
+            data={[1, 2, 3, 4, 5, 6, 7, 8]}
             renderItem={renderCard}
+            ListEmptyComponent={() => (<FavoritesListEmpty
+                style={{marginTop: 80}} 
+                title={t('favorites_empty_title_destinations')}
+                description={t('favorites_empty_description_destinations')}
+              />)}
         />
     </View>
   )

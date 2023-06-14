@@ -1,50 +1,84 @@
-import { ThemeProps, useTheme } from '@src/context/themeContext';
-import React, { useState } from 'react'
-import { Pressable, StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
-import Label from '../text/Label';
+import {ThemeProps, useTheme} from '@src/context/themeContext';
+import React from 'react';
+import {Animated, Pressable, StyleProp, StyleSheet, View, ViewStyle} from 'react-native';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 
 export interface ITabSection {
-    title: string;
-    content: any; 
+  title: string;
+  content: any;
 }
 
 interface TripleTabProps {
-    sections: Array<ITabSection>;
-    styleContainer?: StyleProp<ViewStyle>;
+  sections: Array<ITabSection>;
+  styleContainer?: StyleProp<ViewStyle>;
 }
+
+const Tab = createMaterialTopTabNavigator();
 
 export default function TripleTab(props: TripleTabProps) {
   const theme = useTheme();
-  const [showContentType, setShowContentType] = useState(0);
 
   return (
-    <>
-      <View style={[styles(theme).container, props.styleContainer]}>
-        {props.sections.map((section: any, index: number) => (
-          <Pressable
-            key={index}
-            onPress={() => setShowContentType(index)}
-            style={[
-              index === showContentType
-                ? styles(theme).selectedSection
-                : styles(theme).section,
-                {flexGrow: 1}
-            ]}>
-            <Label
-              style={[
-                index === showContentType
-                  ? styles(theme).selectedName
-                  : styles(theme).name,
-                {textAlign: 'center'}
-              ]}>
-              {section.title}
-            </Label>
-          </Pressable>
-        ))}
-      </View>
-      {props.sections[showContentType]?.content}
-    </>
-  )
+    <Tab.Navigator
+      tabBar={({state, descriptors, navigation, position}) => {
+        return (
+          <View style={[styles(theme).container, props.styleContainer]}>
+            {state.routes.map((section: any, index: number) => {
+
+              const { options } = descriptors[section.key];
+              const isFocused = state.index === index;
+
+              const onPress = () => {
+                const event = navigation.emit({
+                  type: 'tabPress',
+                  target: section.key,
+                  canPreventDefault: true,
+                });
+
+                if (!isFocused && !event.defaultPrevented) {
+                  // The `merge: true` option makes sure that the params inside the tab screen are preserved
+                  navigation.navigate({ name: section.name, merge: true });
+                }
+              };
+
+              const inputRange = state.routes.map((_, i) => i);
+              const opacity = position.interpolate({
+                inputRange,
+                outputRange: inputRange.map(i => (i === index ? 1 : 0)),
+              });
+
+              return (
+                <Pressable
+                  key={index}
+                  accessibilityState={isFocused ? { selected: true } : {}}
+                  testID={options.tabBarTestID}
+                  onPress={onPress}
+                  style={[
+                    isFocused
+                      ? styles(theme).selectedSection
+                      : styles(theme).section,
+                    {flexGrow: 1},
+                  ]}>
+                  <Animated.Text
+                    style={[
+                      isFocused
+                        ? styles(theme).selectedName
+                        : styles(theme).name,
+                      {textAlign: 'center'},
+                    ]}>
+                    {section.name}
+                  </Animated.Text>
+                </Pressable>
+              );
+            })}
+          </View>
+        );
+      }}>
+      {props.sections.map((section: ITabSection) => (
+        <Tab.Screen name={section.title}>{() => section.content}</Tab.Screen>
+      ))}
+    </Tab.Navigator>
+  );
 }
 
 const styles = (theme: ThemeProps) =>
@@ -65,9 +99,7 @@ const styles = (theme: ThemeProps) =>
       borderRadius: 16,
       backgroundColor: theme.colors.primary_300,
     },
-    section: {
-        
-    },
+    section: {},
     name: {
       fontWeight: '500',
       color: theme.colors.gray_700,
