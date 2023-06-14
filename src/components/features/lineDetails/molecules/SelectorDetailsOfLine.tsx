@@ -4,6 +4,7 @@ import React, {useState} from 'react';
 import LineDetailsSynoptic from './LineDetailsSynoptic';
 import {Pressable, StyleSheet, View} from 'react-native';
 import Label from '@src/components/commons/text/Label';
+import TripleTab, { ITabSection } from '@src/components/commons/menu/TripleTab';
 
 interface SelectorDetailsOfLineProps {
   lineData?: any;
@@ -15,9 +16,8 @@ export default function SelectorDetailsOfLine(
 ) {
   const theme = useTheme();
   const t = useTranslate();
-  const [showContentType, setShowContentType] = useState(0);
 
-  const sections: Array<any> = [
+  const sections: Array<ITabSection> = [
     {
       title: t('line'),
       content: (
@@ -38,31 +38,9 @@ export default function SelectorDetailsOfLine(
   ];
 
   return (
-    <>
-      <View style={styles(theme).container}>
-        {sections.map((section: any, index: number) => (
-          <Pressable
-            onPress={() => setShowContentType(index)}
-            style={[
-              index === showContentType
-                ? styles(theme).selectedSection
-                : styles(theme).section,
-                {flexGrow: 1}
-            ]}>
-            <Label
-              style={[
-                index === showContentType
-                  ? styles(theme).selectedName
-                  : styles(theme).name,
-                {textAlign: 'center'}
-              ]}>
-              {section.title}
-            </Label>
-          </Pressable>
-        ))}
-      </View>
-      {sections[showContentType].content}
-    </>
+    <TripleTab
+      sections={sections}
+    />
   );
 }
 

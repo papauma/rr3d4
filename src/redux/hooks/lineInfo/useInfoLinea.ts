@@ -120,12 +120,18 @@ const useInfoLinea = () => {
                 directionId: direccion.directionId,
                 selected: direccion.tripId === nextTripId,
               }));
-              const direccionActual = directions.find((direccion: any) => direccion.tripId === nextTripId);
-              setDirection(direccionActual.headSign.toLowerCase());
-              setDirectionId(direccionActual.directionId);
-              setSentidoOptions(optionDirection);
+              let direccionActual = directions.find((direccion: any) => direccion.tripId === nextTripId);
+              if (!direccionActual) {
+                direccionActual = directions.find((direccion: any) => direccion.tripId === response.data[0].id)
+              }
+
+              if (direccionActual) {
+                setDirection(direccionActual.headSign.toLowerCase());
+                setDirectionId(direccionActual.directionId);
+                setSentidoOptions(optionDirection);
+              }
             });
-  
+            
             if (nextTripId !== null) {
               await GetLineStopwithTrip({ id: lineSelector.id, tripId: nextTripId }).then((lineStops) => {
                 if (lineStops.data) {

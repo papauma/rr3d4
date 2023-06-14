@@ -23,6 +23,8 @@ import { plannerSlice } from './slices/plannerSlice';
 import { plannerTimerSlice } from './slices/plannerTimerSlice';
 import { plannerServiceApi } from './services/plannerService';
 import lineInfoSlice from './slices/lineInfoSlice';
+import { favoritesSlice } from './slices/favoritesSlice';
+import { favoriteServiceApi } from './services/favoriteServiceApi';
 
 export const reducer = {
   user: userSlice,
@@ -35,6 +37,7 @@ export const reducer = {
   [plannerSegmentsSlice.name]: plannerSegmentsSlice.reducer,
   [plannerSlice.name]: plannerSlice.reducer,
   [plannerTimerSlice.name]: plannerTimerSlice.reducer,
+  [favoritesSlice.name]: favoritesSlice.reducer,
   agencys: agencysSlices,
   transportmode: transportmodeSlices,
   icons: iconsSlices,
@@ -49,6 +52,7 @@ export const reducer = {
   [userServiceApi.reducerPath]: userServiceApi.reducer,
   [linesServiceApi.reducerPath]: linesServiceApi.reducer,
   [plannerServiceApi.reducerPath]: plannerServiceApi.reducer,
+  [favoriteServiceApi.reducerPath]: favoriteServiceApi.reducer,
 };
 
 export const store = configureStore({

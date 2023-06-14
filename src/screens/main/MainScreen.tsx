@@ -8,6 +8,7 @@ import { View } from 'react-native';
 import StoryBookScreen from '../storyBook/StoryBookScreen';
 import SettingsScreen from '../settings/SettingsScreen';
 import PlannerScreen from '../planner/PlannerScreen';
+import FavoritesScreen from '../favorites/FavoritesScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -41,12 +42,12 @@ export default function MainScreen() {
             }}
             name={'Favorites'}
         >
-            {props => <View />}
+            {props => <FavoritesScreen />}
         </Tab.Screen>
         <Tab.Screen
             options={{
                 tabBarShowLabel: false,
-                tabBarIcon: ({ focused}) => <Icon source={theme.drawables.general.Ic_LocationHome} tint={focused ? theme.colors.white : undefined}/>
+                tabBarIcon: ({ focused}) => <Icon source={theme.drawables.general.Ic_LocationHome} tint={focused ? theme.colors.white : theme.colors.gray_400}/>
             }}
             name={'Home'}
         >
