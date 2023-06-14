@@ -21,7 +21,7 @@ export default function FavoritesDestinations(props: FavoritesDestinationsProps)
             id: 2,
             markerType: TypeMarker.Direction,
             data: {
-                name: 'El corte inglés alargado como una mie',
+                name: 'El corte inglés',
             }
         }}
         staticIcon={theme.drawables.general.Ic_Home}  
