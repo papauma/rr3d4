@@ -7,9 +7,11 @@ import { locationInformation, locationSlice } from '@src/redux/slices/locationSl
 import ActivateLocationModal from './ActivateLocationModal';
 import { contextualSlice } from '@src/redux/slices/contextualSlice';
 import { IPosition } from '@src/types/interfaces';
+import { StyleProp, ViewStyle } from 'react-native';
 
 interface LocationButtonProps {
     onPress?: Function;
+    style?: StyleProp<ViewStyle>;
 }
 
 export default function LocationButton(props: LocationButtonProps) {
@@ -35,6 +37,7 @@ export default function LocationButton(props: LocationButtonProps) {
     <>
         <Button iconStyle={locationInfo.tracking ? undefined : {tintColor: theme.colors.gray_400}}
                 buttonCategory='secondary'
+                style={props.style}
                 onPress={onPressLocation}
                 icon={theme.drawables.general.Ic_location_desactivated}/>
         <ActivateLocationModal visible={showModal} 

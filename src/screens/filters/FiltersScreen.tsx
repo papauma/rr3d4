@@ -73,6 +73,7 @@ const styles = (theme: ThemeProps) => StyleSheet.create({
     color: theme.colors.gray_700,
     fontWeight: '700',
     lineHeight: 20.8,
+    textTransform: 'uppercase',
    },
    sectionList: {
     flexWrap: 'wrap',

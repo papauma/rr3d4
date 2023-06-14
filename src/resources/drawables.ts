@@ -10,6 +10,7 @@ export interface IDrawables {
     Ic_Arrows: any;
     Ic_Bell: any;
     Ic_Bike: any;
+    Ic_Burger: any;
     Ic_Bus: any;
     Ic_storyIcon: any;
     Ic_Check: any;
@@ -38,6 +39,7 @@ export interface IDrawables {
     Ic_Less: any;
     Ic_location: any;
     Ic_location_desactivated: any;
+    Ic_LocationHome: any;
     Ic_Lock: any;
     Ic_LogOut: any;
     Ic_Meatballs: any;
@@ -83,6 +85,7 @@ export const drawables = {
     Ic_Arrows: require('@images/Ic_Arrows.png'),
     Ic_Bell: require('@images/Ic_Bell.png'),
     Ic_Bike: require('@images/Ic_Bike.png'),
+    Ic_Burger: require('@images/Ic_Burger.png'),
     Ic_Bus: require('@images/Ic_Bus.png'),
     Ic_storyIcon: require('@images/Ic_storyIcon.png'),
     Ic_Check: require('@images/Ic_Check.png'),
@@ -111,6 +114,7 @@ export const drawables = {
     Ic_Less: require('@images/Ic_Less.png'),
     Ic_location: require('@images/Ic_location.png'),
     Ic_location_desactivated: require('@images/Ic_location_desactivated.png'),
+    Ic_LocationHome: require('@images/Ic_LocationHome.png'),
     Ic_Lock: require('@images/Ic_Lock.png'),
     Ic_LogOut: require('@images/Ic_LogOut.png'),
     Ic_Meatballs: require('@images/Ic_Meatballs.png'),

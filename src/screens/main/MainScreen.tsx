@@ -46,7 +46,7 @@ export default function MainScreen() {
         <Tab.Screen
             options={{
                 tabBarShowLabel: false,
-                tabBarIcon: ({ focused}) => <Icon source={theme.drawables.general.Ic_Home} tint={focused ? theme.colors.white : undefined}/>
+                tabBarIcon: ({ focused}) => <Icon source={theme.drawables.general.Ic_LocationHome} tint={focused ? theme.colors.white : undefined}/>
             }}
             name={'Home'}
         >
@@ -64,7 +64,7 @@ export default function MainScreen() {
         <Tab.Screen
             options={{
                 tabBarShowLabel: false,
-                tabBarIcon: ({ focused}) => <Icon source={theme.drawables.general.Ic_Meatballs} 
+                tabBarIcon: ({ focused}) => <Icon source={theme.drawables.general.Ic_Burger} 
                 tint={focused ? theme.colors.white : undefined}/>
             }}
             name={'Settings'}

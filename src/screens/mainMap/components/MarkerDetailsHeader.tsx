@@ -88,6 +88,7 @@ const styles = (theme: ThemeProps) => StyleSheet.create({
         lineHeight: 23.4,
         flexShrink: 1,
         flexGrow: 1,
+        color: theme.colors.gray_700,
         //marginLeft: 8,
     },
     leftContent: {

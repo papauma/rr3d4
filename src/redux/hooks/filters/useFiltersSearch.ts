@@ -45,9 +45,7 @@ export default function useFiltersSearch() {
                 id: transport.id,
                 title: transport.label,
                 selected: filtersTransportTemp.findIndex((id) => id === transport.id) !== -1,
-                iconId: filtersTransportTemp.find((id) => id === transport.id)
-                          ? transport.iconFilterSelectedId
-                          : transport.iconFilterId,
+                iconId: transport.iconId,
                 source: undefined,
                 onPress: () => {
                     let filterTempsAux = [...filtersTransportTemp];
