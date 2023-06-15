@@ -29,7 +29,7 @@ export default function FavoritesStops(props: FavoritesStopsProps) {
         data={props.stops}
         renderItem={renderCard}
         ListHeaderComponent={() => {
-          return props.stops.length === 0 ? undefined : (
+          return props.stops.length === 0 ? null : (
             <Label
               style={{
                 color: theme.colors.gray_700,

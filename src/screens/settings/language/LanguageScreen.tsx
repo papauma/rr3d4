@@ -31,6 +31,7 @@ export default function LanguageScreen() {
           >
           {languages.map(language => (
             <RadioButtonOption
+              key={language}
               viewStyle={{marginVertical: 20}}
               onPress={async () => {
                 /* dispatch(

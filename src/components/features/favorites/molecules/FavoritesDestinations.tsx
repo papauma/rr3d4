@@ -40,7 +40,7 @@ export default function FavoritesDestinations(
         data={props.destinations}
         renderItem={renderCard}
         ListHeaderComponent={() => {
-          return props.destinations.length === 0 ? undefined : (
+          return props.destinations.length === 0 ? null : (
             <Label
               style={{
                 color: theme.colors.gray_700,
