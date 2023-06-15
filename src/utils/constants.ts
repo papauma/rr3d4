@@ -13,6 +13,7 @@ export const navigationPages = {
   plannerResult: 'PlannerResult',
   routeDetails: 'RouteDetails',
   language: 'Language',
+  alerts: 'Alerts',
   lineDetails: 'LineDetails',
   linesDirectory: 'LinesDirectory',
   storybook: 'Storybook',

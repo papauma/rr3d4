@@ -125,6 +125,7 @@ export default function StopDetails({stop, onPlan, setTopContentBottomSheet} : {
                 allLineTimes={linesTimes}
                 selectedLines={selectedLines}
                 onPressReset={() => {}}
+                stopId={stopInfo?.id}
             />
         }
     </View>

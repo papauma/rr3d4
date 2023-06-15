@@ -17,6 +17,7 @@ import LinesInStop from '../atoms/LinesInStop';
 interface LineDetailsSynopticProps {
   stopTimes?: Array<any>;
   routeColor?: string;
+  stopSelected?: number;
 }
 
 export default function LineDetailsSynoptic(props: LineDetailsSynopticProps) {
@@ -25,18 +26,33 @@ export default function LineDetailsSynoptic(props: LineDetailsSynopticProps) {
   const transportmodes = useSelector(transportModeState);
   const allLines = useSelector(lineState);
 
+  let indexStopSelected = props.stopTimes?.findIndex((element: any) => element.id === props.stopSelected)
+
+  function renderLineColor(index: number) {
+    if (indexStopSelected === undefined) {
+      return 'black'
+    }
+
+    let isInsideStopSelected = index < indexStopSelected;
+
+    if (index === props.stopTimes?.length - 1) {
+      return 'transparent'
+    } else if (isInsideStopSelected) {
+      return theme.colors.gray_500;
+    } else if (props.routeColor) {
+      return `#${props.routeColor}`
+    } else {
+      return theme.colors.black
+    }
+  }
+
   function renderLeftPart(index: number, children: any) {
     return (
       <View
         style={[
           styles(theme).leftPart,
           {
-            borderEndColor:
-              index === props.stopTimes?.length - 1
-                ? 'transparent'
-                : props.routeColor
-                ? `#${props.routeColor}`
-                : theme.colors.black,
+            borderEndColor: renderLineColor(index)
           },
         ]}>
         {children}
@@ -45,22 +61,49 @@ export default function LineDetailsSynoptic(props: LineDetailsSynopticProps) {
   }
 
   function renderRightPart(index: number, children: any) {
+    
     return (
       <View
         style={[
           styles(theme).rightPart,
           {
-            borderStartColor:
-              index === props.stopTimes?.length - 1
-                ? 'transparent'
-                : props.routeColor
-                ? `#${props.routeColor}`
-                : theme.colors.black,
+            borderStartColor: renderLineColor(index)
           },
         ]}>
         {children}
       </View>
     );
+  }
+
+  function renderCircle(index: number) {
+    if (indexStopSelected === undefined) {
+      return null
+    }
+
+    let isInsideStopSelected = index < indexStopSelected;
+
+    return (<View
+      style={{
+        backgroundColor: theme.colors.white,
+        position: 'absolute',
+        top:
+          index !== 0 && index !== props.stopTimes?.length - 1
+            ? 5
+            : -1,
+        left: indexStopSelected === index ? -14 : -11,
+        borderStyle: 'solid',
+        width: indexStopSelected === index ? 22 : 16,
+        height: indexStopSelected === index ? 22 : 16,
+        borderRadius: indexStopSelected === index ? 22 : 11,
+        borderWidth: 3,
+        borderColor: isInsideStopSelected 
+          ? theme.colors.gray_500 
+          : props.routeColor
+          ? `#${props.routeColor}`
+          : theme.colors.black,
+        zIndex: 1000,
+      }}
+    />)
   }
 
   function renderLineStops(stopTime: any, index: number) {
@@ -123,26 +166,7 @@ export default function LineDetailsSynoptic(props: LineDetailsSynopticProps) {
 
                 {/* CIRCLES */}
 
-                <View
-                  style={{
-                    backgroundColor: theme.colors.white,
-                    position: 'absolute',
-                    top:
-                      index !== 0 && index !== props.stopTimes?.length - 1
-                        ? 5
-                        : -1,
-                    left: -9,
-                    borderStyle: 'solid',
-                    width: 12,
-                    height: 12,
-                    borderRadius: 6,
-                    borderWidth: 3,
-                    borderColor: props.routeColor
-                      ? `#${props.routeColor}`
-                      : theme.colors.black,
-                    zIndex: 1000,
-                  }}
-                />
+                {renderCircle(index)}
               </>,
             )}
           </View>
@@ -191,7 +215,7 @@ const styles = (theme: ThemeProps) =>
       fontSize: 16,
       fontWeight: '400',
       lineHeight: 24,
-      marginLeft: 8,
+      marginLeft: 10,
     },
     container: {
       justifyContent: 'space-between',

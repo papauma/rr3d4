@@ -5,6 +5,8 @@ import LineHeader from '../atoms/LineHeader';
 import LineDetailsSynoptic from '../molecules/LineDetailsSynoptic';
 import SelectorDetailsOfLine from '../molecules/SelectorDetailsOfLine';
 import HeadSignSelector from '../atoms/HeadSignSelector';
+import { useSelector } from 'react-redux';
+import { lineInfoStopIdState } from '@src/redux/slices/lineInfoSlice';
 
 export default function LineDetailsBottomSheet() {
   /* TO CHANGE */
@@ -18,6 +20,8 @@ export default function LineDetailsBottomSheet() {
     setLineData,
     directionId,
   } = useInfoLinea();
+
+  const stopSelected = useSelector(lineInfoStopIdState);
 
   console.log('Infoline', infoLine);
   console.log('Trip', trip);
@@ -40,6 +44,7 @@ export default function LineDetailsBottomSheet() {
       <SelectorDetailsOfLine
         lineData={lineData}
         routeColor={infoLine?.routeColor}
+        stopSelected={stopSelected}
       />
     </View>
   );

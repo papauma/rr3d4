@@ -9,6 +9,7 @@ import TripleTab, { ITabSection } from '@src/components/commons/menu/TripleTab';
 interface SelectorDetailsOfLineProps {
   lineData?: any;
   routeColor?: string;
+  stopSelected?: number;
 }
 
 export default function SelectorDetailsOfLine(
@@ -24,6 +25,7 @@ export default function SelectorDetailsOfLine(
         <LineDetailsSynoptic
           stopTimes={props.lineData}
           routeColor={props.routeColor}
+          stopSelected={props.stopSelected}
         />
       ),
     },

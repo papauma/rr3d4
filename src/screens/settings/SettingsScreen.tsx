@@ -34,6 +34,7 @@ export default function SettingsScreen() {
             id: '1-3',
             icon: theme.drawables.general.Ic_Bell,
             name: t('settings_section_general_alert'),
+            onPress: () => navigation.navigate(navigationPages.alerts)
         },
         {
             id: '1-4',

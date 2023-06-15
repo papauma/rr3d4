@@ -3,7 +3,7 @@ import Icon from '@src/components/commons/icon/Icon'
 import LineCodeSemiCircle from '@src/components/commons/routeCode/LineCodeSemiCircle'
 import Label from '@src/components/commons/text/Label'
 import { ThemeProps, useTheme } from '@src/context/themeContext'
-import { updatelineInfo } from '@src/redux/slices/lineInfoSlice'
+import { updateStopSelectedId, updatelineInfo } from '@src/redux/slices/lineInfoSlice'
 import { navigationPages } from '@src/utils/constants'
 import React from 'react'
 import { StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native'
@@ -23,6 +23,7 @@ interface DepartureLineInfoProps {
     time?: string;
     timeNow?: string;
     tripId?: any;
+    stopId?: number;
 }
 
 export default function DepartureLineInfo(props: DepartureLineInfoProps) {
@@ -34,6 +35,7 @@ export default function DepartureLineInfo(props: DepartureLineInfoProps) {
     <TouchableOpacity style={[styles(theme).content, props.style]}
         onPress={() => {
             dispatch(updatelineInfo({id: props.id, tripId: props.tripId}))
+            dispatch(updateStopSelectedId(props.stopId))
             navigation.navigate(navigationPages.lineDetails)
         }}
         >

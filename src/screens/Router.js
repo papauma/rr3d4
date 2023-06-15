@@ -20,6 +20,7 @@ import AccountManagementScreen from './settings/accountManagement/AccountManagem
 import SignUpScreen from './signup/SignUpScreen';
 import LoginScreen from './login/LoginScreen';
 import ChangePasswordScreen from './settings/accountManagement/ChangePasswordScreen';
+import AlertsScreen from './settings/alerts/AlertsScreen';
 
 const Stack = createStackNavigator();
 
@@ -87,6 +88,10 @@ const LanguageComponent = ({navigation, route, options, back}) => {
   return <LanguageScreen navigation={navigation} />;
 };
 
+const AlertsComponent = ({navigation, route, options, back}) => {
+  return <AlertsScreen/>;
+};
+
 const StoryButtonsComponent = ({navigation, route, options, back}) => {
   return <StoryBookScreen navigation={navigation} />;
 };
@@ -126,6 +131,7 @@ export default function Routes() {
         <Stack.Screen name={navigationPages.routeDetails} component={RouteDetailsComponent} />
         <Stack.Screen name={navigationPages.plannerPreferences} component={PlannerPreferencesComponent} />
         <Stack.Screen name={navigationPages.language} component={LanguageComponent} />
+        <Stack.Screen name={navigationPages.alerts} component={AlertsComponent} />
         <Stack.Screen name={navigationPages.storybook} component={StoryButtonsComponent} />
       </Stack.Navigator>
       {/* <Navbar />

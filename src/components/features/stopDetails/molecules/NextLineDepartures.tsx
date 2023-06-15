@@ -15,6 +15,7 @@ interface NextLineDeparturesProps {
     allLineTimes?: Array<ILineTime>;
     onPressReset?: Function;
     selectedLines?: Array<number>;
+    stopId?: number;
 }
 
 export default function NextLineDepartures(props: NextLineDeparturesProps) {
@@ -47,6 +48,7 @@ export default function NextLineDepartures(props: NextLineDeparturesProps) {
                   time={timeOfStopsFormatted(line.time, line.fecha)}
                   timeNow={differenceTime}
                   tripId={line.tripId}
+                  stopId={props.stopId}
                   style={[{marginTop: 8,}, index !== 0 ? {
                     borderTopWidth: 1, borderColor: theme.colors.gray_200,
                   } : null]}
