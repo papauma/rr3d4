@@ -25,7 +25,7 @@ export default function FavoritesScreen() {
     },
     {
       title: t('favorites_destinations'),
-      content: <FavoritesDestinations destinations={favorites.destinations} />,
+      content: <FavoritesDestinations destinations={/* favorites.destinations */ [1, 2, 3, 4, 5, 6, 7, 8]} />,
     },
     {
       title: t('favorites_lines'),
