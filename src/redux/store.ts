@@ -25,6 +25,7 @@ import { plannerServiceApi } from './services/plannerService';
 import lineInfoSlice from './slices/lineInfoSlice';
 import { favoritesSlice } from './slices/favoritesSlice';
 import { favoriteServiceApi } from './services/favoriteServiceApi';
+import { alertServiceApi } from './services/alertService';
 
 export const reducer = {
   user: userSlice,
@@ -53,6 +54,7 @@ export const reducer = {
   [linesServiceApi.reducerPath]: linesServiceApi.reducer,
   [plannerServiceApi.reducerPath]: plannerServiceApi.reducer,
   [favoriteServiceApi.reducerPath]: favoriteServiceApi.reducer,
+  [alertServiceApi.reducerPath]: alertServiceApi.reducer,
 };
 
 export const store = configureStore({
@@ -73,6 +75,8 @@ export const store = configureStore({
       userServiceApi.middleware,
       linesServiceApi.middleware,
       plannerServiceApi.middleware,
+      favoriteServiceApi.middleware,
+      alertServiceApi.middleware,
     );
   },
 });

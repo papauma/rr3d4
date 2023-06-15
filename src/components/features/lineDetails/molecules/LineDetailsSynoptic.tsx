@@ -94,7 +94,7 @@ export default function LineDetailsSynoptic(props: LineDetailsSynopticProps) {
         borderStyle: 'solid',
         width: indexStopSelected === index ? 22 : 16,
         height: indexStopSelected === index ? 22 : 16,
-        borderRadius: indexStopSelected === index ? 22 : 11,
+        borderRadius: indexStopSelected === index ? 11 : 8,
         borderWidth: 3,
         borderColor: isInsideStopSelected 
           ? theme.colors.gray_500 
