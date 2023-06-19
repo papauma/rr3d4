@@ -34,8 +34,6 @@ export default function AlertsScreen() {
 
   const [getAlerts] = useLazyGetAlertsQuery();
 
-  console.log('Lista', listAlertas);
-
   useEffect(() => {
     async function getAlertsFromApi() {
       dispatch(contextualSlice.actions.updateShowLoading(true));
@@ -105,14 +103,18 @@ export default function AlertsScreen() {
   function renderAlert(item: any, index: number, section: any) {
     let length = section.data.length - 1;
 
+    console.log('Alert', item?.fechas[0]);
+    
+
     return (
       <AlertInfo
         key={`${item.idAlerta}-${index}`}
-        title={/* item?.titulo */ 'Cambio de recorrido'}
+        title={/* item?.titulo */ 'Cambio de recorrido desde Palma hasta Ibiza por el mar albor'}
         alertId={item.idAlerta}
         lines={item.lineas}
         stops={item?.paradas}
         startTime={item?.fechas[0]}
+        isFavorite={false}
         style={
           index === 0
             ? {borderTopStartRadius: 16, borderTopEndRadius: 16}

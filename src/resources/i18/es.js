@@ -56,6 +56,7 @@ export const strings = {
   account_change_password_old: 'Contraseña actual',
   account_change_password_new: 'Contraseña nueva',
   account_change_password_confirm: 'Confirmar contraseña',
+  alert_download_pdf: 'Descarga PDF',
   alerts_sections_favorites: 'Mis avisos',
   alerts_sections_general: 'Avisos generales',
   alerts_sections_all: 'Todos los avisos',
