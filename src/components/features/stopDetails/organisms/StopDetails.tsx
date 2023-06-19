@@ -15,6 +15,7 @@ import NextLineDepartures from '../molecules/NextLineDepartures';
 import { useTranslate } from '@src/context/languageContext';
 import SelectorStopTimes from '../atoms/SelectorStopTimes';
 import Icon from '@src/components/commons/icon/Icon';
+import StopAlertsInfo from '../molecules/StopAlertsInfo';
 
 export default function StopDetails({stop, onPlan, setTopContentBottomSheet} : {stop: IMarker, onPlan: Function, setTopContentBottomSheet?: Function}) {
     const [stopInfo, setStopInfo] = useState<SearchStopType | undefined>();
@@ -117,6 +118,9 @@ export default function StopDetails({stop, onPlan, setTopContentBottomSheet} : {
             setSelectedDay={setDaySelector}
             selectedHour={hourSelector}
             setSelectedHour={setHourSelector}
+        />
+        <StopAlertsInfo
+            stopId={stopInfo?.id}
         />
         {contextual.showLoading 
             ? <ActivityIndicator style={{alignSelf: 'center', marginTop: 16}} size={'large'}/>

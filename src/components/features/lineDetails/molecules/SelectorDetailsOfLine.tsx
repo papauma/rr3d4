@@ -5,11 +5,13 @@ import LineDetailsSynoptic from './LineDetailsSynoptic';
 import {Pressable, StyleSheet, View} from 'react-native';
 import Label from '@src/components/commons/text/Label';
 import TripleTab, { ITabSection } from '@src/components/commons/menu/TripleTab';
+import AlertsOfLineList from './AlertsOfLineList';
 
 interface SelectorDetailsOfLineProps {
   lineData?: any;
   routeColor?: string;
   stopSelected?: number;
+  lineId: number;
 }
 
 export default function SelectorDetailsOfLine(
@@ -35,7 +37,7 @@ export default function SelectorDetailsOfLine(
     },
     {
       title: t('line_alert'),
-      content: <></>,
+      content: <AlertsOfLineList id={props.lineId}/>,
     },
   ];
 

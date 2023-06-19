@@ -36,12 +36,13 @@ export default function LineDetailsBottomSheet() {
         routeTextColor={infoLine?.routeTextColor}
       />
       <HeadSignSelector
-        lineId={lineData?.id}
+        lineId={infoLine?.id}
         directionId={directionId}
         sentidoOptions={sentidoOptions}
         headsign={direction}
       />
       <SelectorDetailsOfLine
+        lineId={infoLine?.id}
         lineData={lineData}
         routeColor={infoLine?.routeColor}
         stopSelected={stopSelected}
