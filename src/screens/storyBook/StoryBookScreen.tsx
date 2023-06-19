@@ -16,6 +16,7 @@ import StoryInputs from './components/StoryInputs'
 import StoryLineCodes from './components/StoryLineCodes'
 import StoryCards from './components/StoryCards'
 import StoryDateSelector from './components/StoryDateSelector'
+import StoryAlertCard from './components/StoryAlertCard'
 
 export default function StoryBookScreen() {
   const [showStoryButtons, setShowStoryButtons] = useState(false)
@@ -25,6 +26,7 @@ export default function StoryBookScreen() {
   const [showStoryLineCodes, setShowStoryLineCodes] = useState(false)
   const [showStoryCards, setShowStoryCards] = useState(false)
   const [showDateSelector, setShowDateSelector] = useState(false)
+  const [showAlertCard, setShowAlertCard] = useState(false)
   const contextualInfo = useSelector(contextualInformation);
   const dispatch = useDispatch();
 
@@ -81,6 +83,13 @@ export default function StoryBookScreen() {
                   pressed={showDateSelector}
                   onPress={() => setShowDateSelector(!showDateSelector)}/>
                 {showDateSelector && <StoryDateSelector/>}
+                <AccordionOption
+                  styleView={{marginBottom: 16, flexGrow: 1}}
+                  styleText={{fontSize: 16, fontWeight: '700', flexGrow: 1}}
+                  name='Alertas'
+                  pressed={showAlertCard}
+                  onPress={() => setShowAlertCard(!showAlertCard)}/>
+                {showAlertCard && <StoryAlertCard/>}
             </ScrollView>
         {contextualInfo.showBackground && <BackgroundModal/>}
         {contextualInfo.warningMessage && <WarningSnackBar onPress={() => dispatch(contextualSlice.actions.updateWarningMessage(''))}/>}

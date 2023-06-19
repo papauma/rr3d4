@@ -126,7 +126,7 @@ export default function AlertInfo(props: AlertInfoProps) {
 
               })
             }}>
-              <Icon source={theme.drawables.general.Ic_Download} />
+              <Icon size={18} source={theme.drawables.general.Ic_Download} />
               <Label
                 style={[
                   styles(theme).description,
