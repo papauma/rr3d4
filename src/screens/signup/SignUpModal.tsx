@@ -33,6 +33,9 @@ export default function SignUpModal(props: SignUpModalProps) {
         setViewModal={() => props.setShowModal(false)}
         button2={t('button_cancel')}
         button1={t('button_accept')}
+        disabledButton1={alias.length === 0 ||
+            !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email ?? '') ||
+            password !== secondPassword || !acceptTerms}
         onPressButton1={() => props.setShowModal(false)}
         onPressButton2={() => props.setShowModal(false)}
         title={t('signup')}>

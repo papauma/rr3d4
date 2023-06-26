@@ -46,6 +46,7 @@ export interface IDrawables {
     Ic_Meatballs: any;
     Ic_Ocupacion: any;
     Ic_open_eye: any;
+    Ic_Pencil: any;
     Ic_Plan: any;
     Ic_Play: any;
     Ic_Point_Dest: any;
@@ -122,6 +123,7 @@ export const drawables = {
     Ic_Meatballs: require('@images/Ic_Meatballs.png'),
     Ic_Ocupacion: require('@images/Ic_Ocupacion.png'),
     Ic_open_eye: require('@images/Ic_open_eye.png'),
+    Ic_Pencil: require('@images/Ic_Pencil.png'),
     Ic_Plan: require('@images/Ic_Plan.png'),
     Ic_Play: require('@images/Ic_Play.png'),
     Ic_Point_Dest: require('@images/Ic_Point_Dest.png'),
