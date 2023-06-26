@@ -3,7 +3,9 @@ import {useTheme} from '@src/context/themeContext';
 import {useTranslate} from '@src/context/languageContext';
 import InputForm, { InputFormProps } from './InputForm';
 
-interface PasswordInputProps extends InputFormProps {}
+interface PasswordInputProps extends InputFormProps {
+  showLeftIcon?: boolean;
+}
 
 export default function PasswordInput(props: PasswordInputProps) {
   const theme = useTheme();
@@ -13,7 +15,7 @@ export default function PasswordInput(props: PasswordInputProps) {
   return (
     <InputForm
       showLens={props.value ? true : false}
-      leftIcon={theme.drawables.general.Ic_Lock}
+      leftIcon={props.showLeftIcon ? theme.drawables.general.Ic_Lock : undefined}
       secureTextEntry={!showPassword}
       actionIcon={props.value ? true : false}
       onPressLens={() => setShowPassword(!showPassword)}

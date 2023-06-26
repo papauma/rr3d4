@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   StyleProp,
   StyleSheet,
@@ -12,6 +12,9 @@ import {useTranslate} from '@src/context/languageContext';
 import {ThemeProps, useTheme} from '@src/context/themeContext';
 import {useNavigation} from '@react-navigation/native';
 import {navigationPages} from '@src/utils/constants';
+import LoginModal from '@src/screens/login/LoginModal';
+import { useDispatch } from 'react-redux';
+import { contextualSlice } from '@src/redux/slices/contextualSlice';
 
 interface InfoSignUpProps {
   style?: StyleProp<ViewStyle>;
@@ -21,6 +24,8 @@ export default function InfoSignUp(props: InfoSignUpProps) {
   const t = useTranslate();
   const theme = useTheme();
   const navigation = useNavigation();
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const dispatch = useDispatch()
 
   return (
     <View style={[styles(theme).container, props.style]}>
@@ -38,7 +43,11 @@ export default function InfoSignUp(props: InfoSignUpProps) {
         ]}>
         <TouchableOpacity
           style={{flexShrink: 1}}
-          onPress={() => navigation.navigate(navigationPages.login)}>
+          onPress={() => {
+            //navigation.navigate(navigationPages.login)
+            dispatch(contextualSlice.actions.updateShowBackground(true))
+            setShowLoginModal(true)
+          }}>
           <Label style={styles(theme).button}>{t('login')}</Label>
         </TouchableOpacity>
         <TouchableOpacity
@@ -47,6 +56,13 @@ export default function InfoSignUp(props: InfoSignUpProps) {
           <Label style={styles(theme).button}>{t('signup')}</Label>
         </TouchableOpacity>
       </View>
+      {showLoginModal && <LoginModal
+        showModal={showLoginModal}
+        setShowModal={() => {
+          setShowLoginModal(false)
+          dispatch(contextualSlice.actions.updateShowBackground(false))
+        }}
+      />}
     </View>
   );
 }

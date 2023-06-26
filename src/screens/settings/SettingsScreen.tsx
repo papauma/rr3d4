@@ -1,17 +1,21 @@
 import { useNavigation } from '@react-navigation/native';
 import InfoItemSection from '@src/components/commons/infoComponent/InfoItemSectionProps';
+import BackgroundModal from '@src/components/commons/modal/BackgroundModal';
 import Label from '@src/components/commons/text/Label'
 import InfoSignUp from '@src/components/widgets/InfoSignUp';
 import { useTranslate } from '@src/context/languageContext';
 import { ThemeProps, useTheme } from '@src/context/themeContext'
+import { contextualInformation } from '@src/redux/slices/contextualSlice';
 import { navigationPages } from '@src/utils/constants';
 import React from 'react'
 import { FlatList, SafeAreaView, SectionList, StyleSheet, View } from 'react-native'
+import { useSelector } from 'react-redux';
 
 export default function SettingsScreen() {
   const theme = useTheme();
   const t = useTranslate();
   const navigation = useNavigation();
+  const contextualInfo = useSelector(contextualInformation);
 
   const sections: any =  [
         {
@@ -61,6 +65,7 @@ export default function SettingsScreen() {
 
   return (
     <SafeAreaView style={{flex: 1}}>
+        {contextualInfo.showBackground && <BackgroundModal/>}
         <View style={[styles(theme).viewTitle]}>
             <Label style={[styles(theme).title]}>{t('settings_screen_title')}</Label>
         </View>
