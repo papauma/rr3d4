@@ -19,7 +19,7 @@ export default function ButtonsMarker(props: ButtonsMarkerProps) {
         />
         <Button
             icon={theme.drawables.general.Ic_Plan}
-            iconStyle={{tintColor: theme.colors.white}}
+            iconStyle={{tintColor: theme.colors.primary_800}}
             style={{paddingVertical: 10,paddingHorizontal: 8, marginTop: 8,}}
             onPress={() => props.onPlan?.()}
         />

@@ -94,7 +94,7 @@ export default function StopDetails({stop, onPlan, setTopContentBottomSheet} : {
     let transportModeInfo: ITransportMode | undefined = transportModes.find((element: ITransportMode) => String(element.id) === String(transportMode));
 
     return (<View style={styles(theme).containerIcon}>
-        <IconDynamic iconId={transportModeInfo?.iconId} color={theme.colors.white}/>
+        <IconDynamic iconId={transportModeInfo?.iconId} color={theme.colors.primary_800}/>
         {code ? <Label style={styles(theme).codeName}>{code}</Label> : null}
     </View>)
   }
@@ -146,7 +146,7 @@ const styles = (theme: ThemeProps) => StyleSheet.create({
         marginRight: 8,
     },
     codeName: {
-        color: theme.colors.white,
+        color: theme.colors.primary_800,
         fontWeight: '700',
         lineHeight: 18.2,
         fontSize: 14, 

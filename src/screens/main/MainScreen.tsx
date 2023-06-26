@@ -29,7 +29,7 @@ export default function MainScreen() {
             options={{
                 tabBarShowLabel: false,
                 tabBarIcon: ({ focused}) => <Icon source={ theme.drawables.general.Ic_route} 
-                tint={focused ? theme.colors.white : undefined}/>
+                tint={focused ? theme.colors.primary_800 : undefined}/>
             }}
             name={'Planner'}
         >
@@ -38,7 +38,7 @@ export default function MainScreen() {
         <Tab.Screen
             options={{
                 tabBarShowLabel: false,
-                tabBarIcon: ({ focused}) => <Icon source={theme.drawables.general.Ic_Star} tint={focused ? theme.colors.white : undefined}/>
+                tabBarIcon: ({ focused}) => <Icon source={theme.drawables.general.Ic_Star} tint={focused ? theme.colors.primary_800 : undefined}/>
             }}
             name={'Favorites'}
         >
@@ -47,7 +47,7 @@ export default function MainScreen() {
         <Tab.Screen
             options={{
                 tabBarShowLabel: false,
-                tabBarIcon: ({ focused}) => <Icon source={theme.drawables.general.Ic_LocationHome} tint={focused ? theme.colors.white : theme.colors.gray_400}/>
+                tabBarIcon: ({ focused}) => <Icon source={theme.drawables.general.Ic_LocationHome} tint={focused ? theme.colors.primary_800 : theme.colors.gray_400}/>
             }}
             name={'Home'}
         >
@@ -56,7 +56,7 @@ export default function MainScreen() {
         <Tab.Screen
             options={{
                 tabBarShowLabel: false,
-                tabBarIcon: ({ focused}) => <Icon source={theme.drawables.general.Ic_Heart} tint={focused ? theme.colors.white : undefined}/>
+                tabBarIcon: ({ focused}) => <Icon source={theme.drawables.general.Ic_Heart} tint={focused ? theme.colors.primary_800 : undefined}/>
             }}
             name={'Events'}
         >
@@ -66,7 +66,7 @@ export default function MainScreen() {
             options={{
                 tabBarShowLabel: false,
                 tabBarIcon: ({ focused}) => <Icon source={theme.drawables.general.Ic_Burger} 
-                tint={focused ? theme.colors.white : undefined}/>
+                tint={focused ? theme.colors.primary_800 : undefined}/>
             }}
             name={'Settings'}
         >

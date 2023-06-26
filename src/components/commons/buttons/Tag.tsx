@@ -44,7 +44,7 @@ export default function Tag(props: TagProps) {
             source={props.staticIcon}
             iconId={props.iconId}
             style={[props.iconStyle, { marginRight: props.title ? 10 : 0 }]}
-            color={props.selected ? theme.colors.white : theme.colors.gray_700}
+            color={props.selected ? theme.colors.primary_800 : theme.colors.gray_700}
           />
         ) : null}
         {props.title ? (
@@ -78,6 +78,6 @@ const styles = (theme: ThemeProps) => StyleSheet.create({
     fontSize: 14,
     fontWeight: '700',
     lineHeight: 18.2,
-    color: theme.colors.white,
+    color: theme.colors.primary_800,
   }
 })

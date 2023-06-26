@@ -21,7 +21,7 @@ export default function DirectoryButton(props: DirectoryButtonProps) {
       onPress={() => props.onPress?.()}>
       <View style={styles(theme).bigCircle}>
         <View style={styles(theme).smallCircle}>
-          <Icon source={props.icon} tint={theme.colors.white} />
+          <Icon source={props.icon} tint={theme.colors.primary_800} />
         </View>
       </View>
       {props.name ? (

@@ -38,12 +38,12 @@ export default function VisualizerMapPresenter() {
               <View style={{alignItems: 'center', padding: 4, backgroundColor: theme.colors.primary_300, borderRadius: 8, flexDirection: 'row'}}>
                 <Icon
                   source={{uri: selectorIcons.find((element) => String(element.id) === String(marker.data?.icons?.iconId))?.contentFile}}
-                  tint={theme.colors.white}
+                  tint={theme.colors.primary_800}
                   size={18}
 
                 />
                 {selectorZoom > 16 && marker.data?.code
-                  ? (<Label style={{marginLeft: 6, color: theme.colors.white, fontSize: 18, fontWeight: '700', lineHeight: 23.4}}>{marker.data?.code}</Label>) 
+                  ? (<Label style={{marginLeft: 6, color: theme.colors.primary_800, fontSize: 18, fontWeight: '700', lineHeight: 23.4}}>{marker.data?.code}</Label>) 
                   : null
                 }
               </View>

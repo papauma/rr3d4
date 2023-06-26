@@ -41,7 +41,7 @@ export default function DestinationCardFavorite(
       <View style={[styles(theme).row, {flex: 0.5, justifyContent: 'flex-end'}]}>
         <Button
           icon={theme.drawables.general.Ic_Plan}
-          iconStyle={{tintColor: theme.colors.white}}
+          iconStyle={{tintColor: theme.colors.primary_800}}
           style={{padding: 10, paddingHorizontal: 10, width: 38, height: 38}}
           buttonSizeStyle="extra-small"
           onPress={() => {}}

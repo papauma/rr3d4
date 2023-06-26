@@ -28,12 +28,12 @@ export default function IconBox(props: IconBoxProps) {
             source={props.staticIcon}
             alt={props.alt}
             iconId={props.iconId}
-            color={theme.colors.white}
+            color={theme.colors.primary_800}
             size={16}
             />
           {props.code
             ? (<Label style={{marginLeft: 6, 
-              color: theme.colors.white, 
+              color: theme.colors.primary_800, 
               fontSize: 14, 
               fontWeight: '700', 
               lineHeight: 18.2}}>{props.code}</Label>) 

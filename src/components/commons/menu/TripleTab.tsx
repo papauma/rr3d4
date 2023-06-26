@@ -110,7 +110,7 @@ const styles = (theme: ThemeProps) =>
     },
     selectedName: {
       fontWeight: '700',
-      color: theme.colors.white,
+      color: theme.colors.primary_800,
       fontSize: 14,
       lineHeight: 18.2,
       paddingHorizontal: 23,
