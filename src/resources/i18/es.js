@@ -171,6 +171,7 @@ export const strings = {
   settings_section_help_support: 'Soporte',
   settings_section_help_contact: 'Contacto',
   signup: 'Crear cuenta',
+  signup_terms_conditions: 'Aceptar términos y condiciones',
   language_ca: 'Catalán',
   language_es: 'Español',
   language_en: 'Inglés',

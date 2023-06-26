@@ -17,10 +17,10 @@ export default function PasswordInput(props: PasswordInputProps) {
       showLens={props.value ? true : false}
       leftIcon={props.showLeftIcon ? theme.drawables.general.Ic_Lock : undefined}
       secureTextEntry={!showPassword}
-      actionIcon={props.value ? true : false}
+      //actionIcon={props.value ? true : false}
       onPressLens={() => setShowPassword(!showPassword)}
       lensIcon={
-        showPassword
+        !showPassword
           ? theme.drawables.general.Ic_open_eye
           : theme.drawables.general.Ic_Eye
       }

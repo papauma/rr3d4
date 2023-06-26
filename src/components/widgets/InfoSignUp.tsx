@@ -15,6 +15,7 @@ import {navigationPages} from '@src/utils/constants';
 import LoginModal from '@src/screens/login/LoginModal';
 import { useDispatch } from 'react-redux';
 import { contextualSlice } from '@src/redux/slices/contextualSlice';
+import SignUpModal from '@src/screens/signup/SignUpModal';
 
 interface InfoSignUpProps {
   style?: StyleProp<ViewStyle>;
@@ -25,6 +26,7 @@ export default function InfoSignUp(props: InfoSignUpProps) {
   const theme = useTheme();
   const navigation = useNavigation();
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showSignUpModal, setShowSignUpModal] = useState(false);
   const dispatch = useDispatch()
 
   return (
@@ -52,7 +54,11 @@ export default function InfoSignUp(props: InfoSignUpProps) {
         </TouchableOpacity>
         <TouchableOpacity
           style={{flexShrink: 1, marginLeft: 16}}
-          onPress={() => navigation.navigate(navigationPages.signup)}>
+          onPress={() => {
+            //navigation.navigate(navigationPages.signup)
+            dispatch(contextualSlice.actions.updateShowBackground(true))
+            setShowSignUpModal(true)
+          }}>
           <Label style={styles(theme).button}>{t('signup')}</Label>
         </TouchableOpacity>
       </View>
@@ -60,6 +66,13 @@ export default function InfoSignUp(props: InfoSignUpProps) {
         showModal={showLoginModal}
         setShowModal={() => {
           setShowLoginModal(false)
+          dispatch(contextualSlice.actions.updateShowBackground(false))
+        }}
+      />}
+      {showSignUpModal && <SignUpModal
+        showModal={showSignUpModal}
+        setShowModal={() => {
+          setShowSignUpModal(false)
           dispatch(contextualSlice.actions.updateShowBackground(false))
         }}
       />}
