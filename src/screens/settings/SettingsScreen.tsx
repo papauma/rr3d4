@@ -57,7 +57,7 @@ export default function SettingsScreen() {
         },
         {
           id: '1-7',
-          //icon: R.resources.drawables.general.Ic_Cookie,
+          icon: theme.drawables.general.Ic_Settings,
           name: t('settings_section_general_settings'),
       },
     ];
@@ -100,6 +100,7 @@ export default function SettingsScreen() {
                 title={item.name}
                 iconStatic={item.icon}
                 onPress={item.onPress}
+                color={theme.colors.gray_700}
               />
             )}
           />

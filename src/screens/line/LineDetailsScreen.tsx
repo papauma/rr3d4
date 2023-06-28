@@ -11,7 +11,7 @@ import { useTranslate } from '@src/context/languageContext'
 import { useTheme } from '@src/context/themeContext'
 import InfoLineMapPresenter from '@src/redux/hooks/lineInfo/InfoLineMapPresenter'
 import { contextualInformation, contextualSlice } from '@src/redux/slices/contextualSlice'
-import { lineInfoPolyLineState } from '@src/redux/slices/lineInfoSlice'
+import { lineInfoPolyLineState, resetlineInfo } from '@src/redux/slices/lineInfoSlice'
 import { mapState } from '@src/redux/slices/mapSlice'
 import { IBounds } from '@src/types/interfaces'
 import { defaultLocation } from '@src/utils/constants'
@@ -73,6 +73,7 @@ export default function LineDetailsScreen(props: InfoLineScreenProps) {
                 icon={theme.drawables.general.Ic_Arrow_Left}
                 buttonCategory='secondary'
                 onPress={() => {
+                    dispatch(resetlineInfo())
                     navigation.goBack()
                 }}
             />

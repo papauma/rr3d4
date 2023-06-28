@@ -113,7 +113,7 @@ export default function LineDetailsSynoptic(props: LineDetailsSynopticProps) {
     );
 
     return (
-      <View style={styles(theme).container}>
+      <View style={styles(theme).container} key={`${index}-${stopTime?.stopCode}`}>
         <View
           style={[
             {
