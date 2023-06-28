@@ -98,10 +98,10 @@ export default function StopsNearCenter(props: StopsNearCenterProps) {
       dispatch(contextualSlice.actions.updateShowLoadingBackground(false));
     }
 
-    if (stopsNear.length > 0) {
+    if (stopsNear.length > 0 && !props.loadingCenter) {
       getStopInfoFromAPI();
     }
-  }, [stopsNear, allLines, loadedPage, dispatch, GetLinesTimes]);
+  }, [stopsNear, allLines, loadedPage, dispatch, GetLinesTimes, props.loadingCenter]);
 
   const handleScroll = (event) => {
     const { layoutMeasurement, contentOffset, contentSize } = event.nativeEvent;

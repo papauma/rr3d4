@@ -23,12 +23,12 @@ export default function HomeBottomSheet({center, zoom, bounds}: {center: ILocati
   const previousCenterRef = useRef();
 
   const snapPoints = useMemo(() => {
-    if (!markerSelected && definitiveCenter) {
+    if (!markerSelected && definitiveCenter && zoom > 17.5) {
       return [15, 90, 520];
     }
 
     return InfoMapUtils.getSnapPoint(markerSelected?.markerType);
-  }, [markerSelected, definitiveCenter]);
+  }, [markerSelected, definitiveCenter, zoom]);
 
   useEffect(() => {
     setTopContentBottomSheet(undefined);
