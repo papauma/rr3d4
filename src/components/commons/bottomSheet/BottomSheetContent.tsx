@@ -46,6 +46,7 @@ export default function BottomSheetContent(props: IBottomSheet) {
       handleComponent={handleComponent} // CABECERA DE BOTTOM SHEET
       enablePanDownToClose={props.enablePanDownToClose ?? true} // PERMITIR CIERRE COMPLETO
       backdropComponent={renderBackdrop}
+      onAnimate={props.onAnimate}
     >
       {props.children}
     </BottomSheet>

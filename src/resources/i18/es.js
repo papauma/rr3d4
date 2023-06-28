@@ -180,6 +180,8 @@ export const strings = {
   signup_modal_confirm_title: 'Cuenta creada correctamente',
   signup_modal_confirm_desc: 'Inicia sesión para visualizar los datos',
   signup_terms_conditions: 'Aceptar términos y condiciones',
+  stops_near_title: 'Paradas cercanas',
+  stops_near_change_center: 'Cargando nuevo centro del mapa',
   language_ca: 'Catalán',
   language_es: 'Español',
   language_en: 'Inglés',
