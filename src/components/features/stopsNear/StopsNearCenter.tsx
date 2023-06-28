@@ -137,6 +137,8 @@ export default function StopsNearCenter(props: StopsNearCenterProps) {
               return (
                 <StopNearInfo
                   key={stop.id}
+                  stopId={stop.id}
+                  marker={stop}
                   name={stop.data?.name}
                   stopCode={stop?.stopCode}
                   lineTimes={stop?.lineTimes}
