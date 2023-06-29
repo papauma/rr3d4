@@ -20,6 +20,7 @@ export default function HomeBottomSheet({center, zoom, bounds}: {center: ILocati
   const [definitiveCenter, setDefinitiveCenter] = useState<
     ILocation | undefined
   >();
+  const [canLoadNearStops, setCanLoadNearStops] = useState(false)
   const previousCenterRef = useRef();
 
   const snapPoints = useMemo(() => {
@@ -94,6 +95,11 @@ export default function HomeBottomSheet({center, zoom, bounds}: {center: ILocati
         if (index < 0) {
           dispatch(updateMarkerSelected(null));
           setDefinitiveCenter(undefined);
+          setCanLoadNearStops(false)
+        } else if (index > 1) {
+          setCanLoadNearStops(true)
+        } else {
+          setCanLoadNearStops(false)
         }
       }}
       enablePanDownToClose={true}
@@ -109,6 +115,7 @@ export default function HomeBottomSheet({center, zoom, bounds}: {center: ILocati
           center={definitiveCenter}
           region={bounds}
           loadingCenter={loadingCenter}
+          canLoadNearStops={canLoadNearStops}
         />
       )}
     </BottomSheetContent>

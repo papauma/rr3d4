@@ -6,12 +6,13 @@ import {IMarker, ITransportMode} from '@src/types/interfaces';
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import NextLineDepartures from '../stopDetails/molecules/NextLineDepartures';
-import { TouchableOpacity } from '@gorhom/bottom-sheet';
-import { useDispatch } from 'react-redux';
-import { useNavigation } from '@react-navigation/native';
-import { navigationPages } from '@src/utils/constants';
-import { plannerSegmentsSlice } from '@src/redux/slices/plannerSegmentsSlice';
-import { updateMarkerSelected } from '@src/redux/slices/mapSlice';
+import {TouchableOpacity} from '@gorhom/bottom-sheet';
+import {useDispatch} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
+import {navigationPages} from '@src/utils/constants';
+import {plannerSegmentsSlice} from '@src/redux/slices/plannerSegmentsSlice';
+import {updateMarkerSelected} from '@src/redux/slices/mapSlice';
+import {useTranslate} from '@src/context/languageContext';
 
 interface StopNearInfoProps {
   stopCode?: string;
@@ -27,10 +28,14 @@ export default function StopNearInfo(props: StopNearInfoProps) {
   const theme = useTheme();
   const dispatch = useDispatch();
   const navigation = useNavigation();
+  const t = useTranslate();
 
   return (
     <>
-      <TouchableOpacity style={styles(theme).container} onPress={() => dispatch(updateMarkerSelected(props.marker))}>
+      <TouchableOpacity
+        style={styles(theme).container}
+        onPress={() => dispatch(updateMarkerSelected(props.marker))}
+        accessibilityHint={t('accessibility_near_stop_button_desc')}>
         <View style={styles(theme).row}>
           <IconBox
             code={props.stopCode}
@@ -45,10 +50,16 @@ export default function StopNearInfo(props: StopNearInfoProps) {
         </View>
         <Button
           icon={theme.drawables.general.Ic_Plan}
+          accessibilityHint={t('accessibility_near_stop_plan_desc')}
           style={{flexShrink: 1}}
           onPress={() => {
-            dispatch(plannerSegmentsSlice.actions.init({ origin: null, destination: props.marker}))
-            navigation.navigate(navigationPages.planner)
+            dispatch(
+              plannerSegmentsSlice.actions.init({
+                origin: null,
+                destination: props.marker,
+              }),
+            );
+            navigation.navigate(navigationPages.planner);
           }}
         />
       </TouchableOpacity>
