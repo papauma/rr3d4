@@ -16,7 +16,7 @@ export default function LanguageScreen() {
   const languageSelected = useLanguage();
   const setLanguage = useSetLanguage();
 
-  const languages = ['es', 'en', 'ca'];
+  const languages = ['es', 'ca', 'en', 'de'];
   const dispatch = useDispatch();
 
   return (

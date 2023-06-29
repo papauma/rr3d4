@@ -20,6 +20,7 @@ const strings = {
   es: require('@src/resources/i18/es').strings,
   en: require('@src/resources/i18/en').strings,
   ca: require('@src/resources/i18/ca').strings,
+  de: require('@src/resources/i18/de').strings,
 };
 
 /**

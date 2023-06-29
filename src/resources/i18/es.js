@@ -188,6 +188,7 @@ export const strings = {
   stops_near_empty: 'No se han encontrado paradas cercanas.',
   language_ca: 'Catalán',
   language_es: 'Español',
+  language_de: 'Alemán',
   language_en: 'Inglés',
   timer_at: 'a las',
   timer_arrival: 'Llegada',
