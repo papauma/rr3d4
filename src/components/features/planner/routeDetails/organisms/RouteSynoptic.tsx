@@ -25,6 +25,7 @@ export default function RouteSynoptic(props: RouteSynopticProps) {
           leg={item}
           showTime={index === 0 || index === props.legs.length - 1}
           agencyIdPrev={index !== 0 && props.legs[index - 1].agencyId}
+          colorPrev={index !== 0 && props.legs[index - 1].routeColor}
         />,
       );
 

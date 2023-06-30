@@ -141,7 +141,7 @@ export default class PlanUtils {
        if (orderByDuration[i].duration - orderByDuration[i - 1].duration > 9) {
          orderByDuration[i].styleNew = {
             //flexGrow: orderByDuration[i - 1].styleNew.flexGrow + 1,
-            flexBasis: orderByDuration[i - 1].styleNew.minWidth + 24,
+            flexBasis: parseInt(orderByDuration[i - 1].styleNew.minWidth) + 24,
          }
        } else {
           orderByDuration[i].styleNew = JSON.parse(JSON.stringify(orderByDuration[i - 1].styleNew));

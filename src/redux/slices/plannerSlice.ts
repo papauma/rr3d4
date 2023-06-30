@@ -6,7 +6,7 @@ export interface PlannerInformation {
   plannerResult: IPlanResult | null; //resultado de planificación
   accessibilityFilter: boolean; //filtro accesibilidad
   parkingDisuasorio: boolean; //filtro de parking disuasorio
-  parkingInterchange: boolean; //filtro de parking de intercambio
+  //parkingInterchange: boolean; filtro de parking de intercambio
   routeTypeFilter: TypeRouteFilter; //filtro ruta ma rapida, menos transbordo...
   walkDistance: number; //distancia máxima andando
   selectedPlan: number; //plan seleccionado
@@ -19,7 +19,7 @@ const initialState = {
     accessibilityFilter: false,
     routeTypeFilter: TypeRouteFilter.FAST,
     parkingDisuasorio: false,
-    parkingInterchange: false,
+    //parkingInterchange: false,
     selectedPlan: 0,
     operatorFilters: [],
     walkDistance: null,
@@ -39,9 +39,9 @@ export const plannerSlice = createSlice({
     updateParkingDisuasorio: (state, action) => {
       state.PlannerInformation.parkingDisuasorio = action.payload;
     },
-    updateParkingInterchange: (state, action) => {
+    /* updateParkingInterchange: (state, action) => {
       state.PlannerInformation.parkingInterchange = action.payload;
-    },
+    }, */
     updateRouteType: (state, action) => {
       state.PlannerInformation.routeTypeFilter = action.payload;
     },

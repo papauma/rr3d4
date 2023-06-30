@@ -206,7 +206,7 @@ const styles = () =>
       paddingVertical: 16,
     },
     container: {
-      width: Dimensions.get('window').width - 56 - 16 * 8,
+      width: Dimensions.get('window').width - 56 - 16 * 6,
       marginLeft: 8,
       justifyContent: 'space-between',
       flex: 1

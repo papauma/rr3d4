@@ -40,11 +40,11 @@ export default function PlannerMapPresenter() {
     let icon =
       index === 0
         ? segments[index]?.position && segments[index]?.data?.name === t('marker_myLocation')
-          ? theme.drawables.general.Ic_Point_MyLocation
-          : theme.drawables.general.Ic_Point_MyLocation
+          ? theme.drawables.general.Ic_Location_blue
+          : theme.drawables.general.Ic_Location_blue
         : index === last
-          ? theme.drawables.general.Ic_Point_Dest
-          : theme.drawables.general.Ic_Point_MyLocation
+          ? theme.drawables.general.Ic_Flag
+          : theme.drawables.general.Ic_Location_blue
 
     return icon;
   };
@@ -55,7 +55,7 @@ export default function PlannerMapPresenter() {
     );
     segmentsFiltered.forEach((segment: IMarker) => {
       segment.content = (
-        <Icon source={renderMarker(segment)} style={{ width: 24, height: 24 }} />
+        <Icon source={renderMarker(segment)} size={18} />
       );
       segment.anchor = { x: 0.5, y: 0.5 };
     });

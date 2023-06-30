@@ -45,6 +45,8 @@ export default function CollapseStops(props: CollapseStopsProps) {
               ? theme.drawables.general.Ic_Chevron_Up
               : theme.drawables.general.Ic_Chevron_Down
           }
+          size={18}
+          tint={theme.colors.gray_600}
         />
         <Label style={styles.title}>
           {`${props.intermediateStops?.length} Paradas`}
@@ -58,7 +60,7 @@ export default function CollapseStops(props: CollapseStopsProps) {
 const styles = StyleSheet.create({
   button: {
     flexDirection: 'row',
-    marginLeft: 20,
+    //marginLeft: 20,
     //marginTop: 19,
     marginBottom: 13.5,
   },

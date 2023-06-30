@@ -2,14 +2,14 @@ import Icon from '@src/components/commons/icon/Icon';
 import IconDynamic from '@src/components/commons/icon/IconDynamic';
 import RouteCodeBox from '@src/components/commons/routeCode/RouteCodeBox';
 import Label from '@src/components/commons/text/Label';
-import { useLanguage, useTranslate } from '@src/context/languageContext';
-import { useTheme } from '@src/context/themeContext';
-import { agencyInformation } from '@src/redux/slices/agencysSlices';
+import {useLanguage, useTranslate} from '@src/context/languageContext';
+import {useTheme} from '@src/context/themeContext';
+import {agencyInformation} from '@src/redux/slices/agencysSlices';
 import PlanUtils from '@src/utils/PlanUtils';
-import { random } from '@src/utils/StringUtils';
+import {random} from '@src/utils/StringUtils';
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { useSelector } from 'react-redux';
+import {View, StyleSheet} from 'react-native';
+import {useSelector} from 'react-redux';
 
 interface RouteIconInfoProps {
   agencyId?: number;
@@ -28,9 +28,11 @@ export default function RouteIconInfo(props: RouteIconInfoProps) {
   const agencies: Array<any> = agencyInfo.dataOrigin;
   const theme = useTheme();
   const t = useTranslate();
-  const locale = useLanguage()
+  const locale = useLanguage();
 
-  const calculatedAgencyId = props.agencyId ? props.agencyId.split(':')[1] : null;
+  const calculatedAgencyId = props.agencyId
+    ? props.agencyId.split(':')[1]
+    : null;
   const agency = calculatedAgencyId
     ? agencies.find((agency: any) => {
         return String(agency?.gtfsAgency[0]?.id) === String(calculatedAgencyId);
@@ -45,18 +47,23 @@ export default function RouteIconInfo(props: RouteIconInfoProps) {
       result.push(
         <View
           key={random()}
-          style={[styles().boxWalking, 
+          style={[
+            styles().boxWalking,
             {backgroundColor: theme.colors.gray_200},
-            props.opacity ? styles().opacity : null]}
+            props.opacity ? styles().opacity : null,
+          ]}
           accessible={true}
-          accessibilityLabel={`${t('accessibility_planner_card_leg_walk')} ${props.duration} min`}
-        >
-          <Icon 
-            //alt={'Icono andando'} 
+          accessibilityLabel={`${t('accessibility_planner_card_leg_walk')} ${
+            props.duration
+          } min`}>
+          <Icon
+            //alt={'Icono andando'}
             size={18}
-            source={theme.drawables.general.Ic_Walk} />
+            source={theme.drawables.general.Ic_Walk}
+          />
           <View style={styles().numberView}>
-            <Label style={styles().numberSmall}>{`${props.duration} min`}</Label>
+            <Label
+              style={styles().numberSmall}>{`${props.duration} min`}</Label>
           </View>
         </View>,
       );
@@ -64,47 +71,76 @@ export default function RouteIconInfo(props: RouteIconInfoProps) {
       result.push(
         <View
           key={random()}
-          style={[styles().boxWalking, 
+          style={[
+            styles().boxWalking,
             {backgroundColor: theme.colors.gray_200},
-            props.opacity ? styles().opacity : null]}
+            props.opacity ? styles().opacity : null,
+          ]}
           accessible={true}
-          accessibilityLabel={`${t('accessibility_planner_card_leg_transfer')} ${props.duration} min`}
-        >
-          <Icon 
-            //alt={'Icono andando'} 
+          accessibilityLabel={`${t(
+            'accessibility_planner_card_leg_transfer',
+          )} ${props.duration} min`}>
+          <Icon
+            //alt={'Icono andando'}
             size={18}
-            source={theme.drawables.general.Ic_Transbordo} />
+            source={theme.drawables.general.Ic_Transbordo}
+          />
           <View style={styles().numberView}>
-            <Label style={styles().numberSmall}>{`${props.duration} min`}</Label>
+            <Label
+              style={styles().numberSmall}>{`${props.duration} min`}</Label>
           </View>
         </View>,
       );
-    } else if (
-      PlanUtils.isPublicMode(props.mode)
-    ) {
+    } else if (PlanUtils.isPublicMode(props.mode)) {
       result.push(
         <View
           key={random()}
-          style={[styles().rowDirection, 
-            {backgroundColor: props.color ? `#${props.color}` : theme.colors.gray_500},
+          style={[
+            styles().rowDirection,
+            {
+              backgroundColor: props.color
+                ? `#${props.color}`
+                : theme.colors.gray_500,
+            },
             props.publicGrow ? props.publicGrow : null,
-            props.opacity ? styles().opacity : null]}
+            props.opacity ? styles().opacity : null,
+          ]}
           accessible={true}
-          accessibilityLabel={locale === 'es' ? `${props.mode?.toLowerCase()} ${t('accessibility_planner_card_leg_trip')}, ${props.duration} min`
-            : `${t('accessibility_planner_card_leg_trip')}, ${t('accessibility_duration')} ${props.duration} min`
-          }
-        >
-          {props.duration !== undefined ? <Label style={[{fontSize: 14, lineHeight: 21, fontWeight: '400', color: theme.colors.white},
-            props.textColor ? {color: `#${props.textColor}`} : undefined
-          ]}>
-            {props.duration}
-          </Label> : null}
-          <IconDynamic accessible={false} 
-            //alt={`Icono modo de transporte ${props.mode}`} 
+          accessibilityLabel={
+            locale === 'es'
+              ? `${props.mode?.toLowerCase()} ${t(
+                  'accessibility_planner_card_leg_trip',
+                )}, ${props.duration} min`
+              : `${t('accessibility_planner_card_leg_trip')}, ${t(
+                  'accessibility_duration',
+                )} ${props.duration} min`
+          }>
+          {props.duration !== undefined ? (
+            <Label
+              style={[
+                {
+                  fontSize: 14,
+                  lineHeight: 21,
+                  fontWeight: '400',
+                  color: theme.colors.white,
+                },
+                props.textColor ? {color: `#${props.textColor}`} : undefined,
+              ]}>
+              {props.duration}
+            </Label>
+          ) : null}
+          <IconDynamic
+            accessible={false}
+            //alt={`Icono modo de transporte ${props.mode}`}
             style={{marginLeft: 2}}
-            color={props.textColor ? {color: `#${props.textColor}`} : theme.colors.white}
-            iconId={icon} 
-            size={18} />
+            color={
+              props.textColor
+                ? {color: `#${props.textColor}`}
+                : theme.colors.white
+            }
+            iconId={icon}
+            size={18}
+          />
         </View>,
       );
     } else {
@@ -116,20 +152,18 @@ export default function RouteIconInfo(props: RouteIconInfoProps) {
           accessible={true}
           //accessibilityLabel={`Tramo ruta transporte, duración ${props.duration} min`}
         >
-          <IconDynamic 
-            //alt={'Icono'} 
-            iconId={icon} size={32} />
+          <IconDynamic
+            //alt={'Icono'}
+            iconId={icon}
+            size={32}
+          />
         </View>,
       );
     }
     return result;
   };
 
-  return (
-    <>
-      {renderByMode()}
-    </>
-  );
+  return <>{renderByMode()}</>;
 }
 
 const styles = () =>
@@ -177,5 +211,5 @@ const styles = () =>
       flexShrink: 1,
       flexGrow: 0,
       marginTop: 8,
-    }
+    },
   });

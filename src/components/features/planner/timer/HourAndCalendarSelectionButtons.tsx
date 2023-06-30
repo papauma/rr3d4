@@ -3,7 +3,7 @@ import useTimeMessages from '@src/redux/hooks/time/useTimeMessages';
 import { plannerTimerInformation, plannerTimerSlice } from '@src/redux/slices/plannerTimerSlice';
 import TimeUtils from '@src/utils/TimeUtils';
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { Dimensions, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import CalendarSelectionModal from './CalendarSelectionModal';
@@ -51,7 +51,7 @@ export default function HourAndCalendarSelectionButtons() {
           dispatch(contextualSlice.actions.updateShowBackground(true))
         }}
         collapsed={showHoursSelection}
-        style={{flexGrow: 0}}
+        style={{flexGrow: 0, width: Dimensions.get('window').width / 2 - 24}}
         styleRow={{flexGrow: 0}}
       />
       <AccordionButton
@@ -62,7 +62,7 @@ export default function HourAndCalendarSelectionButtons() {
           dispatch(contextualSlice.actions.updateShowBackground(true))
         }}
         collapsed={showCalendarSelection}
-        style={{flexGrow: 0, marginLeft: 5}}
+        style={{flexGrow: 0, marginLeft: 5, width: Dimensions.get('window').width / 2 - 24}}
         styleRow={{flexGrow: 0}}
       />
 

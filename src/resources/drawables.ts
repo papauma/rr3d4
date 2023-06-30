@@ -31,6 +31,7 @@ export interface IDrawables {
     Ic_Eye: any;
     Ic_Eye_closed: any;
     Ic_Fee: any;
+    Ic_Flag: any;
     Ic_filters: any;
     Ic_gotita: any;
     Ic_Heart: any;
@@ -39,6 +40,7 @@ export interface IDrawables {
     Ic_Map: any;
     Ic_Less: any;
     Ic_location: any;
+    Ic_Location_blue: any;
     Ic_location_desactivated: any;
     Ic_LocationHome: any;
     Ic_Lock: any;
@@ -108,6 +110,7 @@ export const drawables = {
     Ic_Eye: require('@images/Ic_Eye.png'),
     Ic_Eye_closed: require('@images/Ic_Eye_closed.png'),
     Ic_Fee: require('@images/Ic_Fee.png'),
+    Ic_Flag: require('@images/Ic_Flag.png'),
     Ic_filters: require('@images/Ic_filters.png'),
     Ic_gotita: require('@images/Ic_gotita.png'),
     Ic_Heart: require('@images/Ic_Heart.png'),
@@ -116,6 +119,7 @@ export const drawables = {
     Ic_Map: require('@images/Ic_Map.png'),
     Ic_Less: require('@images/Ic_Less.png'),
     Ic_location: require('@images/Ic_location.png'),
+    Ic_Location_blue: require('@images/Ic_Location_blue.png'),
     Ic_location_desactivated: require('@images/Ic_location_desactivated.png'),
     Ic_LocationHome: require('@images/Ic_LocationHome.png'),
     Ic_Lock: require('@images/Ic_Lock.png'),

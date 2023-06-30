@@ -32,14 +32,14 @@ export default function ParametersFilter(props: ParametersFilterProps) {
             onPress={props.onPressDisuasorio}    
             accessibilityHint={t('accessibility_planner_preferences_filter_disuasorio_desc')}
         />
-        <CheckBox
+        {/* <CheckBox
             style={{marginTop: 8}}
             key={'interchange'}
             text={t('planner_parking_interchange_checkbox')}
             selected={props.selectedInterchange} 
             onPress={props.onPressInterchange}    
             accessibilityHint={t('accessibility_planner_preferences_filter_interchange_desc')}
-        />
+        /> */}
     </PlannerCard>
   )
 }

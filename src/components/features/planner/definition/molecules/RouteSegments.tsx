@@ -88,11 +88,11 @@ export default function RouteSegments({
     let actionIcon =
       index === 0
         ? segment?.data?.name === 'Tu ubicación'
-          ? theme.drawables.general.Ic_Point_MyLocation
-          : theme.drawables.general.Ic_Point_MyLocation
+          ? theme.drawables.general.Ic_Location_blue
+          : theme.drawables.general.Ic_Location_blue
         : index === length
-        ? theme.drawables.general.Ic_Point_Dest
-        : theme.drawables.general.Ic_Point_MyLocation;
+        ? theme.drawables.general.Ic_Flag
+        : theme.drawables.general.Ic_Location_blue;
     let placeholder = index === 0 ? t('planner_segments_origin_placeholder') : t('planner_segments_destination_placeholder')
 
     return (

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { Dimensions, Pressable, StyleSheet, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { plannerInformation } from '../../../../../redux/slices/plannerSlice';
@@ -44,6 +44,7 @@ export default function ConfigurationPlannerFilters() {
           visible={showTimeMenu}
           anchor={
             <AccordionButton
+              style={{width: Dimensions.get('window').width / 2 - 32}}
               title={plannerTimerInfo.now
                 ? t('planner_timer_now')
                 : plannerTimerInfo.arriveBy
@@ -102,9 +103,9 @@ export default function ConfigurationPlannerFilters() {
         <Pressable
               accessibilityHint={t('accessibility_planner_preferences_button_desc')}
               onPress={() => navigation.navigate(navigationPages.plannerPreferences)}
-              style={[styles(theme).button, {marginLeft: 8}]}
+              style={[styles(theme).button, {marginLeft: 8, width: Dimensions.get('window').width / 2 - 24}]}
             >
-              <Label >
+              <Label style={numberFiltersChanged !== 0 ? {fontWeight: '700'} : null}>
                 {numberFiltersChanged !== 0 
                   ? `${t('planner_preferences')} (${numberFiltersChanged})` 
                   : t('planner_preferences')}

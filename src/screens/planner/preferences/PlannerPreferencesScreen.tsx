@@ -19,7 +19,7 @@ export default function PlannerPreferencesScreen() {
   //const { checkPlannerPreferences } = PlannerPresenter();
   const [accesibilityFilter, setAccesibilityFilter] = useState(plannerInfo.accessibilityFilter);
   const [parkingDisFilter, setParkingDisFilter] = useState(plannerInfo.accessibilityFilter);
-  const [parkingInterFilter, setParkingInterFilter] = useState(plannerInfo.accessibilityFilter);
+  //const [parkingInterFilter, setParkingInterFilter] = useState(plannerInfo.accessibilityFilter);
   const [routeFilter, setRouteFilter] = useState<TypeRouteFilter>(plannerInfo.routeTypeFilter);
   const [operatorsFilter, setOperatorsFilter] = useState<Array<number>>(
     plannerInfo.operatorFilters,
@@ -36,7 +36,7 @@ export default function PlannerPreferencesScreen() {
     setAccesibilityFilter(false);
     setRouteFilter(TypeRouteFilter.FAST);
     setOperatorsFilter([]);
-    setParkingInterFilter(false);
+    //setParkingInterFilter(false);
     setParkingDisFilter(false);
   }
 
@@ -50,17 +50,17 @@ export default function PlannerPreferencesScreen() {
             accessibilityHintOptionalButton={t('accessibility_planner_preferences_button_undo')}
         />
         <ScrollView contentContainerStyle={{paddingHorizontal: 16}}>
+          <RouteTypeFilter
+            selected={routeFilter} 
+            setSelected={setRouteFilter}
+          />
           <ParametersFilter
             selectedAccessibility={accesibilityFilter}
             onPressAccessibility={() => setAccesibilityFilter(!accesibilityFilter)}
             selectedDisuasorio={parkingDisFilter}
             onPressDisuasorio={() => setParkingDisFilter(!parkingDisFilter)}
-            selectedInterchange={parkingInterFilter}
-            onPressInterchange={() => setParkingInterFilter(!parkingInterFilter)}
-          />
-          <RouteTypeFilter
-            selected={routeFilter} 
-            setSelected={setRouteFilter}
+            //selectedInterchange={parkingInterFilter}
+            //onPressInterchange={() => setParkingInterFilter(!parkingInterFilter)}
           />
           <PlannerOperatorsFilter
             selectedOperators={operatorsFilter}

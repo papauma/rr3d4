@@ -137,7 +137,7 @@ export default function PlannerScreen() {
         ]}
       >
         <Button
-            title={t('button_confirm')}
+            title={t('planner_button_calculate')}
             icon={theme.drawables.general.Ic_Plan}
             buttonSizeStyle='medium'
             style={{alignSelf: 'center'}}

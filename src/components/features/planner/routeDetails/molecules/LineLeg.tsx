@@ -1,33 +1,31 @@
 import Icon from '@src/components/commons/icon/Icon';
 import IconDynamic from '@src/components/commons/icon/IconDynamic';
 import Label from '@src/components/commons/text/Label';
-import { useTranslate } from '@src/context/languageContext';
-import { useTheme } from '@src/context/themeContext';
-import { agencyInformation } from '@src/redux/slices/agencysSlices';
-import { ILeg } from '@src/types/PlannerInterfaces';
-import React, { useState } from 'react';
-import { View, StyleSheet, Platform } from 'react-native';
-import { useSelector } from 'react-redux';
+import {useTranslate} from '@src/context/languageContext';
+import {useTheme} from '@src/context/themeContext';
+import {agencyInformation} from '@src/redux/slices/agencysSlices';
+import {ILeg} from '@src/types/PlannerInterfaces';
+import React, {useState} from 'react';
+import {View, StyleSheet, Platform} from 'react-native';
+import {useSelector} from 'react-redux';
 import RouteLegLineInfo from './RouteLegLineInfo';
-import { random } from '@src/utils/StringUtils';
+import {random} from '@src/utils/StringUtils';
 import LegTimeInfo from '../atoms/LegTimeInfo';
 
-function LineStyled({ leg, children }) {
+function LineStyled({leg, children}) {
   return (
-    <View style={{ position: 'relative' }}>
+    <View style={{position: 'relative'}}>
       {Platform.OS === 'ios' && leg?.mode === 'WALK' ? (
-        <View style={[styles().line, styles(leg).lineStyled, { borderStyle: 'solid' }]}>
-          {children}
-        </View>
-      ) : (
         <View
           style={[
             styles().line,
             styles(leg).lineStyled,
-          ]}
-        >
+            {borderStyle: 'solid'},
+          ]}>
           {children}
         </View>
+      ) : (
+        <View style={[styles().line, styles(leg).lineStyled]}>{children}</View>
       )}
     </View>
   );
@@ -37,6 +35,7 @@ interface LineLegProps {
   leg: ILeg;
   showTime?: boolean;
   agencyIdPrev?: any;
+  colorPrev?: string;
   index: string;
 }
 
@@ -51,14 +50,16 @@ export default function LineLeg(props: LineLegProps) {
 
   if (props.leg?.mode === 'WALK' && props.agencyIdPrev) {
     agency = agencies.find((element: any) => {
-        return String(element?.gtfsAgency[0]?.id) === String(props.agencyIdPrev);
-      })
-
+      return String(element?.gtfsAgency[0]?.id) === String(props.agencyIdPrev);
+    });
   } else {
-    const calculatedAgencyId =   props.leg?.agencyId !== null ?  props.leg?.agencyId.split(':')[1] : null
+    const calculatedAgencyId =
+      props.leg?.agencyId !== null ? props.leg?.agencyId.split(':')[1] : null;
     agency = calculatedAgencyId
       ? agencies.find((element: any) => {
-          return String(element?.gtfsAgency[0]?.id) === String(calculatedAgencyId);
+          return (
+            String(element?.gtfsAgency[0]?.id) === String(calculatedAgencyId)
+          );
         })
       : null;
   }
@@ -67,62 +68,87 @@ export default function LineLeg(props: LineLegProps) {
 
   /* Se renderiza otra LineLeg en caso de presentar como parámetro pasado transhipment que indica un transbordo */
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{flex: 1}}>
       <View style={styles().row}>
-        {props.leg && <LegTimeInfo leg={props.leg} first={props.index === '0'}/>}
-        {props.leg && <View style={{ /* flexGrow: 3,  */ flexDirection: 'row', flex: 1, width: '100%' }}>
-          <LineStyled leg={props?.leg}>
-            {props.showTime && !props.leg?.last ? (
-              <IconDynamic
-                accessible={false}
-                //alt={'Icono origen'}
-                source={theme.drawables.general.Ic_Point_MyLocation}
-                style={{ marginLeft: -15, marginTop: -6, zIndex: 20 }}
-              />
-            ) : props.leg.mode === 'WALK' ? (
-              <IconDynamic
-                accessible={false}
-                //alt={'Icono modo de transporte ' + props.leg.mode}
-                source={theme.drawables.general.Ic_gotita}
-                style={{ marginLeft: -15, marginTop: 0, zIndex: 20}} //TO CHANGE color blanco de fondo
-              />
-            ) : (
-              <IconDynamic
-                accessible={false}
-                //alt={'Icono modo de transporte ' + props.leg.mode}
-                source={theme.drawables.general.Ic_gotita}
-                style={{ marginLeft: -16, marginTop: 0, zIndex: 20 }} //TO CHANGE color blanco de fondo
-              />
-            )}
-          </LineStyled>
+        {props.leg && (
+          <LegTimeInfo leg={props.leg} first={props.index === '0'} />
+        )}
+        {props.leg && (
+          <View
+            style={{
+              /* flexGrow: 3,  */ flexDirection: 'row',
+              flex: 1,
+              width: '100%',
+            }}>
+            <LineStyled leg={props?.leg}>
+              {props.showTime && !props.leg?.last ? (
+                <IconDynamic
+                  accessible={false}
+                  //alt={'Icono origen'}
+                  source={theme.drawables.general.Ic_Point_MyLocation}
+                  style={{marginLeft: -15, marginTop: -6, zIndex: 20}}
+                />
+              ) : props.leg.mode === 'WALK' ? (
+                <View
+                  style={[
+                    styles().circle,
+                    {
+                      backgroundColor: theme.colors.white,
+                      borderColor: props.colorPrev
+                        ? `#${props.colorPrev}`
+                        : theme.colors.black,
+                        marginTop: -2,
+                    },
+                  ]}
+                />
+              ) : (
+                <View
+                  style={[
+                    styles().circle,
+                    {
+                      backgroundColor: theme.colors.white,
+                      borderColor: props.leg.routeColor
+                        ? `#${props.leg.routeColor}`
+                        : theme.colors.black,
+                    },
+                  ]}
+                />
+              )}
+            </LineStyled>
 
-          <RouteLegLineInfo
-            key={random()}
-            mode={props.leg.mode}
-            leg={props.leg}
-            color={`#${props.leg.routeColor}`}
-            setCollapsed={() => setCollapsed(!collapsed)}
-            collapsed={collapsed}
-          />
-        </View>}
+            <RouteLegLineInfo
+              key={random()}
+              mode={props.leg.mode}
+              leg={props.leg}
+              color={`#${props.leg.routeColor}`}
+              setCollapsed={() => setCollapsed(!collapsed)}
+              collapsed={collapsed}
+            />
+          </View>
+        )}
       </View>
 
       {props.leg?.last && (
         <View style={[styles().lastItem, {flex: 1}]}>
           <View style={{flexBasis: 54, alignItems: 'center'}}>
-            <Label >{props.leg.endTime}</Label>
+            <Label>{props.leg.endTime}</Label>
           </View>
           <View
             style={{
               flexDirection: 'row',
               height: '100%',
               marginLeft: 25,
-            }}
-          >
-            <Icon 
-              style={[styles().lastIcon]} 
-              source={theme.drawables.general.Ic_Point_Dest} />
-            <Label style={[styles().lastText, {overflow: 'hidden',}]} numberOfLines={1} ellipsizeMode={'tail'}>{props.leg.to.name}</Label>
+            }}>
+            <Icon
+              style={[styles().lastIcon]}
+              source={theme.drawables.general.Ic_Point_Dest}
+            />
+            <Label
+              style={[styles().lastText, {overflow: 'hidden'}]}
+              numberOfLines={1}
+              ellipsizeMode={'tail'}>
+              {props.leg.to.name}
+            </Label>
           </View>
         </View>
       )}
@@ -140,14 +166,13 @@ const styles = (leg?: any) =>
       flexDirection: 'column',
     },
     circle: {
-      backgroundColor: 'black',
-      borderWidth: 3,
+      borderWidth: 5,
       borderStyle: 'solid',
-      width: 24,
-      height: 24,
-      marginLeft: -15,
+      width: 16,
+      height: 16,
+      marginLeft: -12,
       marginTop: 0,
-      borderRadius: 12,
+      borderRadius: 8,
       zIndex: 20,
       alignItems: 'center',
       justifyContent: 'center',
@@ -172,7 +197,6 @@ const styles = (leg?: any) =>
     },
     text: {
       marginBottom: 6,
-      //color: theme.colors.neutralDarkGray,
       fontSize: 12,
       fontWeight: '400',
     },
@@ -194,9 +218,6 @@ const styles = (leg?: any) =>
     },
     lastItem: {
       flexDirection: 'row',
-      //marginLeft: 38,
-      //paddingLeft: 24,
-      //paddingRight: 24,
     },
     lastText: {
       fontSize: 14,
@@ -212,18 +233,18 @@ const styles = (leg?: any) =>
       position: 'relative',
       marginLeft: 18,
       flex: 1,
-      //borderColor: R.resources.colors.neutral.gray_300,
     },
     lineStyled: {
       position: 'relative',
       marginLeft: 18,
       flex: 1,
-      borderStyle: leg?.mode === 'WALK' || leg?.mode === 'transhipment' ? 'dotted' : 'solid',
-      borderLeftWidth: leg?.mode === 'WALK' || leg?.mode === 'transhipment' ? 6 : 8,
+      borderStyle:
+        leg?.mode === 'WALK' || leg?.mode === 'transhipment'
+          ? 'dotted'
+          : 'solid',
+      borderLeftWidth: 8,
       borderColor:
-        leg?.mode === 'WALK'
-          ? 'gray'
-          : `#${leg?.routeColor ?? 'fffff'}`,
+        leg?.mode === 'WALK' ? 'gray' : `#${leg?.routeColor ?? 'fffff'}`,
     },
     lineIos: {
       position: 'relative',
@@ -232,12 +253,5 @@ const styles = (leg?: any) =>
       borderWidth: 0,
       borderLeftWidth: 0,
       borderStyle: 'solid',
-    },
-    circleStyled: {
-      backgroundColor: leg?.mode === 'WALK' ? 'white' : `#${leg?.routeColor ?? 'fffff'}`,
-      borderColor: leg?.mode === 'WALK' ? 'black' : `#${leg?.routeColor ?? 'fffff'}`,
-      borderWidth: 4,
-      alignItems: 'center',
-      justifyContent: 'center',
     },
   });

@@ -14,7 +14,7 @@ export default function RouteTypeFilter(props: RouteTypeFilterProps) {
   const t = useTranslate()
 
   return (
-    <PlannerCard style={{ marginTop: 24 }} title={t('planner_preferences_filter_route_type')}>
+    <PlannerCard style={{ marginBottom: 24 }} title={t('planner_preferences_filter_route_type')}>
         <RadioButtonOption
           text={t('planner_preferences_filter_route_type_fast')}
           selected={TypeRouteFilter.FAST === props.selected}
