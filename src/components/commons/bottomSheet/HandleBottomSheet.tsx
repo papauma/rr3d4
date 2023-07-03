@@ -26,7 +26,7 @@ interface HandleProps extends BottomSheetHandleProps {
   style?: StyleProp<ViewStyle>;
 }
 
-const HandleBottomSheet: React.FC<HandleProps> = ({style, animatedIndex}) => {
+const HandleBottomSheet: React.FC<HandleProps> = ({style, animatedIndex, topContent}) => {
   const theme = useTheme()  
 
   //#region animations
@@ -36,7 +36,7 @@ const HandleBottomSheet: React.FC<HandleProps> = ({style, animatedIndex}) => {
   //#endregion
 
   //#region styles
-  const containerStyle = useMemo(() => [styles(theme).header, style], [style]);
+  const containerStyle = useMemo(() => [styles(theme).header, style], [style, theme]);
   const containerAnimatedStyle = useAnimatedStyle(() => {
     const borderTopRadius = interpolate(
       animatedIndex.value,
@@ -45,8 +45,8 @@ const HandleBottomSheet: React.FC<HandleProps> = ({style, animatedIndex}) => {
       Extrapolate.CLAMP,
     );
     return {
-      borderTopLeftRadius: borderTopRadius,
-      borderTopRightRadius: borderTopRadius,
+      borderTopLeftRadius: 20,
+      borderTopRightRadius: 20,
     };
   });
   const leftIndicatorStyle = useMemo(
@@ -105,14 +105,17 @@ const HandleBottomSheet: React.FC<HandleProps> = ({style, animatedIndex}) => {
 
   // render
   return (
-    <Animated.View
-      style={[containerStyle, containerAnimatedStyle]}
-      renderToHardwareTextureAndroid={true}>
-      <Animated.View style={[leftIndicatorStyle, leftIndicatorAnimatedStyle]} />
-      <Animated.View
-        style={[rightIndicatorStyle, rightIndicatorAnimatedStyle]}
-      />
-    </Animated.View>
+    <>
+        {topContent}
+        <Animated.View
+        style={[containerStyle, containerAnimatedStyle]}
+        renderToHardwareTextureAndroid={true}>
+        <Animated.View style={[leftIndicatorStyle, leftIndicatorAnimatedStyle]} />
+        <Animated.View
+            style={[rightIndicatorStyle, rightIndicatorAnimatedStyle]}
+        />
+        </Animated.View>
+    </>
   );
 };
 

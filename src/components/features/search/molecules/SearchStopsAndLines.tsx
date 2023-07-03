@@ -14,6 +14,9 @@ import LineCodeSemiCircle from '@src/components/commons/routeCode/LineCodeSemiCi
 import InfoMapUtils from '@src/utils/InfoMapUtils';
 import { searchRecentsSlice } from '@src/redux/slices/searchRecentsSlice';
 import { ITransportMode } from '@src/types/interfaces';
+import { plannerSegmentsSlice } from '@src/redux/slices/plannerSegmentsSlice';
+import { useNavigation } from '@react-navigation/native';
+import { navigationPages } from '@src/utils/constants';
 
 export default function SearchStopsAndLines(props: any) {
   const searchInfo = useSelector(searchInformation);
@@ -25,6 +28,7 @@ export default function SearchStopsAndLines(props: any) {
   const theme = useTheme();
   const t = useTranslate();
   const dispatch = useDispatch();
+  const navigation = useNavigation()
 
   const onPress = (properties: any) => {
     let transformedMarker = InfoMapUtils.parseSearchStopToMarker(properties);
@@ -57,6 +61,15 @@ export default function SearchStopsAndLines(props: any) {
           onPress={() => {onPress(item)}}
           name={item?.stopName}
           address={item.stopDesc}
+          onPressPlan={props.previousScreen !== 'Planner' ? () => {
+            let transformedMarker = InfoMapUtils.parseSearchStopToMarker(item);
+
+            dispatch(searchRecentsSlice.actions.updateRecentSearch(transformedMarker));
+            dispatch(plannerSegmentsSlice.actions.init({ origin: null, destination: transformedMarker }));
+            navigation.goBack();
+            navigation.navigate(navigationPages.main, {screen: navigationPages.planner});
+            dispatch(searchSlice.actions.resetAll());
+          } : undefined}
           iconComponent={(<IconBox
             code={item?.stopCode}
             alt={transportMode?.label}

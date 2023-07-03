@@ -58,7 +58,7 @@ export default function BottomSheetContent(props: IBottomSheet) {
         setPosition(index);
         props.onChange?.(index);
       }} // DESLIZAMIENTO DE LA POSICION CON EL DEDO
-      handleComponent={() => (<HandleBottomSheet style={{}} animatedIndex={animatedIndex}/>)} // CABECERA DE BOTTOM SHEET
+      handleComponent={() => (<HandleBottomSheet topContent={props.topContent} style={{}} animatedIndex={animatedIndex}/>)} // CABECERA DE BOTTOM SHEET
       enablePanDownToClose={props.enablePanDownToClose ?? true} // PERMITIR CIERRE COMPLETO
       backdropComponent={renderBackdrop}
       onAnimate={props.onAnimate}>

@@ -96,7 +96,7 @@ export default function StopDetails({
         });
       //TO CHANGE (mostrar iconos de accesibilidad)
       setTopContentBottomSheet?.(
-        <View style={{position: 'absolute', marginTop: -15, marginLeft: 16}}>
+        <View style={{position: 'absolute', marginTop: -15, marginLeft: 16, zIndex: 40}}>
           <Icon source={theme.drawables.general.Ic_Wheelchair} />
         </View>,
       );

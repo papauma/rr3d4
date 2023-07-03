@@ -69,7 +69,7 @@ export default function SearchScreen(props: SearchScreenProps) {
                     ? (<>
                         {props.disableShowStops ? null : <SearchStopsAndLines previousScreen={props.previousScreenParams?.screen} onPressResult={onPressResult} />}
                       </>)
-                    : (<SearchContent onPressResult={onPressResult}/>)
+                    : (<SearchContent previousScreen={props.previousScreenParams?.screen} onPressResult={onPressResult}/>)
                 }
             </ScrollView>
         </View>

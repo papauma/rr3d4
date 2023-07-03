@@ -15,11 +15,16 @@ import {useDispatch, useSelector} from 'react-redux';
 import SearchItem from '../atoms/SearchItem';
 import IconBox from '@src/components/widgets/IconBox';
 import SearchCard from '../atoms/SearchCard';
+import { useNavigation } from '@react-navigation/native';
+import { plannerSegmentsSlice } from '@src/redux/slices/plannerSegmentsSlice';
+import { navigationPages } from '@src/utils/constants';
+import { searchSlice } from '@src/redux/slices/searchSlice';
 
 export default function RecentSearches(props: any) {
   const searchRecent: Array<IMarker> = useSelector(recentSearchInformation);
   const t = useTranslate();
   const theme = useTheme();
+  const navigation = useNavigation()
   console.log('Rcents', searchRecent);
 
   const dispatch = useDispatch();
@@ -79,6 +84,11 @@ export default function RecentSearches(props: any) {
           iconComponent={
             <IconBox code={item?.data?.code} iconId={transportMode?.iconId} />
           }
+          onPressPlan={props.previousScreen !== 'Planner' ? () => {
+            dispatch(plannerSegmentsSlice.actions.init({ origin: null, destination: item }))
+            navigation.goBack();
+            navigation.navigate(navigationPages.main, {screen: navigationPages.planner});
+          } : undefined}
         />
       );
     } else {
