@@ -71,9 +71,8 @@ export default function PlannerResultScreen(props: PlannerResultScreenProps) {
         {contextual.errorMessage && 
         (<ErrorSnackBar message={contextual.errorMessage} 
               onPress={() => dispatch(contextualSlice.actions.updateErrorMessage(''))}/>)}
-        {contextual.showBackground && (<BackgroundModal/>)}
         {contextual.showLoading 
-          ? <Loading/>
+          ? <View/>
           : (<View style={{padding: 16, flex: 1,}}>
               <RouteCardsGroup plan={parsedPlan}/>
             </View>)

@@ -5,6 +5,7 @@ import { Dimensions, View } from 'react-native';
 import MapView, { BoundingBox, Circle, Polyline, UrlTile } from 'react-native-maps';
 import MapMarker from '../commons/map/MapMarker';
 import React from 'react';
+import { random } from '@src/utils/StringUtils';
 /*import { IMap } from '../../types/interfaces';
 import { random } from '../../utils/StringUtils';
 import { styles } from '../../utils/constants';

@@ -27,8 +27,6 @@ export default function PlannerMapPresenter() {
   const dispatch = useDispatch();
   const {onLocation} = useSearch()
   const coords = RouteUtils.getItiCoords(planResult, selectedIti, segments.length > 2);
-  //To CHANGE
-  const userLocation = null;
   const t = useTranslate();
   const theme = useTheme()
 
@@ -79,8 +77,6 @@ export default function PlannerMapPresenter() {
         let dataOriginElem = dataOrigin.find(
           (dataOri: any) => String(dataOri.gtfsAgency[0]?.id) === calculatedAgencyId,
         );
-
-        console.log('Route marker', dataOriginElem);
         
         let iconId = dataOriginElem?.transportModes[0]?.iconMarkTransportId;
 
@@ -193,13 +189,13 @@ export default function PlannerMapPresenter() {
     }
   }
 
-  /* const drawCirclesItinerary = () => {
-    let stops = [];
+  const drawCirclesItinerary = () => {
+    let circles: Array<any> = [];
 
     for (let i = 0; i < coords?.length; i++) {
       const feature = coords[i];
-      if (feature.intermediateStops) {
-        stops = stops.concat(
+      if (feature?.intermediateStops) {
+        circles = circles.concat(
           feature.intermediateStops.map((stop) => {
             const mark = {
               id: stop.stopId,
@@ -216,18 +212,39 @@ export default function PlannerMapPresenter() {
             return {
               marker: mark,
               properties: {
-                strokeColor: feature.color,
-                fillColor: R.resources.colors.white,
+                strokeColor: feature?.color,
+                fillColor: theme.colors.white,
                 strokeWidth: 3,
               },
             };
           }),
         );
+
+        let destinationCircle = {
+          marker: {
+            id: feature.to.stopId,
+            location: RouteUtils.getClosestToStop(
+                  {
+                    latitude: parseFloat(feature.to.lat.toFixed(6)),
+                    longitude: parseFloat(feature.to.lon.toFixed(6)),
+                  },
+                  feature.coords,
+                ),
+                title: feature.to.name,
+          },
+          properties: {
+            strokeColor: feature?.color,
+            fillColor: theme.colors.white,
+            strokeWidth: 3,
+          },
+        };
+  
+        circles.push(destinationCircle)
       }
     }
 
-    return stops;
-  }; */
+    return circles;
+  };
 
   return {
     drawPlannerMarkers,
@@ -236,6 +253,6 @@ export default function PlannerMapPresenter() {
     onLongPressOnThePlannerMap,
     onDragMarker,
     drawPolylineRoutes,
-    //drawCirclesItinerary,
+    drawCirclesItinerary,
   };
 }

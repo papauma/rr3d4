@@ -62,8 +62,6 @@ export default function LineDetailsScreen(props: InfoLineScreenProps) {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      {contextualInfo.showLoading && <Loading/>}
-      {contextualInfo.showBackground && <BackgroundModal/>}
       <View style={{position: 'absolute',
             top: 0,
             width: Dimensions.get('window').width,

@@ -22,7 +22,6 @@ export default function LanguageScreen() {
   return (
     <SafeAreaView style={styles(theme).content}>
       <ScreenTitle title={t('settings_section_general_language')} />
-      {/* {modalControl.showExploreLoading && <Loading />} */}
       <View style={{flex: 1, paddingHorizontal: 16, marginTop: 16}} accessible={true}
           accessibilityLabel={t('accesible_languages_list')}
           accessibilityRole="list">

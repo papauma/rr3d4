@@ -9,6 +9,7 @@ import Precarga from '@src/screens/Precarga';
 import { ThemeProvider } from '@src/context/themeContext';
 import Splash from '@src/screens/splash/components/splash/Splash';
 import LocationTracker from '@src/components/widgets/LocationTracker';
+import ContextualComponents from '@src/components/widgets/ContextualComponents';
 
 export default function App() {
   const [precargaLoaded, setPrecargaLoaded] = useState(false);
@@ -25,7 +26,7 @@ export default function App() {
             <Provider store={store}>
               <Precarga onFinish={finishPrecarga}>
                 <LocationTracker>
-                  <>
+                  <ContextualComponents>
                     <StatusBar barStyle={'dark-content'} />
                     {!precargaLoaded ? (
                       <Splash/>
@@ -34,7 +35,7 @@ export default function App() {
                         <Routes />
                       </>
                     )}
-                  </>
+                  </ContextualComponents>
                 </LocationTracker>
               </Precarga>
             </Provider>

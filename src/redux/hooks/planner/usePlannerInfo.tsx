@@ -53,7 +53,7 @@ export default function usePlannerInfo() {
     dispatch(plannerSlice.actions.updateSelectedPlan(0));
     if (segments[0] && segments[1] && Object.keys(segments).length === 2) {
       //en caso de no tener paradas intermedias
-      dispatch(contextualSlice.actions.updateShowLoading(true));
+      dispatch(contextualSlice.actions.updateShowLoadingBackground(true));
       let dest =
         segments[segments.length - 1]?.position.latitude +
         ',' +
@@ -93,10 +93,10 @@ export default function usePlannerInfo() {
           dispatch(contextualSlice.actions.updateErrorMessage('Ruta no disponible'));
         }
       }
-      dispatch(contextualSlice.actions.updateShowLoading(false));
+      dispatch(contextualSlice.actions.updateShowLoadingBackground(false));
     } else {
       dispatch(plannerSlice.actions.updatePlanResult(null));
-      dispatch(contextualSlice.actions.updateShowLoading(false));
+      dispatch(contextualSlice.actions.updateShowLoadingBackground(false));
     }
   }
 

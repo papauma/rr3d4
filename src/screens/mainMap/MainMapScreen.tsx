@@ -88,8 +88,6 @@ export default function MainMapScreen() {
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      {contextualInfo.showBackground && <BackgroundModal />}
-      {contextualInfo.showLoading && <Loading />}
       <HomeHeader
         onPressLocation={(coords: IPosition) => focusOnTheMap(coords)}
       />

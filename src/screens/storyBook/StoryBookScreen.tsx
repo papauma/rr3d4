@@ -91,7 +91,6 @@ export default function StoryBookScreen() {
                   onPress={() => setShowAlertCard(!showAlertCard)}/>
                 {showAlertCard && <StoryAlertCard/>}
             </ScrollView>
-        {contextualInfo.showBackground && <BackgroundModal/>}
         {contextualInfo.warningMessage && <WarningSnackBar onPress={() => dispatch(contextualSlice.actions.updateWarningMessage(''))}/>}
         {contextualInfo.infoMessage && <InfoSnackBar onPress={() => dispatch(contextualSlice.actions.updateInfoMessage(''))}/>}
         {contextualInfo.sucessMessage && <SuccessSnackBar onPress={() => dispatch(contextualSlice.actions.updateSucessMessage(''))}/>}

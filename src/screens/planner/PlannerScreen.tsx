@@ -107,8 +107,6 @@ export default function PlannerScreen() {
         draggableMarkers={true}
         //layerSelected={selectedLayer}
       /> 
-      {contextual.showBackground && <BackgroundModal/>}
-      {contextual.showLoading && <Loading/>}
       <View
         style={{
           top: 0,

@@ -1,4 +1,5 @@
 import GeoUtils from './GeoUtils';
+import PlanUtils from './PlanUtils';
 import TimeUtils from './TimeUtils';
 
 export default class RouteUtils {
@@ -17,10 +18,12 @@ export default class RouteUtils {
       let origin = this.getCoords(data.plan.from.lat, data.plan.from.lon);
       let destination = this.getCoords(data.plan.to.lat, data.plan.to.lon);
       jsonIn['origin'] = origin;
+      jsonIn.from = data.plan.from;
+      jsonIn.to = data.plan.to;
       jsonIn['destination'] = destination;
 
       let mode = data.plan.itineraries[position].legs[i].mode;
-      if (mode === 'BUS' || mode === 'METRO' || mode === 'TRANSIT') {
+      if (PlanUtils.isPublicMode(mode)) {
         jsonIn['intermediateStops'] = data.plan.itineraries[position].legs[i].intermediateStops;
       }
 

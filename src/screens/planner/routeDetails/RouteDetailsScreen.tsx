@@ -48,7 +48,7 @@ export default function RouteDetailsScreen() {
 
     const selectedItinerary = parsedPlan.find((element: any) => element.index === planSelected);
 
-    const {drawPolylineRoutes, drawRoutePlannerMarkers} = PlannerMapPresenter();
+    const {drawPolylineRoutes, drawRoutePlannerMarkers, drawCirclesItinerary} = PlannerMapPresenter();
 
     const [zoomMap, setZoomMap] = useState(plannerSegments.length > 1 
       && plannerSegments[0] 
@@ -93,7 +93,7 @@ export default function RouteDetailsScreen() {
             }}
             updateBounds={(bounds: IBounds, zoom?: number) => {}}
             polylines={drawPolylineRoutes()}
-            //circles={drawCirclesItinerary()}
+            circles={drawCirclesItinerary()}
             //layerSelected={selectedLayer}
         />
         <RouteDetailsBottomSheetContent

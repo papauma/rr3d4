@@ -65,7 +65,6 @@ export default function SettingsScreen() {
 
   return (
     <SafeAreaView style={{flex: 1}}>
-        {contextualInfo.showBackground && <BackgroundModal/>}
         <View style={[styles(theme).viewTitle]}>
             <Label style={[styles(theme).title]}>{t('settings_screen_title')}</Label>
         </View>
