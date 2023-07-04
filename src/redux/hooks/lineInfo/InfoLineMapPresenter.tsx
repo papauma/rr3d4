@@ -78,10 +78,10 @@ export default function InfoLineMapPresenter() {
 
 
   const drawCirclesLine = () => {
-    let stops = [];
+    let circles: Array<any> = [];
 
       if (markersState.length > 0 ) {
-        stops = stops.concat(
+        circles = circles.concat(
           markersState.map((stop, index) => {
             const mark = {
               id: index,
@@ -107,7 +107,7 @@ export default function InfoLineMapPresenter() {
         );
       }
 
-    return stops;
+    return circles;
   };
 
   return {

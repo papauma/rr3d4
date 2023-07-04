@@ -12,6 +12,6 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
     top: 0,
-    zIndex: 500,
+    zIndex: 50,
   },
 });
