@@ -19,8 +19,6 @@ export default function LocationTracker({children}: {children: any}) {
  useEffect(() => {
     let tracking: number | null = null;
     async function getter() {
-        console.log('Entra a Tracker');
-        
       await check(
         Platform.OS === 'ios'
           ? PERMISSIONS.IOS.LOCATION_WHEN_IN_USE
@@ -54,11 +52,13 @@ export default function LocationTracker({children}: {children: any}) {
     return () => {
       typeof tracking === 'number' && clearTrackLocation(tracking);
     };
-  }, [
-    grantedLocation,
-    locationInfo.initTracking,
-    countNotShowingLocation,
-  ]);   
+  }, [grantedLocation, 
+    locationInfo.initTracking, 
+    countNotShowingLocation, 
+    dispatch, 
+    trackLocation, 
+    clearTrackLocation
+]);   
 
   return (
     <>{children}</>

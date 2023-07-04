@@ -71,8 +71,6 @@ export default function MainMapScreen() {
   }, [selectorFilters, selectedMarker]);
 
   function focusOnTheMap(coords: any) {
-    console.log('Coords', coords);
-
     if (refMapView) {
       //dispatch(updateLocation(coords));
       refMapView?.animateCamera({
@@ -108,7 +106,7 @@ export default function MainMapScreen() {
           )
         }
         markers={isFocused ? renderVisualizerMarkers(markersVisualizer) : []}
-        updateBounds={(bounds: IBounds, zoom?: number) => {
+        updateBounds={(bounds: IBounds) => {
           dispatch(updateBounds(bounds));
         }}
         updateZoom={(zoom: number) => {
