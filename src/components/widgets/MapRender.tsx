@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Dimensions, View } from 'react-native';
 import MapView, { BoundingBox, Circle, Polyline, UrlTile } from 'react-native-maps';
 import MapMarker from '../commons/map/MapMarker';
+import React from 'react';
 /*import { IMap } from '../../types/interfaces';
 import { random } from '../../utils/StringUtils';
 import { styles } from '../../utils/constants';
@@ -99,7 +100,7 @@ export default function MapRender(props: IMap) {
       setTimeout(() => setTracksViewChanges(false), 100);
     }
     const zoom = calcZoomMobile(widthDevice, region.longitudeDelta);
-    if (props.zoom !== zoom) {
+    if (Math.abs(props.zoom - zoom) >= 0.5) {
       props.updateZoom && props.updateZoom(zoom);
     }
     props.updateBounds &&

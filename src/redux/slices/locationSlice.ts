@@ -7,6 +7,8 @@ export interface LocationInformation {
     askedServiceLocation: boolean;
     tracking: boolean;
     initTracking: boolean;
+    granted: boolean;
+    countNotShowingLocation?: number;
   }
   
   const initialState = {
@@ -15,6 +17,8 @@ export interface LocationInformation {
       askedServiceLocation: false,
       tracking: false,
       initTracking: false,
+      granted: false,
+      countNotShowingLocation: 0,
     },
   };
   
@@ -33,6 +37,12 @@ export interface LocationInformation {
       },
       updatedInitTracking: (state, action) => {
         state.locationInformation.initTracking = action.payload;
+      },
+      updateGrantedLocation: (state, action) => {
+        state.locationInformation.granted = action.payload;
+      },
+      updateCountLocation: (state, action) => {
+        state.locationInformation.countNotShowingLocation = action.payload;
       },
     },
   });

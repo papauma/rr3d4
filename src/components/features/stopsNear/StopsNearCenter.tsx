@@ -111,7 +111,8 @@ export default function StopsNearCenter(props: StopsNearCenterProps) {
     if (
       stopsNear.length > 0 &&
       !props.loadingCenter &&
-      props.canLoadNearStops
+      props.canLoadNearStops &&
+      Math.ceil(loadedStopsNear.length / 5) < loadedPage
     ) {
       getStopInfoFromAPI();
     }

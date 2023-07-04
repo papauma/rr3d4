@@ -22,6 +22,7 @@ import { updateLines } from '@src/redux/slices/linesSlices';
 import { useLanguage } from '@src/context/languageContext';
 import { searchRecentsSlice } from '@src/redux/slices/searchRecentsSlice';
 import { getCalendarLocaleConfig } from '@src/redux/hooks/time/CalendarConfig';
+import { locationSlice } from '@src/redux/slices/locationSlice';
 
 const Precarga = ({ onFinish, children }) => {
   const userAccountInformation = useSelector(userState);
@@ -89,6 +90,7 @@ const Precarga = ({ onFinish, children }) => {
       }).catch((e) => {
 
       }).finally(() => {
+        dispatch(locationSlice.actions.updatedInitTracking(true));
       })
 
     // CARGA PARADAS

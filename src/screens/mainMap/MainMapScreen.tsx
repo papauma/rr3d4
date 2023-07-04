@@ -96,7 +96,7 @@ export default function MainMapScreen() {
         onPressLocation={(coords: IPosition) => focusOnTheMap(coords)}
       />
       <MapRender
-        zoom={11}
+        zoom={13}
         initialRegion={defaultLocation}
         setRefMapView={setRefMapView}
         onMapDragComplete={(region: any) =>

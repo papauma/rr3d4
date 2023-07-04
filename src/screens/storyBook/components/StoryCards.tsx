@@ -173,7 +173,7 @@ export default function StoryCards() {
 
   return (
     <View style={{flex: 1}}>
-        <RouteCard first={true}
+        {/* <RouteCard first={true}
             route={{
                 duration: 19,
                 startTime: '9:31',
@@ -181,6 +181,7 @@ export default function StoryCards() {
                 alert: false,
                 legs: legsExample1,
             }}
+            index={1}
         />
         <RouteCard style={{marginTop: 16}}
             route={{
@@ -190,6 +191,7 @@ export default function StoryCards() {
                 alert: true,
                 legs: legsExample2,
             }}
+            index={1}
         />
         <RouteCard style={{marginTop: 16}}
             route={{
@@ -198,6 +200,7 @@ export default function StoryCards() {
                 endTime: '10:03',
                 legs: legsExample3,
             }}
+            index={1}
         />
          <RouteCard style={{marginTop: 16}}
             route={{
@@ -206,6 +209,7 @@ export default function StoryCards() {
                 endTime: '11:58',
                 legs: legsExample4,
             }}
+            index={1}
         />
         <RouteCard style={{marginTop: 16}}
             route={{
@@ -214,6 +218,7 @@ export default function StoryCards() {
                 endTime: '10:51',
                 legs: legsExample5,
             }}
+            index={1}
         />
         <RouteCard style={{marginTop: 16}}
             route={{
@@ -222,6 +227,7 @@ export default function StoryCards() {
                 endTime: '12:01',
                 legs: legsExample6,
             }}
+            index={1}
         />
          <RouteCard style={{marginTop: 16}}
             route={{
@@ -230,7 +236,8 @@ export default function StoryCards() {
                 endTime: '10:58',
                 legs: [],
             }}
-        />
+            index={1}
+        /> */}
     </View>
   )
 }

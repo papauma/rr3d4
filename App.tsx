@@ -8,6 +8,7 @@ import { LanguageProvider } from '@src/context/languageContext';
 import Precarga from '@src/screens/Precarga';
 import { ThemeProvider } from '@src/context/themeContext';
 import Splash from '@src/screens/splash/components/splash/Splash';
+import LocationTracker from '@src/components/widgets/LocationTracker';
 
 export default function App() {
   const [precargaLoaded, setPrecargaLoaded] = useState(false);
@@ -23,16 +24,18 @@ export default function App() {
         <LanguageProvider>
             <Provider store={store}>
               <Precarga onFinish={finishPrecarga}>
-                <>
-                  <StatusBar barStyle={'dark-content'} />
-                  {!precargaLoaded ? (
-                    <Splash/>
-                  ) : (
-                    <>
-                      <Routes />
-                    </>
-                  )}
-                </>
+                <LocationTracker>
+                  <>
+                    <StatusBar barStyle={'dark-content'} />
+                    {!precargaLoaded ? (
+                      <Splash/>
+                    ) : (
+                      <>
+                        <Routes />
+                      </>
+                    )}
+                  </>
+                </LocationTracker>
               </Precarga>
             </Provider>
           </LanguageProvider>

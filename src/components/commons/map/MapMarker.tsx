@@ -1,8 +1,8 @@
-import { IMapMarker } from '../../../types/interfaces';
-import { useMemo, useState } from 'react';
-import { View } from 'react-native';
-import { Callout, Marker } from 'react-native-maps';
-
+import {IMapMarker} from '../../../types/interfaces';
+import {useMemo, useState} from 'react';
+import {View} from 'react-native';
+import {Callout, Marker} from 'react-native-maps';
+import React from 'react';
 
 export default function MapMarker(props: IMapMarker) {
   //console.log('[MapMarker] - PreuseMemo?? '+ props.width);
@@ -18,12 +18,12 @@ export default function MapMarker(props: IMapMarker) {
       tracksViewChanges: props.tracksViewChanges,
       accessibilityLabel: props.accessibilityLabel,
       anchor: props.anchor,
-      onDragEnd: (e) => props.onDragEnd?.(e, props.position),
+      onDragEnd: e => props.onDragEnd?.(e, props.position),
     };
 
     if (props.draggable) {
       return (
-        <Marker accessible={true}  draggable {...properties}>
+        <Marker accessible={true} draggable {...properties}>
           {props?.content}
         </Marker>
       );
@@ -39,6 +39,13 @@ export default function MapMarker(props: IMapMarker) {
         </Marker>
       );
     }
-  }, [props.position, props.tracksViewChanges, props.draggable, props?.width, props?.height, props.disableTooltip]);
+  }, [
+    props.position,
+    props.tracksViewChanges,
+    props.draggable,
+    props?.width,
+    props?.height,
+    props.disableTooltip,
+  ]);
   return <>{marker}</>;
 }

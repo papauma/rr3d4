@@ -1,6 +1,13 @@
 import {ThemeProps, useTheme} from '@src/context/themeContext';
 import React from 'react';
-import {Animated, Pressable, StyleProp, StyleSheet, View, ViewStyle} from 'react-native';
+import {
+  Animated,
+  Pressable,
+  StyleProp,
+  StyleSheet,
+  View,
+  ViewStyle,
+} from 'react-native';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 
 export interface ITabSection {
@@ -24,8 +31,7 @@ export default function TripleTab(props: TripleTabProps) {
         return (
           <View style={[styles(theme).container, props.styleContainer]}>
             {state.routes.map((section: any, index: number) => {
-
-              const { options } = descriptors[section.key];
+              const {options} = descriptors[section.key];
               const isFocused = state.index === index;
 
               const onPress = () => {
@@ -37,7 +43,7 @@ export default function TripleTab(props: TripleTabProps) {
 
                 if (!isFocused && !event.defaultPrevented) {
                   // The `merge: true` option makes sure that the params inside the tab screen are preserved
-                  navigation.navigate({ name: section.name, merge: true });
+                  navigation.navigate({name: section.name, merge: true});
                 }
               };
 
@@ -50,7 +56,7 @@ export default function TripleTab(props: TripleTabProps) {
               return (
                 <Pressable
                   key={index}
-                  accessibilityState={isFocused ? { selected: true } : {}}
+                  accessibilityState={isFocused ? {selected: true} : {}}
                   testID={options.tabBarTestID}
                   onPress={onPress}
                   style={[
@@ -75,7 +81,9 @@ export default function TripleTab(props: TripleTabProps) {
         );
       }}>
       {props.sections.map((section: ITabSection) => (
-        <Tab.Screen name={section.title}>{() => section.content}</Tab.Screen>
+        <Tab.Screen key={section.title} name={section.title}>
+          {() => section.content}
+        </Tab.Screen>
       ))}
     </Tab.Navigator>
   );

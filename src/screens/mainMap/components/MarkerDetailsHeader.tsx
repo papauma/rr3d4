@@ -89,6 +89,7 @@ const styles = (theme: ThemeProps) => StyleSheet.create({
         flexShrink: 1,
         flexGrow: 1,
         color: theme.colors.gray_700,
+        textTransform: 'capitalize',
         //marginLeft: 8,
     },
     leftContent: {

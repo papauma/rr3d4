@@ -13,7 +13,7 @@ export function getRegionDeltasFromZoom(zoom, latitude) {
   }
 
 export function calcZoomMobile(widthDevice: number, longitudeDelta: number): number {
-    return Math.round(Math.log2(360 * (widthDevice / 256 / longitudeDelta)) + 1);
+    return parseFloat((Math.log2(360 * (widthDevice / 256 / longitudeDelta)) + 1).toFixed(1));
 }
 
 export function filterBounds(

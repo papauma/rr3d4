@@ -111,8 +111,6 @@ export default function StopDetails({
     }
   }, [stop, allLines]);
 
-  console.log('Líneas seleccionadas', selectedLines);
-
   function renderIconCodeStop(transportMode?: number, code?: string) {
     let transportModeInfo: ITransportMode | undefined = transportModes.find(
       (element: ITransportMode) => String(element.id) === String(transportMode),

@@ -3,6 +3,7 @@ import { Platform } from 'react-native';
 import { PERMISSIONS, RESULTS, check } from 'react-native-permissions';
 import Geolocation from 'react-native-geolocation-service';
 import { useDispatch } from 'react-redux';
+import { locationSlice } from '../slices/locationSlice';
 
 export default function LocationUtils() {
   const dispatch = useDispatch();
@@ -62,8 +63,54 @@ export default function LocationUtils() {
     //return userLocation;
   }
 
+  /**
+   * @function trackLocation sigue la ubicación del usuario
+   * y te devuielve su localización cada cierto tiempo
+   */
+  function trackLocation(
+    time: number,
+    callbackOnLocationDesactivated?: Function,
+  ) {
+    let onLocationReceived = (location: any) => {
+      dispatch(
+        locationSlice.actions.updateLocation({
+          latitude: location.coords.latitude,
+          longitude: location.coords.longitude,
+        }),
+      );
+    };
+
+    let onError = (error: any) => {
+      if (error?.code === 2) {
+        callbackOnLocationDesactivated?.();
+      }
+      return null;
+    };
+
+    let options = {
+      enableHighAccuracy: false,
+      timeout: time ?? 3000,
+      maximumAge: 1000,
+      distanceFilter: 7, //distancia minima para actualizar cambios
+      showsBackgroundLocationIndicator: true,
+    };
+
+    return Geolocation.watchPosition(onLocationReceived, onError, options);
+  }
+
+  function clearTrackLocation(id: number) {
+    Geolocation.clearWatch(id);
+  }
+
+  function clearAllTrackingLocation() {
+    Geolocation.stopObserving();
+  }
+
   return {
     checkPermissions,
     getUserLocation,
+    trackLocation,
+    clearAllTrackingLocation,
+    clearTrackLocation,
   }
 }

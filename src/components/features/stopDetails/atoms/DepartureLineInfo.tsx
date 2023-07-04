@@ -94,11 +94,12 @@ const styles = (theme: ThemeProps) => StyleSheet.create({
     },
     title: {
       fontSize: 16,
-      fontWeight: '600',
+      fontWeight: '700',
       lineHeight: 24,  
       color: theme.colors.gray_700,
       marginLeft: 16,
       flex: 1,
+      textTransform: 'capitalize',
       //flexGrow: 1,
       //flex: 0.5,
     },
