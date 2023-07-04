@@ -112,7 +112,7 @@ const styles = (theme: ThemeProps) =>
       position: 'absolute',
       top: -8,
       right: -4,
-      backgroundColor: theme.colors.success_02,
+      backgroundColor: theme.colors.primary_300,
       height: 14,
       width: 14,
       borderRadius: 7,

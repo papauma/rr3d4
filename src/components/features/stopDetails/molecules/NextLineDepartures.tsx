@@ -60,7 +60,6 @@ export default function NextLineDepartures(props: NextLineDeparturesProps) {
                 tripId={line.tripId}
                 stopId={props.stopId}
                 style={[
-                  {marginTop: 8},
                   index !== 0
                     ? {
                         borderTopWidth: 1,

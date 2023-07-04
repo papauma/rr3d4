@@ -45,13 +45,14 @@ const Item = ({
               backgroundColor: theme.colors.white,
             },
           ]}>
+            {/* TO CHANGE */}
           {selected && (
-            <Icon
-              source={theme.drawables.general.Ic_Success}
-              tint={theme.colors.success_02}
-              size={18}
-              style={styles.selectedIcon}
-            />
+            <View style={[styles.selectedIcon, {backgroundColor: theme.colors.white}]}>
+              <Icon
+                source={theme.drawables.general.Ic_Success}
+                size={18}
+              />
+            </View>
           )}
           <IconDynamic
             //alt='Icono filtro'

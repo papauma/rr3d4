@@ -71,7 +71,7 @@ export default function DepartureLineInfo(props: DepartureLineInfoProps) {
             </View>
         </View>
         <View style={[styles(theme).container, {marginTop: 8}]}>
-            {props.headsign ? <Label style={styles(theme).title}>{props.headsign}</Label> : null}
+            {props.headsign ? <Label style={styles(theme).title}>{`» ${props.headsign}`}</Label> : null}
             {props.time ? <Label style={styles(theme).time}>{props.time}</Label> : null}
         </View>
     </TouchableOpacity>
