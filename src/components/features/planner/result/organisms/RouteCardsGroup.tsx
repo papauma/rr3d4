@@ -1,16 +1,19 @@
 import React from 'react';
 import { View, FlatList, StyleSheet } from 'react-native';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import Label from '@src/components/commons/text/Label';
 import { useTranslate } from '@src/context/languageContext';
 import { navigationPages } from '@src/utils/constants';
-import { plannerSlice } from '@src/redux/slices/plannerSlice';
+import { plannerInformation, plannerSlice } from '@src/redux/slices/plannerSlice';
 import RouteCard from '../molecules/RouteCard';
 
 interface RouteCardsGroupProps {
   plan?: any;
   isFavorite?: boolean;
+  sortedPlanFast?: any;
+  sortedPlanTransfer?: any;
+  sortedPlanWalk?: any;
 }
 
 export default function RouteCardsGroup(props: RouteCardsGroupProps) {
@@ -19,6 +22,7 @@ export default function RouteCardsGroup(props: RouteCardsGroupProps) {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const t = useTranslate()
+  const routeTypeSelected = useSelector(plannerInformation).routeTypeFilter;
 
   //TO CHANGE textos
   const renderEmpty = () => {
@@ -46,6 +50,10 @@ export default function RouteCardsGroup(props: RouteCardsGroupProps) {
   }
 
   const renderRoute = ({ item, index }) => {
+    let positionFast = props.sortedPlanFast.findIndex((element: any) => element.id === item.id)
+    let positionTransfer = props.sortedPlanTransfer.findIndex((element: any) => element.id === item.id)
+    let positionWalk = props.sortedPlanWalk.findIndex((element: any) => element.id === item.id)
+
     return (
       <RouteCard
         key={item.id}
@@ -54,6 +62,10 @@ export default function RouteCardsGroup(props: RouteCardsGroupProps) {
         route={item}
         plan={props.plan}
         onPressCard={(selectedIndex: number) => onPressCard(selectedIndex)}
+        routeType={routeTypeSelected}
+        isFaster={positionFast === 0}
+        isTransferLess={positionTransfer === 0}
+        isWalkLess={positionWalk === 0}
       />
     );
   };

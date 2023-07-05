@@ -142,6 +142,7 @@ export interface IMarkers {
   dataOrigins: Array<IMarker>;
 }
 export interface IDataOrigin {
+  id: number;
   agencyId: number;
   transportModes: Array<{
     iconMarkAlertId: number;

@@ -1,13 +1,13 @@
 import React from 'react';
-import { View, StyleSheet, Dimensions } from 'react-native';
-import { ILeg } from '../../../../../types/PlannerInterfaces';
-import { useTheme } from '@src/context/themeContext';
-import { random } from '@src/utils/StringUtils';
+import {View, StyleSheet, Dimensions} from 'react-native';
+import {ILeg} from '../../../../../types/PlannerInterfaces';
+import {useTheme} from '@src/context/themeContext';
+import {random} from '@src/utils/StringUtils';
 import Icon from '@src/components/commons/icon/Icon';
 import RouteIconInfo from '../atoms/RouteIconInfo';
-import { log } from 'react-native-reanimated';
+import {log} from 'react-native-reanimated';
 import PlanUtils from '@src/utils/PlanUtils';
-import { useTranslate } from '@src/context/languageContext';
+import {useTranslate} from '@src/context/languageContext';
 
 /* Línea iconográfica que muestra la leg de la ruta */
 export default function RouteLegs({
@@ -22,7 +22,7 @@ export default function RouteLegs({
   duration?: number;
 }) {
   const theme = useTheme();
-  const t = useTranslate()
+  const t = useTranslate();
 
   const renderIcons = () => {
     let results: Array<any> = [];
@@ -30,9 +30,11 @@ export default function RouteLegs({
       return [];
     }
 
-    let totalPublic = legs.filter((infoLeg: ILeg) => PlanUtils.isPublicMode(infoLeg.mode))
+    let totalPublic = legs.filter((infoLeg: ILeg) =>
+      PlanUtils.isPublicMode(infoLeg.mode),
+    );
 
-    let newLegs = PlanUtils.organizeLengthOfLegsPublic(totalPublic, legs)
+    let newLegs = PlanUtils.organizeLengthOfLegsPublic(totalPublic, legs);
 
     for (let i = 0; i < legs.length - 1; i++) {
       results.push(
@@ -44,7 +46,11 @@ export default function RouteLegs({
           shortName={legs[i]?.routeShortName}
           duration={legs[i]?.duration}
           textColor={legs[i]?.routeTextColor}
-          publicGrow={newLegs ? newLegs[i]?.styleNew : undefined}
+          publicGrow={
+            newLegs && newLegs[i]?.styleNew?.flexBasis && !isNaN(newLegs[i]?.styleNew?.flexBasis)
+              ? {flexBasis: parseInt(newLegs[i]?.styleNew?.flexBasis)}
+              : undefined
+          }
           //incidence={legs[i]?.incidence}
           opacity={indexSelected !== undefined ? i !== indexSelected : false}
         />,
@@ -59,7 +65,11 @@ export default function RouteLegs({
           style={[
             styles().icon,
             styles().separator,
-            indexSelected !== undefined ? (i === indexSelected ? null : styles().opacity) : null,
+            indexSelected !== undefined
+              ? i === indexSelected
+                ? null
+                : styles().opacity
+              : null,
           ]}
         />,
       );
@@ -84,7 +94,11 @@ export default function RouteLegs({
             style={[
               styles().icon,
               styles().separator,
-              indexSelected !== undefined ? (i === indexSelected ? null : styles().opacity) : null,
+              indexSelected !== undefined
+                ? i === indexSelected
+                  ? null
+                  : styles().opacity
+                : null,
             ]}
           />,
         );
@@ -99,7 +113,11 @@ export default function RouteLegs({
         agencyId={legs[legs.length - 1]?.agencyId}
         shortName={legs[legs.length - 1]?.routeShortName}
         textColor={legs[legs.length - 1]?.routeTextColor}
-        opacity={indexSelected !== undefined ? legs.length - 1 !== indexSelected : false}
+        opacity={
+          indexSelected !== undefined
+            ? legs.length - 1 !== indexSelected
+            : false
+        }
         publicGrow={newLegs ? newLegs[legs.length - 1]?.styleNew : undefined}
       />,
     );
@@ -108,11 +126,12 @@ export default function RouteLegs({
   };
 
   return (
-      <View style={[styles().row, style]} accessible={true}
-       accessibilityLabel={t('accessibility_planner_card_legs')}
-       >
-        {renderIcons()}
-      </View>
+    <View
+      style={[styles().row, style]}
+      accessible={true}
+      accessibilityLabel={t('accessibility_planner_card_legs')}>
+      {renderIcons()}
+    </View>
   );
 }
 

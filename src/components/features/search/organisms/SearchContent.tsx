@@ -4,11 +4,10 @@ import SearchCategories from '../molecules/SearchCategories';
 import RecentSearches from '../molecules/RecentSearches';
 
 export default function SearchContent(props: any) {
-  console.log('[SEARCH CONTENT');
 
   return (
     <View style={{flex: 1}}>
-      <SearchCategories />
+      {props.previousScreen !== 'Planner' && <SearchCategories />}
       <RecentSearches
         previousScreen={props.previousScreen}
         onPressResult={props.onPressResult}

@@ -1,14 +1,15 @@
 import React from 'react';
-import { View, StyleSheet, Dimensions } from 'react-native';
-import { capitalizeEveryWord, random } from '../../../../../utils/StringUtils';
+import {View, StyleSheet, Dimensions} from 'react-native';
+import {capitalizeEveryWord, random} from '../../../../../utils/StringUtils';
 import Label from '../../../../commons/text/Label';
 import Icon from '@src/components/commons/icon/Icon';
-import { useTheme } from '@src/context/themeContext';
-import { useTranslate } from '@src/context/languageContext';
-import { ILeg } from '@src/types/PlannerInterfaces';
+import {useTheme} from '@src/context/themeContext';
+import {useTranslate} from '@src/context/languageContext';
+import {ILeg, ILocationPlan} from '@src/types/PlannerInterfaces';
 import PlanUtils from '@src/utils/PlanUtils';
 import CollapseStops from '../atoms/CollapseStops';
-import RouteCodeBox from '@src/components/commons/routeCode/RouteCodeBox';
+import IconBox from '@src/components/widgets/IconBox';
+import {IDataOrigin, ITransportMode} from '@src/types/interfaces';
 
 interface RouteLegLineInfoProps {
   mode?: string;
@@ -16,132 +17,162 @@ interface RouteLegLineInfoProps {
   collapsed: boolean;
   setCollapsed: Function;
   color?: string;
+  agency?: IDataOrigin;
+  icon?: any;
+  destPrev?: ILocationPlan;
+  transportMode?: ITransportMode;
 }
 
 export default function RouteLegLineInfo(props: RouteLegLineInfoProps) {
   const theme = useTheme();
-  const t = useTranslate()
+  const t = useTranslate();
 
   const renderByMode = () => {
     let result: any = [];
     if (props.mode === 'WALK') {
       result.push(
-        <View
-          key={random()}
-          style={styles().container}
-        >
-          <Label
-            style={[styles().title, { overflow: 'hidden' }]}
-            numberOfLines={1}
-            ellipsizeMode={'tail'}
-          >
-            {props.leg.from.name}
-          </Label>
-            <View style={[styles().rowWalk, {borderColor: theme.colors.gray_200}]}>
-              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <Icon 
-                  tint={theme.colors.gray_600}
-                  source={theme.drawables.general.Ic_Walk} />
-                <Label style={{ marginLeft: 8, color: theme.colors.gray_700, overflow: 'hidden' }}
-                  numberOfLines={1}
-                  ellipsizeMode={'tail'}
-                >
-                  {`${props.leg.distance} · ${props.leg.duration} ${t('minutes')}`}
-                </Label>
-              </View>
+        <View key={random()} style={styles().container}>
+          <View style={[styles().row]}>
+            {props.destPrev && <IconBox
+                code={props.destPrev.stopCode}
+                alt={props.transportMode?.label}
+                iconId={props.icon}
+                styleBox={{marginRight: 8}}
+              />}
+            <Label
+              style={[styles().title, {overflow: 'hidden'}]}
+              numberOfLines={1}
+              ellipsizeMode={'tail'}>
+              {props.leg.from.name}
+            </Label>
+          </View>
+          <View
+            style={[styles().rowWalk, {borderColor: theme.colors.gray_200}]}>
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <Icon
                 tint={theme.colors.gray_600}
-                source={theme.drawables.general.Ic_Map}
+                source={theme.drawables.general.Ic_Walk}
               />
+              <Label
+                style={{
+                  marginLeft: 8,
+                  color: theme.colors.gray_700,
+                  overflow: 'hidden',
+                }}
+                numberOfLines={1}
+                ellipsizeMode={'tail'}>
+                {`${props.leg.distance} · ${props.leg.duration} ${t(
+                  'minutes',
+                )}`}
+              </Label>
             </View>
-          <View/>
+            <Icon
+              tint={theme.colors.gray_600}
+              source={theme.drawables.general.Ic_Map}
+            />
+          </View>
+          <View />
         </View>,
       );
-    } else if (
-      PlanUtils.isPublicMode(props.mode)
-    ) {
+    } else if (PlanUtils.isPublicMode(props.mode)) {
       result.push(
-        <View
-          key={random()}
-          style={styles().container}
-        >
-          <Label style={[styles().title]} numberOfLines={1} ellipsizeMode={'tail'}>
-            {props.leg.from.name.toLowerCase()}
-          </Label>
+        <View key={random()} style={styles().container}>
+          <View style={styles().row}>
+            <IconBox
+                    code={props.leg.from.stopCode}
+                    alt={props.leg.mode}
+                    iconId={props.icon}
+                    styleBox={{marginRight: 8}}
+            />
+            <Label
+              style={[styles().title]}
+              numberOfLines={1}
+              ellipsizeMode={'tail'}>
+              {props.leg.from.name.toLowerCase()}
+            </Label>  
+          </View>
           <View style={{}}>
-            <View style={[styles().rowSeparated, styles().stationInfo, { flexGrow: 0 }]}>
-              <View style={[styles().row, { flex: 1 }]}>
+            <View
+              style={[
+                styles().rowSeparated,
+                styles().stationInfo,
+                {flexGrow: 0},
+              ]}>
+              <View style={[styles().row, {flex: 1}]}>
                 {/* To CHANGE code a falta de agencyId */}
                 <Label
                   numberOfLines={1}
                   ellipsizeMode={'tail'}
-                  style={[styles().textStop, { flex: 1, marginRight: 24 }]}
-                >
-                  {props.leg?.headsign ? props.leg?.headsign : 'Sentido'}
+                  style={[styles().textStop, {flex: 1, marginRight: 24}]}>
+                  {props.leg?.headsign ? `» ${props.leg?.headsign}` : ''}
                 </Label>
               </View>
-              <Label
+              {/* <Label
                 style={{
                   fontSize: 16,
                   fontWeight: '700',
                   lineHeight: 20.8,
                   flexGrow: 0,
-                }}
-              >
+                }}>
                 {`${props.leg.duration} ${t('minutes')}`}
-              </Label>
+              </Label> */}
             </View>
-            {props.leg.intermediateStops && props.leg.intermediateStops?.length > 0 &&(
-              <CollapseStops
-                intermediateStops={props.leg.intermediateStops}
-                duration={props.leg.duration}
-                color={`#${props.leg.routeColor}`}
-                setCollapsed={() => props.setCollapsed()}
-                collapsed={props.collapsed}
-              />
-            )}
+            {props.leg.intermediateStops &&
+              props.leg.intermediateStops?.length > 0 && (
+                <CollapseStops
+                  intermediateStops={props.leg.intermediateStops}
+                  duration={props.leg.duration}
+                  color={`#${props.leg.routeColor}`}
+                  setCollapsed={() => props.setCollapsed()}
+                  collapsed={props.collapsed}
+                />
+              )}
           </View>
-          <View/>
+          <View />
         </View>,
       );
     } else if (props.mode === 'transhipment') {
       result.push(
-        <View
-          key={random()}
-          style={styles().container}
-        >
+        <View key={random()} style={styles().container}>
           <Label
-            style={[styles().title, { overflow: 'hidden' }]}
+            style={[styles().title, {overflow: 'hidden'}]}
             numberOfLines={1}
-            ellipsizeMode={'tail'}
-          >
+            ellipsizeMode={'tail'}>
             {props.leg.to.name}
           </Label>
-            <View style={[styles().rowWalk, {borderColor: theme.colors.gray_200}]}>
-              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <Icon 
-                  tint={theme.colors.gray_600}
-                  source={theme.drawables.general.Ic_Transbordo} />
-                <Label style={{ marginLeft: 8, color: theme.colors.gray_700, overflow: 'hidden' }}
-                  numberOfLines={1}
-                  ellipsizeMode={'tail'}
-                >
-                  {`${t('planner_transfer')} · ${props.leg.duration} ${t('minutes')}`}
-                </Label>
-              </View>
+          <View
+            style={[styles().rowWalk, {borderColor: theme.colors.gray_200}]}>
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <Icon
                 tint={theme.colors.gray_600}
-                source={theme.drawables.general.Ic_Map}
+                source={theme.drawables.general.Ic_Transbordo}
               />
+              <Label
+                style={{
+                  marginLeft: 8,
+                  color: theme.colors.gray_700,
+                  overflow: 'hidden',
+                }}
+                numberOfLines={1}
+                ellipsizeMode={'tail'}>
+                {`${t('planner_transfer')} · ${props.leg.duration} ${t(
+                  'minutes',
+                )}`}
+              </Label>
             </View>
-          <View/>
+            <Icon
+              tint={theme.colors.gray_600}
+              source={theme.drawables.general.Ic_Map}
+            />
+          </View>
+          <View />
         </View>,
       );
     } else {
       result.push(
         <View key={random()}>
           <Label style={styles().title}>{props.leg.from.name}</Label>
-          <Label style={{ marginTop: 25.5, marginLeft: 12 }}>
+          <Label style={{marginTop: 25.5, marginLeft: 12}}>
             {`${props.leg.distance} · ${props.leg.duration} min`}
           </Label>
         </View>,
@@ -209,6 +240,6 @@ const styles = () =>
       width: Dimensions.get('window').width - 56 - 16 * 6,
       marginLeft: 8,
       justifyContent: 'space-between',
-      flex: 1
-    }
+      flex: 1,
+    },
   });

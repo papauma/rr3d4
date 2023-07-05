@@ -4,13 +4,16 @@ import Label from '@src/components/commons/text/Label';
 import {useTranslate} from '@src/context/languageContext';
 import {useTheme} from '@src/context/themeContext';
 import {agencyInformation} from '@src/redux/slices/agencysSlices';
-import {ILeg} from '@src/types/PlannerInterfaces';
+import {ILeg, ILocationPlan} from '@src/types/PlannerInterfaces';
 import React, {useState} from 'react';
 import {View, StyleSheet, Platform} from 'react-native';
 import {useSelector} from 'react-redux';
 import RouteLegLineInfo from './RouteLegLineInfo';
 import {random} from '@src/utils/StringUtils';
 import LegTimeInfo from '../atoms/LegTimeInfo';
+import {stopsState} from '@src/redux/slices/stopsSlices';
+import {transportModeState} from '@src/redux/slices/transportmodeSlices';
+import {IMarker, ITransportMode} from '@src/types/interfaces';
 
 function LineStyled({leg, children}) {
   return (
@@ -37,6 +40,8 @@ interface LineLegProps {
   agencyIdPrev?: any;
   colorPrev?: string;
   index: string;
+  destPrev?: ILocationPlan;
+  legPrev?: ILeg;
 }
 
 export default function LineLeg(props: LineLegProps) {
@@ -44,13 +49,18 @@ export default function LineLeg(props: LineLegProps) {
   const agencyInfo = useSelector(agencyInformation);
   const theme = useTheme();
   const t = useTranslate();
+  const allStops = useSelector(stopsState);
+  const transportModes = useSelector(transportModeState);
 
   const agencies: Array<any> = agencyInfo.dataOrigin;
   let agency = '';
 
   if (props.leg?.mode === 'WALK' && props.agencyIdPrev) {
+    const calculatedAgencyId =
+      props.agencyIdPrev !== null ? props.agencyIdPrev.split(':')[1] : null;
+
     agency = agencies.find((element: any) => {
-      return String(element?.gtfsAgency[0]?.id) === String(props.agencyIdPrev);
+      return String(element?.gtfsAgency[0]?.id) === String(calculatedAgencyId);
     });
   } else {
     const calculatedAgencyId =
@@ -64,14 +74,37 @@ export default function LineLeg(props: LineLegProps) {
       : null;
   }
 
-  const icon = agency?.transportModes[0]?.iconId;
+  let icon;
+  let transportMode: ITransportMode | undefined;
+
+  if (agency) {
+    let stopCode: string | undefined | null;
+    if (props.leg?.mode === 'WALK' && props.agencyIdPrev) {
+      stopCode = props.legPrev?.to?.stopCode;
+    } else {
+      stopCode = props.leg.from.stopCode;
+    }
+
+    let stopFound = allStops.find(
+      (element: IMarker) =>
+        String(element.stopCode) === String(stopCode) &&
+        String(element.data?.agencyOriginId) === String(agency?.id),
+    );
+
+    transportMode = transportModes.find(
+      (element: ITransportMode) =>
+        String(element.id) === String(stopFound?.data?.transportMode),
+    );
+
+    icon = transportMode?.iconId;
+  }
 
   /* Se renderiza otra LineLeg en caso de presentar como parámetro pasado transhipment que indica un transbordo */
   return (
     <View style={{flex: 1}}>
       <View style={styles().row}>
         {props.leg && (
-          <LegTimeInfo leg={props.leg} first={props.index === '0'} />
+          <LegTimeInfo leg={props.leg} first={props.index === '0'} legPrev={props.legPrev} />
         )}
         {props.leg && (
           <View
@@ -97,7 +130,7 @@ export default function LineLeg(props: LineLegProps) {
                       borderColor: props.colorPrev
                         ? `#${props.colorPrev}`
                         : theme.colors.black,
-                        marginTop: -2,
+                      marginTop: -2,
                     },
                   ]}
                 />
@@ -123,6 +156,10 @@ export default function LineLeg(props: LineLegProps) {
               color={`#${props.leg.routeColor}`}
               setCollapsed={() => setCollapsed(!collapsed)}
               collapsed={collapsed}
+              agency={agency}
+              icon={icon}
+              destPrev={props.destPrev}
+              transportMode={transportMode}
             />
           </View>
         )}
@@ -141,7 +178,7 @@ export default function LineLeg(props: LineLegProps) {
             }}>
             <Icon
               style={[styles().lastIcon]}
-              source={theme.drawables.general.Ic_Point_Dest}
+              source={theme.drawables.general.Ic_Flag}
             />
             <Label
               style={[styles().lastText, {overflow: 'hidden'}]}
@@ -220,9 +257,10 @@ const styles = (leg?: any) =>
       flexDirection: 'row',
     },
     lastText: {
-      fontSize: 14,
-      fontWeight: '600',
+      fontSize: 16,
+      fontWeight: '700',
       marginLeft: 8,
+      textTransform: 'capitalize',
     },
     lastIcon: {
       marginLeft: -15,

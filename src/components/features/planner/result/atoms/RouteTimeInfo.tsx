@@ -38,7 +38,7 @@ export default function RouteTimeInfo(props: RouteTimeProps) {
                 source={theme.drawables.general.Ic_Warning}
                 tint={theme.colors.tertiary_yellow}
                 style={{marginLeft: 16}}
-            />}          
+            />}
         </View>
     </View>
   )
