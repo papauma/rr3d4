@@ -87,7 +87,7 @@ export default function LineLeg(props: LineLegProps) {
 
     let stopFound = allStops.find(
       (element: IMarker) =>
-        String(element.stopCode) === String(stopCode) &&
+        String(element.data?.code) === String(stopCode) &&
         String(element.data?.agencyOriginId) === String(agency?.id),
     );
 

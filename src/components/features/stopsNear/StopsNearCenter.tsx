@@ -170,7 +170,7 @@ export default function StopsNearCenter(props: StopsNearCenterProps) {
                     stopId={stop.id}
                     marker={stop}
                     name={stop.data?.name}
-                    stopCode={stop?.stopCode}
+                    stopCode={stop?.data?.code}
                     lineTimes={stop?.lineTimes}
                     allLines={allLines.map((line: ILine) => line.id)}
                     transportMode={transportModes.find(
