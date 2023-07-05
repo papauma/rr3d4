@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, FlatList, StyleSheet } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigation } from '@react-navigation/native';
+import {View, FlatList, StyleSheet} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
 import Label from '@src/components/commons/text/Label';
-import { useTranslate } from '@src/context/languageContext';
-import { navigationPages } from '@src/utils/constants';
-import { plannerInformation, plannerSlice } from '@src/redux/slices/plannerSlice';
+import {useTranslate} from '@src/context/languageContext';
+import {navigationPages} from '@src/utils/constants';
+import {plannerInformation, plannerSlice} from '@src/redux/slices/plannerSlice';
 import RouteCard from '../molecules/RouteCard';
 
 interface RouteCardsGroupProps {
@@ -21,7 +21,7 @@ export default function RouteCardsGroup(props: RouteCardsGroupProps) {
   const favorites = {};
   const dispatch = useDispatch();
   const navigation = useNavigation();
-  const t = useTranslate()
+  const t = useTranslate();
   const routeTypeSelected = useSelector(plannerInformation).routeTypeFilter;
 
   //TO CHANGE textos
@@ -30,14 +30,10 @@ export default function RouteCardsGroup(props: RouteCardsGroupProps) {
       <>
         {props.isFavorite && favorites?.agencyId?.length === 0 ? null : (
           <View style={styles().empty}>
-            <Label style={{ marginBottom: 12, fontWeight: '700' }}>
+            <Label style={{marginBottom: 12, fontWeight: '700'}}>
               {t('planner_result_empty_title')}
             </Label>
-            <Label>
-              {
-                t('planner_result_empty_desc')
-              }
-            </Label>
+            <Label>{t('planner_result_empty_desc')}</Label>
           </View>
         )}
       </>
@@ -49,10 +45,16 @@ export default function RouteCardsGroup(props: RouteCardsGroupProps) {
     navigation.navigate(navigationPages.routeDetails);
   }
 
-  const renderRoute = ({ item, index }) => {
-    let positionFast = props.sortedPlanFast.findIndex((element: any) => element.id === item.id)
-    let positionTransfer = props.sortedPlanTransfer.findIndex((element: any) => element.id === item.id)
-    let positionWalk = props.sortedPlanWalk.findIndex((element: any) => element.id === item.id)
+  const renderRoute = ({item, index}) => {
+    let positionFast = props.sortedPlanFast.findIndex(
+      (element: any) => element.id === item.id,
+    );
+    let positionTransfer = props.sortedPlanTransfer.findIndex(
+      (element: any) => element.id === item.id,
+    );
+    let positionWalk = props.sortedPlanWalk.findIndex(
+      (element: any) => element.id === item.id,
+    );
 
     return (
       <RouteCard
@@ -63,9 +65,27 @@ export default function RouteCardsGroup(props: RouteCardsGroupProps) {
         plan={props.plan}
         onPressCard={(selectedIndex: number) => onPressCard(selectedIndex)}
         routeType={routeTypeSelected}
-        isFaster={positionFast === 0}
-        isTransferLess={positionTransfer === 0}
-        isWalkLess={positionWalk === 0}
+        isFaster={
+          positionFast === 0
+            ? true
+            : props.sortedPlanFast[0].duration === item.duration
+            ? true
+            : false
+        }
+        isTransferLess={
+          positionTransfer === 0
+            ? true
+            : props.sortedPlanTransfer[0].transhipments === item.transhipments
+            ? true
+            : false
+        }
+        isWalkLess={
+          positionWalk === 0
+            ? true
+            : props.sortedPlanWalk[0].walkDistance === item.walkDistance
+            ? true
+            : false
+        }
       />
     );
   };
@@ -75,9 +95,9 @@ export default function RouteCardsGroup(props: RouteCardsGroupProps) {
       accessibilityLabel={t('accessibility_planner_result_cards')}
       data={props.plan}
       renderItem={renderRoute}
-      ItemSeparatorComponent={() => <View style={{ marginBottom: 8 }} />}
+      ItemSeparatorComponent={() => <View style={{marginBottom: 8}} />}
       ListEmptyComponent={renderEmpty}
-      keyExtractor={(item) => item.id}
+      keyExtractor={item => item.id}
     />
   );
 }
