@@ -41,8 +41,9 @@ export default function RouteLegLineInfo(props: RouteLegLineInfoProps) {
               />}
             <Label
               style={[styles().title, {overflow: 'hidden'}]}
-              numberOfLines={1}
-              ellipsizeMode={'tail'}>
+              //numberOfLines={1}
+              //ellipsizeMode={'tail'}
+              >
               {props.leg.from.name}
             </Label>
           </View>
@@ -86,9 +87,10 @@ export default function RouteLegLineInfo(props: RouteLegLineInfoProps) {
             />
             <Label
               style={[styles().title]}
-              numberOfLines={1}
-              ellipsizeMode={'tail'}>
-              {props.leg.from.name.toLowerCase()}
+              //numberOfLines={1}
+              //ellipsizeMode={'tail'}
+              >
+              {props.leg.from.name}
             </Label>  
           </View>
           <View style={{}}>
@@ -142,10 +144,8 @@ export default function RouteLegLineInfo(props: RouteLegLineInfoProps) {
                     styleBox={{marginRight: 8}}
             />
             <Label
-              style={[styles().title]}
-              numberOfLines={1}
-              ellipsizeMode={'tail'}>
-              {props.leg.to.name.toLowerCase()}
+              style={[styles().title]}>
+              {props.leg.to.name}
             </Label>  
           </View>
           <View
@@ -217,6 +217,7 @@ const styles = () =>
       fontWeight: '700',
       lineHeight: 21,
       textTransform: 'capitalize',
+      flex: 1,
     },
     textStop: {
       fontSize: 14,
