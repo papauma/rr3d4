@@ -1,11 +1,12 @@
 import React from 'react';
-import { StyleProp, StyleSheet, TextStyle, View } from 'react-native';
+import { StyleProp, StyleSheet, TextStyle, View, ViewStyle } from 'react-native';
 import Label from './Label';
 
 interface DurationTextProps {
   duration: number;
   styleNumber?: StyleProp<TextStyle>;
   styleLetter?: StyleProp<TextStyle>;
+  styleContainer?: StyleProp<ViewStyle>;
 }
 
 export default function DurationText(props: DurationTextProps) {
@@ -13,7 +14,7 @@ export default function DurationText(props: DurationTextProps) {
   let minutesDuration = hoursDuration ? props.duration % 60 : props.duration;
 
   return (
-    <View style={{ flexDirection: 'row', alignItems: 'flex-end' }} accessible={true} 
+    <View style={[{ flexDirection: 'row', alignItems: 'flex-end' }, props.styleContainer]} accessible={true} 
         accessibilityLabel={hoursDuration ? `${hoursDuration} h ${minutesDuration} min` : `${minutesDuration} min`}>
       <Label style={[styles.numberBig, props.styleNumber]}>
         {hoursDuration ? `${hoursDuration} ` : ''}

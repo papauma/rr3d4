@@ -82,6 +82,7 @@ export interface ILeg {
   transhipment?: boolean; //control de si ese tramo termina con tranbordo al siguiente
   styleNew?: any; // control del estilo
   last?: boolean; //control último tramo
+  departureTime?: Date; //hora de salida en formato Date
 }
 export interface IItinerary {
   duration: number;

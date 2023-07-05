@@ -62,7 +62,7 @@ export default class RouteUtils {
       let endTime = TimeUtils.getFormatHour(dateEnd);
       let transhipments = 0;
       let walkDistance = 0.0;
-      let jsonIn = {};
+      let jsonIn: any = {};
       jsonIn['index'] = i;
       if (data.plan.itineraries[i]?.fare?.fare?.regular?.cents)
         jsonIn['price'] = data.plan.itineraries[i].fare.fare.regular.cents / 100 + '€';
@@ -70,6 +70,7 @@ export default class RouteUtils {
       jsonIn['id'] = i;
       jsonIn['distance'] = 0.0;
       jsonIn['startTime'] = startTime;
+      jsonIn.departureTime =  new Date(data.plan.itineraries[i].startTime);
       jsonIn['endTime'] = endTime;
       jsonIn['duration'] = Math.round((data.plan.itineraries[i].duration / 3600) * 60);
       let legs = JSON.parse(JSON.stringify(data.plan.itineraries[i].legs));
@@ -123,6 +124,7 @@ export default class RouteUtils {
         }
         startTime = TimeUtils.getFormatHour(new Date(legs[j].startTime));
         endTime = TimeUtils.getFormatHour(new Date(legs[j].endTime));
+        legs[j].departureTime = (new Date(legs[j].startTime));
         legs[j].startTime = startTime;
         legs[j].endTime = endTime;
         legs[j].duration = Math.round((legs[j].duration / 3600) * 60);
@@ -133,7 +135,7 @@ export default class RouteUtils {
               ? `${parseFloat(legs[j].distance / 1000).toFixed(2)} Km`
               : `${legs[j].distance.toFixed(0)} m`;
         }
-        if(legs[j].duration === 0) {
+        if (legs[j].duration === 0) {
           legs[j].duration = 1;
         }
 

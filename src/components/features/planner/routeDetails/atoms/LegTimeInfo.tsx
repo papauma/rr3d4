@@ -1,5 +1,6 @@
 import Icon from '@src/components/commons/icon/Icon';
 import LineCodeSemiCircle from '@src/components/commons/routeCode/LineCodeSemiCircle';
+import DurationText from '@src/components/commons/text/DurationText';
 import Label from '@src/components/commons/text/Label';
 import {useTranslate} from '@src/context/languageContext';
 import {useTheme} from '@src/context/themeContext';
@@ -68,31 +69,47 @@ export default function LegTimeInfo(props: LegTimeInfoProps) {
     }
   }
 
+  function renderFirstLeg() {
+    let timeDifference = Math.round(
+      (props.leg.departureTime.getTime() - new Date().getTime()) / 60000,
+    );
+
+    let hoursDuration =
+      timeDifference / 60 >= 1 ? parseInt((timeDifference / 60) as any) : null;
+    let minutesDuration = hoursDuration ? timeDifference % 60 : timeDifference;
+
+    return (
+      <View style={styles.container} accessible={true}>
+        <Label style={[styles.departureTime, {color: theme.colors.gray_700}]}>
+          {timeDifference > 0
+            ? `${t('planner_route_departure')}:`
+            : t('planner_timer_now')}
+        </Label>
+        {timeDifference > 0 ? (
+          <View style={styles.row}>
+            {/* <Icon
+          source={theme.drawables.general.Ic_Real_Time}
+          size={10}
+          tint={theme.colors.tertiary_yellow}
+          style={styles.icon}
+        /> */}
+            {timeDifference ? (
+              <Label style={styles.duration}>
+                {hoursDuration
+                  ? `${hoursDuration} h ${minutesDuration} min`
+                  : `${minutesDuration} min`}
+              </Label>
+            ) : null}
+          </View>
+        ) : null}
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
       {props.first ? (
-        <View style={styles.container} accessible={true}>
-          <Label
-            style={[
-              styles.departureTime,
-              {color: theme.colors.gray_700},
-            ]}>{`${t('planner_route_departure')}:`}</Label>
-          <View style={styles.row}>
-            <Icon
-              source={theme.drawables.general.Ic_Real_Time}
-              size={10}
-              tint={theme.colors.tertiary_yellow}
-              style={styles.icon}
-            />
-            {props.leg.duration ? (
-              <Label
-                style={[
-                  styles.duration,
-                  {color: theme.colors.gray_700},
-                ]}>{`${props.leg.duration} min`}</Label>
-            ) : null}
-          </View>
-        </View>
+        renderFirstLeg()
       ) : (
         <View style={styles.container} accessible={true}>
           {renderSemiCircleCodeInfo()}
