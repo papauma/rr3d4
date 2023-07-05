@@ -20,8 +20,7 @@ export default function SearchCard(props: SearchCardProps) {
 const styles = (theme: ThemeProps) => StyleSheet.create({
     container: {
         backgroundColor: theme.colors.white,
-        borderRadius: 16, 
-        paddingVertical: 12, 
+        borderRadius: 16,  
         paddingHorizontal: 8,
     },
 })

@@ -77,7 +77,7 @@ export default function RouteLegs({
       if (legs[i]?.transhipment) {
         results.push(
           <RouteIconInfo
-            key={`${legs[i].id} icon`}
+            key={`${legs[i].id} trans`}
             mode={'TRANSFER'}
             duration={legs[i]?.duration}
             textColor={legs[i]?.routeTextColor}

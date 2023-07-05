@@ -134,12 +134,20 @@ export default function RouteLegLineInfo(props: RouteLegLineInfoProps) {
     } else if (props.mode === 'transhipment') {
       result.push(
         <View key={random()} style={styles().container}>
-          <Label
-            style={[styles().title, {overflow: 'hidden'}]}
-            numberOfLines={1}
-            ellipsizeMode={'tail'}>
-            {props.leg.to.name}
-          </Label>
+          <View style={styles().row}>
+            <IconBox
+                    code={props.leg.to.stopCode}
+                    alt={props.leg.mode}
+                    iconId={props.icon}
+                    styleBox={{marginRight: 8}}
+            />
+            <Label
+              style={[styles().title]}
+              numberOfLines={1}
+              ellipsizeMode={'tail'}>
+              {props.leg.to.name.toLowerCase()}
+            </Label>  
+          </View>
           <View
             style={[styles().rowWalk, {borderColor: theme.colors.gray_200}]}>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>

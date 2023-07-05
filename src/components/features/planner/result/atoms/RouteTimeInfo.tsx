@@ -50,14 +50,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     number: {
-        fontSize: 12,
+        fontSize: 16,
         fontWeight: '700',
-        lineHeight: 18,
+        lineHeight: 20.8,
     },
     bigNumber: {
         fontWeight: '700',
-        fontSize: 24,
-        lineHeight: 31.2,
+        fontSize: 16,
+        lineHeight: 20.8,
         //flexGrow: 1,
     },
     textTime: {

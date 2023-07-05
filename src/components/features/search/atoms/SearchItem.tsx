@@ -87,6 +87,6 @@ const styles = (theme: ThemeProps) =>
     container: {
       flexDirection: 'row',
       alignItems: 'center',
-      paddingVertical: 12,
+      paddingVertical: 8,
     },
   });

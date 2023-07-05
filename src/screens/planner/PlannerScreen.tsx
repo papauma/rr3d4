@@ -13,7 +13,7 @@ import useSearch from '@src/redux/hooks/search/useSearch';
 import { contextualInformation } from '@src/redux/slices/contextualSlice';
 import { mapState, updateZoom } from '@src/redux/slices/mapSlice';
 import { plannerSegmentsInformation } from '@src/redux/slices/plannerSegmentsSlice';
-import { IBounds, IMarker } from '@src/types/interfaces';
+import { IBounds, IMarker, IPosition } from '@src/types/interfaces';
 import GeoUtils from '@src/utils/GeoUtils';
 import { defaultLocation, navigationPages } from '@src/utils/constants';
 import React, { useEffect, useState } from 'react'
@@ -92,7 +92,6 @@ export default function PlannerScreen() {
         zoom={13}
         initialRegion={selectorMap.region ?? defaultLocation}
         markers={drawPlannerMarkers()}
-        focus={() => {}}
         setRefMapView={setRefMapView}
         //showButtonFocus={selectorPermission.PermissionGeolocation}
         location={selectorMap.location}
@@ -124,7 +123,7 @@ export default function PlannerScreen() {
         </SafeAreaView>
         </View>
         <View style={{alignSelf: 'flex-end', marginTop: 35, marginRight: 16}}>
-                <LocationButton/>
+                <LocationButton onPress={(point: IPosition) => focus({position: point})}/>
         </View>
       </View>
 

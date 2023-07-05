@@ -37,7 +37,6 @@ export default function RouteDetailsBottomSheetContent(props: RouteDetailsBottom
                 duration={props.route?.duration}
                 startTime={props.route?.startTime }
                 endTime={props.route?.endTime}
-                styleHours={{fontWeight: '400', fontSize: 14, lineHeight: 21}}
                 styleLetter={{ fontSize: 16, lineHeight: 24, fontWeight: '600' }}
                 styleBigNumber={{ fontSize: 24, lineHeight: 31.2 }}
                 warning={props.route?.alert}

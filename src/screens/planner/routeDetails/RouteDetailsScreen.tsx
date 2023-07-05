@@ -11,12 +11,13 @@ import { mapState } from '@src/redux/slices/mapSlice';
 import { plannerSegmentsInformation } from '@src/redux/slices/plannerSegmentsSlice';
 import { plannerInformation } from '@src/redux/slices/plannerSlice';
 import { TypeRouteFilter } from '@src/types/PlannerInterfaces';
-import { IBounds } from '@src/types/interfaces';
+import { IBounds, IMarker, IPosition } from '@src/types/interfaces';
 import GeoUtils from '@src/utils/GeoUtils';
 import RouteUtils from '@src/utils/RouteUtils';
 import { defaultLocation } from '@src/utils/constants';
 import React, { useEffect, useState } from 'react'
 import { Platform, SafeAreaView, View } from 'react-native'
+import MapView from 'react-native-maps';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function RouteDetailsScreen() {
@@ -26,7 +27,7 @@ export default function RouteDetailsScreen() {
     const theme = useTheme()
     const selectorMap = useSelector(mapState);
     const plannerSegments = useSelector(plannerSegmentsInformation);
-    const contextual = useSelector(contextualInformation);
+    const [refMapView, setRefMapView] = useState<MapView | undefined>()
 
     const firstPosition = plannerSegments[0] 
       && plannerSegments[plannerSegments.length - 1] 
@@ -65,7 +66,18 @@ export default function RouteDetailsScreen() {
     }
   }, [plannerSegments])
 
-  console.log('Zoom', zoomMap);
+  function focus(point: IPosition, altitude?: any, zoomlevel?: any) {
+    if (refMapView) {
+      //dispatch(updateLocation(coords));
+      refMapView?.animateCamera({
+        center: point,
+        zoom: zoomlevel ?? 17,
+        altitude: altitude ?? 2500,
+      });
+    } else {
+
+    }
+  }
   
 
   return (
@@ -77,15 +89,14 @@ export default function RouteDetailsScreen() {
             <ScreenTitle title={t('planner_screen_title')}/>  
           </SafeAreaView>  
           <View style={{alignSelf: 'flex-end', marginTop: 10, marginRight: 10}}>
-                <LocationButton/>
+                <LocationButton onPress={focus}/>
           </View>
         </View>
         <MapRender
             zoom={zoomMap}
             initialRegion={{ ...firstPosition }}
             markers={drawRoutePlannerMarkers(selectedItinerary?.legs)}
-            focus={() => {}}
-            // refMapView={setInstanceMapView}
+            setRefMapView={setRefMapView}
             location={selectorMap.location}
             //drawListenerMarkers={[selectorMap.drawMarkers]}
             updateZoom={(zoom: number) => {

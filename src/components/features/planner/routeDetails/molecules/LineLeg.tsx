@@ -282,7 +282,7 @@ const styles = (leg?: any) =>
           : 'solid',
       borderLeftWidth: 8,
       borderColor:
-        leg?.mode === 'WALK' ? 'gray' : `#${leg?.routeColor ?? 'fffff'}`,
+        leg?.mode === 'WALK' || leg?.mode === 'transhipment' ? 'gray' : `#${leg?.routeColor ?? 'fffff'}`,
     },
     lineIos: {
       position: 'relative',

@@ -38,6 +38,7 @@ export default function RouteSynoptic(props: RouteSynopticProps) {
             index={`${index}-t`}
             leg={{ ...item, ...{ mode: 'transhipment' } }}
             showTime={index === 0 || index === props.legs.length - 1}
+            legPrev={index !== 0 ? item : undefined}
           />,
         );
       }
