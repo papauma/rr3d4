@@ -160,7 +160,7 @@ export default function AlertsScreen() {
       />
       <View style={{flex: 1, paddingHorizontal: 16, paddingBottom: 16}}>
         {contextualInfo.showLoading ? (
-          <Loading />
+          <View />
         ) : (
           <SectionList
             sections={sectionsAlerts}

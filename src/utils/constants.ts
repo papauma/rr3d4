@@ -16,6 +16,7 @@ export const navigationPages = {
   alerts: 'Alerts',
   lineDetails: 'LineDetails',
   linesDirectory: 'LinesDirectory',
+  saveDestinationFavorite: 'SaveDestinationFavorite',
   storybook: 'Storybook',
 };
 
