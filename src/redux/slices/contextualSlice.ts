@@ -8,6 +8,7 @@ export interface ContextualInformation {
   warningMessage: string;
   showLoading: boolean;
   showBackground: boolean;
+  showNearStops: boolean;
 }
 
 const initialState = {
@@ -18,6 +19,7 @@ const initialState = {
     warningMessage: '',
     showLoading: false,
     showBackground: false,
+    showNearStops: false,
   },
 };
 
@@ -42,6 +44,9 @@ export const contextualSlice = createSlice({
       console.log(' [contectuaSlice] - updateWarningMessage');
 
       state.contextualInformation.warningMessage = action.payload;
+    },
+    updateShowNearStops: (state, action) => {
+      state.contextualInformation.showNearStops = action.payload;
     },
     updateShowLoading: (state, action) => {
       console.log(' [contectuaSlice] - updateShowLoading');

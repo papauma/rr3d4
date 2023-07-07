@@ -1,3 +1,6 @@
+import { useTranslate } from "@src/context/languageContext";
+import { useTheme } from "@src/context/themeContext";
+
 export const navigationPages = {
   splash: 'Splash',
   main: 'Main',

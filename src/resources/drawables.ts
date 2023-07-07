@@ -21,6 +21,7 @@ export interface IDrawables {
     Ic_Circle: any;
     Ic_Clock: any;
     Ic_Close: any;
+    Ic_Colegio: any;
     Ic_Data_Protection: any;
     Ic_Data_Protection_Warn: any;
     Ic_Download: any;
@@ -72,6 +73,7 @@ export interface IDrawables {
     Ic_Warning: any;
     Ic_Warning_White: any;
     Ic_Wheelchair: any;
+    Ic_Work: any;
   }
 }
 
@@ -100,6 +102,7 @@ export const drawables = {
     Ic_Circle: require('@images/Ic_Circle.png'),
     Ic_Clock: require('@images/Ic_clock.png'),
     Ic_Close: require('@images/Ic_Close.png'),
+    Ic_Colegio: require('@images/Ic_Colegio.png'),
     Ic_Data_Protection: require('@images/Ic_Data_Protection.png'),
     Ic_Data_Protection_Warn: require('@images/Ic_Data_Protection_Warn.png'),
     Ic_Download: require('@images/Ic_Download.png'),
@@ -151,5 +154,6 @@ export const drawables = {
     Ic_Warning: require('@images/Ic_Warning.png'),
     Ic_Warning_White: require('@images/Ic_Warning_White.png'),
     Ic_Wheelchair: require('@images/Ic_Wheelchair.png'),
+    Ic_Work: require('@images/Ic_Work.png'),
   }
 };

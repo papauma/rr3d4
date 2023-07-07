@@ -133,12 +133,13 @@ export default function MapRender(props: IMap) {
           setMapInstance(instance);
           // props.refMapView(instance);
         }}
-        style={{ flex: 1 }}
+        style={[{ flex: 1 }, props.style]}
         showsCompass={false}
         mapType={'none'}
         maxZoomLevel={19}
         minZoomLevel={7}
         onMapReady={()=>console.log('MAPA READY!!!!')}
+        mapPadding={props.mapPadding}
         onMapLoaded={(event) => {
           console.log('MAPA LOADED!!!!');
           props.setRefMapView?.(mapInstance);

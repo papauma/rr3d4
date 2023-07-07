@@ -1,5 +1,5 @@
-import { AccessibilityState, Image } from 'react-native';
-import { MarkerDragStartEndEvent, MarkerPressEvent } from 'react-native-maps';
+import { AccessibilityState, Image, StyleProp, ViewStyle } from 'react-native';
+import { EdgePadding, MarkerDragStartEndEvent, MarkerPressEvent } from 'react-native-maps';
 import { IDataMarker, TypeMarker } from './ExploreInterfaces';
 
 export interface IButton {
@@ -53,6 +53,7 @@ export interface IMap {
   zoom: number;
   focus?: (params: any) => void;
   location?: ILocation | null;
+  mapPadding?: EdgePadding;
   // refMapView: (instance: any) => void;
   showButtonFocus?: boolean;
   onLongPress?: Function;
@@ -65,6 +66,7 @@ export interface IMap {
   onMapDragComplete?: Function;
   setTrackViewChanges?: boolean; //setear el escuchador de cambios del mapa para android
   disableTooltip?: boolean; //desactiva visualmente el tooltip
+  style?: StyleProp<ViewStyle>;
 }
 export interface IMapMarker {
   position: IPosition;

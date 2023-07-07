@@ -14,6 +14,7 @@ interface AccordionButtonProps {
     icon?: any;
     accordionIconSize?: number;
     styleRow?: StyleProp<ViewStyle>;
+    iconColor?: string;
 }
 
 export default function AccordionButton(props: AccordionButtonProps) {
@@ -46,6 +47,7 @@ export default function AccordionButton(props: AccordionButtonProps) {
                 {props.icon && <Icon
                   style={{marginRight: 8}}
                   source={props.icon}
+                  tint={props.iconColor}
                 />}
                 {props.title ? <Label style={[props.styleTitle]} /* style={{flexGrow: 1}} */>
                   {props.title}

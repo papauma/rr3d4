@@ -1,47 +1,24 @@
 import React from 'react';
 import { Platform, Pressable, StyleSheet, View } from 'react-native';
 import Label from '../text/Label';
-import Icon from '../icon/Icon';
 import { useTheme } from '@src/context/themeContext';
+import Icon from '../icon/Icon';
 
 export function MenuItem({
   children,
-  iconType,
+  icon,
   disabled = false,
   disabledTextColor,
   onPress,
   accessibilityHint,
   pressColor = '#e0e0e0',
   style,
+  iconSize,
+  iconColor,
   textStyle,
   ...props
 }) {
   const theme = useTheme();
-
-  const getIcon = () => {
-    switch (iconType) {
-      case 'contact':
-        return <Icon />;
-      case 'share':
-        return <Icon />;
-      case 'accesible':
-        return <Icon />;
-      case 'alert':
-        return <Icon />;
-      case 'deleteAlert':
-        return <Icon />;
-      case 'report':
-        return <Icon />;
-      case 'favorite':
-        return <Icon />;
-      case 'time':
-        return <Icon />;
-      case 'deleteFavorite':
-        return <Icon />;
-      default:
-        return null;
-    }
-  };
 
   return (
     <Pressable
@@ -57,8 +34,8 @@ export function MenuItem({
     >
       <View style={[styles.container, style]}>
         <View style={styles.label}>
-          {getIcon()}
-          <Label style={[styles.title, disabled && { color: disabledTextColor }, textStyle]}>
+          {icon && <Icon source={icon} size={iconSize} tint={iconColor}/>}
+          <Label style={[styles.title, icon && {marginLeft: 8}, disabled && { color: disabledTextColor }, textStyle]}>
             {children}
           </Label>
         </View>

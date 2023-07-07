@@ -21,6 +21,7 @@ import SignUpScreen from './signup/SignUpScreen';
 import LoginScreen from './login/LoginScreen';
 import ChangePasswordScreen from './settings/accountManagement/ChangePasswordScreen';
 import AlertsScreen from './settings/alerts/AlertsScreen';
+import SaveDestinationFavoriteScreen from './saveDestFav/SaveDestinationFavoriteScreen';
 
 const Stack = createStackNavigator();
 
@@ -92,6 +93,10 @@ const AlertsComponent = ({navigation, route, options, back}) => {
   return <AlertsScreen/>;
 };
 
+const SaveDestinationFavoriteComponent = ({navigation, route, options, back}) => {
+  return <SaveDestinationFavoriteScreen {...route.params}/>
+};
+
 const StoryButtonsComponent = ({navigation, route, options, back}) => {
   return <StoryBookScreen navigation={navigation} />;
 };
@@ -132,6 +137,7 @@ export default function Routes() {
         <Stack.Screen name={navigationPages.plannerPreferences} component={PlannerPreferencesComponent} />
         <Stack.Screen name={navigationPages.language} component={LanguageComponent} />
         <Stack.Screen name={navigationPages.alerts} component={AlertsComponent} />
+        <Stack.Screen name={navigationPages.saveDestinationFavorite} component={SaveDestinationFavoriteComponent} />
         <Stack.Screen name={navigationPages.storybook} component={StoryButtonsComponent} />
       </Stack.Navigator>
       {/* <Navbar />

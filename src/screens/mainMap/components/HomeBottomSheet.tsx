@@ -11,6 +11,7 @@ import {IBounds, ILocation} from '@src/types/interfaces';
 import {Dimensions} from 'react-native';
 import StopsNearCenter from '@src/components/features/stopsNear/StopsNearCenter';
 import GeoUtils from '@src/utils/GeoUtils';
+import { contextualInformation, contextualSlice } from '@src/redux/slices/contextualSlice';
 
 export default function HomeBottomSheet({center, zoom, bounds}: {center: ILocation | null; zoom: number; bounds: IBounds | null}) {
   const dispatch = useDispatch();
@@ -20,8 +21,8 @@ export default function HomeBottomSheet({center, zoom, bounds}: {center: ILocati
   const [definitiveCenter, setDefinitiveCenter] = useState<
     ILocation | undefined
   >();
-  const [canLoadNearStops, setCanLoadNearStops] = useState(false)
   const previousCenterRef = useRef();
+  const contextualCanLoadNearStops = useSelector(contextualInformation).showNearStops;
 
   const snapPoints = useMemo(() => {
     if (!markerSelected && definitiveCenter && zoom > 17.5) {
@@ -42,9 +43,6 @@ export default function HomeBottomSheet({center, zoom, bounds}: {center: ILocati
     let timer: number;
     if (!markerSelected && center) {
       const checkState = () => {
-        console.log('prev', previousCenterRef.current);
-        console.log('Def', definitiveCenter);
-        
         if (center === previousCenterRef.current) {
           // El valor de la variable se ha mantenido 5 segundos
           if (!previousCenterRef.current && !definitiveCenter) {
@@ -95,11 +93,11 @@ export default function HomeBottomSheet({center, zoom, bounds}: {center: ILocati
         if (index < 0) {
           dispatch(updateMarkerSelected(null));
           setDefinitiveCenter(undefined);
-          setCanLoadNearStops(false)
+          dispatch(contextualSlice.actions.updateShowNearStops(false))
         } else if (index > 1) {
-          setCanLoadNearStops(true)
+          dispatch(contextualSlice.actions.updateShowNearStops(true))
         } else {
-          setCanLoadNearStops(false)
+          dispatch(contextualSlice.actions.updateShowNearStops(false))
         }
       }}
       enablePanDownToClose={true}
@@ -115,7 +113,7 @@ export default function HomeBottomSheet({center, zoom, bounds}: {center: ILocati
           center={definitiveCenter}
           region={bounds}
           loadingCenter={loadingCenter}
-          canLoadNearStops={canLoadNearStops}
+          canLoadNearStops={contextualCanLoadNearStops}
         />
       )}
     </BottomSheetContent>

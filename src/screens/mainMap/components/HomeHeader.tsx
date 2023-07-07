@@ -1,10 +1,12 @@
 import {useNavigation} from '@react-navigation/native';
 import Button from '@src/components/commons/buttons/Button';
 import Label from '@src/components/commons/text/Label';
+import HorizontalDestinationsList from '@src/components/features/favorites/molecules/HorizontalDestinationsList';
 import LocationButton from '@src/components/widgets/LocationButton';
 import SearchBarButton from '@src/components/widgets/SearchBarButton';
 import {useTranslate} from '@src/context/languageContext';
 import {ThemeProps, useTheme} from '@src/context/themeContext';
+import {contextualInformation} from '@src/redux/slices/contextualSlice';
 import {filtersState} from '@src/redux/slices/filtersSlice';
 import {
   mapStateMarkerSelected,
@@ -27,6 +29,9 @@ export default function HomeHeader(props: HomeHeaderProps) {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const filtersSelector = useSelector(filtersState);
+  const contextualCanLoadNearStops = useSelector(
+    contextualInformation,
+  ).showNearStops;
 
   let numberFilters: number | undefined = filtersSelector.transportModes.length
     ? filtersSelector.transportModes.length
@@ -59,9 +64,22 @@ export default function HomeHeader(props: HomeHeaderProps) {
             style={{width: 48, height: 48, marginTop: 20}}
           />
         )}
-        {!markerSelected && (
+        {!markerSelected && !contextualCanLoadNearStops && (
+          <View
+            style={{flexDirection: 'row', alignItems: 'center', marginTop: 10}}>
+            <HorizontalDestinationsList />
+            <Button
+              buttonCategory="secondary"
+              icon={theme.drawables.general.Ic_Add}
+              style={{width: 40, height: 40, marginLeft: 8}}
+              onPress={() => navigation.navigate(navigationPages.saveDestinationFavorite)}
+            />
+          </View>
+        )}
+        {!markerSelected && !contextualCanLoadNearStops && (
           <View style={styles(theme).containerButtons}>
             <Button
+              style={{width: 40, height: 40}}
               buttonCategory="secondary"
               icon={theme.drawables.general.Ic_filters}
               onPress={() => {
@@ -77,7 +95,10 @@ export default function HomeHeader(props: HomeHeaderProps) {
                 ''
               )}
             </Button>
-            <LocationButton style={{marginTop: 10}} onPress={props.onPressLocation} />
+            <LocationButton
+              style={{marginTop: 10, width: 40, height: 40}}
+              onPress={props.onPressLocation}
+            />
           </View>
         )}
       </SafeAreaView>
