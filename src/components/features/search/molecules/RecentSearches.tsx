@@ -84,7 +84,7 @@ export default function RecentSearches(props: any) {
           iconComponent={
             <IconBox code={item?.data?.code} iconId={transportMode?.iconId} />
           }
-          onPressPlan={props.previousScreen !== 'Planner' ? () => {
+          onPressPlan={props.previousScreen === 'Main' ? () => {
             dispatch(plannerSegmentsSlice.actions.init({ origin: null, destination: item }))
             navigation.goBack();
             navigation.navigate(navigationPages.main, {screen: navigationPages.planner});

@@ -48,8 +48,8 @@ export default function DestinationCardFavorite(
         />
         <Button
           buttonCategory="tertiary"
-          icon={theme.drawables.general.Ic_Star}
-          iconStyle={{tintColor: theme.colors.tertiary_yellow, alignSelf: 'center'}}
+          icon={theme.drawables.general.Ic_Delete}
+          iconStyle={{alignSelf: 'center'}}
           buttonSizeStyle="extra-small"
           style={{ marginLeft: 4, padding: 10, paddingHorizontal: 10, width: 38, height: 38}}
         />

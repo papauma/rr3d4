@@ -53,8 +53,8 @@ export default function LineCardFavorite(props: LineCardFavoriteProps) {
         <Button
           buttonCategory="tertiary"
           buttonSizeStyle="extra-small"
-          icon={theme.drawables.general.Ic_Star}
-          iconStyle={{tintColor: theme.colors.tertiary_yellow, marginRight: 0}}
+          icon={theme.drawables.general.Ic_Delete}
+          iconStyle={{marginRight: 0}}
           style={{
             flexShrink: 1,
             borderColor: theme.colors.primary_500,

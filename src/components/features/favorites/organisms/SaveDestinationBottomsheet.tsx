@@ -10,6 +10,8 @@ import {StyleSheet, View} from 'react-native';
 import CategoryDestinationSelector from '../molecules/CategoryDestinationSelector';
 import {IFavDestCategory} from '@src/redux/hooks/favorites/useDestinationCategories';
 import DestFavoriteItemInfo from '../atoms/DestFavoriteItemInfo';
+import {useNavigation} from '@react-navigation/native';
+import {navigationPages} from '@src/utils/constants';
 
 interface SaveDestinationBottomsheetProps {}
 
@@ -21,16 +23,28 @@ export default function SaveDestinationBottomsheet(
   const [selectedCategory, setSelectedCategory] = useState<
     IFavDestCategory | undefined
   >();
+  const navigation = useNavigation();
 
   return (
     <View style={styles(theme).container}>
       <View style={styles(theme).header}>
         <Label style={styles(theme).headerTitle}>{t('favorites_save')}</Label>
-        <Button buttonCategory="tertiary" title={t('button_search')} />
+        <Button
+          buttonCategory="tertiary"
+          title={t('button_search')}
+          onPress={() =>
+            navigation.navigate(navigationPages.search, {
+              previousScreenParams: {screen: 'SelectLocation'},
+            })
+          }
+        />
       </View>
       <View style={styles(theme).content}>
         <BottomSheetScrollView>
-          <DestFavoriteItemInfo name='Calle del ejemplo' address='Calle 13, puerta 25'/>
+          <DestFavoriteItemInfo
+            name="Calle del ejemplo"
+            address="Calle 13, puerta 25"
+          />
           <CategoryDestinationSelector
             selectedCategory={selectedCategory}
             setSelectedCategory={setSelectedCategory}

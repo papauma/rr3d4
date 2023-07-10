@@ -7,7 +7,7 @@ export default function SearchContent(props: any) {
 
   return (
     <View style={{flex: 1}}>
-      {props.previousScreen !== 'Planner' && <SearchCategories />}
+      {props.previousScreen === 'Main' && <SearchCategories />}
       <RecentSearches
         previousScreen={props.previousScreen}
         onPressResult={props.onPressResult}

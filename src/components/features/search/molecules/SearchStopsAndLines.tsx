@@ -61,7 +61,7 @@ export default function SearchStopsAndLines(props: any) {
           onPress={() => {onPress(item)}}
           name={item?.stopName}
           address={item.stopDesc}
-          onPressPlan={props.previousScreen !== 'Planner' ? () => {
+          onPressPlan={props.previousScreen === 'Main' ? () => {
             let transformedMarker = InfoMapUtils.parseSearchStopToMarker(item);
 
             dispatch(searchRecentsSlice.actions.updateRecentSearch(transformedMarker));

@@ -24,6 +24,7 @@ export interface IDrawables {
     Ic_Colegio: any;
     Ic_Data_Protection: any;
     Ic_Data_Protection_Warn: any;
+    Ic_Delete: any;
     Ic_Download: any;
     Ic_Earth: any;
     Ic_Email: any;
@@ -105,6 +106,7 @@ export const drawables = {
     Ic_Colegio: require('@images/Ic_Colegio.png'),
     Ic_Data_Protection: require('@images/Ic_Data_Protection.png'),
     Ic_Data_Protection_Warn: require('@images/Ic_Data_Protection_Warn.png'),
+    Ic_Delete: require('@images/Ic_Delete.png'),
     Ic_Download: require('@images/Ic_Download.png'),
     Ic_Earth: require('@images/Ic_Earth.png'),
     Ic_Email: require('@images/Ic_Email.png'),

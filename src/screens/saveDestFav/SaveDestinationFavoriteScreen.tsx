@@ -52,7 +52,7 @@ export default function SaveDestinationFavoriteScreen() {
         style={{
           position: 'absolute',
           top: 0,
-          bottom: 100,
+          bottom: 250,
           left: 0,
           right: 0,
           alignItems: 'center',
@@ -68,7 +68,7 @@ export default function SaveDestinationFavoriteScreen() {
       </View>
       <MapRender
         zoom={zoomMap}
-        mapPadding={{top: 0, bottom: 100, left: 0, right: 0}}
+        mapPadding={{top: 0, bottom: 250, left: 0, right: 0}}
         initialRegion={
           regionMap
             ? {

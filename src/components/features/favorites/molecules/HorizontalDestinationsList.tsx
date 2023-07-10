@@ -7,7 +7,11 @@ import React from 'react';
 import {ScrollView} from 'react-native';
 import {useSelector} from 'react-redux';
 
-export default function HorizontalDestinationsList() {
+interface HorizontalDestinationsListProps {
+
+}
+
+export default function HorizontalDestinationsList(props: HorizontalDestinationsListProps) {
   const theme = useTheme();
   const t = useTranslate();
   const favoritesDestinations = useSelector(favoritesInformation).destinations;
@@ -25,6 +29,7 @@ export default function HorizontalDestinationsList() {
       {!isFavHome && (
         <Button
           buttonCategory="secondary"
+          buttonSizeStyle='extra-small'
           title={t('favorites_add_home')}
           icon={theme.drawables.general.Ic_Home}
         />
@@ -33,25 +38,19 @@ export default function HorizontalDestinationsList() {
         <Button
           buttonCategory="secondary"
           title={t('favorites_add_workplace')}
+          buttonSizeStyle='extra-small'
           icon={theme.drawables.general.Ic_Work}
           style={{marginLeft: 8}}
         />
       )}
-      {/* <Label>{'Prueba 1'}</Label>
-        <Label>{'Prueba 1'}</Label>
-        <Label>{'Prueba 1'}</Label>
-        <Label>{'Prueba 1'}</Label>
-        <Label>{'Prueba 1'}</Label>
-        <Label>{'Prueba 1'}</Label>
-        <Label>{'Prueba 1'}</Label>
-        <Label>{'Prueba 1'}</Label>
-        <Label>{'Prueba 1'}</Label>
-        <Label>{'Prueba 1'}</Label>
-        <Label>{'Prueba 1'}</Label>
-        <Label>{'Prueba 1'}</Label>
-        <Label>{'Prueba 1'}</Label>
-        <Label>{'Prueba 1'}</Label>
-        <Label>{'Prueba 1'}</Label> */}
+      {favoritesDestinations.map((element: any) => {
+        return (<Button
+          buttonCategory='tertiary'
+          buttonSizeStyle='extra-small'
+          title={element?.name}
+          style={{marginLeft: 8}}
+        />)
+      })}
     </ScrollView>
   );
 }
