@@ -23,6 +23,7 @@ import {useTranslate} from '@src/context/languageContext';
 import SelectorStopTimes from '../atoms/SelectorStopTimes';
 import Icon from '@src/components/commons/icon/Icon';
 import StopAlertsInfo from '../molecules/StopAlertsInfo';
+import FavoriteStopDestTitle from '../../favorites/atoms/FavoriteStopDestTitle';
 
 export default function StopDetails({
   stop,
@@ -42,6 +43,7 @@ export default function StopDetails({
   const [hourSelector, setHourSelector] = useState();
   const contextual = useSelector(contextualInformation);
   const [selectedLines, setSelectedLines] = useState([]);
+  let isFavorite = false;
 
   const [GetStopById] = useLazyGetStopByIdQuery();
   const [GetLinesByStopId] = useLazyGetLinesByStopIdQuery();
@@ -129,6 +131,7 @@ export default function StopDetails({
 
   return (
     <View style={{flex: 1}}>
+      {isFavorite && <FavoriteStopDestTitle name='Mi casa' icon={theme.drawables.general.Ic_Home}/>}
       <MarkerDetailsHeader
         name={stopInfo ? stopInfo?.stopName : stop.data?.name}
         lines={lines}
