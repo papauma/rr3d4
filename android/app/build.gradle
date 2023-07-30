@@ -102,7 +102,13 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0.0"
+		missingDimensionStrategy 'react-native-camera', 'mlkit'
     }
+
+	packagingOptions {
+		exclude 'META-INF/mimetypes.default'
+		exclude 'META-INF/mailcap.default'
+	}	
 
     splits {
         abi {
