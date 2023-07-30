@@ -19,6 +19,17 @@ export const strings = {
 
   afegeix_reportPhoto: 'Afegeix una imatge',
   utilitzar_reportPhoto: 'Utilitzar aquesta imatge',
+  descartar_reportPhoto: 'Descartar aquesta imatge',
+
+  meues_list: 'Les meues comunicacions',
+  encara_list: "Encara no s'ha reportat cap incidència",
+
+  comunicacio_result:'Comunicació reportada correctament.',
 
   continuar: 'Continuar',
+  confirmar: 'Confirmar',
+  confirmacio: 'Confirmació',
+  assumpte: 'Assumpte',
+  descripcio: 'Descripció',
+  adreca: 'Adreça',
 };

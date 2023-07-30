@@ -121,7 +121,7 @@ export default function ReportPhotoScreen() {
           <View>
             <TouchableOpacity onPress={()=>setImage(null)} style={{flexDirection: 'row', alignItems: 'center', paddingTop: 10, justifyContent: 'flex-end', gap: 5}}>
               <Image source={imageDescartar} style={{width: 18, height: 18, borderColor: colors.text.primary, borderWidth: 1, borderRadius: 18}} />
-              <Text style={{textAlign: 'right', fontWeight: 'bold'}}>Descartar esta imatge</Text>
+              <Text style={{textAlign: 'right', fontWeight: 'bold'}}>{t('descartar_reportPhoto')}</Text>
             </TouchableOpacity>
           </View>
           <BottomButton>
@@ -155,7 +155,5 @@ const stylesPhotoSc = StyleSheet.create({
     justifyContent:'space-between',
     width: '70%',
     opacity: 0.6,
-  },
-  opacity: {
   },
 });

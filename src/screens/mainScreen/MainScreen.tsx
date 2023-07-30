@@ -1,7 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import BottomButton from '@src/components/commons/bottomButton/BottomButton';
 import ButtonHome from '@src/components/commons/buttonHome/ButtonHome';
-import ButtonSecondary from '@src/components/commons/buttonSecondary/ButtonSecondary';
 import { useTranslate } from '@src/context/languageContext';
 import { updateErrorMessage } from '@src/redux/slices/contextualSlice';
 import { colors } from '@src/resources/styles/theme';
@@ -47,23 +46,24 @@ export default function MainScreen() {
   return (
     <SafeAreaView style={{flex: 1}}>
 
-<Modal
+      <Modal
         animationType="slide"
-        transparent={false}
+        transparent={true}
         visible={modalVisible}
         onRequestClose={cerrarModal}>
           <View style={stylesMainSc.centeredView}>
-          <View style={stylesMainSc.modalView}>
+            <View style={stylesMainSc.modalView}>
             <Text style={stylesMainSc.modalText}>{t('canviIdioma_main')}</Text>
-            <TouchableOpacity
-              onPress={cerrarModal}>
-                <Text>{t('canviIdiomaVal_main')}</Text>
-                </TouchableOpacity>
+            <View style={stylesMainSc.containerButtonModal}>
+              <TouchableOpacity onPress={cerrarModal} style={[stylesMainSc.buttonModalActive, stylesMainSc.stylesButtonModal]}>
+                <Text style={{color: colors.text.primary}}>{t('canviIdiomaVal_main')}</Text>
+              </TouchableOpacity>
 
-              <TouchableOpacity
-              onPress={cerrarModal}>
-                <Text>{t('canviIdiomCas_main')}</Text>
-                </TouchableOpacity>
+              <TouchableOpacity onPress={cerrarModal} style={[stylesMainSc.buttonModalDisabled, stylesMainSc.stylesButtonModal]} disabled>
+                <Text style={{color: colors.text.primary}}>{t('canviIdiomCas_main')}</Text>
+              </TouchableOpacity>
+
+            </View>
           </View>
         </View>
       </Modal>
@@ -115,15 +115,16 @@ const stylesMainSc = StyleSheet.create({
   marginTop: 5,
   color: colors.text.primary,
 },
-  textExplicacio: {fontSize: 12,
+  textExplicacio: {
+    fontSize: 12,
     fontWeight: '900',
-  backgroundColor: 'rgba(255, 255, 255, 0.6)',
-  paddingHorizontal: 10,
-  marginTop: 15,
-  textAlign: 'center',
-  width: '75%',
-  color: colors.text.primary,
-},
+    backgroundColor: 'rgba(255, 255, 255, 0.6)',
+    paddingHorizontal: 10,
+    marginTop: 15,
+    textAlign: 'center',
+    width: '75%',
+    color: colors.text.primary,
+  },
   containerIconMenu: {
     flex: 1,
     position: 'absolute',
@@ -160,26 +161,26 @@ const stylesMainSc = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  buttonOpen: {
-    backgroundColor: '#F194FF',
-  },
-  buttonClose: {
-    backgroundColor: '#2196F3',
-  },
-  textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
   modalText: {
     marginBottom: 15,
     textAlign: 'center',
     fontSize: 20,
     color: colors.text.primary,
+  },
+  containerButtonModal: {
+    flexDirection: 'row',
+    alignContent: 'space-between',
+    justifyContent: 'space-between',
+    gap: 50,
+  },
+  stylesButtonModal: {
+    borderRadius: 6,
+    padding: 10,
+  },
+  buttonModalActive: {
+    backgroundColor: colors.buttonAction,
+  },
+  buttonModalDisabled: {
+    backgroundColor: colors.graySecundary,
   },
 });

@@ -1,5 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import Header from '@src/components/commons/header/Header';
+import { useTranslate } from '@src/context/languageContext';
 import { incidenceState } from '@src/redux/slices/incidenceSlice';
 import { colors } from '@src/resources/styles/theme';
 import { INCIDENCES_LIST, INCIDENCES_NUM, navigationPages } from '@src/utils/constants';
@@ -17,6 +18,8 @@ export default function ResultReportScreen() {
     const navigation = useNavigation() as any;
     const storage = new MMKV();
     const selectorIncidence = useSelector(incidenceState);
+    const t = useTranslate();
+
 
   const gotoMain = () => {
     navigation.navigate(navigationPages.main);
@@ -38,10 +41,10 @@ export default function ResultReportScreen() {
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      <Header title="Confirmació" step={5} />
+      <Header title={t('confirmacio')} step={5} />
         <View style={stylesResult.containerInfo}>
             <Image source={iconCheck} style={stylesResult.imatge}/>
-            <Text style={stylesResult.result}>Comunicació reportada correctament.</Text>
+            <Text style={stylesResult.result}>{t('comunicacio_result')}</Text>
         </View>
     </SafeAreaView>
   );

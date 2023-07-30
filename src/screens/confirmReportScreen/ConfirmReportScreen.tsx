@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import BottomButton from '@src/components/commons/bottomButton/BottomButton';
 import Button from '@src/components/commons/button/Button';
 import Header from '@src/components/commons/header/Header';
+import { useTranslate } from '@src/context/languageContext';
 import useMail from '@src/redux/hooks/useMail/useMail';
 import { resetContextual, updateErrorMessage, updateShowLoading } from '@src/redux/slices/contextualSlice';
 import { incidenceState, updateIncidence } from '@src/redux/slices/incidenceSlice';
@@ -17,6 +18,8 @@ export default function ConfirmReportScreen() {
     const navigation = useNavigation() as any;
     const dispatch = useDispatch();
     const selectorIncidence = useSelector(incidenceState);
+    const t = useTranslate();
+
 
   const enviarMail = () => {
     dispatch(updateShowLoading(true));
@@ -57,19 +60,19 @@ export default function ConfirmReportScreen() {
   const [sendEmail] = useMail();
   return (
     <SafeAreaView style={{flex: 1}}>
-      <Header title="Confirmar" step={4} back={gotoBack} close />
+      <Header title={t('confirmar')} step={4} back={gotoBack} close />
         <View style={stylesResult.containerInfo}>
-            <Text style={stylesResult.label}>Assumpte:</Text>
+            <Text style={stylesResult.label}>{t('assumpte')}:</Text>
             <Text style={stylesResult.value}>{selectorIncidence.title}</Text>
-            <Text style={stylesResult.label}>Descripció:</Text>
+            <Text style={stylesResult.label}>{t('descripcio')}:</Text>
             <Text style={stylesResult.value}>{selectorIncidence.description}</Text>
-            <Text style={stylesResult.label}>Adreça:</Text>
+            <Text style={stylesResult.label}>{t('adreca')}:</Text>
             <Text style={stylesResult.value}>{selectorIncidence?.address}</Text>
             <Text style={stylesResult.value}>({selectorIncidence?.location?.latitude}, {selectorIncidence?.location?.longitude})</Text>
             <Image source={{uri: selectorIncidence.image}} style={stylesResult.imatge}/>
         </View>
       <BottomButton>
-        <Button text="Confirmar"onPress={enviarMail} />
+        <Button text={t('confirmar')} onPress={enviarMail} />
       </BottomButton>
     </SafeAreaView>
   );

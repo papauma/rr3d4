@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
-import { View, StyleSheet, Dimensions } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { useNavigation } from '@react-navigation/native';
-import { navigationPages } from '@src/utils/constants';
-import Button from '@src/components/commons/button/Button';
-import { calcZoomMobile, getRegionDeltasFromZoom } from '@src/utils/utils';
-import Header from '@src/components/commons/header/Header';
 import BottomButton from '@src/components/commons/bottomButton/BottomButton';
-import Geolocation from 'react-native-geolocation-service';
-import { useDispatch } from 'react-redux';
+import Button from '@src/components/commons/button/Button';
+import Header from '@src/components/commons/header/Header';
+import { updateShowLoading } from '@src/redux/slices/contextualSlice';
 import { updateIncidence } from '@src/redux/slices/incidenceSlice';
 import { ILocation } from '@src/types/interfaces';
-import { updateShowLoading } from '@src/redux/slices/contextualSlice';
+import { navigationPages } from '@src/utils/constants';
+import { getRegionDeltasFromZoom } from '@src/utils/utils';
+import React, { useState } from 'react';
+import { Dimensions, StyleSheet, View } from 'react-native';
+import Geolocation from 'react-native-geolocation-service';
+import MapView, { Marker } from 'react-native-maps';
+import { useDispatch } from 'react-redux';
 
 
 export default function ReportMapScreen() {
@@ -131,15 +130,6 @@ export default function ReportMapScreen() {
           />
         )}
       </MapView>
-      {/*<GooglePlacesAutocomplete
-        placeholder="Buscar dirección"
-        onPress={handleLocationSelect}
-        query={{
-          key: 'YOUR_GOOGLE_PLACES_API_KEY',
-          language: 'es',
-        }}
-        styles={autocompleteStyles}
-      />*/}
       <BottomButton>
         <Button text="Utilitzar aquesta ubicació" onPress={getCurrentLocation} />
       </BottomButton>
@@ -154,24 +144,5 @@ const styles = StyleSheet.create({
   map: {
     flex: 1,
     marginHorizontal: 10,
-  },
-});
-
-const autocompleteStyles = StyleSheet.create({
-  container: {
-    position: 'absolute',
-    top: 46,
-    left: 16,
-    right: 16,
-    borderColor: 'black',
-    borderWidth: 1,
-    padding: 0,
-    borderRadius: 6,
-    color: 'black',
-    margin: 0,
-    opacity: 0.7,
-  },
-  listView: {
-    backgroundColor: 'white',
   },
 });

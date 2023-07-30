@@ -46,7 +46,7 @@ function translate(key, language) {
 
 export function LanguageProvider({children}) {
   const storage = new MMKV();
-  const [language, setLanguage] = useState('es');
+  const [language, setLanguage] = useState('ca');
 
 
   const t = useCallback(key => translate(key, language), [language]);
@@ -74,15 +74,7 @@ export function LanguageProvider({children}) {
 
   /* Obtener el idioma a partir del más acorde con el dispositivo del usuario */
   const getLanguage = () => {
-    try {
-      let lng = RNLocalize.findBestAvailableLanguage(
-        Object.keys(strings),
-      ).languageTag;
-      if (lng !== undefined && lng !== null) {return lng;}
-      return 'es';
-    } catch (error) {
-      return 'es';
-    }
+      return 'ca';
   };
 
   return (
