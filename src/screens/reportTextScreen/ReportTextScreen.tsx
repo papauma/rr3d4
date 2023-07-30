@@ -42,17 +42,17 @@ export default function ReportTextScreen() {
         <ScrollView>
         <View style={stylesRT.textInfo}>
           <Label text={t('info1_reportText')} />
-          <Label text="Primer hauràs d'escriure un assumpte i desprès afegir una breu descripció."/>
+          <Label text={t('info2_reportText')} />
         </View>
         <KeyboardAvoidingView behavior={'padding'} style={stylesRT.containerForm}>
           <View>
-            <Label text="Introdueix un assumpte:*" />
+            <Label text={t('introAs_reportText')} />
             <TextInput
               onChangeText={onChangeTitle}
               value={title}
               style={stylesRT.input1}
               />
-              <Label text="Introdueix una descripció:*" />
+              <Label text={t('introDes_reportText')} />
             <TextInput
               editable
               multiline
@@ -66,7 +66,7 @@ export default function ReportTextScreen() {
         </KeyboardAvoidingView>
         </ScrollView>
         <View style={stylesRT.contentButton} >
-          <Button text="Continuar" onPress={gotoPhoto} disabled={checkEmptyValues()} />
+          <Button text={t('continuar')} onPress={gotoPhoto} disabled={checkEmptyValues()} />
         </View>
     </SafeAreaView>
   );
