@@ -5,7 +5,7 @@
 export const strings = {
     ajudans_main: 'Ayúdanos a mejorar',
     descripcio_main: 'Con esta aplicación nos podrás reportar todas aquellas cosas del pueblo que consideres que se pueden mejorar.',
-    queEns_main: 'Que quieres reportar?',
+    queEns_main: '¿Qué quieres reportar?',
     canviIdiomCas_main: 'Castellano',
     canviIdiomaVal_main: 'Valenciano',
     potsCom_main: 'Puedes comunicas hasta un total de ',
