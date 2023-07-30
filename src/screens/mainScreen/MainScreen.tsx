@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import BottomButton from '@src/components/commons/bottomButton/BottomButton';
 import ButtonHome from '@src/components/commons/buttonHome/ButtonHome';
-import { useTranslate } from '@src/context/languageContext';
+import { useLanguage, useSetLanguage, useTranslate } from '@src/context/languageContext';
 import { updateErrorMessage } from '@src/redux/slices/contextualSlice';
 import { colors } from '@src/resources/styles/theme';
 import { INCIDENCES_NUM, MAX_INCIDENCES_DAY, navigationPages } from '@src/utils/constants';
@@ -14,12 +14,26 @@ import { useDispatch } from 'react-redux';
 const imageBackground = require('@images/carrer.jpg');
 const iconMenu = require('@images/menu.png');
 const iconSettings = require('@images/settings.png');
+const iconClose = require('@images/cerrar.png');
+
 
 export default function MainScreen() {
 
   const navigation = useNavigation() as any;
   const dispatch = useDispatch();
   const t = useTranslate();
+  const locale = useLanguage();
+  const setLanguage = useSetLanguage();
+  let stylesBotonCat = [stylesMainSc.stylesButtonModal] as any;
+  let stylesBotonCas = [stylesMainSc.stylesButtonModal] as any;
+  if (locale === 'es') {
+    stylesBotonCat.push(stylesMainSc.buttonModalActive);
+    stylesBotonCas.push(stylesMainSc.buttonModalDisabled);
+  } else {
+    stylesBotonCat.push(stylesMainSc.buttonModalDisabled);
+    stylesBotonCas.push(stylesMainSc.buttonModalActive);
+  }
+
   const [modalVisible, setModalVisible] = useState(false);
 
   const gotoReport = () => {
@@ -27,7 +41,8 @@ export default function MainScreen() {
     const numIncidences = getStorage(INCIDENCES_NUM);
       if (parseInt(numIncidences.numIncidencesToday) >= MAX_INCIDENCES_DAY) {
         console.log('MAX PER DAY');
-        dispatch(updateErrorMessage('Pots comunicar fins a un total de ' + MAX_INCIDENCES_DAY + ' vegades per dia.'));
+        const resultadoMessage = t('potsCom_main') + MAX_INCIDENCES_DAY + t('vegades_main');
+        dispatch(updateErrorMessage(resultadoMessage));
       } else {
         console.log('gotoReport');
         navigation.navigate(navigationPages.reportText);
@@ -43,6 +58,13 @@ export default function MainScreen() {
       setModalVisible(!modalVisible);
     };
 
+    const optionModal = (idioma: string) => {
+      console.log('optionModal');
+      setLanguage(idioma);
+      cerrarModal();
+    };
+
+
   return (
     <SafeAreaView style={{flex: 1}}>
 
@@ -53,13 +75,16 @@ export default function MainScreen() {
         onRequestClose={cerrarModal}>
           <View style={stylesMainSc.centeredView}>
             <View style={stylesMainSc.modalView}>
+            <TouchableOpacity style={{display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', width: '100%'}} onPress={cerrarModal}>
+              <Image source={iconClose} style={stylesMainSc.imageModalClose}/>
+            </TouchableOpacity>
             <Text style={stylesMainSc.modalText}>{t('canviIdioma_main')}</Text>
             <View style={stylesMainSc.containerButtonModal}>
-              <TouchableOpacity onPress={cerrarModal} style={[stylesMainSc.buttonModalActive, stylesMainSc.stylesButtonModal]}>
+              <TouchableOpacity onPress={()=>optionModal('ca')} style={stylesBotonCat} disabled={locale === 'ca'}>
                 <Text style={{color: colors.text.primary}}>{t('canviIdiomaVal_main')}</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={cerrarModal} style={[stylesMainSc.buttonModalDisabled, stylesMainSc.stylesButtonModal]} disabled>
+              <TouchableOpacity onPress={()=>optionModal('es')} style={stylesBotonCas} disabled={locale === 'es'}>
                 <Text style={{color: colors.text.primary}}>{t('canviIdiomCas_main')}</Text>
               </TouchableOpacity>
 
@@ -108,19 +133,20 @@ const stylesMainSc = StyleSheet.create({
   paddingHorizontal: 10,
   color: colors.text.primary,
 },
-  textBenirre: {fontSize: 45,
+  textBenirre: {
+    fontSize: 45,
     fontWeight: '900',
-  backgroundColor: 'rgba(255, 255, 255, 0.6)',
-  paddingHorizontal: 10,
-  marginTop: 5,
-  color: colors.text.primary,
-},
+    backgroundColor: 'rgba(255, 255, 255, 0.6)',
+    paddingHorizontal: 10,
+    marginTop: 5,
+    color: colors.text.primary,
+  },
   textExplicacio: {
     fontSize: 12,
     fontWeight: '900',
     backgroundColor: 'rgba(255, 255, 255, 0.6)',
     paddingHorizontal: 10,
-    marginTop: 15,
+    marginTop: 20,
     textAlign: 'center',
     width: '75%',
     color: colors.text.primary,
@@ -149,7 +175,8 @@ const stylesMainSc = StyleSheet.create({
     margin: 20,
     backgroundColor: 'white',
     borderRadius: 20,
-    padding: 35,
+    paddingHorizontal: 35,
+    paddingVertical: 20,
     alignItems: 'center',
     shadowColor: '#000',
     zIndex: 999,
@@ -182,5 +209,9 @@ const stylesMainSc = StyleSheet.create({
   },
   buttonModalDisabled: {
     backgroundColor: colors.graySecundary,
+  },
+  imageModalClose: {
+    width: 10,
+    height: 10,
   },
 });

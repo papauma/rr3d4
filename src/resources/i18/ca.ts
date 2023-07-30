@@ -9,6 +9,8 @@ export const strings = {
   queEns_main: 'Què ens vols reportar?',
   canviIdiomCas_main: 'Castellà',
   canviIdiomaVal_main: 'Valencià',
+  potsCom_main: 'Pots comunicar fins a un total de ',
+  vegades_main: ' vegades per dia.',
 
   titol_reportText: 'Descriu el que ens vols comunicar',
   info1_reportText: 'Descriu de manera breu i clara allò que ens vulgues reportar.',
@@ -22,7 +24,7 @@ export const strings = {
   descartar_reportPhoto: 'Descartar aquesta imatge',
 
   meues_list: 'Les meues comunicacions',
-  encara_list: "Encara no s'ha reportat cap incidència",
+  encara_list: "Encara no s'ha reportat res.",
 
   comunicacio_result:'Comunicació reportada correctament.',
 
@@ -32,4 +34,5 @@ export const strings = {
   assumpte: 'Assumpte',
   descripcio: 'Descripció',
   adreca: 'Adreça',
+  carregant: 'Carregant...',
 };

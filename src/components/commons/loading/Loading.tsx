@@ -1,16 +1,20 @@
+import { useTranslate } from '@src/context/languageContext';
+import { colors } from '@src/resources/styles/theme';
 import React from 'react';
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 
 export default function Loading(props: any) {
+  const t = useTranslate();
+
     return (
     <View style={[stylesLoading.content, props.style?.content]}>
       <View style={[stylesLoading.box, props.style?.box]}>
         <View style={stylesLoading.row} accessible={true}>
           <ActivityIndicator
             size={'large'}
-            color={'black'}
+            color={colors.buttonAction}
           />
-          <Text style={stylesLoading.text}>Carregant...</Text>
+          <Text style={stylesLoading.text}>{t('carregant')}</Text>
         </View>
       </View>
     </View>
@@ -47,5 +51,6 @@ const stylesLoading = StyleSheet.create({
       marginLeft: 10,
       fontSize: 16,
       fontWeight: '600',
+
     },
   });
