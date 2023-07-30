@@ -1,21 +1,20 @@
-import { drawables } from '@resources/drawables';
-import { useTheme } from '@src/context/themeContext';
 import React from 'react';
-import { View, Image, StyleSheet } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
+
+const logo = require('@images/splashImage.png');
+
 export default function Splash() {
-  const theme = useTheme();
   return (
-    <View style={stylesSplash(theme).container} key="1">
-      <Image source={drawables.splash.logo} resizeMode="center" />
+    <View style={stylesSplash.container} key="1">
+      <Image source={logo} resizeMode="center" />
   </View>
   );
 }
 
-const stylesSplash = (theme: any) =>
-StyleSheet.create({
+const stylesSplash = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.colors.mainGreen,
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
   },

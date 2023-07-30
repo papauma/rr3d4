@@ -18,9 +18,7 @@ const TranslateContext = createContext();
 
 const strings = {
   es: require('@src/resources/i18/es').strings,
-  en: require('@src/resources/i18/en').strings,
   ca: require('@src/resources/i18/ca').strings,
-  de: require('@src/resources/i18/de').strings,
 };
 
 /**
@@ -48,7 +46,7 @@ function translate(key, language) {
 
 export function LanguageProvider({children}) {
   const storage = new MMKV();
-  const [language, setLanguage] = useState('ca');
+  const [language, setLanguage] = useState('es');
 
 
   const t = useCallback(key => translate(key, language), [language]);
@@ -81,9 +79,9 @@ export function LanguageProvider({children}) {
         Object.keys(strings),
       ).languageTag;
       if (lng !== undefined && lng !== null) {return lng;}
-      return 'ca';
+      return 'es';
     } catch (error) {
-      return 'ca';
+      return 'es';
     }
   };
 

@@ -3,9 +3,11 @@
  */
 
 export const strings = {
-  splash_title:  'Benvinguts a la nova app d\'EMT Palma',
-  language_ca: 'Català',
-  language_es: 'Espanyol',
-  language_en: 'Anglès',
-  topSearchBar_title: 'Parada o destinació',
+  ajudans_main: "Ajuda'ns a millorar",
+  descripcio_main: 'Amb aquesta aplicació ens podràs reportar totes aquelles coses del poble què consideres que es poden millorar.',
+  titol_reportText: 'Descriu el que ens vols comunicar',
+  info1_reportText: 'Descriu de manera breu i clara allò que ens vulgues reportar.',
+
+  afegeix_reportPhoto: 'Afegeix una imatge',
+  utilitzar_reportPhoto: 'Utilitzar aquesta imatge',
 };

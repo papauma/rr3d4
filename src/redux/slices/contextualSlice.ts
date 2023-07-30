@@ -3,7 +3,7 @@ import { RootState } from '../store';
 
 export interface ContextualInformation {
   errorMessage: string;
-  sucessMessage: string;
+  successMessage: string;
   infoMessage: string;
   warningMessage: string;
   showLoading: boolean;
@@ -14,12 +14,10 @@ export interface ContextualInformation {
 const initialState = {
   contextualInformation: {
     errorMessage: '',
-    sucessMessage: '',
+    successMessage: '',
     infoMessage: '',
     warningMessage: '',
     showLoading: false,
-    showBackground: false,
-    showNearStops: false,
   },
 };
 
@@ -31,9 +29,9 @@ export const contextualSlice = createSlice({
       console.log(' [contectuaSlice] - updateErrorMessage');
       state.contextualInformation.errorMessage = action.payload;
     },
-    updateSucessMessage: (state, action) => {
-      console.log(' [contectuaSlice] - updateSucessMessage');
-      state.contextualInformation.sucessMessage = action.payload;
+    updateSuccessMessage: (state, action) => {
+      console.log(' [contectuaSlice] - updateSuccessMessage');
+      state.contextualInformation.successMessage = action.payload;
     },
     updateInfoMessage: (state, action) => {
       console.log(' [contectuaSlice] - updateInfoMessage');
@@ -45,26 +43,18 @@ export const contextualSlice = createSlice({
 
       state.contextualInformation.warningMessage = action.payload;
     },
-    updateShowNearStops: (state, action) => {
-      state.contextualInformation.showNearStops = action.payload;
-    },
     updateShowLoading: (state, action) => {
       console.log(' [contectuaSlice] - updateShowLoading');
-
       state.contextualInformation.showLoading = action.payload;
     },
-    updateShowBackground: (state, action) => {
-      console.log(' [contectuaSlice] - updateShowBackground');
-
-      state.contextualInformation.showBackground = action.payload;
-    },
-    updateShowLoadingBackground: (state, action) => {
-      console.log(' [contectuaSlice] - updateShowLoadingBackground');
-      state.contextualInformation.showBackground = action.payload;
-      state.contextualInformation.showLoading = action.payload;
+    resetContextual: (state)=> {
+      console.log(' [contectuaSlice] - resetContextual');
+      state.contextualInformation = JSON.parse(JSON.stringify(initialState));
     },
   },
 });
 
-export const contextualInformation = (state: RootState) =>
-  state.contextualSlice.contextualInformation;
+export const { updateSuccessMessage, updateErrorMessage, resetContextual, updateShowLoading } = contextualSlice.actions;
+
+
+export const contextualInformation = (state: RootState) => state.contextualSlice.contextualInformation;

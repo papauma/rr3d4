@@ -1,31 +1,28 @@
-import { useTranslate } from "@src/context/languageContext";
-import { useTheme } from "@src/context/themeContext";
 
 export const navigationPages = {
   splash: 'Splash',
   main: 'Main',
-  mainMap: 'MainMap',
-  accountManagement: 'AccountManagement',
-  changePassword: 'ChangePassword',
-  login: 'Login',
-  signup: 'SignUp',
-  filters: 'Filters',
-  search: 'Search',
-  planner: 'Planner',
-  plannerPreferences: 'PlannerPreferences',
-  plannerResult: 'PlannerResult',
-  routeDetails: 'RouteDetails',
-  language: 'Language',
-  alerts: 'Alerts',
-  lineDetails: 'LineDetails',
-  linesDirectory: 'LinesDirectory',
-  saveDestinationFavorite: 'SaveDestinationFavorite',
-  storybook: 'Storybook',
+  reportMap: 'ReportMap',
+  reportPhoto: 'ReportPhoto',
+  reportText: 'ReportText',
+  listReport: 'ListReport',
+  confirm: 'ConfirmReport',
+  result: 'ResultReport',
 };
 
-export const languages = ['ca', 'es', 'en', 'ge'];
+export const MailInformation = {
+    mailhost: 'smtp-relay.sendinblue.com',
+    port: '587',
+    username: 'salva.escriva82@gmail.com',
+    password: 'PSjqk9By7MEnh13w',
+    fromName: 'salva.escriva82',
+    recipients: 'salva.escriva82@gmail.com',
+    //recipients: 'josepserralta@gmail.com',
+    htmlBody: '<h1>header</h1><p>body</p>',
+    subject: '[Benirredrà]',
 
 
+};
 
 export const defaultLocation = {
   //latitude: 39.5722384,
@@ -51,3 +48,13 @@ export const enviroments = {
   userTypeId: { anonymous: 1, registred: 2 },
   languageId: 1, // 1:ES, 2:FR
 };
+
+export const INCIDENCES_LIST = 'INCIDENCES_LIST';
+export const INCIDENCES_NUM = 'INCIDENCES_NUM';
+export const MAX_INCIDENCES_DAY = 3;
+
+export const PHOTO_NAME = 'brdrapfot023.jpg';
+
+export const TOTAL_STEPS = 5;
+
+export const MAX_LENGHT_TAREA = 400;

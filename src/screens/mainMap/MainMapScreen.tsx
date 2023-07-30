@@ -10,7 +10,7 @@ import {contextualInformation} from '@src/redux/slices/contextualSlice';
 import BackgroundModal from '@src/components/commons/modal/BackgroundModal';
 import MapView from 'react-native-maps';
 import {IBounds, IPosition} from '@src/types/interfaces';
-import {stopsState} from '@src/redux/slices/stopsSlices';
+import {stopsState} from '@src/redux/slices/incidenceSlice';
 import VisualizerMapPresenter from '@src/redux/hooks/VisualizerMapPresenter';
 import {
   mapStateBounds,

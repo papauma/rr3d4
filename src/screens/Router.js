@@ -1,27 +1,15 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Navbar from '@src/components/widgets/Navbar';
-import TempComp from '@src/components/widgets/TempComp';
 import SplashScreen from '@src/screens/splash/SplashScreen';
 import { navigationPages } from '@src/utils/constants';
 import React, { useRef } from 'react';
-import MainScreen from './main/MainScreen';
-import StoryBookScreen from './storyBook/StoryBookScreen';
-import LanguageScreen from './settings/language/LanguageScreen';
-import FiltersScreen from './filters/FiltersScreen';
-import SearchScreen from './search/SearchScreen';
-import PlannerScreen from './planner/PlannerScreen';
-import PlannerPreferencesScreen from './planner/preferences/PlannerPreferencesScreen';
-import PlannerResultScreen from './planner/result/PlannerResultScreen';
-import RouteDetailsScreen from './planner/routeDetails/RouteDetailsScreen';
-import LineDetailsScreen from './line/LineDetailsScreen';
-import SearchDirectoryLinesScreen from './search/SearchDirectoryLinesScreen';
-import AccountManagementScreen from './settings/accountManagement/AccountManagementScreen';
-import SignUpScreen from './signup/SignUpScreen';
-import LoginScreen from './login/LoginScreen';
-import ChangePasswordScreen from './settings/accountManagement/ChangePasswordScreen';
-import AlertsScreen from './settings/alerts/AlertsScreen';
-import SaveDestinationFavoriteScreen from './saveDestFav/SaveDestinationFavoriteScreen';
+import ListReportScreen from './listReportScreen/ListReportScreen';
+import MainScreen from './mainScreen/MainScreen';
+import ReportMapScreen from './reportMapScreen/ReportMapScreen';
+import ReportPhotoscreen from './reportPhotoScreen/ReportPhotoScreen';
+import ReportTextScreen from './reportTextScreen/ReportTextScreen';
+import ConfirmReportScreen from './confirmReportScreen/ConfirmReportScreen';
+import ResultReportScreen from './resultReportScreen/ResultReportScreen';
 
 const Stack = createStackNavigator();
 
@@ -37,70 +25,29 @@ const MainComponent = ({navigation, route, options, back}) => {
   return <MainScreen navigation={navigation} />;
 };
 
-const AccountManagementComponent = ({navigation, route, options, back}) => {
-  return <AccountManagementScreen />;
+const ReportTextComponent = ({navigation, route, options, back}) => {
+  return <ReportTextScreen />;
 };
 
-const SignUpComponent = ({navigation, route, options, back}) => {
-  return <SignUpScreen />;
+const ReportPhotoComponent = ({navigation, route, options, back}) => {
+  return <ReportPhotoscreen />;
 };
 
-const LoginComponent = ({navigation, route, options, back}) => {
-  return <LoginScreen/>;
+const ReportMapComponent = ({navigation, route, options, back}) => {
+  return <ReportMapScreen />;
 };
 
-const ChangePasswordComponent = ({navigation, route, options, back}) => {
-  return <ChangePasswordScreen/>;
+
+const ListReportComponent = ({navigation, route, options, back}) => {
+  return <ListReportScreen />;
+};
+const ConfirmReportComponent = ({navigation, route, options, back}) => {
+  return <ConfirmReportScreen />;
 };
 
-const FiltersComponent = ({navigation, route, options, back}) => {
-  return <FiltersScreen />;
+const ResultReportComponent = ({navigation, route, options, back}) => {
+  return <ResultReportScreen />;
 };
-
-const LineDetailsComponent = ({navigation, route, options, back}) => {
-  return <LineDetailsScreen {...route.params}/>;
-};
-
-const LinesDirectoryComponent = ({navigation, route, options, back}) => {
-  return <SearchDirectoryLinesScreen />;
-};
-
-const SearchComponent = ({navigation, route, options, back}) => {
-  return <SearchScreen {...route.params} />;
-};
-
-const PlannerComponent = ({navigation, route, options, back}) => {
-  return <PlannerScreen {...route.params} />;
-};
-
-const PlannerResultComponent = ({navigation, route, options, back}) => {
-  return <PlannerResultScreen {...route.params} />;
-};
-
-const RouteDetailsComponent = ({navigation, route, options, back}) => {
-  return <RouteDetailsScreen {...route.params} />;
-};
-
-const PlannerPreferencesComponent = ({navigation, route, options, back}) => {
-  return <PlannerPreferencesScreen {...route.params} />;
-};
-
-const LanguageComponent = ({navigation, route, options, back}) => {
-  return <LanguageScreen navigation={navigation} />;
-};
-
-const AlertsComponent = ({navigation, route, options, back}) => {
-  return <AlertsScreen/>;
-};
-
-const SaveDestinationFavoriteComponent = ({navigation, route, options, back}) => {
-  return <SaveDestinationFavoriteScreen {...route.params}/>
-};
-
-const StoryButtonsComponent = ({navigation, route, options, back}) => {
-  return <StoryBookScreen navigation={navigation} />;
-};
-
 
 export default function Routes() {
 
@@ -118,30 +65,17 @@ export default function Routes() {
         const currentRouteName = navigationRef?.current?.getCurrentRoute()?.name;
         routeNameRef.current = currentRouteName;
       }}
-      //linking={links}
     >
       <Stack.Navigator screenOptions={screenOptions}>
         <Stack.Screen name={navigationPages.main} component={MainComponent} />
         <Stack.Screen name={navigationPages.splash} component={SplashComponent} />
-        <Stack.Screen name={navigationPages.filters} component={FiltersComponent} />
-        <Stack.Screen name={navigationPages.accountManagement} component={AccountManagementComponent} />
-        <Stack.Screen name={navigationPages.signup} component={SignUpComponent} />
-        <Stack.Screen name={navigationPages.login} component={LoginComponent} />
-        <Stack.Screen name={navigationPages.changePassword} component={ChangePasswordComponent} />
-        <Stack.Screen name={navigationPages.lineDetails} component={LineDetailsComponent} />
-        <Stack.Screen name={navigationPages.linesDirectory} component={LinesDirectoryComponent} />
-        <Stack.Screen name={navigationPages.search} component={SearchComponent} />
-        <Stack.Screen name={navigationPages.planner} component={PlannerComponent} />
-        <Stack.Screen name={navigationPages.plannerResult} component={PlannerResultComponent} />
-        <Stack.Screen name={navigationPages.routeDetails} component={RouteDetailsComponent} />
-        <Stack.Screen name={navigationPages.plannerPreferences} component={PlannerPreferencesComponent} />
-        <Stack.Screen name={navigationPages.language} component={LanguageComponent} />
-        <Stack.Screen name={navigationPages.alerts} component={AlertsComponent} />
-        <Stack.Screen name={navigationPages.saveDestinationFavorite} component={SaveDestinationFavoriteComponent} />
-        <Stack.Screen name={navigationPages.storybook} component={StoryButtonsComponent} />
+        <Stack.Screen name={navigationPages.reportText} component={ReportTextComponent} />
+        <Stack.Screen name={navigationPages.reportPhoto} component={ReportPhotoComponent} />
+        <Stack.Screen name={navigationPages.reportMap} component={ReportMapComponent} />
+        <Stack.Screen name={navigationPages.listReport} component={ListReportComponent} />
+        <Stack.Screen name={navigationPages.confirm} component={ConfirmReportComponent} />
+        <Stack.Screen name={navigationPages.result} component={ResultReportComponent} />
       </Stack.Navigator>
-      {/* <Navbar />
-      <TempComp /> */}
     </NavigationContainer>
     </>
   );

@@ -1,30 +1,23 @@
 import React from 'react';
-import {View, ActivityIndicator, StyleSheet} from 'react-native';
-import { useTheme } from '@src/context/themeContext';
-import { useTranslate } from '@src/context/languageContext';
-import Label from '../text/Label';
+import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 
 export default function Loading(props: any) {
-  const theme = useTheme();
-  const t = useTranslate();
-
-  return (
-    <View style={[styles(theme).content, props.style?.content]}>
-      <View style={[styles(theme).box, props.style?.box]}>
-        <View style={styles(theme).row} accessible={true}>
+    return (
+    <View style={[stylesLoading.content, props.style?.content]}>
+      <View style={[stylesLoading.box, props.style?.box]}>
+        <View style={stylesLoading.row} accessible={true}>
           <ActivityIndicator
-            size={props.size ?? 'large'}
-            color={props.color ?? theme.colors.black}
+            size={'large'}
+            color={'black'}
           />
-          <Label style={styles(theme).text}>{t('component_loading')}</Label>
+          <Text style={stylesLoading.text}>Carregant...</Text>
         </View>
       </View>
     </View>
   );
 }
 
-const styles = (theme: any) =>
-  StyleSheet.create({
+const stylesLoading = StyleSheet.create({
     content: {
       position: 'absolute',
       top: 0,
@@ -41,14 +34,14 @@ const styles = (theme: any) =>
       width: 250,
       height: 64,
       borderRadius: 16,
-      backgroundColor: theme.colors.white,
+      backgroundColor: 'white',
       borderWidth: 1,
-      borderColor: theme.colors.neutralBorder,
+      borderColor: '#CED4DA',
     },
     row: {
       flexDirection: 'row',
       alignItems: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
     },
     text: {
       marginLeft: 10,
