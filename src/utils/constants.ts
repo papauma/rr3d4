@@ -52,4 +52,4 @@ export const TOTAL_STEPS = 5;
 
 export const MAX_LENGHT_TAREA = 400;
 
-export const DEBUG_MODE = true;
+export const DEBUG_MODE = false;
