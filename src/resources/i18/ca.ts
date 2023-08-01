@@ -4,7 +4,7 @@
 
 export const strings = {
   ajudans_main: "Ajuda'ns a millorar",
-  descripcio_main: 'Amb aquesta aplicació ens podràs reportar totes aquelles coses del poble què consideres que es poden millorar.',
+  descripcio_main: 'Amb aquesta aplicació ens podràs reportar totes aquelles coses del poble què consideres què es poden millorar.',
   canviIdioma_main: "Vols canviar l'idioma de l'aplicació?",
   queEns_main: 'Què ens vols reportar?',
   canviIdiomCas_main: 'Castellà',
