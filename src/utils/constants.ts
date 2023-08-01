@@ -32,12 +32,7 @@ export const defaultLocation = {
 };
 
 
-
 export const enviroments = {
-  //LOCAL
- /* endPoint: 'http://172.27.192.210:8080/maas/api/v1',
-  apiCitram: 'http://172.27.192.210/api-citram/api/v1',
-*/
   //PRE
   endPoint: 'https://planval.crtm.es/maas/api/v1',
   apiCitram: 'https://planval.crtm.es/api-citram/api/v1',
