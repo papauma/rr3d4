@@ -2,11 +2,10 @@ import React, {
   createContext,
   useCallback,
   useContext,
-  useState,
   useEffect,
+  useState,
 } from 'react';
 import { MMKV } from 'react-native-mmkv';
-import * as RNLocalize from 'react-native-localize';
 
 /**
  * Contexto para manejar literales en toda la aplicación
