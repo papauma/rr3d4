@@ -18,6 +18,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDispatch, useSelector } from 'react-redux';
 import DocumentPicker from 'react-native-document-picker';
 import { useTranslate } from '@src/context/languageContext';
+import { updateShowLoading } from '@src/redux/slices/contextualSlice';
 
 const imageFolder = require('@images/folder.png');
 const imageRotate = require('@images/actualizar.png');
@@ -54,12 +55,14 @@ export default function ReportPhotoScreen() {
 };
 
   const handleCapture = async () => {
+    dispatch(updateShowLoading(true));
     if (camera) {
       const options = { quality: 0.5, base64: true };
       const data = await camera.takePictureAsync(options);
       console.log(data.uri);
       setImage(data.uri);
     }
+    dispatch(updateShowLoading(false));
   };
 
   const rotateCam = () => {

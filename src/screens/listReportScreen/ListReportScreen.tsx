@@ -21,7 +21,7 @@ export default function ListReportScreen() {
             <FlatList
               data={listIncidences.reverse()}
               renderItem={({item}) => <ItemIncidence title={item?.title} description={item?.description} address={item?.address} image={item?.image} type={item?.type} data={item?.data} time={item?.time} location={item.location}/>}
-              keyExtractor={item => item.image} // TODO: afegir un ide no el de la IMATGE
+              keyExtractor={(item, index) => index.toString()} // TODO: afegir un ide no el de la IMATGE
             />
             : <Text>{t('encara_list')}</Text>}</View>
       </View>

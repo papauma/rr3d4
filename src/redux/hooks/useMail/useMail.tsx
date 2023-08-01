@@ -1,4 +1,4 @@
-import { MailInformation, PHOTO_NAME } from '@src/utils/constants';
+import { DEBUG_MODE, MailInformation, PHOTO_NAME } from '@src/utils/constants';
 import RNSmtpMailer from 'react-native-smtp-mailer';
 import RNFS from 'react-native-fs';
 import { IIncidence } from '@src/types/interfaces';
@@ -16,7 +16,7 @@ export default function useMail() {
             username: MailInformation.username,//'734b6aa48f2e0c563214412a664cc4d2',
             password: MailInformation.password,//'fff0e38fa9bc00fa73711031a66ef194',
             fromName: MailInformation.fromName,
-            recipients: MailInformation.recipients,
+            recipients: DEBUG_MODE ? MailInformation.recipientsDebug : MailInformation.recipients,
             bcc: [], //completely optional
             subject: MailInformation.subject + ' ' + incidence.title,
             htmlBody: body, //
