@@ -8,7 +8,6 @@ export function getStorage(item: string) {
     } else {
         return [];
     }
-
 }
 
 export function calcZoomMobile(widthDevice: number, longitudeDelta: number): number {

@@ -8,6 +8,6 @@ export const colors = {
         primary: '#87d67e',
     },
     //buttonAction: '#7ebed6',
-    buttonAction: '#bd7ed6',
+    buttonAction: '#ca85e6',
     graySecundary: '#adadad',
 };

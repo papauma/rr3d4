@@ -70,3 +70,4 @@ package-lock.json
 test-report.xml
 eslint-report.json
 /.scannerwork
+android/app/src/mainAndroidManifest.xml
