@@ -2,7 +2,8 @@ import { useNavigation } from '@react-navigation/native';
 import BottomButton from '@src/components/commons/bottomButton/BottomButton';
 import Button from '@src/components/commons/button/Button';
 import Header from '@src/components/commons/header/Header';
-import { updateShowLoading } from '@src/redux/slices/contextualSlice';
+import { useTranslate } from '@src/context/languageContext';
+import { updateErrorMessage, updateShowLoading } from '@src/redux/slices/contextualSlice';
 import { updateIncidence } from '@src/redux/slices/incidenceSlice';
 import { ILocation } from '@src/types/interfaces';
 import { navigationPages } from '@src/utils/constants';
@@ -18,6 +19,9 @@ export default function ReportMapScreen() {
   const [selectedLocation, setSelectedLocation] = useState(null) as any;
   const navigation =  useNavigation() as any;
   const dispatch = useDispatch();
+
+  const t = useTranslate();
+
   const widthDevice = Dimensions.get('window').width;
 
   const handleLocationSelect = (data, details) => {
@@ -31,6 +35,25 @@ export default function ReportMapScreen() {
 
   const onRegionChangeComplete = (region) => {
 
+  };
+
+
+  const isLocationWithinArea = (latitude: any, longitude: any) => {
+    // Aquí define los cuatro puntos que forman el área (latitud y longitud)
+    const point1 = { latitude: 38.961955, longitude: -0.198071 };
+    const point2 = { latitude: 38.968646, longitude: -0.192578 };
+    const point3 = { latitude: 38.960771, longitude: -0.183351 };
+    const point4 = { latitude: 38.953646, longitude: -0.191334 };
+
+    // Comprueba si la ubicación está dentro del área formada por los cuatro puntos
+    const isWithinArea =
+      latitude >= Math.min(point1.latitude, point2.latitude, point3.latitude, point4.latitude) &&
+      latitude <= Math.max(point1.latitude, point2.latitude, point3.latitude, point4.latitude) &&
+      longitude >= Math.min(point1.longitude, point2.longitude, point3.longitude, point4.longitude) &&
+      longitude <= Math.max(point1.longitude, point2.longitude, point3.longitude, point4.longitude);
+
+    return isWithinArea;
+    //return true;
   };
 
 
@@ -89,12 +112,17 @@ export default function ReportMapScreen() {
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
 
-        const objectToSave = {
-          location: {latitude: latitude, longitude: longitude} as ILocation,
-        };
-        dispatch(updateIncidence(objectToSave));
-        getAddressFromCoordinates({latitude: latitude, longitude: longitude});
-
+        if (isLocationWithinArea(latitude, longitude)) {
+          const objectToSave = {
+            location: {latitude: latitude, longitude: longitude} as ILocation,
+          };
+          dispatch(updateIncidence(objectToSave));
+          getAddressFromCoordinates({latitude: latitude, longitude: longitude});
+        } else {
+          const resultadoMessage = t('malaUbicacio_reportMap');
+          dispatch(updateErrorMessage(resultadoMessage));
+          dispatch(updateShowLoading(false));
+        }
       },
       error => {
         console.log(error);
@@ -105,7 +133,7 @@ export default function ReportMapScreen() {
 
   return (
     <View style={styles.container}>
-      <Header title="Indica'ns la ubicació" step={3} back={gotoBack} close />
+      <Header title={t('indicans_reportMap')} step={3} back={gotoBack} close />
       <MapView
         style={styles.map}
         initialRegion={{
@@ -121,6 +149,7 @@ export default function ReportMapScreen() {
         followsUserLocation={true}
         showsMyLocationButton={true}
       >
+
         {selectedLocation && (
           <Marker
             coordinate={{
@@ -131,7 +160,7 @@ export default function ReportMapScreen() {
         )}
       </MapView>
       <BottomButton>
-        <Button text="Utilitzar aquesta ubicació" onPress={getCurrentLocation} />
+        <Button text={t('utilitzar_reportMap')} onPress={getCurrentLocation} />
       </BottomButton>
     </View>
   );

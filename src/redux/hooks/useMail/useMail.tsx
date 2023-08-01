@@ -5,7 +5,7 @@ import { IIncidence } from '@src/types/interfaces';
 
 export default function useMail() {
 
-    const sendEmail = (incidence: IIncidence, ok, ko) => {
+    const sendEmail = (incidence: IIncidence, ok:any, ko:any) => {
 
         const body = '[' + incidence.data + ' - ' + incidence.time + ']<br /><b>' + incidence.title + '</b><br/>' + incidence.description + '<br/><br/>Localització: ' + incidence?.address + ' (' + incidence?.location?.latitude + ' , ' + incidence?.location?.longitude + ')';
 

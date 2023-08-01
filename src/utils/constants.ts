@@ -16,12 +16,10 @@ export const MailInformation = {
     username: 'salva.escriva82@gmail.com',
     password: 'PSjqk9By7MEnh13w',
     fromName: 'salva.escriva82',
-    recipients: 'salva.escriva82@gmail.com',
-    //recipients: 'josepserralta@gmail.com',
+    //recipients: 'salva.escriva82@gmail.com',
+    recipients: 'josepserralta@gmail.com,salva.escriva82@gmail.com',
     htmlBody: '<h1>header</h1><p>body</p>',
     subject: '[Benirredrà]',
-
-
 };
 
 export const defaultLocation = {

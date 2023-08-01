@@ -23,6 +23,10 @@ export const strings = {
   utilitzar_reportPhoto: 'Utilitzar aquesta imatge',
   descartar_reportPhoto: 'Descartar aquesta imatge',
 
+  indicans_reportMap: "Indica'ns la ubicació",
+  utilitzar_reportMap: 'Utilitzar aquesta ubicació',
+  malaUbicacio_reportMap: 'La ubicació no es troba dins del terme de Benirredà',
+
   meues_list: 'Les meues comunicacions',
   encara_list: "Encara no s'ha reportat res.",
 

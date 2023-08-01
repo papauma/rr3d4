@@ -94,7 +94,6 @@ export default function ReportPhotoScreen() {
   const gotoBack = () => {
     navigation.navigate(navigationPages.reportText);
   };
-  console.log(image);
 
   return (
     <SafeAreaView style={{flex: 1}}>

@@ -7,6 +7,7 @@ import { updateIncidence } from '@src/redux/slices/incidenceSlice';
 import { colors } from '@src/resources/styles/theme';
 import { MAX_LENGHT_TAREA, navigationPages } from '@src/utils/constants';
 import React, { useState } from 'react';
+import {Text} from 'react-native';
 import { KeyboardAvoidingView, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import { useDispatch } from 'react-redux';
@@ -53,15 +54,18 @@ export default function ReportTextScreen() {
               style={stylesRT.input1}
               />
               <Label text={t('introDes_reportText')} />
-            <TextInput
-              editable
-              multiline
-              numberOfLines={7}
-              maxLength={MAX_LENGHT_TAREA}
-              onChangeText={text => setDescription(text)}
-              value={description}
-              style={stylesRT.input2}
-            />
+            <View style={stylesRT.contentInput2}>
+              <TextInput
+                editable
+                multiline
+                numberOfLines={7}
+                maxLength={MAX_LENGHT_TAREA}
+                onChangeText={text => setDescription(text)}
+                value={description}
+                style={stylesRT.input2}
+              />
+              <Text style={stylesRT.contDescription}>{description.length}/{MAX_LENGHT_TAREA}</Text>
+            </View>
           </View>
         </KeyboardAvoidingView>
         </ScrollView>
@@ -75,7 +79,11 @@ export default function ReportTextScreen() {
 const stylesRT = StyleSheet.create({
   textInfo: {
     paddingVertical: 10,
-    paddingHorizontal: 10, marginHorizontal:7, borderRadius: 10, backgroundColor: '#FFFFFF', marginTop: 20,
+    paddingHorizontal: 10,
+    marginHorizontal:7,
+    borderRadius: 10,
+    backgroundColor: '#FFFFFF',
+    marginTop: 20,
   },
   containerForm: {
     paddingVertical: 30,
@@ -93,13 +101,21 @@ const stylesRT = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 10,
    },
+   contentInput2: {
+     marginBottom: 40,
+   },
    input2: {
     borderColor: colors.text.primary,
     borderWidth: 1,
     color: colors.text.primary,
     backgroundColor: 'white',
     borderRadius: 10,
-    marginBottom: 40,
+   },
+   contDescription: {
+    fontSize: 10,
+    textAlign: 'right',
+    paddingRight: 4,
+    color: colors.graySecundary,
    },
    contentButton: {
     marginTop: 20,

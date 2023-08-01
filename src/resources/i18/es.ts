@@ -15,13 +15,17 @@ export const strings = {
     titol_reportText: 'Describe lo que nos quieres comunicar',
     info1_reportText: 'Describe de manera breve y clara aquello que nos quieras reportar.',
      info2_reportText: 'Primero tendrás que describir un asunto y después añadir una breve descripción.',
-    introAs_reportText: 'Introduece un asunto:*',
-    introDes_reportText: 'Introduece una descripción:*',
+    introAs_reportText: 'Introduce un asunto:*',
+    introDes_reportText: 'Introduce una descripción:*',
 
 
     afegeix_reportPhoto: 'Añade una imagen',
     utilitzar_reportPhoto: 'Utilizar esta imagen',
     descartar_reportPhoto: 'Descartar esta imagen',
+
+    indicans_reportMap: 'Indícanos la ubicación',
+    utilitzar_reportMap: 'Utilizar esta ubicación',
+    malaUbicacio_reportMap: 'La ubicación no se encuentra dentro del área de Benirredà',
 
     meues_list: 'Mis comunicaciones',
     encara_list: 'Aún no se ha reportado nada.',

@@ -19,10 +19,9 @@ export default function ItemIncidence(incidence: IIncidence) {
             <Text style={stylesItemIn.value}>{incidence?.title}</Text>
             <Text style={stylesItemIn.label}>{t('descripcio')}</Text>
             <Text style={stylesItemIn.value}>{incidence?.description}</Text>
-            <Text style={stylesItemIn.value}>{incidence?.type}</Text>
+            {/*<Text style={stylesItemIn.value}>{incidence?.type}</Text>*/}
             <Text style={stylesItemIn.label}>{t('adreca')}</Text>
-            <Text style={stylesItemIn.value}>{incidence?.address}</Text>
-            <Text style={stylesItemIn.value}>({incidence?.location?.latitude}, {incidence?.location?.longitude})</Text>
+            <Text style={stylesItemIn.value}>{incidence?.address}{'\n'}({incidence?.location?.latitude}, {incidence?.location?.longitude})</Text>
           </View>
         </View>
     </View>

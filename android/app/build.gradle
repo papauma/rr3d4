@@ -95,9 +95,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.emt.mobipalma"
+    namespace "com.inci.benirredra"
     defaultConfig {
-        applicationId "com.emt.mobipalma"
+        applicationId "com.inci.benirredra"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -108,7 +108,7 @@ android {
 	packagingOptions {
 		exclude 'META-INF/mimetypes.default'
 		exclude 'META-INF/mailcap.default'
-	}	
+	}
 
     splits {
         abi {

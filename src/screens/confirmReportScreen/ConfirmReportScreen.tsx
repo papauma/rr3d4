@@ -32,7 +32,7 @@ export default function ConfirmReportScreen() {
     };
     dispatch(updateIncidence(objectToSave));
     console.log('enviarMail');
-    sendEmail(selectorIncidence, callbackOK, callbackKO);
+    sendEmail({...selectorIncidence, ...objectToSave}, callbackOK, callbackKO); // TODO: Xapu per a que aribe el mail amb la data
   };
 
   const gotoMain = () => {
@@ -67,8 +67,7 @@ export default function ConfirmReportScreen() {
             <Text style={stylesResult.label}>{t('descripcio')}:</Text>
             <Text style={stylesResult.value}>{selectorIncidence.description}</Text>
             <Text style={stylesResult.label}>{t('adreca')}:</Text>
-            <Text style={stylesResult.value}>{selectorIncidence?.address}</Text>
-            <Text style={stylesResult.value}>({selectorIncidence?.location?.latitude}, {selectorIncidence?.location?.longitude})</Text>
+            <Text style={stylesResult.value}>{selectorIncidence?.address}{'\n'}{'(' + selectorIncidence?.location?.latitude + ',' + selectorIncidence?.location?.longitude + ')'}</Text>
             <Image source={{uri: selectorIncidence.image}} style={stylesResult.imatge}/>
         </View>
       <BottomButton>
