@@ -6,7 +6,7 @@ import { useTranslate } from '@src/context/languageContext';
 import { updateErrorMessage, updateShowLoading } from '@src/redux/slices/contextualSlice';
 import { updateIncidence } from '@src/redux/slices/incidenceSlice';
 import { ILocation } from '@src/types/interfaces';
-import { navigationPages } from '@src/utils/constants';
+import { DEBUG_MODE, navigationPages } from '@src/utils/constants';
 import { getRegionDeltasFromZoom } from '@src/utils/utils';
 import React, { useState } from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
@@ -52,8 +52,7 @@ export default function ReportMapScreen() {
       longitude >= Math.min(point1.longitude, point2.longitude, point3.longitude, point4.longitude) &&
       longitude <= Math.max(point1.longitude, point2.longitude, point3.longitude, point4.longitude);
 
-    return isWithinArea;
-    //return true;
+    return DEBUG_MODE ? true :  isWithinArea;
   };
 
 

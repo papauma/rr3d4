@@ -9,7 +9,7 @@ export const strings = {
     queEns_main: '¿Qué quieres reportar?',
     canviIdiomCas_main: 'Castellano',
     canviIdiomaVal_main: 'Valenciano',
-    potsCom_main: 'Puedes comunicas hasta un total de ',
+    potsCom_main: 'Puedes comunicar hasta un total de ',
     vegades_main: ' veces por día.',
 
     titol_reportText: 'Describe lo que nos quieres comunicar',

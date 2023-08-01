@@ -65,7 +65,6 @@ const stylesResult = StyleSheet.create({
   imatge: {
     width: 128,
     height: 128,
-    textAlign: 'center',
     justifyContent: 'center',
   },
   result: {
