@@ -110,6 +110,7 @@ const stylesRT = StyleSheet.create({
     color: colors.text.primary,
     backgroundColor: 'white',
     borderRadius: 10,
+    textAlignVertical: 'top',
    },
    contDescription: {
     fontSize: 10,
