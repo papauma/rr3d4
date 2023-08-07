@@ -128,7 +128,8 @@ const stylesMainSc = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  textAjudans: {fontSize: 30,
+  textAjudans: {
+    fontSize: 36,
     backgroundColor: 'rgba(255, 255, 255, 0.6)',
     paddingHorizontal: 10,
     color: colors.text.primary,
