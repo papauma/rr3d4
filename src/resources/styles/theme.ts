@@ -5,9 +5,10 @@ export const colors = {
     },
 
     background: {
-        primary: '#87d67e',
+        primary: '#9cc599',
     },
     //buttonAction: '#7ebed6',
-    buttonAction: '#ca85e6',
+    //buttonAction: '#ca85e6',
+    buttonAction: '#c299c3',
     graySecundary: '#adadad',
 };
