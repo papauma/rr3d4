@@ -1,4 +1,3 @@
-# Documentación portal app EJIE Maas
 
 # Scripts disponibles
 
