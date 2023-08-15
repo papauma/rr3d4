@@ -11,7 +11,7 @@ import { getRegionDeltasFromZoom } from '@src/utils/utils';
 import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 //import Geolocation from 'react-native-geolocation-service';
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Marker, UrlTile } from 'react-native-maps';
 import { useDispatch } from 'react-redux';
 
 
@@ -194,6 +194,7 @@ export default function ReportMapScreen() {
         showsMyLocationButton={true}
         onMapLoaded={onMapLoaded}
       >
+
 
       <Marker coordinate={markerPosition} />
       </MapView>

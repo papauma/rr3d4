@@ -15,7 +15,7 @@ export const MailInformation = {
     port: '465',
     username: 'treballemxtu@benirredraparticipa.es',
     password: '3F?ARgt=@#24',
-    fromName: 'salva.escriva82',
+    fromName: 'treballemxtu@benirredraparticipa.es',
     recipients: 'treballemxtu@benirredraparticipa.es,josepserralta@gmail.com,salva.escriva82@gmail.com',
     recipientsDebug: 'salva.escriva82@gmail.com',
     htmlBody: '<h1>header</h1><p>body</p>',

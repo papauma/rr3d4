@@ -100,8 +100,8 @@ android {
         applicationId "com.inci.benirredra"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0.0"
+        versionCode 4
+        versionName "4.0.1"
 		missingDimensionStrategy 'react-native-camera', 'mlkit'
     }
 
