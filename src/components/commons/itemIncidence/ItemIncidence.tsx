@@ -13,7 +13,7 @@ export default function ItemIncidence(incidence: IIncidence) {
     <View style={stylesItemIn.content}>
         <Text style={stylesItemIn.dataHour}>{incidence?.data} - {incidence?.time}</Text>
         <View style={stylesItemIn.containerItem}>
-          <Image source={{uri: incidence?.image}} style={stylesItemIn.image}/>
+          <Image source={{uri: incidence?.image}} style={stylesItemIn.image} accessible={true} accessibilityLabel={t('image')}/>
           <View style={stylesItemIn.contentText}>
             <Text style={stylesItemIn.label}>{t('assumpte')}</Text>
             <Text style={stylesItemIn.value}>{incidence?.title}</Text>

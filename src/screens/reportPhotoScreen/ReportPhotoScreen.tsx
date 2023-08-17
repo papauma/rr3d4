@@ -112,17 +112,17 @@ export default function ReportPhotoScreen() {
           >
             <GrillComponent />
             <View style={stylesPhotoSc.botoneraCam}>
-              <ButtonIcon icon={imageFolder} size={45} onPress={pickDocument} />
+              <ButtonIcon icon={imageFolder} size={45} onPress={pickDocument} literalAccesible={t('pick_reportPhoto')}/>
               <ButtonCapture onPress={handleCapture} />
-              <ButtonIcon icon={imageRotate} size={35} onPress={rotateCam}/>
+              <ButtonIcon icon={imageRotate} size={35} onPress={rotateCam} literalAccesible={t('rotate_reportPhoto')}/>
             </View>
           </RNCamera>
         </View>
       : <View style={{flex: 1, padding: 16}}>
-          <Image source={{uri: image}} style={stylesPhotoSc.preview} />
+          <Image source={{uri: image}} style={stylesPhotoSc.preview} accessible={true} accessibilityLabel={t('utilitzar_reportPhoto')} />
           <View>
             <TouchableOpacity onPress={()=>setImage(null)} style={{flexDirection: 'row', alignItems: 'center', paddingTop: 10, justifyContent: 'flex-end', gap: 5}}>
-              <Image source={imageDescartar} style={{width: 18, height: 18, borderColor: colors.text.primary, borderWidth: 1, borderRadius: 18}} />
+              <Image source={imageDescartar} style={{width: 18, height: 18, borderColor: colors.text.primary, borderWidth: 1, borderRadius: 18}} accessible={true} accessibilityLabel={t('descartar')} />
               <Text style={{textAlign: 'right', fontWeight: 'bold'}}>{t('descartar_reportPhoto')}</Text>
             </TouchableOpacity>
           </View>

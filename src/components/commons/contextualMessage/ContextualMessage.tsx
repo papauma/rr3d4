@@ -16,7 +16,7 @@ export default function ContextualMessage({result, text}: IContextualMessage) {
 
   return (
     <View style={result === 'OK' ? stylesContextualMes.resultOK : stylesContextualMes.resultKO}>
-        {result === 'KO' ? <Image source={iconError} style={stylesContextualMes.image}/> : <></>}
+        {result === 'KO' ? <Image source={iconError} style={stylesContextualMes.image}  accessible={true} accessibilityLabel={'KO'} /> : <></>}
         <Text style={stylesContextualMes.text}>{text}</Text>
     </View>
   );

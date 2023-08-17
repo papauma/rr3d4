@@ -17,11 +17,16 @@ export const strings = {
   info2_reportText: "Primer hauràs d'escriure un assumpte i desprès afegir una breu descripció.",
   introAs_reportText: 'Introdueix un assumpte:*',
   introDes_reportText: 'Introdueix una descripció:*',
+  introAsAcces_reportText: 'Camp de text per a intoduir un assumpte',
+  introDesAcces_reportText: 'Camp de text per a intoduir una descripció',
 
 
   afegeix_reportPhoto: 'Afegeix una imatge',
   utilitzar_reportPhoto: 'Utilitzar aquesta imatge',
   descartar_reportPhoto: 'Descartar aquesta imatge',
+  descartarIcon_reportPhoto: 'Descartar',
+  rotate_reportPhoto: 'Rotar imatge',
+  pick_reportPhoto: 'Elegir imatge de galeria',
 
   indicans_reportMap: "Indica'ns la ubicació",
   utilitzar_reportMap: 'Utilitzar aquesta ubicació',
@@ -39,4 +44,7 @@ export const strings = {
   descripcio: 'Descripció',
   adreca: 'Adreça',
   carregant: 'Carregant...',
+  tornar: 'Tornar',
+  close: 'Tancar',
+  image: 'Imatge',
 };

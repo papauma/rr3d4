@@ -6,7 +6,7 @@ const logo = require('@images/splashImage.png');
 export default function Splash() {
   return (
     <View style={stylesSplash.container} key="1">
-      <Image source={logo} resizeMode="center" />
+      <Image source={logo} resizeMode="center" accessible={true} accessibilityLabel={'logo'} />
   </View>
   );
 }

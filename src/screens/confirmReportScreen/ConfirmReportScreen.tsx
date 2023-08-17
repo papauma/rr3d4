@@ -69,7 +69,7 @@ export default function ConfirmReportScreen() {
             <Text style={stylesResult.label}>{t('adreca')}:</Text>
             <Text style={[stylesResult.value, stylesResult.noMarginBotttom]}>{selectorIncidence?.address}</Text>
             <Text style={stylesResult.valueMenor}>{'(' + selectorIncidence?.location?.latitude + ',' + selectorIncidence?.location?.longitude + ')'}</Text>
-            <Image source={{uri: selectorIncidence.image}} style={stylesResult.imatge}/>
+            <Image source={{uri: selectorIncidence.image}} style={stylesResult.imatge} accessible={true} accessibilityLabel={'OK'} />
         </View>
       <BottomButton>
         <Button text={t('confirmar')} onPress={enviarMail} />

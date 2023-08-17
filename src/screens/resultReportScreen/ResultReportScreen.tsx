@@ -43,7 +43,7 @@ export default function ResultReportScreen() {
     <SafeAreaView style={{flex: 1}}>
       <Header title={t('confirmacio')} step={5} />
         <View style={stylesResult.containerInfo}>
-            <Image source={iconCheck} style={stylesResult.imatge}/>
+            <Image source={iconCheck} style={stylesResult.imatge} accessible={true} accessibilityLabel={'ok'}/>
             <Text style={stylesResult.result}>{t('comunicacio_result')}</Text>
         </View>
     </SafeAreaView>

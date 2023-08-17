@@ -76,7 +76,7 @@ export default function MainScreen() {
           <View style={stylesMainSc.centeredView}>
             <View style={stylesMainSc.modalView}>
             <TouchableOpacity style={{display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', width: '100%'}} onPress={cerrarModal}>
-              <Image source={iconClose} style={stylesMainSc.imageModalClose}/>
+              <Image source={iconClose} style={stylesMainSc.imageModalClose} accessible={true} accessibilityLabel={t('close')} />
             </TouchableOpacity>
             <Text style={stylesMainSc.modalText}>{t('canviIdioma_main')}</Text>
             <View style={stylesMainSc.containerButtonModal}>

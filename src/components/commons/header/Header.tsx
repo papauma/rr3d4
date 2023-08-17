@@ -6,6 +6,7 @@ import { IHeader } from '@src/types/interfaces';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { navigationPages } from '@src/utils/constants';
+import { useTranslate } from '@src/context/languageContext';
 
 const iconBack = require('@images/atras.png');
 const iconClose = require('@images/cerrar.png');
@@ -13,17 +14,19 @@ const iconClose = require('@images/cerrar.png');
 export default function Header({title, step, back, close}: IHeader) {
 
     const navigation = useNavigation() as any;
+    const t = useTranslate();
+
 
   return (
     <View style={stylesHeader.container}>
       <View style={stylesHeader.titleBack}>
       {back !== null && back !== undefined ?
         <TouchableOpacity onPress={back}>
-            <Image source={iconBack} style={stylesHeader.image}/>
+            <Image source={iconBack} style={stylesHeader.image} accessible={true} accessibilityLabel={t('back')} />
         </TouchableOpacity> : <></>}
         <Title text={title} styles={!back ? [stylesHeader.soloTitulo] : []}/>
         {close ? <TouchableOpacity onPress={ () => navigation.navigate(navigationPages.main)}>
-            <Image source={iconClose} style={stylesHeader.image}/>
+            <Image source={iconClose} style={stylesHeader.image} accessible={true} accessibilityLabel={t('close')} />
         </TouchableOpacity> : <></>}
        </View>
       <BreadCrumb step={step} />

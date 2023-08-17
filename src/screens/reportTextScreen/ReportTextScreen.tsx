@@ -52,6 +52,7 @@ export default function ReportTextScreen() {
               onChangeText={onChangeTitle}
               value={title}
               style={stylesRT.input1}
+              accessibilityHint={t('introAsAcces_reportText')}
               />
               <Label text={t('introDes_reportText')} />
             <View style={stylesRT.contentInput2}>
@@ -63,6 +64,7 @@ export default function ReportTextScreen() {
                 onChangeText={text => setDescription(text)}
                 value={description}
                 style={stylesRT.input2}
+                accessibilityHint={t('introDesAcces_reportText')}
               />
               <Text style={stylesRT.contDescription}>{description.length}/{MAX_LENGHT_TAREA}</Text>
             </View>

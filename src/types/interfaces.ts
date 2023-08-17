@@ -18,6 +18,7 @@ export interface IButtonIcon {
   disabled?: boolean;
   size?: number;
   icon: ImageSourcePropType;
+  literalAccesible?: string;
 }
 
 
