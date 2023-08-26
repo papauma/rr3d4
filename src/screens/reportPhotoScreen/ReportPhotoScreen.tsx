@@ -38,7 +38,7 @@ export default function ReportPhotoScreen() {
   const gotoMap = () => {
     if (selectorIncidence.image === null || selectorIncidence.image === undefined) {
       const objectToSave = {
-        image: image,
+        image: filePath,
         namePhoto: namePhoto,
       };
       dispatch(updateIncidence(objectToSave));
