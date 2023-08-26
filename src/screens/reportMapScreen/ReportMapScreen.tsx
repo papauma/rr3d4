@@ -59,6 +59,7 @@ export default function ReportMapScreen() {
 
   const onMapLoaded = () => {
     // Actualizar la posición del marcador
+    console.log('onMapLoaded');
     setMarkerPosition({ latitude: 38.961720, longitude:-0.192369 });
   };
 
@@ -129,32 +130,6 @@ export default function ReportMapScreen() {
     }
   };
 
-  /*const getCurrentLocation = () => {
-    dispatch(updateShowLoading(true));
-    Geolocation.getCurrentPosition(
-      position => {
-        const latitude = position.coords.latitude;
-        const longitude = position.coords.longitude;
-
-        if (isLocationWithinArea(latitude, longitude)) {
-          const objectToSave = {
-            location: {latitude: latitude, longitude: longitude} as ILocation,
-          };
-          dispatch(updateIncidence(objectToSave));
-          getAddressFromCoordinates({latitude: latitude, longitude: longitude});
-        } else {
-          const resultadoMessage = t('malaUbicacio_reportMap');
-          dispatch(updateErrorMessage(resultadoMessage));
-          dispatch(updateShowLoading(false));
-        }
-      },
-      error => {
-        console.log(error);
-      },
-      { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
-    );
-  };*/
-
   const getCurrentLocation = () => {
     dispatch(updateShowLoading(true));
     const latitude = markerPosition.latitude;
@@ -172,8 +147,6 @@ export default function ReportMapScreen() {
       dispatch(updateShowLoading(false));
     }
   };
-
-
 
   return (
     <View style={styles.container}>
