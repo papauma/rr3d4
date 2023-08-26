@@ -26,7 +26,7 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
-target 'mobipalma' do
+target 'benirredra' do
 
   config = use_native_modules!
 
@@ -49,7 +49,7 @@ target 'mobipalma' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  target 'mobipalmaTests' do
+  target 'benirredraTests' do
     inherit! :complete
     # Pods for testing
   end

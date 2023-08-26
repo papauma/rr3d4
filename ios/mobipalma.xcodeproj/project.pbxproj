@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* mobipalmaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* mobipalmaTests.m */; };
+		00E356F31AD99517003FC87E /* benirredraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* benirredraTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		1B80C6EC1FA6699FCEE71E9E /* Pods_mobipalma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F061BED2BBEF09B75863A4AD /* Pods_mobipalma.framework */; };
+		1B80C6EC1FA6699FCEE71E9E /* Pods_benirredra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F061BED2BBEF09B75863A4AD /* Pods_benirredra.framework */; };
 		349B4D0D916642D4B794C2A2 /* WorkSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 82EC567717C444588497E4EF /* WorkSans-BoldItalic.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		B5BB87340CA2D3BCBCA40677 /* Pods_mobipalma_mobipalmaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D16E548BB5FB372602ECA1F9 /* Pods_mobipalma_mobipalmaTests.framework */; };
+		B5BB87340CA2D3BCBCA40677 /* Pods_benirredra_benirredraTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D16E548BB5FB372602ECA1F9 /* Pods_benirredra_benirredraTests.framework */; };
 		B9CD3EDCEB804D3FBF6E9403 /* WorkSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 974D24E1B6BF47659BA34FAD /* WorkSans-Regular.ttf */; };
 		C9BADFF5281E4313B637D3E6 /* WorkSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F88FB746B30469D97FF500A /* WorkSans-Bold.ttf */; };
 		FE37E5A1527B4F81A01F54C0 /* WorkSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56222A7DD77A45DD8B22C1A7 /* WorkSans-Italic.ttf */; };
@@ -26,32 +26,32 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = mobipalma;
+			remoteInfo = benirredra;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00E356EE1AD99517003FC87E /* mobipalmaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mobipalmaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* benirredraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = benirredraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* mobipalmaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mobipalmaTests.m; sourceTree = "<group>"; };
-		09369721506EC339C77565BD /* Pods-mobipalma-mobipalmaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobipalma-mobipalmaTests.release.xcconfig"; path = "Target Support Files/Pods-mobipalma-mobipalmaTests/Pods-mobipalma-mobipalmaTests.release.xcconfig"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* mobipalma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mobipalma.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = mobipalma/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = mobipalma/AppDelegate.mm; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = mobipalma/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = mobipalma/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = mobipalma/main.m; sourceTree = "<group>"; };
-		55DC6A9F1B1001C9E560DCA8 /* Pods-mobipalma-mobipalmaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobipalma-mobipalmaTests.debug.xcconfig"; path = "Target Support Files/Pods-mobipalma-mobipalmaTests/Pods-mobipalma-mobipalmaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* benirredraTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = benirredraTests.m; sourceTree = "<group>"; };
+		09369721506EC339C77565BD /* Pods-benirredra-benirredraTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-benirredra-benirredraTests.release.xcconfig"; path = "Target Support Files/Pods-benirredra-benirredraTests/Pods-benirredra-benirredraTests.release.xcconfig"; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* benirredra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = benirredra.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = benirredra/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = benirredra/AppDelegate.mm; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = benirredra/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = benirredra/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = benirredra/main.m; sourceTree = "<group>"; };
+		55DC6A9F1B1001C9E560DCA8 /* Pods-benirredra-benirredraTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-benirredra-benirredraTests.debug.xcconfig"; path = "Target Support Files/Pods-benirredra-benirredraTests/Pods-benirredra-benirredraTests.debug.xcconfig"; sourceTree = "<group>"; };
 		56222A7DD77A45DD8B22C1A7 /* WorkSans-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "WorkSans-Italic.ttf"; path = "../src/resources/fonts/WorkSans-Italic.ttf"; sourceTree = "<group>"; };
 		5F88FB746B30469D97FF500A /* WorkSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "WorkSans-Bold.ttf"; path = "../src/resources/fonts/WorkSans-Bold.ttf"; sourceTree = "<group>"; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = mobipalma/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = benirredra/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		82EC567717C444588497E4EF /* WorkSans-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "WorkSans-BoldItalic.ttf"; path = "../src/resources/fonts/WorkSans-BoldItalic.ttf"; sourceTree = "<group>"; };
-		84CE5AC1E998BC6D6822C98E /* Pods-mobipalma.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobipalma.debug.xcconfig"; path = "Target Support Files/Pods-mobipalma/Pods-mobipalma.debug.xcconfig"; sourceTree = "<group>"; };
+		84CE5AC1E998BC6D6822C98E /* Pods-benirredra.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-benirredra.debug.xcconfig"; path = "Target Support Files/Pods-benirredra/Pods-benirredra.debug.xcconfig"; sourceTree = "<group>"; };
 		974D24E1B6BF47659BA34FAD /* WorkSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "WorkSans-Regular.ttf"; path = "../src/resources/fonts/WorkSans-Regular.ttf"; sourceTree = "<group>"; };
-		D16E548BB5FB372602ECA1F9 /* Pods_mobipalma_mobipalmaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mobipalma_mobipalmaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D16E548BB5FB372602ECA1F9 /* Pods_benirredra_benirredraTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_benirredra_benirredraTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		F061BED2BBEF09B75863A4AD /* Pods_mobipalma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mobipalma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FDA600CD496C699D95F4BC2A /* Pods-mobipalma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobipalma.release.xcconfig"; path = "Target Support Files/Pods-mobipalma/Pods-mobipalma.release.xcconfig"; sourceTree = "<group>"; };
+		F061BED2BBEF09B75863A4AD /* Pods_benirredra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_benirredra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDA600CD496C699D95F4BC2A /* Pods-benirredra.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-benirredra.release.xcconfig"; path = "Target Support Files/Pods-benirredra/Pods-benirredra.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5BB87340CA2D3BCBCA40677 /* Pods_mobipalma_mobipalmaTests.framework in Frameworks */,
+				B5BB87340CA2D3BCBCA40677 /* Pods_benirredra_benirredraTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,20 +67,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B80C6EC1FA6699FCEE71E9E /* Pods_mobipalma.framework in Frameworks */,
+				1B80C6EC1FA6699FCEE71E9E /* Pods_benirredra.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* mobipalmaTests */ = {
+		00E356EF1AD99517003FC87E /* benirredraTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* mobipalmaTests.m */,
+				00E356F21AD99517003FC87E /* benirredraTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = mobipalmaTests;
+			path = benirredraTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -103,7 +103,7 @@
 			path = "";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* mobipalma */ = {
+		13B07FAE1A68108700A75B9A /* benirredra */ = {
 			isa = PBXGroup;
 			children = (
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -113,15 +113,15 @@
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = mobipalma;
+			name = benirredra;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				F061BED2BBEF09B75863A4AD /* Pods_mobipalma.framework */,
-				D16E548BB5FB372602ECA1F9 /* Pods_mobipalma_mobipalmaTests.framework */,
+				F061BED2BBEF09B75863A4AD /* Pods_benirredra.framework */,
+				D16E548BB5FB372602ECA1F9 /* Pods_benirredra_benirredraTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -136,9 +136,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* mobipalma */,
+				13B07FAE1A68108700A75B9A /* benirredra */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* mobipalmaTests */,
+				00E356EF1AD99517003FC87E /* benirredraTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
@@ -152,8 +152,8 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* mobipalma.app */,
-				00E356EE1AD99517003FC87E /* mobipalmaTests.xctest */,
+				13B07F961A680F5B00A75B9A /* benirredra.app */,
+				00E356EE1AD99517003FC87E /* benirredraTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -161,10 +161,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				84CE5AC1E998BC6D6822C98E /* Pods-mobipalma.debug.xcconfig */,
-				FDA600CD496C699D95F4BC2A /* Pods-mobipalma.release.xcconfig */,
-				55DC6A9F1B1001C9E560DCA8 /* Pods-mobipalma-mobipalmaTests.debug.xcconfig */,
-				09369721506EC339C77565BD /* Pods-mobipalma-mobipalmaTests.release.xcconfig */,
+				84CE5AC1E998BC6D6822C98E /* Pods-benirredra.debug.xcconfig */,
+				FDA600CD496C699D95F4BC2A /* Pods-benirredra.release.xcconfig */,
+				55DC6A9F1B1001C9E560DCA8 /* Pods-benirredra-benirredraTests.debug.xcconfig */,
+				09369721506EC339C77565BD /* Pods-benirredra-benirredraTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -172,9 +172,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* mobipalmaTests */ = {
+		00E356ED1AD99517003FC87E /* benirredraTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "mobipalmaTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "benirredraTests" */;
 			buildPhases = (
 				DCFADA3BBA9F21D542537F3A /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
@@ -188,14 +188,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = mobipalmaTests;
-			productName = mobipalmaTests;
-			productReference = 00E356EE1AD99517003FC87E /* mobipalmaTests.xctest */;
+			name = benirredraTests;
+			productName = benirredraTests;
+			productReference = 00E356EE1AD99517003FC87E /* benirredraTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* mobipalma */ = {
+		13B07F861A680F5B00A75B9A /* benirredra */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "mobipalma" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "benirredra" */;
 			buildPhases = (
 				572F66916266A8ACC7942B1B /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
@@ -211,9 +211,9 @@
 			);
 			dependencies = (
 			);
-			name = mobipalma;
-			productName = mobipalma;
-			productReference = 13B07F961A680F5B00A75B9A /* mobipalma.app */;
+			name = benirredra;
+			productName = benirredra;
+			productReference = 13B07F961A680F5B00A75B9A /* benirredra.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -233,7 +233,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "mobipalma" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "benirredra" */;
 			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -246,8 +246,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* mobipalma */,
-				00E356ED1AD99517003FC87E /* mobipalmaTests */,
+				13B07F861A680F5B00A75B9A /* benirredra */,
+				00E356ED1AD99517003FC87E /* benirredraTests */,
 			);
 		};
 /* End PBXProject section */
@@ -311,15 +311,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-mobipalma/Pods-mobipalma-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-benirredra/Pods-benirredra-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-mobipalma/Pods-mobipalma-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-benirredra/Pods-benirredra-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mobipalma/Pods-mobipalma-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-benirredra/Pods-benirredra-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		572F66916266A8ACC7942B1B /* [CP] Check Pods Manifest.lock */ = {
@@ -337,7 +337,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-mobipalma-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-benirredra-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -350,15 +350,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-mobipalma/Pods-mobipalma-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-benirredra/Pods-benirredra-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-mobipalma/Pods-mobipalma-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-benirredra/Pods-benirredra-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mobipalma/Pods-mobipalma-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-benirredra/Pods-benirredra-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		78376F412B31FC6D106ACBF1 /* [CP] Embed Pods Frameworks */ = {
@@ -367,15 +367,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-mobipalma-mobipalmaTests/Pods-mobipalma-mobipalmaTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-benirredra-benirredraTests/Pods-benirredra-benirredraTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-mobipalma-mobipalmaTests/Pods-mobipalma-mobipalmaTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-benirredra-benirredraTests/Pods-benirredra-benirredraTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mobipalma-mobipalmaTests/Pods-mobipalma-mobipalmaTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-benirredra-benirredraTests/Pods-benirredra-benirredraTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CC24F51FAA58D51725A2EEA0 /* [CP] Copy Pods Resources */ = {
@@ -384,15 +384,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-mobipalma-mobipalmaTests/Pods-mobipalma-mobipalmaTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-benirredra-benirredraTests/Pods-benirredra-benirredraTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-mobipalma-mobipalmaTests/Pods-mobipalma-mobipalmaTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-benirredra-benirredraTests/Pods-benirredra-benirredraTests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mobipalma-mobipalmaTests/Pods-mobipalma-mobipalmaTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-benirredra-benirredraTests/Pods-benirredra-benirredraTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DCFADA3BBA9F21D542537F3A /* [CP] Check Pods Manifest.lock */ = {
@@ -410,7 +410,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-mobipalma-mobipalmaTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-benirredra-benirredraTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -443,7 +443,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* mobipalmaTests.m in Sources */,
+				00E356F31AD99517003FC87E /* benirredraTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,7 +461,7 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* mobipalma */;
+			target = 13B07F861A680F5B00A75B9A /* benirredra */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -469,14 +469,14 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 55DC6A9F1B1001C9E560DCA8 /* Pods-mobipalma-mobipalmaTests.debug.xcconfig */;
+			baseConfigurationReference = 55DC6A9F1B1001C9E560DCA8 /* Pods-benirredra-benirredraTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = mobipalmaTests/Info.plist;
+				INFOPLIST_FILE = benirredraTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -490,17 +490,17 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mobipalma.app/mobipalma";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/benirredra.app/benirredra";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 09369721506EC339C77565BD /* Pods-mobipalma-mobipalmaTests.release.xcconfig */;
+			baseConfigurationReference = 09369721506EC339C77565BD /* Pods-benirredra-benirredraTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = mobipalmaTests/Info.plist;
+				INFOPLIST_FILE = benirredraTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -514,19 +514,19 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mobipalma.app/mobipalma";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/benirredra.app/benirredra";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 84CE5AC1E998BC6D6822C98E /* Pods-mobipalma.debug.xcconfig */;
+			baseConfigurationReference = 84CE5AC1E998BC6D6822C98E /* Pods-benirredra.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = mobipalma/Info.plist;
+				INFOPLIST_FILE = benirredra/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -538,7 +538,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = mobipalma;
+				PRODUCT_NAME = benirredra;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -547,12 +547,12 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FDA600CD496C699D95F4BC2A /* Pods-mobipalma.release.xcconfig */;
+			baseConfigurationReference = FDA600CD496C699D95F4BC2A /* Pods-benirredra.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = mobipalma/Info.plist;
+				INFOPLIST_FILE = benirredra/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -564,7 +564,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = mobipalma;
+				PRODUCT_NAME = benirredra;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -710,7 +710,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "mobipalmaTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "benirredraTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -719,7 +719,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "mobipalma" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "benirredra" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -728,7 +728,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "mobipalma" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "benirredra" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
