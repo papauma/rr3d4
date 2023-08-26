@@ -58,6 +58,7 @@ export default function ConfirmReportScreen() {
     }, 5000);
   };
   const [sendEmail] = useMail();
+  console.log(selectorIncidence);
   return (
     <SafeAreaView style={{flex: 1}}>
       <Header title={t('confirmar')} step={4} back={gotoBack} close />
