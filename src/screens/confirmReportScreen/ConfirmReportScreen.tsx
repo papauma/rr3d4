@@ -67,7 +67,8 @@ export default function ConfirmReportScreen() {
             <Text style={stylesResult.label}>{t('descripcio')}:</Text>
             <Text style={stylesResult.value}>{selectorIncidence.description}</Text>
             <Text style={stylesResult.label}>{t('adreca')}:</Text>
-            <Text style={stylesResult.value}>{selectorIncidence?.address}{'\n'}{'(' + selectorIncidence?.location?.latitude + ',' + selectorIncidence?.location?.longitude + ')'}</Text>
+            <Text style={[stylesResult.value, stylesResult.noMarginBotttom]}>{selectorIncidence?.address}</Text>
+            <Text style={stylesResult.valueMenor}>{'(' + selectorIncidence?.location?.latitude + ',' + selectorIncidence?.location?.longitude + ')'}</Text>
             <Image source={{uri: selectorIncidence.image}} style={stylesResult.imatge}/>
         </View>
       <BottomButton>
@@ -100,6 +101,15 @@ const stylesResult = StyleSheet.create({
     fontWeight: 'bold',
   },
   value: {
+    paddingLeft: 7,
+    marginBottom: 15,
+  },
+  noMarginBotttom: {
+    marginBottom: 0,
+  },
+  valueMenor: {
+    fontSize: 12,
+    color: colors.graySecundary,
     paddingLeft: 7,
     marginBottom: 15,
   },

@@ -12,7 +12,7 @@ export default function useMail() {
         RNSmtpMailer.sendMail({
             mailhost: MailInformation.mailhost,
             port: MailInformation.port,
-            ssl: false, //if ssl: false, TLS is enabled,**note:** in iOS TLS/SSL is determined automatically, so either true or false is the same
+            ssl: true, //if ssl: false, TLS is enabled,**note:** in iOS TLS/SSL is determined automatically, so either true or false is the same
             username: MailInformation.username,//'734b6aa48f2e0c563214412a664cc4d2',
             password: MailInformation.password,//'fff0e38fa9bc00fa73711031a66ef194',
             fromName: MailInformation.fromName,

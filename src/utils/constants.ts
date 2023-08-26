@@ -11,15 +11,15 @@ export const navigationPages = {
 };
 
 export const MailInformation = {
-    mailhost: 'smtp-relay.sendinblue.com',
-    port: '587',
-    username: 'salva.escriva82@gmail.com',
-    password: 'PSjqk9By7MEnh13w',
-    fromName: 'salva.escriva82',
-    recipients: 'josepserralta@gmail.com,salva.escriva82@gmail.com',
+    mailhost: 'smtp.ionos.es',
+    port: '465',
+    username: 'treballemxtu@benirredraparticipa.es',
+    password: '3F?ARgt=@#24',
+    fromName: 'treballemxtu',
+    recipients: 'treballemxtu@benirredraparticipa.es,josepserralta@gmail.com,salva.escriva82@gmail.com',
     recipientsDebug: 'salva.escriva82@gmail.com',
     htmlBody: '<h1>header</h1><p>body</p>',
-    subject: '[Benirredrà]',
+    subject: '[MilloremPerTu]',
 };
 
 export const defaultLocation = {
@@ -53,4 +53,4 @@ export const TOTAL_STEPS = 5;
 
 export const MAX_LENGHT_TAREA = 400;
 
-export const DEBUG_MODE = false;
+export const DEBUG_MODE = true;

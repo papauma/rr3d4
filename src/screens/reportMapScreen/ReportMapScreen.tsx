@@ -9,32 +9,57 @@ import { ILocation } from '@src/types/interfaces';
 import { DEBUG_MODE, navigationPages } from '@src/utils/constants';
 import { getRegionDeltasFromZoom } from '@src/utils/utils';
 import React, { useState } from 'react';
-import { Dimensions, StyleSheet, View } from 'react-native';
-import Geolocation from 'react-native-geolocation-service';
+import { StyleSheet, View } from 'react-native';
+//import Geolocation from 'react-native-geolocation-service';
 import MapView, { Marker } from 'react-native-maps';
 import { useDispatch } from 'react-redux';
 
 
+
 export default function ReportMapScreen() {
-  const [selectedLocation, setSelectedLocation] = useState(null) as any;
+  //const [selectedLocation, setSelectedLocation] = useState(null) as any;
   const navigation =  useNavigation() as any;
   const dispatch = useDispatch();
+  const [markerPosition, setMarkerPosition] = useState({
+    latitude: 0,
+    longitude: 0,
+  });
 
   const t = useTranslate();
 
-  const widthDevice = Dimensions.get('window').width;
+  let timeoutRef = null as any;
+
+  /*const widthDevice = Dimensions.get('window').width;
 
   const handleLocationSelect = (data, details) => {
+    console.log('handleLocationSelect');
     const { lat, lng } = details.geometry.location;
     setSelectedLocation({ latitude: lat, longitude: lng });
-  };
+  };*/
 
   const gotoBack = () => {
     navigation.navigate(navigationPages.reportPhoto);
   };
 
-  const onRegionChangeComplete = (region) => {
+  const onRegionChangeComplete = (region: any) => {
+    console.log('onRegionChangeComplete');
+    // Limpiamos el timeout existente para evitar llamadas innecesarias
+    if (timeoutRef) {
+      clearTimeout(timeoutRef);
+    }
 
+    // Creamos un nuevo timeout que actualiza la posición del marcador después de 500ms
+    timeoutRef = setTimeout(() => {
+      // Obtener las coordenadas del centro del mapa
+      const { latitude, longitude } = region;
+      // Actualizar la posición del marcador
+      setMarkerPosition({ latitude, longitude });
+    },10);
+  };
+
+  const onMapLoaded = () => {
+    // Actualizar la posición del marcador
+    setMarkerPosition({ latitude: 38.961720, longitude:-0.192369 });
   };
 
 
@@ -73,7 +98,7 @@ export default function ReportMapScreen() {
       console.log(data);
 
       if (data.address) {
-        const formattedAddress = `${data?.address?.road}, ${data?.address?.village}`;
+        const formattedAddress = `${data?.address?.road}, ${data?.address?.village ?? data?.address?.city}`;
         console.log(formattedAddress);
         const objectToSave = {
           address: formattedAddress,
@@ -104,7 +129,7 @@ export default function ReportMapScreen() {
     }
   };
 
-  const getCurrentLocation = () => {
+  /*const getCurrentLocation = () => {
     dispatch(updateShowLoading(true));
     Geolocation.getCurrentPosition(
       position => {
@@ -128,7 +153,27 @@ export default function ReportMapScreen() {
       },
       { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
     );
+  };*/
+
+  const getCurrentLocation = () => {
+    dispatch(updateShowLoading(true));
+    const latitude = markerPosition.latitude;
+    const longitude = markerPosition.longitude;
+
+    if (isLocationWithinArea(latitude, longitude)) {
+      const objectToSave = {
+        location: {latitude: latitude, longitude: longitude} as ILocation,
+      };
+      dispatch(updateIncidence(objectToSave));
+      getAddressFromCoordinates({latitude: latitude, longitude: longitude});
+    } else {
+      const resultadoMessage = t('malaUbicacio_reportMap');
+      dispatch(updateErrorMessage(resultadoMessage));
+      dispatch(updateShowLoading(false));
+    }
   };
+
+
 
   return (
     <View style={styles.container}>
@@ -143,20 +188,14 @@ export default function ReportMapScreen() {
         showsCompass={true}
         maxZoomLevel={25}
         minZoomLevel={10}
-        onRegionChangeComplete={onRegionChangeComplete}
+        onRegionChange={onRegionChangeComplete}
         showsUserLocation={true}
         followsUserLocation={true}
         showsMyLocationButton={true}
+        onMapLoaded={onMapLoaded}
       >
 
-        {selectedLocation && (
-          <Marker
-            coordinate={{
-              latitude: selectedLocation.latitude,
-              longitude: selectedLocation.longitude,
-            }}
-          />
-        )}
+      <Marker coordinate={markerPosition} />
       </MapView>
       <BottomButton>
         <Button text={t('utilitzar_reportMap')} onPress={getCurrentLocation} />
