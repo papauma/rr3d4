@@ -7,7 +7,7 @@ import { updateIncidence } from '@src/redux/slices/incidenceSlice';
 import { colors } from '@src/resources/styles/theme';
 import { MAX_LENGHT_TAREA, navigationPages } from '@src/utils/constants';
 import React, { useState } from 'react';
-import {Text} from 'react-native';
+import {Text, Platform} from 'react-native';
 import { KeyboardAvoidingView, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import { useDispatch } from 'react-redux';
@@ -100,6 +100,11 @@ const stylesRT = StyleSheet.create({
     marginBottom: 40,
     backgroundColor: 'white',
     borderRadius: 10,
+    ...Platform.select({
+      ios: {
+        height: 40,
+      },
+    }),
    },
    contentInput2: {
      marginBottom: 40,
@@ -111,6 +116,11 @@ const stylesRT = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 10,
     textAlignVertical: 'top',
+    ...Platform.select({
+      ios: {
+        height: 80,
+      },
+    }),
    },
    contDescription: {
     fontSize: 10,
