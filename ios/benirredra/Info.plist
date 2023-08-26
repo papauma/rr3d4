@@ -49,13 +49,6 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>UIAppFonts</key>
-	<array>
-		<string>WorkSans-Bold.ttf</string>
-		<string>WorkSans-BoldItalic.ttf</string>
-		<string>WorkSans-Italic.ttf</string>
-		<string>WorkSans-Regular.ttf</string>
-	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>Se necesita acceso a la cámara para tomar fotos</string>
 </dict>
