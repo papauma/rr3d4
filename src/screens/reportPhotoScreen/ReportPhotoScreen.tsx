@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import { PHOTO_NAME, navigationPages } from '@src/utils/constants';
+import { PHOTO_EXT, PHOTO_NAME, navigationPages } from '@src/utils/constants';
 import React, { useState } from 'react';
 
 import BottomButton from '@src/components/commons/bottomButton/BottomButton';
@@ -30,7 +30,8 @@ export default function ReportPhotoScreen() {
   const [image, setImage] = useState(null) as any;
   const selectorIncidence = useSelector(incidenceState);
   const [typeCam, setTypeCam] = useState(RNCamera.Constants.Type.back);
-  const filePath = RNFS.DocumentDirectoryPath + '/' + PHOTO_NAME;
+  const namePhoto = PHOTO_NAME + new Date().getTime().toString() + PHOTO_EXT;
+  const filePath = RNFS.DocumentDirectoryPath + '/' + namePhoto;
   const dispatch = useDispatch();
   let camera = null as any;
 
@@ -38,6 +39,7 @@ export default function ReportPhotoScreen() {
     if (selectorIncidence.image === null || selectorIncidence.image === undefined) {
       const objectToSave = {
         image: image,
+        namePhoto: namePhoto,
       };
       dispatch(updateIncidence(objectToSave));
       RNFS.moveFile(image, filePath)

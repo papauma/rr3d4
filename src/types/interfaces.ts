@@ -40,6 +40,7 @@ export interface IIncidence {
   address?: string|null;
   data?: string;
   time?: string;
+  namePhoto:string;
 
 }
 

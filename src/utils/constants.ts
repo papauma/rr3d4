@@ -46,7 +46,8 @@ export const INCIDENCES_LIST = 'INCIDENCES_LIST';
 export const INCIDENCES_NUM = 'INCIDENCES_NUM';
 export const MAX_INCIDENCES_DAY = 3;
 
-export const PHOTO_NAME = 'brdrapfot023.jpg';
+export const PHOTO_NAME = 'brdrapfot';
+export const PHOTO_EXT = '.jpg';
 
 export const TOTAL_STEPS = 5;
 

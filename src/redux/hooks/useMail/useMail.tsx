@@ -1,4 +1,4 @@
-import { DEBUG_MODE, MailInformation, PHOTO_NAME } from '@src/utils/constants';
+import { DEBUG_MODE, MailInformation } from '@src/utils/constants';
 import RNSmtpMailer from 'react-native-smtp-mailer';
 import RNFS from 'react-native-fs';
 import { IIncidence } from '@src/types/interfaces';
@@ -20,8 +20,8 @@ export default function useMail() {
             bcc: [], //completely optional
             subject: MailInformation.subject + ' ' + incidence.title,
             htmlBody: body, //
-            attachmentPaths: [RNFS.DocumentDirectoryPath + '/' + PHOTO_NAME],
-            attachmentNames: [PHOTO_NAME], //only used in android, these are renames of original files. in ios filenames will be same as specified in path. In ios-only application, leave it empty: attachmentNames:[]
+            attachmentPaths: [RNFS.DocumentDirectoryPath + '/' + incidence.namePhoto],
+            attachmentNames: [incidence.namePhoto], //only used in android, these are renames of original files. in ios filenames will be same as specified in path. In ios-only application, leave it empty: attachmentNames:[]
             //needed for android, in ios-only application, leave it empty: attachmentTypes:[]. Generally every img(either jpg, png, jpeg or whatever) file should have "img", and every other file should have its corresponding type.
         })
         .then(success => {
