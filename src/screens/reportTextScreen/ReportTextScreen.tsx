@@ -118,7 +118,7 @@ const stylesRT = StyleSheet.create({
     textAlignVertical: 'top',
     ...Platform.select({
       ios: {
-        height: 80,
+        height: 90,
       },
     }),
    },
