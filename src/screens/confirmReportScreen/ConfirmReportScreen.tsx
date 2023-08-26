@@ -9,7 +9,7 @@ import { incidenceState, updateIncidence } from '@src/redux/slices/incidenceSlic
 import { colors } from '@src/resources/styles/theme';
 import { navigationPages } from '@src/utils/constants';
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -88,8 +88,16 @@ const stylesResult = StyleSheet.create({
     margin: 16,
   },
   imatge: {
-    width: 350,
-    height: 300,
+    ...Platform.select({
+      ios: {
+        width: 320,
+        height: 2700,
+      },
+      android: {
+        width: 350,
+        height: 300,
+      },
+    }),
     borderRadius: 10,
     marginBottom: 15,
   },
