@@ -91,7 +91,7 @@ const stylesResult = StyleSheet.create({
     ...Platform.select({
       ios: {
         width: 320,
-        height: 2700,
+        height: 270,
       },
       android: {
         width: 350,
