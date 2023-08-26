@@ -90,8 +90,8 @@ const stylesResult = StyleSheet.create({
   imatge: {
     ...Platform.select({
       ios: {
-        width: 300,
-        height: 250,
+        width: 280,
+        height: 230,
       },
       android: {
         width: 350,
