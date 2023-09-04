@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+		<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -20,13 +24,64 @@
 	<string>1.0.22</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>benirredra</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>www.prestakuntza5.ejgv.euskadi.eus</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>https</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>itms-apps</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
-		<key>NSExceptionDomains</key>
+		<key>CFBundleDevelopmentRegion</key>
+		<string>en</string>
+		<key>CFBundleDisplayName</key>
+		<string>benirredra</string>
+		<key>CFBundleExecutable</key>
+		<string>$(EXECUTABLE_NAME)</string>
+		<key>CFBundleIdentifier</key>
+		<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+		<key>CFBundleInfoDictionaryVersion</key>
+		<string>6.0</string>
+		<key>CFBundleName</key>
+		<string>$(PRODUCT_NAME)</string>
+		<key>CFBundlePackageType</key>
+		<string>APPL</string>
+		<key>CFBundleShortVersionString</key>
+		<string>$(MARKETING_VERSION)</string>
+		<key>CFBundleSignature</key>
+		<string>$(MARKETING_VERSION)</string>
+		<key>CFBundleVersion</key>
+		<string>7</string>
+		<key>LSApplicationQueriesSchemes</key>
+		<array>
+			<string>itms-apps</string>
+		</array>
+		<key>LSRequiresIPhoneOS</key>
+		<true/>
+		<key>NSAppTransportSecurity</key>
 		<dict>
 			<key>localhost</key>
 			<dict>
@@ -35,8 +90,23 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>benirredra recoge datos de ubicación en segundo plano, para habilitar las funciones de guiado sobre una ruta planificada, para poder comprobar en que lugar se encuentra el dispositivo sobre la ruta y notificar a la persona usuaria cuando deba realizar una acción sobre su itinerario, aunque la aplicación esté cerrada o no se esté usando.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>benirredra recoge datos de ubicación en segundo plano, para habilitar las funciones de guiado sobre una ruta planificada, para poder comprobar en que lugar se encuentra el dispositivo sobre la ruta y notificar a la persona usuaria cuando deba realizar una acción sobre su itinerario, aunque la aplicación esté cerrada o no se esté usando.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>benirredra accede a tu ubicación para poder mostrar opciones de transporte cercanas, puntos de interés y planificar rutas para moverte por la ciudad.</string>
+	<string>benirredra accede a tu ubicación para poder mostrar opciones de transporte cercanas, puntos de interés y planificar rutas para ir hasta un punto de la ciudad. </string>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UISceneConfigurations</key>
+		<dict/>
+	</dict>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>processing</string>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -47,9 +117,13 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>NSCameraUsageDescription</key>
-	<string>Se necesita acceso a la cámara para tomar fotos</string>
 </dict>
 </plist>
