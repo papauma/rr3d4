@@ -24,18 +24,16 @@
 	<string>1.0.24</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-	<key>CFBundleURLTypes</key>
+	<key>CFBundleURLTypes</key><key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>benirredra</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>benirredra</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>https</string>
 			</array>
 		</dict>
 	</array>
