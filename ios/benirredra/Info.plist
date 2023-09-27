@@ -27,13 +27,15 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>benirredra</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>benirredra</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>https</string>
 			</array>
 		</dict>
 	</array>
@@ -85,13 +87,19 @@
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>benirredra necesita acceso a la librería para poder aportar más información sobre la incidencia aportada.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>benirredra necesita acceso a la camara para poder aportar más información sobre la incidencia aportada..</string>
+	<string>benirredra necesita acceso a la camara para poder aportar más información sobre la incidencia aportada.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>benirredra recoge datos de ubicación en segundo plano, para habilitar las funciones de guiado sobre una ruta planificada, para poder comprobar en que lugar se encuentra el dispositivo sobre la ruta y notificar a la persona usuaria cuando deba realizar una acción sobre su itinerario, aunque la aplicación esté cerrada o no se esté usando.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>benirredra recoge datos de ubicación en segundo plano, para habilitar las funciones de guiado sobre una ruta planificada, para poder comprobar en que lugar se encuentra el dispositivo sobre la ruta y notificar a la persona usuaria cuando deba realizar una acción sobre su itinerario, aunque la aplicación esté cerrada o no se esté usando.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>benirredra accede a tu ubicación para poder mostrar opciones de transporte cercanas, puntos de interés y planificar rutas para ir hasta un punto de la ciudad. </string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>benirredra necesita acceso al microfono por si es necesario aportar más informacion sobre la incidencia aportada.</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>benirredra necesita acceso a play music para añadir informacion sobre la incidencia reportada</string>
+	<key>NSMotionUsageDescription</key>
+	<string>Benirredra necesita acceder al acelerómetro para poder aportar mas información sobre una localizacion</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UISceneConfigurations</key>
