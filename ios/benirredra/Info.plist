@@ -15,13 +15,13 @@
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
-	<string>17.0</string>
+	<string>18.0</string>
 	<key>CFBundleName</key>
 	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.25</string>
+	<string>1.0.26</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -94,8 +94,6 @@
 	<string>benirredra recoge datos de ubicación en segundo plano, para habilitar las funciones de guiado sobre una ruta planificada, para poder comprobar en que lugar se encuentra el dispositivo sobre la ruta y notificar a la persona usuaria cuando deba realizar una acción sobre su itinerario, aunque la aplicación esté cerrada o no se esté usando.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>benirredra accede a tu ubicación para poder mostrar opciones de transporte cercanas, puntos de interés y planificar rutas para ir hasta un punto de la ciudad. </string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>benirredra necesita acceso al microfono por si es necesario aportar más informacion sobre la incidencia aportada.</string>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>benirredra necesita acceso a play music para añadir informacion sobre la incidencia reportada</string>
 	<key>NSMotionUsageDescription</key>
